@@ -1,0 +1,67 @@
+/* 响应式样式调整 */
+
+/* 在较小屏幕上调整高度 */
+@media (max-height: 800px) {
+  .hero-carousel {
+    height: 55vh !important;
+    min-height: 600px !important;
+    max-height: 750px !important;
+  }
+
+  .feature-card-content {
+    height: 12rem !important; /* 192px */
+  }
+
+  .feature-cards-section {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+}
+
+/* 在中等屏幕上调整高度 */
+@media (min-height: 801px) and (max-height: 999px) {
+  .hero-carousel {
+    height: 60vh !important;
+    min-height: 600px !important;
+    max-height: 750px !important;
+  }
+
+  .feature-card-content {
+    height: 12rem !important; /* 192px */
+  }
+
+  .feature-cards-section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+}
+
+/* 在较大屏幕上调整高度 */
+@media (min-height: 1000px) {
+  .hero-carousel {
+    height: 65vh !important;
+    min-height: 600px !important;
+    max-height: 750px !important;
+  }
+
+  .feature-card-content {
+    height: 12rem !important; /* 192px */
+  }
+
+  .feature-cards-section {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+}
+
+/* 移动设备优化 */
+@media (max-width: 768px) {
+  .feature-card-content {
+    height: 12rem !important; /* 192px */
+  }
+
+  .feature-cards-section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+}

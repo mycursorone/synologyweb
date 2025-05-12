@@ -79,7 +79,7 @@ const HoverFeatureCards = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {featureCards.map((card) => (
         <div
           key={card.id}
@@ -98,7 +98,7 @@ const HoverFeatureCards = () => {
           </div>
 
           {/* 内容 */}
-          <div className="relative z-10 p-6 h-64 flex flex-col justify-between bg-gradient-to-t from-black/80 to-transparent text-white">
+          <div className="feature-card-content relative z-10 p-3 h-48 flex flex-col justify-between bg-gradient-to-t from-black/80 to-transparent text-white">
             <div className={`transition-all duration-300 ${
               hoveredCard === card.id ? 'opacity-0' : 'opacity-100'
             }`}>

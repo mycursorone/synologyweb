@@ -11,10 +11,8 @@ export default function HomePage() {
       <HeroCarousel />
 
       {/* 特色卡片 */}
-      <section className="py-12 px-4">
-        <div className="container mx-auto">
-          <HoverFeatureCards />
-        </div>
+      <section className="feature-cards-section py-4 px-4">
+        <HoverFeatureCards />
       </section>
 
       {/* 特色产品 */}
