@@ -1,5 +1,50 @@
 /* 响应式样式调整 */
 
+/* 菜单样式调整 */
+nav {
+  position: relative;
+  z-index: 1000;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li > div.absolute {
+  position: absolute;
+  top: 100% !important;
+  margin-top: 0 !important;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* 菜单容器样式 */
+.menu-container {
+  position: relative;
+  z-index: 1000;
+}
+
+/* 四级菜单样式优化 */
+nav ul li > div.absolute .w-1/2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul li > div.absolute .w-1/2 a {
+  max-width: 280px;
+  transition: all 0.3s ease;
+}
+
+nav ul li > div.absolute .w-1/2 a:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* 轮播图与菜单无缝衔接 */
+.hero-carousel {
+  margin-top: 0 !important;
+}
+
 /* 在较小屏幕上调整高度 */
 @media (max-height: 800px) {
   .hero-carousel {
@@ -9,7 +54,7 @@
   }
 
   .feature-card-content {
-    height: 12rem !important; /* 192px */
+    height: 220px !important;
   }
 
   .feature-cards-section {
@@ -27,7 +72,7 @@
   }
 
   .feature-card-content {
-    height: 12rem !important; /* 192px */
+    height: 220px !important;
   }
 
   .feature-cards-section {
@@ -45,7 +90,7 @@
   }
 
   .feature-card-content {
-    height: 12rem !important; /* 192px */
+    height: 220px !important;
   }
 
   .feature-cards-section {
@@ -57,7 +102,7 @@
 /* 移动设备优化 */
 @media (max-width: 768px) {
   .feature-card-content {
-    height: 12rem !important; /* 192px */
+    height: 220px !important;
   }
 
   .feature-cards-section {

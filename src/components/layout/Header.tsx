@@ -9,8 +9,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-sm">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+    <header className="bg-white">
+      <div className="container mx-auto px-4 py-2 flex justify-between items-center">
         <div className="flex items-center">
           <Link href="/" className="flex items-center mr-8">
             {/* 添加Logo图片 */}
@@ -21,7 +21,7 @@ const Header = () => {
           </Link>
 
           {/* 将MegaMenu集成到Header中 */}
-          <div className="hidden md:block">
+          <div className="hidden md:block menu-container">
             <MegaMenu />
           </div>
         </div>

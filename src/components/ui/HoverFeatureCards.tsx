@@ -98,7 +98,7 @@ const HoverFeatureCards = () => {
           </div>
 
           {/* 内容 */}
-          <div className="feature-card-content relative z-10 p-3 h-48 flex flex-col justify-between bg-gradient-to-t from-black/80 to-transparent text-white">
+          <div className="feature-card-content relative z-10 p-3 h-[220px] flex flex-col justify-between bg-gradient-to-t from-black/80 to-transparent text-white">
             <div className={`transition-all duration-300 ${
               hoveredCard === card.id ? 'opacity-0' : 'opacity-100'
             }`}>

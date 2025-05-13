@@ -236,7 +236,7 @@ const MegaMenu = () => {
   };
 
   return (
-    <nav className="bg-white">
+    <nav className="bg-white relative">
       <ul className="flex">
         {menuData.map((menu) => (
           <li
@@ -247,7 +247,7 @@ const MegaMenu = () => {
           >
             <Link
               href={menu.url}
-              className={`block px-4 py-4 text-gray-700 hover:text-blue-600 font-medium border-b-2 ${
+              className={`block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium border-b-2 ${
                 activeMenu === menu.id ? 'border-blue-600 text-blue-600' : 'border-transparent'
               }`}
             >
@@ -256,7 +256,7 @@ const MegaMenu = () => {
 
             {/* 一级下拉菜单 */}
             {activeMenu === menu.id && menu.children && (
-              <div className="absolute left-0 top-full bg-white shadow-lg rounded-b-lg z-50 w-[800px]">
+              <div className="absolute left-0 top-full bg-white shadow-lg z-[100] w-[800px]">
                 <div className="flex p-4">
                   {/* 二级菜单列表 */}
                   <div className="w-1/4 border-r border-gray-200">
@@ -305,29 +305,37 @@ const MegaMenu = () => {
                       </div>
                     )}
 
-                  {/* 四级菜单和图片 */}
+                  {/* 四级菜单和图片 - 只显示第一个产品 */}
                   {activeThirdMenu &&
                     activeSubMenu &&
                     menu.children
                       .find((item) => item.id === activeSubMenu)
                       ?.children?.find((item) => item.id === activeThirdMenu)?.children && (
-                      <div className="w-2/4 grid grid-cols-2 gap-3 p-2">
-                        {menu.children
-                          .find((item) => item.id === activeSubMenu)
-                          ?.children?.find((item) => item.id === activeThirdMenu)
-                          ?.children?.map((fourthMenu) => (
-                            <Link
-                              key={fourthMenu.id}
-                              href={fourthMenu.url}
-                              className="block p-2 rounded-lg hover:bg-gray-50 transition-all duration-200 transform hover:-translate-y-1 hover:shadow-md"
-                            >
-                              <div className="h-24 bg-blue-100 rounded-lg mb-2 flex items-center justify-center overflow-hidden">
-                                <span className="text-blue-600 font-medium text-sm">{fourthMenu.title}</span>
-                              </div>
-                              <h4 className="font-medium text-gray-900 text-sm">{fourthMenu.title}</h4>
-                              <p className="text-xs text-gray-500 mt-1">了解更多特性和优势</p>
-                            </Link>
-                          ))}
+                      <div className="w-1/2 p-4 flex items-center justify-center">
+                        {(() => {
+                          // 获取第一个四级菜单项
+                          const fourthMenu = menu.children
+                            .find((item) => item.id === activeSubMenu)
+                            ?.children?.find((item) => item.id === activeThirdMenu)
+                            ?.children?.[0];
+
+                          if (fourthMenu) {
+                            return (
+                              <Link
+                                key={fourthMenu.id}
+                                href={fourthMenu.url}
+                                className="block p-4 rounded-lg hover:bg-gray-50 transition-all duration-200 transform hover:-translate-y-1 hover:shadow-md w-full max-w-xs"
+                              >
+                                <div className="h-40 bg-blue-100 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+                                  <span className="text-blue-600 font-medium text-lg">{fourthMenu.title}</span>
+                                </div>
+                                <h4 className="font-medium text-gray-900 text-base text-center">{fourthMenu.title}</h4>
+                                <p className="text-sm text-gray-500 mt-2 text-center">了解更多特性和优势</p>
+                              </Link>
+                            );
+                          }
+                          return null;
+                        })()}
                       </div>
                     )}
                 </div>
