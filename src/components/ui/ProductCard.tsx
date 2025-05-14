@@ -10,7 +10,6 @@ interface ProductCardProps {
   description: string;
   imageUrl: string;
   category: string;
-  price?: string;
   features?: string[];
 }
 
@@ -20,7 +19,6 @@ const ProductCard = ({
   description,
   imageUrl,
   category,
-  price,
   features = [],
 }: ProductCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -85,9 +83,7 @@ const ProductCard = ({
           </div>
         )}
 
-        {price && (
-          <div className="text-lg font-bold text-blue-600 mt-2">{price}</div>
-        )}
+
       </div>
     </div>
   );

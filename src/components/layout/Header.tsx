@@ -17,7 +17,7 @@ const Header = () => {
             <div className="mr-2 relative w-10 h-10 flex items-center justify-center bg-blue-600 rounded-md">
               <span className="text-white font-bold text-xl">S</span>
             </div>
-            <span className="text-2xl font-bold text-blue-600">群晖科技</span>
+            <span className="text-2xl font-bold text-blue-600">美步科技</span>
           </Link>
 
           {/* 将MegaMenu集成到Header中 */}

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // 菜单数据类型
 interface MenuItem {
@@ -95,26 +96,55 @@ const menuData: MenuItem[] = [
     url: '/solutions',
     children: [
       {
-        id: 'business',
+        id: 'enterprise',
         title: '企业解决方案',
-        url: '/solutions/business',
+        url: '/solutions',
         children: [
           {
-            id: 'storage',
-            title: '存储解决方案',
-            url: '/solutions/business/storage',
+            id: 'enterprise-storage',
+            title: '企业数据存储与备份',
+            url: '/solutions/enterprise-storage',
             children: [
-              { id: 'backup', title: '数据备份', url: '/solutions/business/storage/backup', image: '/images/solutions/backup.jpg' },
-              { id: 'virtualization', title: '虚拟化', url: '/solutions/business/storage/virtualization', image: '/images/solutions/virtualization.jpg' },
+              { id: 'enterprise-storage-detail', title: '企业数据存储与备份', url: '/solutions/enterprise-storage', image: '/images/solutions/enterprise-storage.jpg' },
             ],
           },
           {
-            id: 'security',
-            title: '安全解决方案',
-            url: '/solutions/business/security',
+            id: 'small-business-it',
+            title: '小型企业IT基础设施',
+            url: '/solutions/small-business-it',
             children: [
-              { id: 'surveillance', title: '监控系统', url: '/solutions/business/security/surveillance', image: '/images/solutions/surveillance.jpg' },
-              { id: 'vpn', title: 'VPN 服务', url: '/solutions/business/security/vpn', image: '/images/solutions/vpn.jpg' },
+              { id: 'small-business-it-detail', title: '小型企业IT基础设施', url: '/solutions/small-business-it', image: '/images/solutions/small-business-it.jpg' },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'specialized',
+        title: '专业解决方案',
+        url: '/solutions',
+        children: [
+          {
+            id: 'video-surveillance',
+            title: '视频监控与安全',
+            url: '/solutions/video-surveillance',
+            children: [
+              { id: 'video-surveillance-detail', title: '视频监控与安全', url: '/solutions/video-surveillance', image: '/images/solutions/video-surveillance.jpg' },
+            ],
+          },
+          {
+            id: 'education-data',
+            title: '教育机构数据管理',
+            url: '/solutions/education-data',
+            children: [
+              { id: 'education-data-detail', title: '教育机构数据管理', url: '/solutions/education-data', image: '/images/solutions/education-data.jpg' },
+            ],
+          },
+          {
+            id: 'healthcare-data',
+            title: '医疗数据存储与保护',
+            url: '/solutions/healthcare-data',
+            children: [
+              { id: 'healthcare-data-detail', title: '医疗数据存储与保护', url: '/solutions/healthcare-data', image: '/images/solutions/healthcare-data.jpg' },
             ],
           },
         ],
@@ -122,16 +152,14 @@ const menuData: MenuItem[] = [
       {
         id: 'home',
         title: '家庭解决方案',
-        url: '/solutions/home',
+        url: '/solutions',
         children: [
           {
-            id: 'multimedia',
-            title: '多媒体解决方案',
-            url: '/solutions/home/multimedia',
+            id: 'home-multimedia',
+            title: '家庭多媒体中心',
+            url: '/solutions/home-multimedia',
             children: [
-              { id: 'photo', title: '照片管理', url: '/solutions/home/multimedia/photo', image: '/images/solutions/photo.jpg' },
-              { id: 'video', title: '视频流媒体', url: '/solutions/home/multimedia/video', image: '/images/solutions/video.jpg' },
-              { id: 'music', title: '音乐串流', url: '/solutions/home/multimedia/music', image: '/images/solutions/music.jpg' },
+              { id: 'home-multimedia-detail', title: '家庭多媒体中心', url: '/solutions/home-multimedia', image: '/images/solutions/home-multimedia.jpg' },
             ],
           },
         ],
@@ -326,8 +354,20 @@ const MegaMenu = () => {
                                 href={fourthMenu.url}
                                 className="block p-4 rounded-lg hover:bg-gray-50 transition-all duration-200 transform hover:-translate-y-1 hover:shadow-md w-full max-w-xs"
                               >
-                                <div className="h-40 bg-blue-100 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
-                                  <span className="text-blue-600 font-medium text-lg">{fourthMenu.title}</span>
+                                <div className="h-40 rounded-lg mb-4 overflow-hidden relative">
+                                  {fourthMenu.image ? (
+                                    <Image
+                                      src={fourthMenu.image}
+                                      alt={fourthMenu.title}
+                                      fill
+                                      style={{ objectFit: 'cover' }}
+                                      className="rounded-lg"
+                                    />
+                                  ) : (
+                                    <div className="absolute inset-0 bg-blue-100 flex items-center justify-center">
+                                      <span className="text-blue-600 font-medium text-lg">{fourthMenu.title}</span>
+                                    </div>
+                                  )}
                                 </div>
                                 <h4 className="font-medium text-gray-900 text-base text-center">{fourthMenu.title}</h4>
                                 <p className="text-sm text-gray-500 mt-2 text-center">了解更多特性和优势</p>

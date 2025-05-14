@@ -26,19 +26,19 @@ export default function HomePage() {
               <div className="rounded-lg h-96 w-full overflow-hidden relative">
                 <Image
                   src="/images/company.jpg"
-                  alt="群晖科技总部"
+                  alt="美步科技总部"
                   fill
                   style={{ objectFit: 'cover' }}
                 />
               </div>
             </div>
             <div className="md:w-1/2">
-              <h2 className="text-3xl font-bold mb-4">关于群晖科技</h2>
+              <h2 className="text-3xl font-bold mb-4">关于美步科技</h2>
               <p className="text-gray-600 mb-6">
-                群晖科技成立于2000年，是全球领先的网络附加存储、IP监控解决方案和网络设备提供商。我们致力于为家庭和企业用户提供可靠、安全、易用的数据管理和存储解决方案。
+                美步科技成立于2000年，是全球领先的网络附加存储、IP监控解决方案和网络设备提供商。我们致力于为家庭和企业用户提供可靠、安全、易用的数据管理和存储解决方案。
               </p>
               <p className="text-gray-600 mb-6">
-                凭借创新的技术和卓越的产品质量，群晖科技已经赢得了全球数百万用户的信任。我们的产品线涵盖了NAS存储设备、监控系统、路由器和云服务等多个领域。
+                凭借创新的技术和卓越的产品质量，美步科技已经赢得了全球数百万用户的信任。我们的产品线涵盖了NAS存储设备、监控系统、路由器和云服务等多个领域。
               </p>
               <Link
                 href="/about"

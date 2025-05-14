@@ -8,9 +8,9 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">群晖科技</h3>
+            <h3 className="text-xl font-bold mb-4">美步科技</h3>
             <p className="text-gray-300">
-              群晖科技致力于为企业和个人用户提供创新的存储、备份和网络解决方案。
+              美步科技致力于为企业和个人用户提供创新的存储、备份和网络解决方案。
             </p>
           </div>
           <div>
@@ -65,7 +65,7 @@ const Footer = () => {
                 <span className="font-semibold">电话：</span> 400-123-4567
               </li>
               <li className="text-gray-300">
-                <span className="font-semibold">邮箱：</span> info@synologyweb.com
+                <span className="font-semibold">邮箱：</span> info@meibu-tech.com
               </li>
               <li className="text-gray-300">
                 <span className="font-semibold">地址：</span> 北京市海淀区科技园区
@@ -74,7 +74,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-          <p>© {new Date().getFullYear()} 群晖科技. 保留所有权利.</p>
+          <p>© {new Date().getFullYear()} 美步科技. 保留所有权利.</p>
         </div>
       </div>
     </footer>
