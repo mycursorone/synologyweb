@@ -132,8 +132,8 @@ export default function RouterFirmwarePage() {
                 <div className="md:w-3/4">
                   <h2 className="text-2xl font-bold mb-2">{model.name}</h2>
                   <p className="text-gray-600 mb-4">
-                    {model.id === 'rt2600ac' 
-                      ? '高性能双频无线路由器，提供强大的网络安全功能和先进的流量控制。' 
+                    {model.id === 'rt2600ac'
+                      ? '高性能双频无线路由器，提供强大的网络安全功能和先进的流量控制。'
                       : '高性能Mesh WiFi路由器，可以与其他MR2200ac或RT2600ac组成Mesh网络，覆盖更大区域。'}
                   </p>
                   <div className="flex flex-wrap gap-3">
@@ -190,13 +190,13 @@ export default function RouterFirmwarePage() {
             <h3 className="text-lg font-semibold mb-3">方法一：通过SRM更新</h3>
             <ol className="list-decimal pl-5 text-gray-600 space-y-2">
               <li>登录SRM控制面板</li>
-              <li>前往"控制面板" > "更新与还原" > "更新"</li>
+              <li>前往"控制面板" {`>`} "更新与还原" {`>`} "更新"</li>
               <li>点击"手动更新"</li>
               <li>上传下载的固件文件</li>
               <li>按照屏幕上的指示完成更新</li>
             </ol>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-semibold mb-3">方法二：通过恢复模式更新</h3>
             <ol className="list-decimal pl-5 text-gray-600 space-y-2">
@@ -209,7 +209,7 @@ export default function RouterFirmwarePage() {
               <li>上传固件文件并按照指示完成更新</li>
             </ol>
           </div>
-          
+
           <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4">
             <div className="flex">
               <div className="flex-shrink-0">
@@ -225,10 +225,10 @@ export default function RouterFirmwarePage() {
             </div>
           </div>
         </div>
-        
+
         <div className="mt-6">
-          <Link 
-            href="/support/knowledge/faq" 
+          <Link
+            href="/support/knowledge/faq"
             className="text-blue-600 hover:text-blue-800 inline-flex items-center"
           >
             查看详细的固件更新指南

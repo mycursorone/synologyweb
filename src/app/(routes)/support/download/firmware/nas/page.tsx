@@ -276,13 +276,13 @@ export default function NasFirmwarePage() {
             <h3 className="text-lg font-semibold mb-3">方法一：通过DSM更新</h3>
             <ol className="list-decimal pl-5 text-gray-600 space-y-2">
               <li>登录DSM控制面板</li>
-              <li>前往"控制面板" > "更新与还原" > "更新"</li>
+              <li>前往"控制面板" {`>`} "更新与还原" {`>`} "更新"</li>
               <li>点击"手动更新"</li>
               <li>上传下载的固件文件</li>
               <li>按照屏幕上的指示完成更新</li>
             </ol>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-semibold mb-3">方法二：通过Assistant更新</h3>
             <ol className="list-decimal pl-5 text-gray-600 space-y-2">
@@ -293,7 +293,7 @@ export default function NasFirmwarePage() {
               <li>按照向导完成更新</li>
             </ol>
           </div>
-          
+
           <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4">
             <div className="flex">
               <div className="flex-shrink-0">
@@ -309,10 +309,10 @@ export default function NasFirmwarePage() {
             </div>
           </div>
         </div>
-        
+
         <div className="mt-6">
-          <Link 
-            href="/support/knowledge/faq/nas" 
+          <Link
+            href="/support/knowledge/faq/nas"
             className="text-blue-600 hover:text-blue-800 inline-flex items-center"
           >
             查看详细的固件更新指南

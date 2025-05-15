@@ -8,7 +8,7 @@ const milestones = [
   {
     year: '2010',
     title: '公司成立',
-    description: '美步科技在中国成立，致力于为用户提供创新的存储解决方案。'
+    description: '成都美步科技有限公司在中国成立，致力于为用户提供创新的存储解决方案。'
   },
   {
     year: '2012',
@@ -106,15 +106,18 @@ export default function AboutPage() {
       <div className="mb-16">
         <div className="flex flex-col md:flex-row gap-8 items-center">
           <div className="md:w-1/2">
-            <h1 className="text-3xl font-bold mb-4">关于美步科技</h1>
+            <h1 className="text-3xl font-bold mb-4">关于成都美步科技有限公司</h1>
             <p className="text-lg text-gray-700 mb-4">
-              美步科技是一家领先的存储和网络解决方案提供商，致力于为家庭和企业用户提供创新、可靠的产品和服务。
+              成都美步科技有限公司是一家领先的存储和网络解决方案提供商，致力于为家庭和企业用户提供创新、可靠的产品和服务。
             </p>
             <p className="text-lg text-gray-700 mb-4">
               自2010年成立以来，我们一直专注于技术创新和产品质量，为全球数百万用户提供高性能的NAS存储设备、路由器和监控解决方案。
             </p>
-            <p className="text-lg text-gray-700">
+            <p className="text-lg text-gray-700 mb-4">
               我们的使命是通过创新技术简化数据管理和网络连接，帮助用户保护和充分利用他们的数字资产。
+            </p>
+            <p className="text-lg text-gray-700">
+              公司地址：成都市武侯区人民南路四段1号时代数码大厦22楼B9，联系电话：028-82009000。
             </p>
           </div>
           <div className="md:w-1/2 bg-gray-100 rounded-lg p-8 flex items-center justify-center">
@@ -146,7 +149,7 @@ export default function AboutPage() {
         <div className="relative">
           {/* 时间线 */}
           <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-200"></div>
-          
+
           <div className="space-y-12">
             {milestones.map((milestone, index) => (
               <div key={index} className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
@@ -217,7 +220,7 @@ export default function AboutPage() {
       <div className="bg-blue-50 rounded-lg shadow-md p-8 text-center">
         <h2 className="text-2xl font-bold mb-4">加入我们</h2>
         <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-          我们始终在寻找优秀的人才加入我们的团队。如果您对技术充满热情，并希望在一个创新的环境中工作，欢迎加入美步科技。
+          我们始终在寻找优秀的人才加入我们的团队。如果您对技术充满热情，并希望在一个创新的环境中工作，欢迎加入成都美步科技有限公司。
         </p>
         <div className="flex justify-center gap-4">
           <Link

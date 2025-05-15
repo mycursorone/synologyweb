@@ -8,8 +8,8 @@ const contactMethods = [
   {
     title: '客户服务',
     description: '产品咨询、购买和售后服务',
-    email: 'service@meibu-tech.com',
-    phone: '400-123-4567',
+    email: 'mymeibu@tuta.io',
+    phone: '028-82009000',
     hours: '周一至周五 9:00-18:00',
     icon: (
       <svg className="w-12 h-12 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -20,9 +20,9 @@ const contactMethods = [
   {
     title: '技术支持',
     description: '产品使用问题和技术咨询',
-    email: 'support@meibu-tech.com',
-    phone: '400-123-4568',
-    hours: '周一至周日 9:00-21:00',
+    email: 'mymeibu@tuta.io',
+    phone: '028-82009000',
+    hours: '周一至周五 9:00-18:00',
     icon: (
       <svg className="w-12 h-12 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -32,8 +32,8 @@ const contactMethods = [
   {
     title: '商务合作',
     description: '渠道合作和商务洽谈',
-    email: 'business@meibu-tech.com',
-    phone: '400-123-4569',
+    email: 'mymeibu@tuta.io',
+    phone: '028-82009000',
     hours: '周一至周五 9:00-18:00',
     icon: (
       <svg className="w-12 h-12 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -46,23 +46,11 @@ const contactMethods = [
 // 办公地点
 const locations = [
   {
-    city: '北京',
-    address: '北京市海淀区科学院南路2号融科资讯中心C座12层',
-    phone: '010-12345678',
-    email: 'beijing@meibu-tech.com'
-  },
-  {
-    city: '上海',
-    address: '上海市浦东新区张江高科技园区博云路2号浦软大厦6层',
-    phone: '021-12345678',
-    email: 'shanghai@meibu-tech.com'
-  },
-  {
-    city: '深圳',
-    address: '深圳市南山区科技园南区高新南七道数字技术大厦8层',
-    phone: '0755-12345678',
-    email: 'shenzhen@meibu-tech.com'
-  },
+    city: '成都',
+    address: '成都市武侯区人民南路四段1号时代数码大厦22楼B9',
+    phone: '028-82009000',
+    email: 'mymeibu@tuta.io'
+  }
 ];
 
 export default function ContactPage() {
@@ -92,35 +80,35 @@ export default function ContactPage() {
 
   const validateForm = () => {
     const errors: Record<string, string> = {};
-    
+
     if (!formData.name.trim()) {
       errors.name = '请输入您的姓名';
     }
-    
+
     if (!formData.email.trim()) {
       errors.email = '请输入您的电子邮箱';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       errors.email = '请输入有效的电子邮箱地址';
     }
-    
+
     if (!formData.subject) {
       errors.subject = '请选择咨询主题';
     }
-    
+
     if (!formData.message.trim()) {
       errors.message = '请输入您的留言内容';
     }
-    
+
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (validateForm()) {
       setIsSubmitting(true);
-      
+
       // 模拟表单提交
       setTimeout(() => {
         setIsSubmitting(false);
@@ -132,7 +120,7 @@ export default function ContactPage() {
           subject: '',
           message: '',
         });
-        
+
         // 重置成功状态
         setTimeout(() => {
           setSubmitSuccess(false);

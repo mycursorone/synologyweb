@@ -218,7 +218,7 @@ export default function DsmDownloadPage() {
             </div>
             <div>
               <h3 className="text-lg font-medium mb-1">手动更新</h3>
-              <p className="text-gray-600">前往"控制面板" > "更新与还原" > "手动更新"，上传下载的DSM更新文件(.pat)。</p>
+              <p className="text-gray-600">前往"控制面板" {`>`} "更新与还原" {`>`} "手动更新"，上传下载的DSM更新文件(.pat)。</p>
             </div>
           </div>
           <div className="flex items-start">

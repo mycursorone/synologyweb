@@ -98,7 +98,7 @@ export default function CompanyPage() {
       <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg p-8 mb-8 text-white">
         <h1 className="text-3xl font-bold mb-4">公司介绍</h1>
         <p className="text-xl">
-          了解美步科技的历史、使命和价值观，以及我们如何通过创新技术改变世界。
+          了解成都美步科技有限公司的历史、使命和价值观，以及我们如何通过创新技术改变世界。
         </p>
       </div>
 
@@ -117,9 +117,9 @@ export default function CompanyPage() {
       <div className="mb-16">
         <div className="flex flex-col md:flex-row gap-8 items-center">
           <div className="md:w-1/2">
-            <h2 className="text-2xl font-bold mb-4">关于美步科技</h2>
+            <h2 className="text-2xl font-bold mb-4">关于成都美步科技有限公司</h2>
             <p className="text-lg text-gray-700 mb-4">
-              美步科技是一家领先的存储和网络解决方案提供商，致力于为家庭和企业用户提供创新、可靠的产品和服务。
+              成都美步科技有限公司是一家领先的存储和网络解决方案提供商，致力于为家庭和企业用户提供创新、可靠的产品和服务。
             </p>
             <p className="text-lg text-gray-700 mb-4">
               自2010年成立以来，我们一直专注于技术创新和产品质量，为全球数百万用户提供高性能的NAS存储设备、路由器和监控解决方案。
@@ -128,7 +128,7 @@ export default function CompanyPage() {
               我们的使命是通过创新技术简化数据管理和网络连接，帮助用户保护和充分利用他们的数字资产。
             </p>
             <p className="text-lg text-gray-700">
-              美步科技总部位于中国北京，在上海、深圳、东京、首尔、新加坡、法兰克福和硅谷设有分支机构，产品销往全球50多个国家和地区。
+              成都美步科技有限公司总部位于中国成都，产品销往全球50多个国家和地区。公司地址：成都市武侯区人民南路四段1号时代数码大厦22楼B9，联系电话：028-82009000。
             </p>
           </div>
           <div className="md:w-1/2 bg-gray-100 rounded-lg p-8 flex items-center justify-center">
@@ -271,9 +271,9 @@ export default function CompanyPage() {
 
       {/* 加入我们 */}
       <div className="bg-blue-50 rounded-lg shadow-md p-8 text-center">
-        <h2 className="text-2xl font-bold mb-4">加入美步科技</h2>
+        <h2 className="text-2xl font-bold mb-4">加入成都美步科技有限公司</h2>
         <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-          我们始终在寻找优秀的人才加入我们的团队。如果您对技术充满热情，并希望在一个创新的环境中工作，欢迎加入美步科技。
+          我们始终在寻找优秀的人才加入我们的团队。如果您对技术充满热情，并希望在一个创新的环境中工作，欢迎加入成都美步科技有限公司。
         </p>
         <div className="flex justify-center gap-4">
           <Link

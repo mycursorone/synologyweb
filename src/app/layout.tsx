@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "美步科技 - 创新存储、监控和网络解决方案",
-  description: "美步科技提供高性能NAS存储设备、监控系统和网络设备，为家庭和企业用户提供创新的解决方案。",
+  title: "成都美步科技有限公司 - 创新存储、监控和网络解决方案",
+  description: "成都美步科技有限公司提供高性能NAS存储设备、监控系统和网络设备，为家庭和企业用户提供创新的解决方案。",
 };
 
 export default function RootLayout({

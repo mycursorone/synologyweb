@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'synologyweb',
+      name: 'meibuweb',
       script: 'node_modules/next/dist/bin/next',
       args: 'start',
       instances: 1,

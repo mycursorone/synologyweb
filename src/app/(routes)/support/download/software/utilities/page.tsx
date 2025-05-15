@@ -132,9 +132,9 @@ export default function UtilitiesDownloadPage() {
                   </div>
                 </div>
               </div>
-              
+
               <p className="text-gray-600 mb-6">{utility.description}</p>
-              
+
               <div className="mb-6">
                 <h3 className="text-lg font-semibold mb-3">主要功能</h3>
                 <ul className="list-disc pl-5 text-gray-600 space-y-1">
@@ -143,7 +143,7 @@ export default function UtilitiesDownloadPage() {
                   ))}
                 </ul>
               </div>
-              
+
               <div>
                 <h3 className="text-lg font-semibold mb-3">下载</h3>
                 <div className="flex flex-wrap gap-3">
@@ -169,7 +169,7 @@ export default function UtilitiesDownloadPage() {
       {/* 安装指南 */}
       <div className="bg-blue-50 rounded-lg shadow-md p-8 mt-10">
         <h2 className="text-2xl font-bold mb-6">安装指南</h2>
-        
+
         <div className="mb-6">
           <h3 className="text-lg font-semibold mb-3">Windows</h3>
           <ol className="list-decimal pl-5 text-gray-600 space-y-2">
@@ -179,7 +179,7 @@ export default function UtilitiesDownloadPage() {
             <li>安装完成后，从开始菜单或桌面快捷方式启动应用程序</li>
           </ol>
         </div>
-        
+
         <div className="mb-6">
           <h3 className="text-lg font-semibold mb-3">macOS</h3>
           <ol className="list-decimal pl-5 text-gray-600 space-y-2">
@@ -187,10 +187,10 @@ export default function UtilitiesDownloadPage() {
             <li>双击.dmg文件挂载磁盘映像</li>
             <li>将应用程序拖到Applications文件夹</li>
             <li>从启动台或Applications文件夹启动应用程序</li>
-            <li>首次启动时，可能需要在"系统偏好设置"中允许来自已识别开发者的应用程序</li>
+            <li>首次启动时，可能需要在{`"系统偏好设置"`}中允许来自已识别开发者的应用程序</li>
           </ol>
         </div>
-        
+
         <div>
           <h3 className="text-lg font-semibold mb-3">Linux</h3>
           <ol className="list-decimal pl-5 text-gray-600 space-y-2">
@@ -209,8 +209,8 @@ export default function UtilitiesDownloadPage() {
           如果您在安装或使用这些工具时遇到问题，可以查看我们的知识库或联系技术支持。
         </p>
         <div className="flex flex-wrap gap-4">
-          <Link 
-            href="/support/knowledge" 
+          <Link
+            href="/support/knowledge"
             className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded inline-flex items-center transition duration-200"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -218,8 +218,8 @@ export default function UtilitiesDownloadPage() {
             </svg>
             查看知识库
           </Link>
-          <Link 
-            href="/contact" 
+          <Link
+            href="/contact"
             className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded inline-flex items-center transition duration-200"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

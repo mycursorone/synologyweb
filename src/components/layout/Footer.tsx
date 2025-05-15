@@ -62,19 +62,20 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">联系我们</h3>
             <ul className="space-y-2">
               <li className="text-gray-300">
-                <span className="font-semibold">电话：</span> 400-123-4567
+                <span className="font-semibold">电话：</span> 028-82009000
               </li>
               <li className="text-gray-300">
-                <span className="font-semibold">邮箱：</span> info@meibu-tech.com
+                <span className="font-semibold">邮箱：</span> mymeibu@tuta.io
               </li>
               <li className="text-gray-300">
-                <span className="font-semibold">地址：</span> 北京市海淀区科技园区
+                <span className="font-semibold">地址：</span> 成都市武侯区人民南路四段1号时代数码大厦22楼B9
               </li>
             </ul>
           </div>
         </div>
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-          <p>© {new Date().getFullYear()} 美步科技. 保留所有权利.</p>
+          <p>© {new Date().getFullYear()} 成都美步科技有限公司. 保留所有权利.</p>
+          <p className="mt-2">ICP备案号： 蜀ICP备17032817号-1</p>
         </div>
       </div>
     </footer>
