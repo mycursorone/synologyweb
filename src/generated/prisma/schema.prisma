@@ -1,0 +1,106 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// 用户模型
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("admin")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+// 产品分类模型
+model Category {
+  id            String     @id @default(cuid())
+  name          String
+  slug          String     @unique
+  description   String?
+  parentId      String?    @map("parent_id")
+  parent        Category?  @relation("CategoryToSubcategory", fields: [parentId], references: [id], onDelete: SetNull)
+  subcategories Category[] @relation("CategoryToSubcategory")
+  products      Product[]
+  createdAt     DateTime   @default(now()) @map("created_at")
+  updatedAt     DateTime   @updatedAt @map("updated_at")
+
+  @@map("categories")
+}
+
+// 产品模型
+model Product {
+  id              String     @id @default(cuid())
+  title           String
+  slug            String     @unique
+  description     String
+  fullDescription String?    @map("full_description")
+  imageUrl        String     @map("image_url")
+  categoryId      String     @map("category_id")
+  category        Category   @relation(fields: [categoryId], references: [id])
+  features        String // 存储为 JSON 字符串
+  specifications  String? // 存储为 JSON 字符串
+  solutions       Solution[] @relation("ProductToSolution")
+  createdAt       DateTime   @default(now()) @map("created_at")
+  updatedAt       DateTime   @updatedAt @map("updated_at")
+
+  @@map("products")
+}
+
+// 解决方案模型
+model Solution {
+  id              String      @id @default(cuid())
+  title           String
+  slug            String      @unique
+  description     String
+  fullDescription String?     @map("full_description")
+  imageUrl        String      @map("image_url")
+  industry        String
+  benefits        String // 存储为 JSON 字符串
+  features        String // 存储为 JSON 字符串
+  products        Product[]   @relation("ProductToSolution")
+  caseStudies     CaseStudy[]
+  createdAt       DateTime    @default(now()) @map("created_at")
+  updatedAt       DateTime    @updatedAt @map("updated_at")
+
+  @@map("solutions")
+}
+
+// 案例研究模型
+model CaseStudy {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  solutionId  String   @map("solution_id")
+  solution    Solution @relation(fields: [solutionId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("case_studies")
+}
+
+// 媒体资源模型
+model Media {
+  id         String   @id @default(cuid())
+  fileName   String   @map("file_name")
+  filePath   String   @map("file_path")
+  fileType   String   @map("file_type")
+  fileSize   Int      @map("file_size")
+  entityType String?  @map("entity_type")
+  entityId   String?  @map("entity_id")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@map("media")
+}

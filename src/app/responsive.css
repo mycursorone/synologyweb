@@ -1,5 +1,46 @@
 /* 响应式样式调整 */
 
+/* 浏览器特定样式 */
+.browser-chrome img {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.browser-safari img {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.browser-firefox img {
+  image-rendering: crisp-edges;
+}
+
+.browser-edge img {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.browser-ie img {
+  -ms-interpolation-mode: bicubic;
+}
+
+/* 修复 Safari 中的 flex 问题 */
+.browser-safari .flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* 修复 IE 中的 grid 问题 */
+.browser-ie .grid {
+  display: -ms-grid;
+  display: grid;
+}
+
+/* 修复移动设备上的触摸事件 */
+.mobile-device a,
+.mobile-device button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 /* 菜单样式调整 */
 nav {
   position: relative;

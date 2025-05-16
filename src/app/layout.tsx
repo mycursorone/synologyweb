@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "./globals.css"; // 导入 CSS
+import SessionProvider from "@/components/providers/SessionProvider";
+import BrowserDetection from "@/components/utils/BrowserDetection";
+import CacheClearer from "@/components/utils/CacheClearer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,10 +27,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
+      <head>
+        <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta httpEquiv="Pragma" content="no-cache" />
+        <meta httpEquiv="Expires" content="0" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <SessionProvider>
+          <BrowserDetection />
+          <CacheClearer />
+          {children}
+        </SessionProvider>
       </body>
     </html>
   );

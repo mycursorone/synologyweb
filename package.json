@@ -11,22 +11,33 @@
     "pm2:stop": "pm2 stop ecosystem.config.js",
     "pm2:restart": "pm2 restart ecosystem.config.js",
     "pm2:reload": "pm2 reload ecosystem.config.js",
-    "pm2:delete": "pm2 delete ecosystem.config.js"
+    "pm2:delete": "pm2 delete ecosystem.config.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:studio": "prisma studio",
+    "db:init": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/init-db.ts"
   },
   "dependencies": {
+    "@prisma/client": "^6.7.0",
+    "@types/bcryptjs": "^3.0.0",
+    "bcryptjs": "^3.0.2",
+    "critters": "^0.0.25",
+    "next": "15.3.2",
+    "next-auth": "^4.24.11",
+    "prisma": "^6.7.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.3.2"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
-    "@eslint/eslintrc": "^3"
+    "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
   }
 }
