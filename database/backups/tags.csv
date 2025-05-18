@@ -1,0 +1,8 @@
+column_name,data_type,character_maximum_length,is_nullable,column_default
+id,uuid,null,NO,gen_random_uuid()
+created_id,uuid,null,NO,gen_random_uuid()
+product_spec,text,null,YES,null
+product_size,text,null,YES,null
+sort_type,smallint,null,YES,null
+sort_order,smallint,null,YES,null
+spec_size,text,null,YES,null

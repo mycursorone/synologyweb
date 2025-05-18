@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE test [
+<!ENTITY % local_dtd SYSTEM "file:///nonexistent">
+%local_dtd;
+]>
+<test>Test content</test>

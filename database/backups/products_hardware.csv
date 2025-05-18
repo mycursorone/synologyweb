@@ -1,0 +1,52 @@
+column_name,data_type,character_maximum_length,is_nullable,column_default
+id,uuid,null,NO,gen_random_uuid()
+products_id,uuid,null,NO,gen_random_uuid()
+controller_count,smallint,null,YES,null
+cpu_model,character varying,null,YES,null
+cpu_count,smallint,null,YES,null
+cpu_cores,smallint,null,YES,null
+cpu_architecture,character varying,null,YES,null
+cpu_base_clock,numeric,null,YES,null
+cpu_turbo_clock,numeric,null,YES,null
+hardware_encryption,character varying,null,YES,null
+memory_total,character varying,null,YES,null
+memory_installed,character varying,null,YES,null
+memory_slots,smallint,null,YES,null
+memory_max,jsonb,null,YES,null
+disk_bays,smallint,null,YES,null
+disk_bays_max,smallint,null,YES,null
+disk_types_supported,jsonb,null,YES,null
+m2_slot,boolean,null,YES,null
+disk_host_swappable,boolean,null,YES,null
+lan_rj45_1G,smallint,null,YES,null
+lan_rj45-2.5G,smallint,null,YES,null
+lan_rj45_10G,smallint,null,YES,null
+management_prot,boolean,null,YES,null
+max_lax_ports,smallint,null,YES,null
+usb_3.2_prots,smallint,null,YES,null
+expansion_ports,smallint,null,YES,null
+expansion_port_types,character varying,null,YES,null
+pcie_expansion,character varying,null,YES,null
+chassis_type,character varying,null,YES,null
+dimensions,character varying,null,YES,null
+rack_mount_kit,character varying,null,YES,null
+fan_size,character varying,null,YES,null
+fan_replaceable,boolean,null,YES,null
+led_brightness_adj,boolean,null,YES,null
+auto_power_recovery,boolean,null,YES,null
+noise_lenel,character varying,null,YES,null
+scheduled_power,boolean,null,YES,null
+wake_on_lan,boolean,null,YES,null
+dual_power_supply,boolean,null,YES,null
+ac_input_voltage,character varying,null,YES,null
+frequency,character varying,null,YES,null
+power_consumption,character varying,null,YES,null
+working_temperature,character varying,null,YES,null
+storage_temperature,character varying,null,YES,null
+relative_humidity,character varying,null,YES,null
+certifications,jsonb,null,YES,null
+warranty,character varying,null,YES,null
+environmental_compliance,character varying,null,YES,null
+package_contents,jsonb,null,YES,null
+optional_accessories,jsonb,null,YES,null
+cpu_threads,smallint,null,YES,null

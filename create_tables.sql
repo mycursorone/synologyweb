@@ -1,0 +1,52 @@
+-- 创建tag_categories表
+CREATE TABLE IF NOT EXISTS tag_categories (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  description TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 创建tags表
+CREATE TABLE IF NOT EXISTS tags (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  description TEXT,
+  category_id INTEGER REFERENCES tag_categories(id),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 创建products表
+CREATE TABLE IF NOT EXISTS products (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  description TEXT,
+  price DECIMAL(10, 2),
+  image_url VARCHAR(255),
+  is_featured BOOLEAN DEFAULT FALSE,
+  is_active BOOLEAN DEFAULT TRUE,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 创建products_hardware表
+CREATE TABLE IF NOT EXISTS products_hardware (
+  id SERIAL PRIMARY KEY,
+  product_id INTEGER REFERENCES products(id),
+  cpu VARCHAR(255),
+  memory VARCHAR(255),
+  storage VARCHAR(255),
+  other_specs TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 创建product_tags表（多对多关系表）
+CREATE TABLE IF NOT EXISTS product_tags (
+  id SERIAL PRIMARY KEY,
+  product_id INTEGER REFERENCES products(id),
+  tag_id INTEGER REFERENCES tags(id),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE(product_id, tag_id)
+);

@@ -1,0 +1,6 @@
+column_name,data_type,character_maximum_length,is_nullable,column_default
+product_id,uuid,null,NO,gen_random_uuid()
+tag_id,uuid,null,NO,gen_random_uuid()
+product_name,text,null,YES,'null'::text
+tag_spec,text,null,YES,'null'::text
+tag_size,text,null,YES,'null'::text

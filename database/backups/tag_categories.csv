@@ -1,0 +1,5 @@
+column_name,data_type,character_maximum_length,is_nullable,column_default
+id,uuid,null,NO,gen_random_uuid()
+name,text,null,NO,null
+sort,smallint,null,YES,null
+categories_type,text,null,YES,null

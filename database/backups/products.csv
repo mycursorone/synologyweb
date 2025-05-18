@@ -1,0 +1,12 @@
+column_name,data_type,character_maximum_length,is_nullable,column_default
+id,uuid,null,NO,gen_random_uuid()
+name,text,null,NO,''::text
+description,text,null,YES,null
+cover_image,text,null,YES,null
+spec_pdf_url,text,null,YES,null
+is_active,boolean,null,NO,true
+description_i18N,jsonb,null,YES,null
+software_space,jsonb,null,YES,null
+hardware_space,jsonb,null,YES,null
+created_at,time without time zone,null,YES,now()
+updated_at,timestamp without time zone,null,YES,now()
