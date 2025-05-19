@@ -1,41 +1,61 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { FilterCategory, FilterOption } from '@/types/product';
 
 interface FilterOptions {
-  categories: string[];
+  categoryIds: string[];
+  tagIds: string[];
   searchTerm: string;
 }
 
 interface ProductFilterProps {
-  categories: string[];
+  filterCategories: FilterCategory[];
   selectedFilters: FilterOptions;
   onFilterChange: (newFilters: Partial<FilterOptions>) => void;
+  isLoading?: boolean;
 }
 
 const ProductFilter = ({
-  categories,
+  filterCategories,
   selectedFilters,
   onFilterChange,
+  isLoading = false,
 }: ProductFilterProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchInput, setSearchInput] = useState(selectedFilters.searchTerm);
+  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
+
+  // 初始化展开状态
+  useEffect(() => {
+    const initialExpandedState: Record<string, boolean> = {};
+    filterCategories.forEach(category => {
+      initialExpandedState[category.id] = true; // 默认展开所有分类
+    });
+    setExpandedCategories(initialExpandedState);
+  }, [filterCategories]);
 
   // 当外部搜索词变化时更新本地状态
   useEffect(() => {
     setSearchInput(selectedFilters.searchTerm);
   }, [selectedFilters.searchTerm]);
 
-  // 处理类别选择
-  const handleCategoryChange = (category: string) => {
-    const newCategories = selectedFilters.categories.includes(category)
-      ? selectedFilters.categories.filter(c => c !== category)
-      : [...selectedFilters.categories, category];
+  // 处理标签选择
+  const handleTagChange = (tagId: string) => {
+    const newTagIds = selectedFilters.tagIds.includes(tagId)
+      ? selectedFilters.tagIds.filter(id => id !== tagId)
+      : [...selectedFilters.tagIds, tagId];
 
-    onFilterChange({ categories: newCategories });
+    onFilterChange({ tagIds: newTagIds });
   };
 
-
+  // 处理分类展开/折叠
+  const toggleCategory = (categoryId: string) => {
+    setExpandedCategories(prev => ({
+      ...prev,
+      [categoryId]: !prev[categoryId]
+    }));
+  };
 
   // 处理搜索
   const handleSearch = (e: React.FormEvent) => {
@@ -46,7 +66,8 @@ const ProductFilter = ({
   // 重置所有筛选条件
   const resetFilters = () => {
     onFilterChange({
-      categories: [],
+      categoryIds: [],
+      tagIds: [],
       searchTerm: '',
     });
     setSearchInput('');
@@ -55,7 +76,7 @@ const ProductFilter = ({
   return (
     <div className="bg-white rounded-lg shadow-md p-4">
       <div className="flex justify-between items-center mb-4 lg:hidden">
-        <h3 className="text-lg font-bold">筛选</h3>
+        <h3 className="text-lg font-bold">产品筛选</h3>
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="text-gray-500 hover:text-gray-700"
@@ -95,33 +116,58 @@ const ProductFilter = ({
           </form>
         </div>
 
-        {/* 类别筛选 */}
-        <div className="mb-6">
-          <h3 className="text-lg font-bold mb-3">产品类别</h3>
-          <div className="space-y-2">
-            {categories.map((category) => (
-              <div key={category} className="flex items-center">
-                <input
-                  type="checkbox"
-                  id={`category-${category}`}
-                  checked={selectedFilters.categories.includes(category)}
-                  onChange={() => handleCategoryChange(category)}
-                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                />
-                <label htmlFor={`category-${category}`} className="ml-2 text-gray-700">
-                  {category}
-                </label>
+        {isLoading ? (
+          <div className="flex justify-center items-center h-40">
+            <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+          </div>
+        ) : (
+          <>
+            {/* 筛选分类 */}
+            {filterCategories.map((category) => (
+              <div key={category.id} className="mb-6 border-b pb-4">
+                <div
+                  className="flex justify-between items-center cursor-pointer mb-3"
+                  onClick={() => toggleCategory(category.id)}
+                >
+                  <h3 className="text-lg font-bold">{category.name}</h3>
+                  <svg
+                    className={`w-5 h-5 transition-transform ${expandedCategories[category.id] ? 'transform rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+
+                {expandedCategories[category.id] && (
+                  <div className="space-y-2 grid grid-cols-2">
+                    {category.options.map((option) => (
+                      <div key={option.id} className="flex items-center col-span-1">
+                        <input
+                          type="checkbox"
+                          id={`tag-${option.id}`}
+                          checked={selectedFilters.tagIds.includes(option.id)}
+                          onChange={() => handleTagChange(option.id)}
+                          className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                        />
+                        <label htmlFor={`tag-${option.id}`} className="ml-2 text-gray-700 text-sm">
+                          {option.name}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
-          </div>
-        </div>
-
-
+          </>
+        )}
 
         {/* 重置筛选按钮 */}
         <button
           onClick={resetFilters}
           className="w-full bg-red-100 hover:bg-red-200 text-red-800 font-medium py-2 px-4 rounded"
+          disabled={isLoading}
         >
           重置所有筛选
         </button>

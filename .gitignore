@@ -12,6 +12,13 @@
 
 # testing
 /coverage
+/test_*
+*.o
+*.c
+*.zip
+*.bundle
+*_snapshot.zip
+*.dump
 
 # next.js
 /.next/
@@ -32,6 +39,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +47,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# database dumps and backups
+*.sql
+/supabasebak/
+
+# large files
+*.tar
+*.cpio
