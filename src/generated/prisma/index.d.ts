@@ -14,35 +14,45 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model User
- * 
- */
-export type User = $Result.DefaultSelection<Prisma.$UserPayload>
-/**
- * Model Category
- * 
- */
-export type Category = $Result.DefaultSelection<Prisma.$CategoryPayload>
-/**
  * Model Product
  * 
  */
 export type Product = $Result.DefaultSelection<Prisma.$ProductPayload>
 /**
- * Model Solution
- * 
+ * Model product_tags
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
  */
-export type Solution = $Result.DefaultSelection<Prisma.$SolutionPayload>
+export type product_tags = $Result.DefaultSelection<Prisma.$product_tagsPayload>
 /**
- * Model CaseStudy
- * 
+ * Model products_hardware
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
  */
-export type CaseStudy = $Result.DefaultSelection<Prisma.$CaseStudyPayload>
+export type products_hardware = $Result.DefaultSelection<Prisma.$products_hardwarePayload>
 /**
- * Model Media
+ * Model tag_categories
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type tag_categories = $Result.DefaultSelection<Prisma.$tag_categoriesPayload>
+/**
+ * Model tags
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type tags = $Result.DefaultSelection<Prisma.$tagsPayload>
+/**
+ * Model User
  * 
  */
-export type Media = $Result.DefaultSelection<Prisma.$MediaPayload>
+export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+/**
+ * Model Footer
+ * 
+ */
+export type Footer = $Result.DefaultSelection<Prisma.$FooterPayload>
+/**
+ * Model FooterLink
+ * 
+ */
+export type FooterLink = $Result.DefaultSelection<Prisma.$FooterLinkPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -51,8 +61,8 @@ export type Media = $Result.DefaultSelection<Prisma.$MediaPayload>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more Products
+ * const products = await prisma.product.findMany()
  * ```
  *
  *
@@ -72,8 +82,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Users
-   * const users = await prisma.user.findMany()
+   * // Fetch zero or more Products
+   * const products = await prisma.product.findMany()
    * ```
    *
    *
@@ -170,26 +180,6 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.user`: Exposes CRUD operations for the **User** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Users
-    * const users = await prisma.user.findMany()
-    * ```
-    */
-  get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.category`: Exposes CRUD operations for the **Category** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Categories
-    * const categories = await prisma.category.findMany()
-    * ```
-    */
-  get category(): Prisma.CategoryDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.product`: Exposes CRUD operations for the **Product** model.
     * Example usage:
     * ```ts
@@ -200,34 +190,74 @@ export class PrismaClient<
   get product(): Prisma.ProductDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.solution`: Exposes CRUD operations for the **Solution** model.
+   * `prisma.product_tags`: Exposes CRUD operations for the **product_tags** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Solutions
-    * const solutions = await prisma.solution.findMany()
+    * // Fetch zero or more Product_tags
+    * const product_tags = await prisma.product_tags.findMany()
     * ```
     */
-  get solution(): Prisma.SolutionDelegate<ExtArgs, ClientOptions>;
+  get product_tags(): Prisma.product_tagsDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.caseStudy`: Exposes CRUD operations for the **CaseStudy** model.
+   * `prisma.products_hardware`: Exposes CRUD operations for the **products_hardware** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more CaseStudies
-    * const caseStudies = await prisma.caseStudy.findMany()
+    * // Fetch zero or more Products_hardwares
+    * const products_hardwares = await prisma.products_hardware.findMany()
     * ```
     */
-  get caseStudy(): Prisma.CaseStudyDelegate<ExtArgs, ClientOptions>;
+  get products_hardware(): Prisma.products_hardwareDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.media`: Exposes CRUD operations for the **Media** model.
+   * `prisma.tag_categories`: Exposes CRUD operations for the **tag_categories** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Media
-    * const media = await prisma.media.findMany()
+    * // Fetch zero or more Tag_categories
+    * const tag_categories = await prisma.tag_categories.findMany()
     * ```
     */
-  get media(): Prisma.MediaDelegate<ExtArgs, ClientOptions>;
+  get tag_categories(): Prisma.tag_categoriesDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tags`: Exposes CRUD operations for the **tags** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Tags
+    * const tags = await prisma.tags.findMany()
+    * ```
+    */
+  get tags(): Prisma.tagsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.user`: Exposes CRUD operations for the **User** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Users
+    * const users = await prisma.user.findMany()
+    * ```
+    */
+  get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.footer`: Exposes CRUD operations for the **Footer** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Footers
+    * const footers = await prisma.footer.findMany()
+    * ```
+    */
+  get footer(): Prisma.FooterDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.footerLink`: Exposes CRUD operations for the **FooterLink** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FooterLinks
+    * const footerLinks = await prisma.footerLink.findMany()
+    * ```
+    */
+  get footerLink(): Prisma.FooterLinkDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -668,12 +698,14 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    User: 'User',
-    Category: 'Category',
     Product: 'Product',
-    Solution: 'Solution',
-    CaseStudy: 'CaseStudy',
-    Media: 'Media'
+    product_tags: 'product_tags',
+    products_hardware: 'products_hardware',
+    tag_categories: 'tag_categories',
+    tags: 'tags',
+    User: 'User',
+    Footer: 'Footer',
+    FooterLink: 'FooterLink'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -692,158 +724,10 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "category" | "product" | "solution" | "caseStudy" | "media"
+      modelProps: "product" | "product_tags" | "products_hardware" | "tag_categories" | "tags" | "user" | "footer" | "footerLink"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      User: {
-        payload: Prisma.$UserPayload<ExtArgs>
-        fields: Prisma.UserFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.UserFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.UserFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
-          }
-          findFirst: {
-            args: Prisma.UserFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.UserFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
-          }
-          findMany: {
-            args: Prisma.UserFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
-          }
-          create: {
-            args: Prisma.UserCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
-          }
-          createMany: {
-            args: Prisma.UserCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.UserCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
-          }
-          delete: {
-            args: Prisma.UserDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
-          }
-          update: {
-            args: Prisma.UserUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
-          }
-          deleteMany: {
-            args: Prisma.UserDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.UserUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.UserUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
-          }
-          upsert: {
-            args: Prisma.UserUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
-          }
-          aggregate: {
-            args: Prisma.UserAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateUser>
-          }
-          groupBy: {
-            args: Prisma.UserGroupByArgs<ExtArgs>
-            result: $Utils.Optional<UserGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.UserCountArgs<ExtArgs>
-            result: $Utils.Optional<UserCountAggregateOutputType> | number
-          }
-        }
-      }
-      Category: {
-        payload: Prisma.$CategoryPayload<ExtArgs>
-        fields: Prisma.CategoryFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.CategoryFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.CategoryFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
-          }
-          findFirst: {
-            args: Prisma.CategoryFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.CategoryFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
-          }
-          findMany: {
-            args: Prisma.CategoryFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
-          }
-          create: {
-            args: Prisma.CategoryCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
-          }
-          createMany: {
-            args: Prisma.CategoryCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.CategoryCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
-          }
-          delete: {
-            args: Prisma.CategoryDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
-          }
-          update: {
-            args: Prisma.CategoryUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
-          }
-          deleteMany: {
-            args: Prisma.CategoryDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.CategoryUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.CategoryUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
-          }
-          upsert: {
-            args: Prisma.CategoryUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
-          }
-          aggregate: {
-            args: Prisma.CategoryAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCategory>
-          }
-          groupBy: {
-            args: Prisma.CategoryGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CategoryGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.CategoryCountArgs<ExtArgs>
-            result: $Utils.Optional<CategoryCountAggregateOutputType> | number
-          }
-        }
-      }
       Product: {
         payload: Prisma.$ProductPayload<ExtArgs>
         fields: Prisma.ProductFieldRefs
@@ -918,225 +802,521 @@ export namespace Prisma {
           }
         }
       }
-      Solution: {
-        payload: Prisma.$SolutionPayload<ExtArgs>
-        fields: Prisma.SolutionFieldRefs
+      product_tags: {
+        payload: Prisma.$product_tagsPayload<ExtArgs>
+        fields: Prisma.product_tagsFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.SolutionFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SolutionPayload> | null
+            args: Prisma.product_tagsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_tagsPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.SolutionFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SolutionPayload>
+            args: Prisma.product_tagsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_tagsPayload>
           }
           findFirst: {
-            args: Prisma.SolutionFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SolutionPayload> | null
+            args: Prisma.product_tagsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_tagsPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.SolutionFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SolutionPayload>
+            args: Prisma.product_tagsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_tagsPayload>
           }
           findMany: {
-            args: Prisma.SolutionFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SolutionPayload>[]
+            args: Prisma.product_tagsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_tagsPayload>[]
           }
           create: {
-            args: Prisma.SolutionCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SolutionPayload>
+            args: Prisma.product_tagsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_tagsPayload>
           }
           createMany: {
-            args: Prisma.SolutionCreateManyArgs<ExtArgs>
+            args: Prisma.product_tagsCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.SolutionCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SolutionPayload>[]
+            args: Prisma.product_tagsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_tagsPayload>[]
           }
           delete: {
-            args: Prisma.SolutionDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SolutionPayload>
+            args: Prisma.product_tagsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_tagsPayload>
           }
           update: {
-            args: Prisma.SolutionUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SolutionPayload>
+            args: Prisma.product_tagsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_tagsPayload>
           }
           deleteMany: {
-            args: Prisma.SolutionDeleteManyArgs<ExtArgs>
+            args: Prisma.product_tagsDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.SolutionUpdateManyArgs<ExtArgs>
+            args: Prisma.product_tagsUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.SolutionUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SolutionPayload>[]
+            args: Prisma.product_tagsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_tagsPayload>[]
           }
           upsert: {
-            args: Prisma.SolutionUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SolutionPayload>
+            args: Prisma.product_tagsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_tagsPayload>
           }
           aggregate: {
-            args: Prisma.SolutionAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateSolution>
+            args: Prisma.Product_tagsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProduct_tags>
           }
           groupBy: {
-            args: Prisma.SolutionGroupByArgs<ExtArgs>
-            result: $Utils.Optional<SolutionGroupByOutputType>[]
+            args: Prisma.product_tagsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Product_tagsGroupByOutputType>[]
           }
           count: {
-            args: Prisma.SolutionCountArgs<ExtArgs>
-            result: $Utils.Optional<SolutionCountAggregateOutputType> | number
+            args: Prisma.product_tagsCountArgs<ExtArgs>
+            result: $Utils.Optional<Product_tagsCountAggregateOutputType> | number
           }
         }
       }
-      CaseStudy: {
-        payload: Prisma.$CaseStudyPayload<ExtArgs>
-        fields: Prisma.CaseStudyFieldRefs
+      products_hardware: {
+        payload: Prisma.$products_hardwarePayload<ExtArgs>
+        fields: Prisma.products_hardwareFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.CaseStudyFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseStudyPayload> | null
+            args: Prisma.products_hardwareFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$products_hardwarePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.CaseStudyFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseStudyPayload>
+            args: Prisma.products_hardwareFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$products_hardwarePayload>
           }
           findFirst: {
-            args: Prisma.CaseStudyFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseStudyPayload> | null
+            args: Prisma.products_hardwareFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$products_hardwarePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.CaseStudyFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseStudyPayload>
+            args: Prisma.products_hardwareFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$products_hardwarePayload>
           }
           findMany: {
-            args: Prisma.CaseStudyFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseStudyPayload>[]
+            args: Prisma.products_hardwareFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$products_hardwarePayload>[]
           }
           create: {
-            args: Prisma.CaseStudyCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseStudyPayload>
+            args: Prisma.products_hardwareCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$products_hardwarePayload>
           }
           createMany: {
-            args: Prisma.CaseStudyCreateManyArgs<ExtArgs>
+            args: Prisma.products_hardwareCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.CaseStudyCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseStudyPayload>[]
+            args: Prisma.products_hardwareCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$products_hardwarePayload>[]
           }
           delete: {
-            args: Prisma.CaseStudyDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseStudyPayload>
+            args: Prisma.products_hardwareDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$products_hardwarePayload>
           }
           update: {
-            args: Prisma.CaseStudyUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseStudyPayload>
+            args: Prisma.products_hardwareUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$products_hardwarePayload>
           }
           deleteMany: {
-            args: Prisma.CaseStudyDeleteManyArgs<ExtArgs>
+            args: Prisma.products_hardwareDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.CaseStudyUpdateManyArgs<ExtArgs>
+            args: Prisma.products_hardwareUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.CaseStudyUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseStudyPayload>[]
+            args: Prisma.products_hardwareUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$products_hardwarePayload>[]
           }
           upsert: {
-            args: Prisma.CaseStudyUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseStudyPayload>
+            args: Prisma.products_hardwareUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$products_hardwarePayload>
           }
           aggregate: {
-            args: Prisma.CaseStudyAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCaseStudy>
+            args: Prisma.Products_hardwareAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProducts_hardware>
           }
           groupBy: {
-            args: Prisma.CaseStudyGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CaseStudyGroupByOutputType>[]
+            args: Prisma.products_hardwareGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Products_hardwareGroupByOutputType>[]
           }
           count: {
-            args: Prisma.CaseStudyCountArgs<ExtArgs>
-            result: $Utils.Optional<CaseStudyCountAggregateOutputType> | number
+            args: Prisma.products_hardwareCountArgs<ExtArgs>
+            result: $Utils.Optional<Products_hardwareCountAggregateOutputType> | number
           }
         }
       }
-      Media: {
-        payload: Prisma.$MediaPayload<ExtArgs>
-        fields: Prisma.MediaFieldRefs
+      tag_categories: {
+        payload: Prisma.$tag_categoriesPayload<ExtArgs>
+        fields: Prisma.tag_categoriesFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.MediaFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MediaPayload> | null
+            args: Prisma.tag_categoriesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tag_categoriesPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.MediaFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MediaPayload>
+            args: Prisma.tag_categoriesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tag_categoriesPayload>
           }
           findFirst: {
-            args: Prisma.MediaFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MediaPayload> | null
+            args: Prisma.tag_categoriesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tag_categoriesPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.MediaFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MediaPayload>
+            args: Prisma.tag_categoriesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tag_categoriesPayload>
           }
           findMany: {
-            args: Prisma.MediaFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MediaPayload>[]
+            args: Prisma.tag_categoriesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tag_categoriesPayload>[]
           }
           create: {
-            args: Prisma.MediaCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MediaPayload>
+            args: Prisma.tag_categoriesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tag_categoriesPayload>
           }
           createMany: {
-            args: Prisma.MediaCreateManyArgs<ExtArgs>
+            args: Prisma.tag_categoriesCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.MediaCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MediaPayload>[]
+            args: Prisma.tag_categoriesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tag_categoriesPayload>[]
           }
           delete: {
-            args: Prisma.MediaDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MediaPayload>
+            args: Prisma.tag_categoriesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tag_categoriesPayload>
           }
           update: {
-            args: Prisma.MediaUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MediaPayload>
+            args: Prisma.tag_categoriesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tag_categoriesPayload>
           }
           deleteMany: {
-            args: Prisma.MediaDeleteManyArgs<ExtArgs>
+            args: Prisma.tag_categoriesDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.MediaUpdateManyArgs<ExtArgs>
+            args: Prisma.tag_categoriesUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.MediaUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MediaPayload>[]
+            args: Prisma.tag_categoriesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tag_categoriesPayload>[]
           }
           upsert: {
-            args: Prisma.MediaUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MediaPayload>
+            args: Prisma.tag_categoriesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tag_categoriesPayload>
           }
           aggregate: {
-            args: Prisma.MediaAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateMedia>
+            args: Prisma.Tag_categoriesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTag_categories>
           }
           groupBy: {
-            args: Prisma.MediaGroupByArgs<ExtArgs>
-            result: $Utils.Optional<MediaGroupByOutputType>[]
+            args: Prisma.tag_categoriesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Tag_categoriesGroupByOutputType>[]
           }
           count: {
-            args: Prisma.MediaCountArgs<ExtArgs>
-            result: $Utils.Optional<MediaCountAggregateOutputType> | number
+            args: Prisma.tag_categoriesCountArgs<ExtArgs>
+            result: $Utils.Optional<Tag_categoriesCountAggregateOutputType> | number
+          }
+        }
+      }
+      tags: {
+        payload: Prisma.$tagsPayload<ExtArgs>
+        fields: Prisma.tagsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.tagsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tagsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.tagsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tagsPayload>
+          }
+          findFirst: {
+            args: Prisma.tagsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tagsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.tagsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tagsPayload>
+          }
+          findMany: {
+            args: Prisma.tagsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tagsPayload>[]
+          }
+          create: {
+            args: Prisma.tagsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tagsPayload>
+          }
+          createMany: {
+            args: Prisma.tagsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.tagsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tagsPayload>[]
+          }
+          delete: {
+            args: Prisma.tagsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tagsPayload>
+          }
+          update: {
+            args: Prisma.tagsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tagsPayload>
+          }
+          deleteMany: {
+            args: Prisma.tagsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.tagsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.tagsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tagsPayload>[]
+          }
+          upsert: {
+            args: Prisma.tagsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tagsPayload>
+          }
+          aggregate: {
+            args: Prisma.TagsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTags>
+          }
+          groupBy: {
+            args: Prisma.tagsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TagsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.tagsCountArgs<ExtArgs>
+            result: $Utils.Optional<TagsCountAggregateOutputType> | number
+          }
+        }
+      }
+      User: {
+        payload: Prisma.$UserPayload<ExtArgs>
+        fields: Prisma.UserFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          findFirst: {
+            args: Prisma.UserFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          findMany: {
+            args: Prisma.UserFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+          }
+          create: {
+            args: Prisma.UserCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          createMany: {
+            args: Prisma.UserCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+          }
+          delete: {
+            args: Prisma.UserDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          update: {
+            args: Prisma.UserUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          deleteMany: {
+            args: Prisma.UserDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+          }
+          upsert: {
+            args: Prisma.UserUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          aggregate: {
+            args: Prisma.UserAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUser>
+          }
+          groupBy: {
+            args: Prisma.UserGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserCountArgs<ExtArgs>
+            result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      Footer: {
+        payload: Prisma.$FooterPayload<ExtArgs>
+        fields: Prisma.FooterFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FooterFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FooterFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterPayload>
+          }
+          findFirst: {
+            args: Prisma.FooterFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FooterFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterPayload>
+          }
+          findMany: {
+            args: Prisma.FooterFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterPayload>[]
+          }
+          create: {
+            args: Prisma.FooterCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterPayload>
+          }
+          createMany: {
+            args: Prisma.FooterCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FooterCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterPayload>[]
+          }
+          delete: {
+            args: Prisma.FooterDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterPayload>
+          }
+          update: {
+            args: Prisma.FooterUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterPayload>
+          }
+          deleteMany: {
+            args: Prisma.FooterDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FooterUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FooterUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterPayload>[]
+          }
+          upsert: {
+            args: Prisma.FooterUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterPayload>
+          }
+          aggregate: {
+            args: Prisma.FooterAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFooter>
+          }
+          groupBy: {
+            args: Prisma.FooterGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FooterGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FooterCountArgs<ExtArgs>
+            result: $Utils.Optional<FooterCountAggregateOutputType> | number
+          }
+        }
+      }
+      FooterLink: {
+        payload: Prisma.$FooterLinkPayload<ExtArgs>
+        fields: Prisma.FooterLinkFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FooterLinkFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterLinkPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FooterLinkFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterLinkPayload>
+          }
+          findFirst: {
+            args: Prisma.FooterLinkFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterLinkPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FooterLinkFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterLinkPayload>
+          }
+          findMany: {
+            args: Prisma.FooterLinkFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterLinkPayload>[]
+          }
+          create: {
+            args: Prisma.FooterLinkCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterLinkPayload>
+          }
+          createMany: {
+            args: Prisma.FooterLinkCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FooterLinkCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterLinkPayload>[]
+          }
+          delete: {
+            args: Prisma.FooterLinkDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterLinkPayload>
+          }
+          update: {
+            args: Prisma.FooterLinkUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterLinkPayload>
+          }
+          deleteMany: {
+            args: Prisma.FooterLinkDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FooterLinkUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FooterLinkUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterLinkPayload>[]
+          }
+          upsert: {
+            args: Prisma.FooterLinkUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FooterLinkPayload>
+          }
+          aggregate: {
+            args: Prisma.FooterLinkAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFooterLink>
+          }
+          groupBy: {
+            args: Prisma.FooterLinkGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FooterLinkGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FooterLinkCountArgs<ExtArgs>
+            result: $Utils.Optional<FooterLinkCountAggregateOutputType> | number
           }
         }
       }
@@ -1224,12 +1404,14 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    user?: UserOmit
-    category?: CategoryOmit
     product?: ProductOmit
-    solution?: SolutionOmit
-    caseStudy?: CaseStudyOmit
-    media?: MediaOmit
+    product_tags?: product_tagsOmit
+    products_hardware?: products_hardwareOmit
+    tag_categories?: tag_categoriesOmit
+    tags?: tagsOmit
+    user?: UserOmit
+    footer?: FooterOmit
+    footerLink?: FooterLinkOmit
   }
 
   /* Types for Logging */
@@ -1320,55 +1502,17 @@ export namespace Prisma {
 
 
   /**
-   * Count Type CategoryCountOutputType
-   */
-
-  export type CategoryCountOutputType = {
-    subcategories: number
-    products: number
-  }
-
-  export type CategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    subcategories?: boolean | CategoryCountOutputTypeCountSubcategoriesArgs
-    products?: boolean | CategoryCountOutputTypeCountProductsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * CategoryCountOutputType without action
-   */
-  export type CategoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CategoryCountOutputType
-     */
-    select?: CategoryCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * CategoryCountOutputType without action
-   */
-  export type CategoryCountOutputTypeCountSubcategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CategoryWhereInput
-  }
-
-  /**
-   * CategoryCountOutputType without action
-   */
-  export type CategoryCountOutputTypeCountProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ProductWhereInput
-  }
-
-
-  /**
    * Count Type ProductCountOutputType
    */
 
   export type ProductCountOutputType = {
-    solutions: number
+    product_tags: number
+    products_hardware: number
   }
 
   export type ProductCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    solutions?: boolean | ProductCountOutputTypeCountSolutionsArgs
+    product_tags?: boolean | ProductCountOutputTypeCountProduct_tagsArgs
+    products_hardware?: boolean | ProductCountOutputTypeCountProducts_hardwareArgs
   }
 
   // Custom InputTypes
@@ -1385,54 +1529,6313 @@ export namespace Prisma {
   /**
    * ProductCountOutputType without action
    */
-  export type ProductCountOutputTypeCountSolutionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SolutionWhereInput
+  export type ProductCountOutputTypeCountProduct_tagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: product_tagsWhereInput
+  }
+
+  /**
+   * ProductCountOutputType without action
+   */
+  export type ProductCountOutputTypeCountProducts_hardwareArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: products_hardwareWhereInput
   }
 
 
   /**
-   * Count Type SolutionCountOutputType
+   * Count Type Tag_categoriesCountOutputType
    */
 
-  export type SolutionCountOutputType = {
-    products: number
-    caseStudies: number
+  export type Tag_categoriesCountOutputType = {
+    tags: number
   }
 
-  export type SolutionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    products?: boolean | SolutionCountOutputTypeCountProductsArgs
-    caseStudies?: boolean | SolutionCountOutputTypeCountCaseStudiesArgs
+  export type Tag_categoriesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tags?: boolean | Tag_categoriesCountOutputTypeCountTagsArgs
   }
 
   // Custom InputTypes
   /**
-   * SolutionCountOutputType without action
+   * Tag_categoriesCountOutputType without action
    */
-  export type SolutionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Tag_categoriesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SolutionCountOutputType
+     * Select specific fields to fetch from the Tag_categoriesCountOutputType
      */
-    select?: SolutionCountOutputTypeSelect<ExtArgs> | null
+    select?: Tag_categoriesCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * SolutionCountOutputType without action
+   * Tag_categoriesCountOutputType without action
    */
-  export type SolutionCountOutputTypeCountProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ProductWhereInput
+  export type Tag_categoriesCountOutputTypeCountTagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: tagsWhereInput
+  }
+
+
+  /**
+   * Count Type TagsCountOutputType
+   */
+
+  export type TagsCountOutputType = {
+    product_tags: number
+  }
+
+  export type TagsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product_tags?: boolean | TagsCountOutputTypeCountProduct_tagsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TagsCountOutputType without action
+   */
+  export type TagsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TagsCountOutputType
+     */
+    select?: TagsCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * SolutionCountOutputType without action
+   * TagsCountOutputType without action
    */
-  export type SolutionCountOutputTypeCountCaseStudiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CaseStudyWhereInput
+  export type TagsCountOutputTypeCountProduct_tagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: product_tagsWhereInput
+  }
+
+
+  /**
+   * Count Type FooterCountOutputType
+   */
+
+  export type FooterCountOutputType = {
+    links: number
+  }
+
+  export type FooterCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    links?: boolean | FooterCountOutputTypeCountLinksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * FooterCountOutputType without action
+   */
+  export type FooterCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FooterCountOutputType
+     */
+    select?: FooterCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * FooterCountOutputType without action
+   */
+  export type FooterCountOutputTypeCountLinksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FooterLinkWhereInput
   }
 
 
   /**
    * Models
    */
+
+  /**
+   * Model Product
+   */
+
+  export type AggregateProduct = {
+    _count: ProductCountAggregateOutputType | null
+    _min: ProductMinAggregateOutputType | null
+    _max: ProductMaxAggregateOutputType | null
+  }
+
+  export type ProductMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    cover_image: string | null
+    spec_pdf_url: string | null
+    is_active: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProductMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    cover_image: string | null
+    spec_pdf_url: string | null
+    is_active: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProductCountAggregateOutputType = {
+    id: number
+    name: number
+    description: number
+    cover_image: number
+    spec_pdf_url: number
+    is_active: number
+    description_i18n: number
+    software_space: number
+    hardware_space: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ProductMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    cover_image?: true
+    spec_pdf_url?: true
+    is_active?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProductMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    cover_image?: true
+    spec_pdf_url?: true
+    is_active?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProductCountAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    cover_image?: true
+    spec_pdf_url?: true
+    is_active?: true
+    description_i18n?: true
+    software_space?: true
+    hardware_space?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ProductAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Product to aggregate.
+     */
+    where?: ProductWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Products to fetch.
+     */
+    orderBy?: ProductOrderByWithRelationInput | ProductOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProductWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Products from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Products.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Products
+    **/
+    _count?: true | ProductCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProductMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProductMaxAggregateInputType
+  }
+
+  export type GetProductAggregateType<T extends ProductAggregateArgs> = {
+        [P in keyof T & keyof AggregateProduct]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProduct[P]>
+      : GetScalarType<T[P], AggregateProduct[P]>
+  }
+
+
+
+
+  export type ProductGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProductWhereInput
+    orderBy?: ProductOrderByWithAggregationInput | ProductOrderByWithAggregationInput[]
+    by: ProductScalarFieldEnum[] | ProductScalarFieldEnum
+    having?: ProductScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProductCountAggregateInputType | true
+    _min?: ProductMinAggregateInputType
+    _max?: ProductMaxAggregateInputType
+  }
+
+  export type ProductGroupByOutputType = {
+    id: string
+    name: string
+    description: string | null
+    cover_image: string | null
+    spec_pdf_url: string | null
+    is_active: boolean
+    description_i18n: JsonValue | null
+    software_space: JsonValue | null
+    hardware_space: JsonValue | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    _count: ProductCountAggregateOutputType | null
+    _min: ProductMinAggregateOutputType | null
+    _max: ProductMaxAggregateOutputType | null
+  }
+
+  type GetProductGroupByPayload<T extends ProductGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProductGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProductGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProductGroupByOutputType[P]>
+            : GetScalarType<T[P], ProductGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProductSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    cover_image?: boolean
+    spec_pdf_url?: boolean
+    is_active?: boolean
+    description_i18n?: boolean
+    software_space?: boolean
+    hardware_space?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    product_tags?: boolean | Product$product_tagsArgs<ExtArgs>
+    products_hardware?: boolean | Product$products_hardwareArgs<ExtArgs>
+    _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["product"]>
+
+  export type ProductSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    cover_image?: boolean
+    spec_pdf_url?: boolean
+    is_active?: boolean
+    description_i18n?: boolean
+    software_space?: boolean
+    hardware_space?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["product"]>
+
+  export type ProductSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    cover_image?: boolean
+    spec_pdf_url?: boolean
+    is_active?: boolean
+    description_i18n?: boolean
+    software_space?: boolean
+    hardware_space?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["product"]>
+
+  export type ProductSelectScalar = {
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    cover_image?: boolean
+    spec_pdf_url?: boolean
+    is_active?: boolean
+    description_i18n?: boolean
+    software_space?: boolean
+    hardware_space?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "cover_image" | "spec_pdf_url" | "is_active" | "description_i18n" | "software_space" | "hardware_space" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
+  export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product_tags?: boolean | Product$product_tagsArgs<ExtArgs>
+    products_hardware?: boolean | Product$products_hardwareArgs<ExtArgs>
+    _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ProductIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ProductIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ProductPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Product"
+    objects: {
+      product_tags: Prisma.$product_tagsPayload<ExtArgs>[]
+      products_hardware: Prisma.$products_hardwarePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      description: string | null
+      cover_image: string | null
+      spec_pdf_url: string | null
+      is_active: boolean
+      description_i18n: Prisma.JsonValue | null
+      software_space: Prisma.JsonValue | null
+      hardware_space: Prisma.JsonValue | null
+      createdAt: Date | null
+      updatedAt: Date | null
+    }, ExtArgs["result"]["product"]>
+    composites: {}
+  }
+
+  type ProductGetPayload<S extends boolean | null | undefined | ProductDefaultArgs> = $Result.GetResult<Prisma.$ProductPayload, S>
+
+  type ProductCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProductFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProductCountAggregateInputType | true
+    }
+
+  export interface ProductDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Product'], meta: { name: 'Product' } }
+    /**
+     * Find zero or one Product that matches the filter.
+     * @param {ProductFindUniqueArgs} args - Arguments to find a Product
+     * @example
+     * // Get one Product
+     * const product = await prisma.product.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProductFindUniqueArgs>(args: SelectSubset<T, ProductFindUniqueArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Product that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ProductFindUniqueOrThrowArgs} args - Arguments to find a Product
+     * @example
+     * // Get one Product
+     * const product = await prisma.product.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProductFindUniqueOrThrowArgs>(args: SelectSubset<T, ProductFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Product that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductFindFirstArgs} args - Arguments to find a Product
+     * @example
+     * // Get one Product
+     * const product = await prisma.product.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProductFindFirstArgs>(args?: SelectSubset<T, ProductFindFirstArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Product that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductFindFirstOrThrowArgs} args - Arguments to find a Product
+     * @example
+     * // Get one Product
+     * const product = await prisma.product.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProductFindFirstOrThrowArgs>(args?: SelectSubset<T, ProductFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Products that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Products
+     * const products = await prisma.product.findMany()
+     * 
+     * // Get first 10 Products
+     * const products = await prisma.product.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const productWithIdOnly = await prisma.product.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProductFindManyArgs>(args?: SelectSubset<T, ProductFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Product.
+     * @param {ProductCreateArgs} args - Arguments to create a Product.
+     * @example
+     * // Create one Product
+     * const Product = await prisma.product.create({
+     *   data: {
+     *     // ... data to create a Product
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProductCreateArgs>(args: SelectSubset<T, ProductCreateArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Products.
+     * @param {ProductCreateManyArgs} args - Arguments to create many Products.
+     * @example
+     * // Create many Products
+     * const product = await prisma.product.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProductCreateManyArgs>(args?: SelectSubset<T, ProductCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Products and returns the data saved in the database.
+     * @param {ProductCreateManyAndReturnArgs} args - Arguments to create many Products.
+     * @example
+     * // Create many Products
+     * const product = await prisma.product.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Products and only return the `id`
+     * const productWithIdOnly = await prisma.product.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProductCreateManyAndReturnArgs>(args?: SelectSubset<T, ProductCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Product.
+     * @param {ProductDeleteArgs} args - Arguments to delete one Product.
+     * @example
+     * // Delete one Product
+     * const Product = await prisma.product.delete({
+     *   where: {
+     *     // ... filter to delete one Product
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProductDeleteArgs>(args: SelectSubset<T, ProductDeleteArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Product.
+     * @param {ProductUpdateArgs} args - Arguments to update one Product.
+     * @example
+     * // Update one Product
+     * const product = await prisma.product.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProductUpdateArgs>(args: SelectSubset<T, ProductUpdateArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Products.
+     * @param {ProductDeleteManyArgs} args - Arguments to filter Products to delete.
+     * @example
+     * // Delete a few Products
+     * const { count } = await prisma.product.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProductDeleteManyArgs>(args?: SelectSubset<T, ProductDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Products.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Products
+     * const product = await prisma.product.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProductUpdateManyArgs>(args: SelectSubset<T, ProductUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Products and returns the data updated in the database.
+     * @param {ProductUpdateManyAndReturnArgs} args - Arguments to update many Products.
+     * @example
+     * // Update many Products
+     * const product = await prisma.product.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Products and only return the `id`
+     * const productWithIdOnly = await prisma.product.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ProductUpdateManyAndReturnArgs>(args: SelectSubset<T, ProductUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Product.
+     * @param {ProductUpsertArgs} args - Arguments to update or create a Product.
+     * @example
+     * // Update or create a Product
+     * const product = await prisma.product.upsert({
+     *   create: {
+     *     // ... data to create a Product
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Product we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProductUpsertArgs>(args: SelectSubset<T, ProductUpsertArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Products.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductCountArgs} args - Arguments to filter Products to count.
+     * @example
+     * // Count the number of Products
+     * const count = await prisma.product.count({
+     *   where: {
+     *     // ... the filter for the Products we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProductCountArgs>(
+      args?: Subset<T, ProductCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProductCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Product.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProductAggregateArgs>(args: Subset<T, ProductAggregateArgs>): Prisma.PrismaPromise<GetProductAggregateType<T>>
+
+    /**
+     * Group by Product.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProductGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProductGroupByArgs['orderBy'] }
+        : { orderBy?: ProductGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProductGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProductGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Product model
+   */
+  readonly fields: ProductFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Product.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProductClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    product_tags<T extends Product$product_tagsArgs<ExtArgs> = {}>(args?: Subset<T, Product$product_tagsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$product_tagsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    products_hardware<T extends Product$products_hardwareArgs<ExtArgs> = {}>(args?: Subset<T, Product$products_hardwareArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$products_hardwarePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Product model
+   */
+  interface ProductFieldRefs {
+    readonly id: FieldRef<"Product", 'String'>
+    readonly name: FieldRef<"Product", 'String'>
+    readonly description: FieldRef<"Product", 'String'>
+    readonly cover_image: FieldRef<"Product", 'String'>
+    readonly spec_pdf_url: FieldRef<"Product", 'String'>
+    readonly is_active: FieldRef<"Product", 'Boolean'>
+    readonly description_i18n: FieldRef<"Product", 'Json'>
+    readonly software_space: FieldRef<"Product", 'Json'>
+    readonly hardware_space: FieldRef<"Product", 'Json'>
+    readonly createdAt: FieldRef<"Product", 'DateTime'>
+    readonly updatedAt: FieldRef<"Product", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Product findUnique
+   */
+  export type ProductFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Product
+     */
+    select?: ProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Product
+     */
+    omit?: ProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductInclude<ExtArgs> | null
+    /**
+     * Filter, which Product to fetch.
+     */
+    where: ProductWhereUniqueInput
+  }
+
+  /**
+   * Product findUniqueOrThrow
+   */
+  export type ProductFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Product
+     */
+    select?: ProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Product
+     */
+    omit?: ProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductInclude<ExtArgs> | null
+    /**
+     * Filter, which Product to fetch.
+     */
+    where: ProductWhereUniqueInput
+  }
+
+  /**
+   * Product findFirst
+   */
+  export type ProductFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Product
+     */
+    select?: ProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Product
+     */
+    omit?: ProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductInclude<ExtArgs> | null
+    /**
+     * Filter, which Product to fetch.
+     */
+    where?: ProductWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Products to fetch.
+     */
+    orderBy?: ProductOrderByWithRelationInput | ProductOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Products.
+     */
+    cursor?: ProductWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Products from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Products.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Products.
+     */
+    distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
+  }
+
+  /**
+   * Product findFirstOrThrow
+   */
+  export type ProductFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Product
+     */
+    select?: ProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Product
+     */
+    omit?: ProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductInclude<ExtArgs> | null
+    /**
+     * Filter, which Product to fetch.
+     */
+    where?: ProductWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Products to fetch.
+     */
+    orderBy?: ProductOrderByWithRelationInput | ProductOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Products.
+     */
+    cursor?: ProductWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Products from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Products.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Products.
+     */
+    distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
+  }
+
+  /**
+   * Product findMany
+   */
+  export type ProductFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Product
+     */
+    select?: ProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Product
+     */
+    omit?: ProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductInclude<ExtArgs> | null
+    /**
+     * Filter, which Products to fetch.
+     */
+    where?: ProductWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Products to fetch.
+     */
+    orderBy?: ProductOrderByWithRelationInput | ProductOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Products.
+     */
+    cursor?: ProductWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Products from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Products.
+     */
+    skip?: number
+    distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
+  }
+
+  /**
+   * Product create
+   */
+  export type ProductCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Product
+     */
+    select?: ProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Product
+     */
+    omit?: ProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Product.
+     */
+    data?: XOR<ProductCreateInput, ProductUncheckedCreateInput>
+  }
+
+  /**
+   * Product createMany
+   */
+  export type ProductCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Products.
+     */
+    data: ProductCreateManyInput | ProductCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Product createManyAndReturn
+   */
+  export type ProductCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Product
+     */
+    select?: ProductSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Product
+     */
+    omit?: ProductOmit<ExtArgs> | null
+    /**
+     * The data used to create many Products.
+     */
+    data: ProductCreateManyInput | ProductCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Product update
+   */
+  export type ProductUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Product
+     */
+    select?: ProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Product
+     */
+    omit?: ProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Product.
+     */
+    data: XOR<ProductUpdateInput, ProductUncheckedUpdateInput>
+    /**
+     * Choose, which Product to update.
+     */
+    where: ProductWhereUniqueInput
+  }
+
+  /**
+   * Product updateMany
+   */
+  export type ProductUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Products.
+     */
+    data: XOR<ProductUpdateManyMutationInput, ProductUncheckedUpdateManyInput>
+    /**
+     * Filter which Products to update
+     */
+    where?: ProductWhereInput
+    /**
+     * Limit how many Products to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Product updateManyAndReturn
+   */
+  export type ProductUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Product
+     */
+    select?: ProductSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Product
+     */
+    omit?: ProductOmit<ExtArgs> | null
+    /**
+     * The data used to update Products.
+     */
+    data: XOR<ProductUpdateManyMutationInput, ProductUncheckedUpdateManyInput>
+    /**
+     * Filter which Products to update
+     */
+    where?: ProductWhereInput
+    /**
+     * Limit how many Products to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Product upsert
+   */
+  export type ProductUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Product
+     */
+    select?: ProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Product
+     */
+    omit?: ProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Product to update in case it exists.
+     */
+    where: ProductWhereUniqueInput
+    /**
+     * In case the Product found by the `where` argument doesn't exist, create a new Product with this data.
+     */
+    create: XOR<ProductCreateInput, ProductUncheckedCreateInput>
+    /**
+     * In case the Product was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProductUpdateInput, ProductUncheckedUpdateInput>
+  }
+
+  /**
+   * Product delete
+   */
+  export type ProductDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Product
+     */
+    select?: ProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Product
+     */
+    omit?: ProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductInclude<ExtArgs> | null
+    /**
+     * Filter which Product to delete.
+     */
+    where: ProductWhereUniqueInput
+  }
+
+  /**
+   * Product deleteMany
+   */
+  export type ProductDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Products to delete
+     */
+    where?: ProductWhereInput
+    /**
+     * Limit how many Products to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Product.product_tags
+   */
+  export type Product$product_tagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_tags
+     */
+    select?: product_tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_tags
+     */
+    omit?: product_tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_tagsInclude<ExtArgs> | null
+    where?: product_tagsWhereInput
+    orderBy?: product_tagsOrderByWithRelationInput | product_tagsOrderByWithRelationInput[]
+    cursor?: product_tagsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Product_tagsScalarFieldEnum | Product_tagsScalarFieldEnum[]
+  }
+
+  /**
+   * Product.products_hardware
+   */
+  export type Product$products_hardwareArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the products_hardware
+     */
+    select?: products_hardwareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the products_hardware
+     */
+    omit?: products_hardwareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: products_hardwareInclude<ExtArgs> | null
+    where?: products_hardwareWhereInput
+    orderBy?: products_hardwareOrderByWithRelationInput | products_hardwareOrderByWithRelationInput[]
+    cursor?: products_hardwareWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Products_hardwareScalarFieldEnum | Products_hardwareScalarFieldEnum[]
+  }
+
+  /**
+   * Product without action
+   */
+  export type ProductDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Product
+     */
+    select?: ProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Product
+     */
+    omit?: ProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model product_tags
+   */
+
+  export type AggregateProduct_tags = {
+    _count: Product_tagsCountAggregateOutputType | null
+    _min: Product_tagsMinAggregateOutputType | null
+    _max: Product_tagsMaxAggregateOutputType | null
+  }
+
+  export type Product_tagsMinAggregateOutputType = {
+    product_id: string | null
+    tag_id: string | null
+    product_name: string | null
+    tag_spec: string | null
+    tag_size: string | null
+  }
+
+  export type Product_tagsMaxAggregateOutputType = {
+    product_id: string | null
+    tag_id: string | null
+    product_name: string | null
+    tag_spec: string | null
+    tag_size: string | null
+  }
+
+  export type Product_tagsCountAggregateOutputType = {
+    product_id: number
+    tag_id: number
+    product_name: number
+    tag_spec: number
+    tag_size: number
+    _all: number
+  }
+
+
+  export type Product_tagsMinAggregateInputType = {
+    product_id?: true
+    tag_id?: true
+    product_name?: true
+    tag_spec?: true
+    tag_size?: true
+  }
+
+  export type Product_tagsMaxAggregateInputType = {
+    product_id?: true
+    tag_id?: true
+    product_name?: true
+    tag_spec?: true
+    tag_size?: true
+  }
+
+  export type Product_tagsCountAggregateInputType = {
+    product_id?: true
+    tag_id?: true
+    product_name?: true
+    tag_spec?: true
+    tag_size?: true
+    _all?: true
+  }
+
+  export type Product_tagsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which product_tags to aggregate.
+     */
+    where?: product_tagsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of product_tags to fetch.
+     */
+    orderBy?: product_tagsOrderByWithRelationInput | product_tagsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: product_tagsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` product_tags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` product_tags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned product_tags
+    **/
+    _count?: true | Product_tagsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Product_tagsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Product_tagsMaxAggregateInputType
+  }
+
+  export type GetProduct_tagsAggregateType<T extends Product_tagsAggregateArgs> = {
+        [P in keyof T & keyof AggregateProduct_tags]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProduct_tags[P]>
+      : GetScalarType<T[P], AggregateProduct_tags[P]>
+  }
+
+
+
+
+  export type product_tagsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: product_tagsWhereInput
+    orderBy?: product_tagsOrderByWithAggregationInput | product_tagsOrderByWithAggregationInput[]
+    by: Product_tagsScalarFieldEnum[] | Product_tagsScalarFieldEnum
+    having?: product_tagsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Product_tagsCountAggregateInputType | true
+    _min?: Product_tagsMinAggregateInputType
+    _max?: Product_tagsMaxAggregateInputType
+  }
+
+  export type Product_tagsGroupByOutputType = {
+    product_id: string
+    tag_id: string
+    product_name: string | null
+    tag_spec: string | null
+    tag_size: string | null
+    _count: Product_tagsCountAggregateOutputType | null
+    _min: Product_tagsMinAggregateOutputType | null
+    _max: Product_tagsMaxAggregateOutputType | null
+  }
+
+  type GetProduct_tagsGroupByPayload<T extends product_tagsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Product_tagsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Product_tagsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Product_tagsGroupByOutputType[P]>
+            : GetScalarType<T[P], Product_tagsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type product_tagsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    product_id?: boolean
+    tag_id?: boolean
+    product_name?: boolean
+    tag_spec?: boolean
+    tag_size?: boolean
+    products?: boolean | ProductDefaultArgs<ExtArgs>
+    tags?: boolean | tagsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["product_tags"]>
+
+  export type product_tagsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    product_id?: boolean
+    tag_id?: boolean
+    product_name?: boolean
+    tag_spec?: boolean
+    tag_size?: boolean
+    products?: boolean | ProductDefaultArgs<ExtArgs>
+    tags?: boolean | tagsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["product_tags"]>
+
+  export type product_tagsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    product_id?: boolean
+    tag_id?: boolean
+    product_name?: boolean
+    tag_spec?: boolean
+    tag_size?: boolean
+    products?: boolean | ProductDefaultArgs<ExtArgs>
+    tags?: boolean | tagsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["product_tags"]>
+
+  export type product_tagsSelectScalar = {
+    product_id?: boolean
+    tag_id?: boolean
+    product_name?: boolean
+    tag_spec?: boolean
+    tag_size?: boolean
+  }
+
+  export type product_tagsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"product_id" | "tag_id" | "product_name" | "tag_spec" | "tag_size", ExtArgs["result"]["product_tags"]>
+  export type product_tagsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    products?: boolean | ProductDefaultArgs<ExtArgs>
+    tags?: boolean | tagsDefaultArgs<ExtArgs>
+  }
+  export type product_tagsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    products?: boolean | ProductDefaultArgs<ExtArgs>
+    tags?: boolean | tagsDefaultArgs<ExtArgs>
+  }
+  export type product_tagsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    products?: boolean | ProductDefaultArgs<ExtArgs>
+    tags?: boolean | tagsDefaultArgs<ExtArgs>
+  }
+
+  export type $product_tagsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "product_tags"
+    objects: {
+      products: Prisma.$ProductPayload<ExtArgs>
+      tags: Prisma.$tagsPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      product_id: string
+      tag_id: string
+      product_name: string | null
+      tag_spec: string | null
+      tag_size: string | null
+    }, ExtArgs["result"]["product_tags"]>
+    composites: {}
+  }
+
+  type product_tagsGetPayload<S extends boolean | null | undefined | product_tagsDefaultArgs> = $Result.GetResult<Prisma.$product_tagsPayload, S>
+
+  type product_tagsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<product_tagsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Product_tagsCountAggregateInputType | true
+    }
+
+  export interface product_tagsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['product_tags'], meta: { name: 'product_tags' } }
+    /**
+     * Find zero or one Product_tags that matches the filter.
+     * @param {product_tagsFindUniqueArgs} args - Arguments to find a Product_tags
+     * @example
+     * // Get one Product_tags
+     * const product_tags = await prisma.product_tags.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends product_tagsFindUniqueArgs>(args: SelectSubset<T, product_tagsFindUniqueArgs<ExtArgs>>): Prisma__product_tagsClient<$Result.GetResult<Prisma.$product_tagsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Product_tags that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {product_tagsFindUniqueOrThrowArgs} args - Arguments to find a Product_tags
+     * @example
+     * // Get one Product_tags
+     * const product_tags = await prisma.product_tags.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends product_tagsFindUniqueOrThrowArgs>(args: SelectSubset<T, product_tagsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__product_tagsClient<$Result.GetResult<Prisma.$product_tagsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Product_tags that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {product_tagsFindFirstArgs} args - Arguments to find a Product_tags
+     * @example
+     * // Get one Product_tags
+     * const product_tags = await prisma.product_tags.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends product_tagsFindFirstArgs>(args?: SelectSubset<T, product_tagsFindFirstArgs<ExtArgs>>): Prisma__product_tagsClient<$Result.GetResult<Prisma.$product_tagsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Product_tags that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {product_tagsFindFirstOrThrowArgs} args - Arguments to find a Product_tags
+     * @example
+     * // Get one Product_tags
+     * const product_tags = await prisma.product_tags.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends product_tagsFindFirstOrThrowArgs>(args?: SelectSubset<T, product_tagsFindFirstOrThrowArgs<ExtArgs>>): Prisma__product_tagsClient<$Result.GetResult<Prisma.$product_tagsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Product_tags that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {product_tagsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Product_tags
+     * const product_tags = await prisma.product_tags.findMany()
+     * 
+     * // Get first 10 Product_tags
+     * const product_tags = await prisma.product_tags.findMany({ take: 10 })
+     * 
+     * // Only select the `product_id`
+     * const product_tagsWithProduct_idOnly = await prisma.product_tags.findMany({ select: { product_id: true } })
+     * 
+     */
+    findMany<T extends product_tagsFindManyArgs>(args?: SelectSubset<T, product_tagsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$product_tagsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Product_tags.
+     * @param {product_tagsCreateArgs} args - Arguments to create a Product_tags.
+     * @example
+     * // Create one Product_tags
+     * const Product_tags = await prisma.product_tags.create({
+     *   data: {
+     *     // ... data to create a Product_tags
+     *   }
+     * })
+     * 
+     */
+    create<T extends product_tagsCreateArgs>(args: SelectSubset<T, product_tagsCreateArgs<ExtArgs>>): Prisma__product_tagsClient<$Result.GetResult<Prisma.$product_tagsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Product_tags.
+     * @param {product_tagsCreateManyArgs} args - Arguments to create many Product_tags.
+     * @example
+     * // Create many Product_tags
+     * const product_tags = await prisma.product_tags.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends product_tagsCreateManyArgs>(args?: SelectSubset<T, product_tagsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Product_tags and returns the data saved in the database.
+     * @param {product_tagsCreateManyAndReturnArgs} args - Arguments to create many Product_tags.
+     * @example
+     * // Create many Product_tags
+     * const product_tags = await prisma.product_tags.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Product_tags and only return the `product_id`
+     * const product_tagsWithProduct_idOnly = await prisma.product_tags.createManyAndReturn({
+     *   select: { product_id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends product_tagsCreateManyAndReturnArgs>(args?: SelectSubset<T, product_tagsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$product_tagsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Product_tags.
+     * @param {product_tagsDeleteArgs} args - Arguments to delete one Product_tags.
+     * @example
+     * // Delete one Product_tags
+     * const Product_tags = await prisma.product_tags.delete({
+     *   where: {
+     *     // ... filter to delete one Product_tags
+     *   }
+     * })
+     * 
+     */
+    delete<T extends product_tagsDeleteArgs>(args: SelectSubset<T, product_tagsDeleteArgs<ExtArgs>>): Prisma__product_tagsClient<$Result.GetResult<Prisma.$product_tagsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Product_tags.
+     * @param {product_tagsUpdateArgs} args - Arguments to update one Product_tags.
+     * @example
+     * // Update one Product_tags
+     * const product_tags = await prisma.product_tags.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends product_tagsUpdateArgs>(args: SelectSubset<T, product_tagsUpdateArgs<ExtArgs>>): Prisma__product_tagsClient<$Result.GetResult<Prisma.$product_tagsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Product_tags.
+     * @param {product_tagsDeleteManyArgs} args - Arguments to filter Product_tags to delete.
+     * @example
+     * // Delete a few Product_tags
+     * const { count } = await prisma.product_tags.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends product_tagsDeleteManyArgs>(args?: SelectSubset<T, product_tagsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Product_tags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {product_tagsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Product_tags
+     * const product_tags = await prisma.product_tags.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends product_tagsUpdateManyArgs>(args: SelectSubset<T, product_tagsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Product_tags and returns the data updated in the database.
+     * @param {product_tagsUpdateManyAndReturnArgs} args - Arguments to update many Product_tags.
+     * @example
+     * // Update many Product_tags
+     * const product_tags = await prisma.product_tags.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Product_tags and only return the `product_id`
+     * const product_tagsWithProduct_idOnly = await prisma.product_tags.updateManyAndReturn({
+     *   select: { product_id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends product_tagsUpdateManyAndReturnArgs>(args: SelectSubset<T, product_tagsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$product_tagsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Product_tags.
+     * @param {product_tagsUpsertArgs} args - Arguments to update or create a Product_tags.
+     * @example
+     * // Update or create a Product_tags
+     * const product_tags = await prisma.product_tags.upsert({
+     *   create: {
+     *     // ... data to create a Product_tags
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Product_tags we want to update
+     *   }
+     * })
+     */
+    upsert<T extends product_tagsUpsertArgs>(args: SelectSubset<T, product_tagsUpsertArgs<ExtArgs>>): Prisma__product_tagsClient<$Result.GetResult<Prisma.$product_tagsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Product_tags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {product_tagsCountArgs} args - Arguments to filter Product_tags to count.
+     * @example
+     * // Count the number of Product_tags
+     * const count = await prisma.product_tags.count({
+     *   where: {
+     *     // ... the filter for the Product_tags we want to count
+     *   }
+     * })
+    **/
+    count<T extends product_tagsCountArgs>(
+      args?: Subset<T, product_tagsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Product_tagsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Product_tags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Product_tagsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Product_tagsAggregateArgs>(args: Subset<T, Product_tagsAggregateArgs>): Prisma.PrismaPromise<GetProduct_tagsAggregateType<T>>
+
+    /**
+     * Group by Product_tags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {product_tagsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends product_tagsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: product_tagsGroupByArgs['orderBy'] }
+        : { orderBy?: product_tagsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, product_tagsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProduct_tagsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the product_tags model
+   */
+  readonly fields: product_tagsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for product_tags.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__product_tagsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    products<T extends ProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductDefaultArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    tags<T extends tagsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, tagsDefaultArgs<ExtArgs>>): Prisma__tagsClient<$Result.GetResult<Prisma.$tagsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the product_tags model
+   */
+  interface product_tagsFieldRefs {
+    readonly product_id: FieldRef<"product_tags", 'String'>
+    readonly tag_id: FieldRef<"product_tags", 'String'>
+    readonly product_name: FieldRef<"product_tags", 'String'>
+    readonly tag_spec: FieldRef<"product_tags", 'String'>
+    readonly tag_size: FieldRef<"product_tags", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * product_tags findUnique
+   */
+  export type product_tagsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_tags
+     */
+    select?: product_tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_tags
+     */
+    omit?: product_tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_tagsInclude<ExtArgs> | null
+    /**
+     * Filter, which product_tags to fetch.
+     */
+    where: product_tagsWhereUniqueInput
+  }
+
+  /**
+   * product_tags findUniqueOrThrow
+   */
+  export type product_tagsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_tags
+     */
+    select?: product_tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_tags
+     */
+    omit?: product_tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_tagsInclude<ExtArgs> | null
+    /**
+     * Filter, which product_tags to fetch.
+     */
+    where: product_tagsWhereUniqueInput
+  }
+
+  /**
+   * product_tags findFirst
+   */
+  export type product_tagsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_tags
+     */
+    select?: product_tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_tags
+     */
+    omit?: product_tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_tagsInclude<ExtArgs> | null
+    /**
+     * Filter, which product_tags to fetch.
+     */
+    where?: product_tagsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of product_tags to fetch.
+     */
+    orderBy?: product_tagsOrderByWithRelationInput | product_tagsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for product_tags.
+     */
+    cursor?: product_tagsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` product_tags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` product_tags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of product_tags.
+     */
+    distinct?: Product_tagsScalarFieldEnum | Product_tagsScalarFieldEnum[]
+  }
+
+  /**
+   * product_tags findFirstOrThrow
+   */
+  export type product_tagsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_tags
+     */
+    select?: product_tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_tags
+     */
+    omit?: product_tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_tagsInclude<ExtArgs> | null
+    /**
+     * Filter, which product_tags to fetch.
+     */
+    where?: product_tagsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of product_tags to fetch.
+     */
+    orderBy?: product_tagsOrderByWithRelationInput | product_tagsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for product_tags.
+     */
+    cursor?: product_tagsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` product_tags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` product_tags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of product_tags.
+     */
+    distinct?: Product_tagsScalarFieldEnum | Product_tagsScalarFieldEnum[]
+  }
+
+  /**
+   * product_tags findMany
+   */
+  export type product_tagsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_tags
+     */
+    select?: product_tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_tags
+     */
+    omit?: product_tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_tagsInclude<ExtArgs> | null
+    /**
+     * Filter, which product_tags to fetch.
+     */
+    where?: product_tagsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of product_tags to fetch.
+     */
+    orderBy?: product_tagsOrderByWithRelationInput | product_tagsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing product_tags.
+     */
+    cursor?: product_tagsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` product_tags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` product_tags.
+     */
+    skip?: number
+    distinct?: Product_tagsScalarFieldEnum | Product_tagsScalarFieldEnum[]
+  }
+
+  /**
+   * product_tags create
+   */
+  export type product_tagsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_tags
+     */
+    select?: product_tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_tags
+     */
+    omit?: product_tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_tagsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a product_tags.
+     */
+    data: XOR<product_tagsCreateInput, product_tagsUncheckedCreateInput>
+  }
+
+  /**
+   * product_tags createMany
+   */
+  export type product_tagsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many product_tags.
+     */
+    data: product_tagsCreateManyInput | product_tagsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * product_tags createManyAndReturn
+   */
+  export type product_tagsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_tags
+     */
+    select?: product_tagsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_tags
+     */
+    omit?: product_tagsOmit<ExtArgs> | null
+    /**
+     * The data used to create many product_tags.
+     */
+    data: product_tagsCreateManyInput | product_tagsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_tagsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * product_tags update
+   */
+  export type product_tagsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_tags
+     */
+    select?: product_tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_tags
+     */
+    omit?: product_tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_tagsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a product_tags.
+     */
+    data: XOR<product_tagsUpdateInput, product_tagsUncheckedUpdateInput>
+    /**
+     * Choose, which product_tags to update.
+     */
+    where: product_tagsWhereUniqueInput
+  }
+
+  /**
+   * product_tags updateMany
+   */
+  export type product_tagsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update product_tags.
+     */
+    data: XOR<product_tagsUpdateManyMutationInput, product_tagsUncheckedUpdateManyInput>
+    /**
+     * Filter which product_tags to update
+     */
+    where?: product_tagsWhereInput
+    /**
+     * Limit how many product_tags to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * product_tags updateManyAndReturn
+   */
+  export type product_tagsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_tags
+     */
+    select?: product_tagsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_tags
+     */
+    omit?: product_tagsOmit<ExtArgs> | null
+    /**
+     * The data used to update product_tags.
+     */
+    data: XOR<product_tagsUpdateManyMutationInput, product_tagsUncheckedUpdateManyInput>
+    /**
+     * Filter which product_tags to update
+     */
+    where?: product_tagsWhereInput
+    /**
+     * Limit how many product_tags to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_tagsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * product_tags upsert
+   */
+  export type product_tagsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_tags
+     */
+    select?: product_tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_tags
+     */
+    omit?: product_tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_tagsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the product_tags to update in case it exists.
+     */
+    where: product_tagsWhereUniqueInput
+    /**
+     * In case the product_tags found by the `where` argument doesn't exist, create a new product_tags with this data.
+     */
+    create: XOR<product_tagsCreateInput, product_tagsUncheckedCreateInput>
+    /**
+     * In case the product_tags was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<product_tagsUpdateInput, product_tagsUncheckedUpdateInput>
+  }
+
+  /**
+   * product_tags delete
+   */
+  export type product_tagsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_tags
+     */
+    select?: product_tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_tags
+     */
+    omit?: product_tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_tagsInclude<ExtArgs> | null
+    /**
+     * Filter which product_tags to delete.
+     */
+    where: product_tagsWhereUniqueInput
+  }
+
+  /**
+   * product_tags deleteMany
+   */
+  export type product_tagsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which product_tags to delete
+     */
+    where?: product_tagsWhereInput
+    /**
+     * Limit how many product_tags to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * product_tags without action
+   */
+  export type product_tagsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_tags
+     */
+    select?: product_tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_tags
+     */
+    omit?: product_tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_tagsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model products_hardware
+   */
+
+  export type AggregateProducts_hardware = {
+    _count: Products_hardwareCountAggregateOutputType | null
+    _avg: Products_hardwareAvgAggregateOutputType | null
+    _sum: Products_hardwareSumAggregateOutputType | null
+    _min: Products_hardwareMinAggregateOutputType | null
+    _max: Products_hardwareMaxAggregateOutputType | null
+  }
+
+  export type Products_hardwareAvgAggregateOutputType = {
+    controller_count: number | null
+    cpu_count: number | null
+    cpu_cores: number | null
+    cpu_base_clock: Decimal | null
+    cpu_turbo_clock: Decimal | null
+    memory_slots: number | null
+    disk_bays: number | null
+    disk_bays_max: number | null
+    lan_rj45_1G: number | null
+    lan_rj45_2_5G: number | null
+    lan_rj45_10G: number | null
+    max_lax_ports: number | null
+    usb_3_2_prots: number | null
+    expansion_ports: number | null
+    cpu_threads: number | null
+  }
+
+  export type Products_hardwareSumAggregateOutputType = {
+    controller_count: number | null
+    cpu_count: number | null
+    cpu_cores: number | null
+    cpu_base_clock: Decimal | null
+    cpu_turbo_clock: Decimal | null
+    memory_slots: number | null
+    disk_bays: number | null
+    disk_bays_max: number | null
+    lan_rj45_1G: number | null
+    lan_rj45_2_5G: number | null
+    lan_rj45_10G: number | null
+    max_lax_ports: number | null
+    usb_3_2_prots: number | null
+    expansion_ports: number | null
+    cpu_threads: number | null
+  }
+
+  export type Products_hardwareMinAggregateOutputType = {
+    id: string | null
+    products_id: string | null
+    controller_count: number | null
+    cpu_model: string | null
+    cpu_count: number | null
+    cpu_cores: number | null
+    cpu_architecture: string | null
+    cpu_base_clock: Decimal | null
+    cpu_turbo_clock: Decimal | null
+    hardware_encryption: string | null
+    memory_total: string | null
+    memory_installed: string | null
+    memory_slots: number | null
+    disk_bays: number | null
+    disk_bays_max: number | null
+    m2_slot: boolean | null
+    disk_host_swappable: boolean | null
+    lan_rj45_1G: number | null
+    lan_rj45_2_5G: number | null
+    lan_rj45_10G: number | null
+    management_prot: boolean | null
+    max_lax_ports: number | null
+    usb_3_2_prots: number | null
+    expansion_ports: number | null
+    expansion_port_types: string | null
+    pcie_expansion: string | null
+    chassis_type: string | null
+    dimensions: string | null
+    rack_mount_kit: string | null
+    fan_size: string | null
+    fan_replaceable: boolean | null
+    led_brightness_adj: boolean | null
+    auto_power_recovery: boolean | null
+    noise_lenel: string | null
+    scheduled_power: boolean | null
+    wake_on_lan: boolean | null
+    dual_power_supply: boolean | null
+    ac_input_voltage: string | null
+    frequency: string | null
+    power_consumption: string | null
+    working_temperature: string | null
+    storage_temperature: string | null
+    relative_humidity: string | null
+    warranty: string | null
+    environmental_compliance: string | null
+    cpu_threads: number | null
+  }
+
+  export type Products_hardwareMaxAggregateOutputType = {
+    id: string | null
+    products_id: string | null
+    controller_count: number | null
+    cpu_model: string | null
+    cpu_count: number | null
+    cpu_cores: number | null
+    cpu_architecture: string | null
+    cpu_base_clock: Decimal | null
+    cpu_turbo_clock: Decimal | null
+    hardware_encryption: string | null
+    memory_total: string | null
+    memory_installed: string | null
+    memory_slots: number | null
+    disk_bays: number | null
+    disk_bays_max: number | null
+    m2_slot: boolean | null
+    disk_host_swappable: boolean | null
+    lan_rj45_1G: number | null
+    lan_rj45_2_5G: number | null
+    lan_rj45_10G: number | null
+    management_prot: boolean | null
+    max_lax_ports: number | null
+    usb_3_2_prots: number | null
+    expansion_ports: number | null
+    expansion_port_types: string | null
+    pcie_expansion: string | null
+    chassis_type: string | null
+    dimensions: string | null
+    rack_mount_kit: string | null
+    fan_size: string | null
+    fan_replaceable: boolean | null
+    led_brightness_adj: boolean | null
+    auto_power_recovery: boolean | null
+    noise_lenel: string | null
+    scheduled_power: boolean | null
+    wake_on_lan: boolean | null
+    dual_power_supply: boolean | null
+    ac_input_voltage: string | null
+    frequency: string | null
+    power_consumption: string | null
+    working_temperature: string | null
+    storage_temperature: string | null
+    relative_humidity: string | null
+    warranty: string | null
+    environmental_compliance: string | null
+    cpu_threads: number | null
+  }
+
+  export type Products_hardwareCountAggregateOutputType = {
+    id: number
+    products_id: number
+    controller_count: number
+    cpu_model: number
+    cpu_count: number
+    cpu_cores: number
+    cpu_architecture: number
+    cpu_base_clock: number
+    cpu_turbo_clock: number
+    hardware_encryption: number
+    memory_total: number
+    memory_installed: number
+    memory_slots: number
+    memory_max: number
+    disk_bays: number
+    disk_bays_max: number
+    disk_types_supported: number
+    m2_slot: number
+    disk_host_swappable: number
+    lan_rj45_1G: number
+    lan_rj45_2_5G: number
+    lan_rj45_10G: number
+    management_prot: number
+    max_lax_ports: number
+    usb_3_2_prots: number
+    expansion_ports: number
+    expansion_port_types: number
+    pcie_expansion: number
+    chassis_type: number
+    dimensions: number
+    rack_mount_kit: number
+    fan_size: number
+    fan_replaceable: number
+    led_brightness_adj: number
+    auto_power_recovery: number
+    noise_lenel: number
+    scheduled_power: number
+    wake_on_lan: number
+    dual_power_supply: number
+    ac_input_voltage: number
+    frequency: number
+    power_consumption: number
+    working_temperature: number
+    storage_temperature: number
+    relative_humidity: number
+    certifications: number
+    warranty: number
+    environmental_compliance: number
+    package_contents: number
+    optional_accessories: number
+    cpu_threads: number
+    _all: number
+  }
+
+
+  export type Products_hardwareAvgAggregateInputType = {
+    controller_count?: true
+    cpu_count?: true
+    cpu_cores?: true
+    cpu_base_clock?: true
+    cpu_turbo_clock?: true
+    memory_slots?: true
+    disk_bays?: true
+    disk_bays_max?: true
+    lan_rj45_1G?: true
+    lan_rj45_2_5G?: true
+    lan_rj45_10G?: true
+    max_lax_ports?: true
+    usb_3_2_prots?: true
+    expansion_ports?: true
+    cpu_threads?: true
+  }
+
+  export type Products_hardwareSumAggregateInputType = {
+    controller_count?: true
+    cpu_count?: true
+    cpu_cores?: true
+    cpu_base_clock?: true
+    cpu_turbo_clock?: true
+    memory_slots?: true
+    disk_bays?: true
+    disk_bays_max?: true
+    lan_rj45_1G?: true
+    lan_rj45_2_5G?: true
+    lan_rj45_10G?: true
+    max_lax_ports?: true
+    usb_3_2_prots?: true
+    expansion_ports?: true
+    cpu_threads?: true
+  }
+
+  export type Products_hardwareMinAggregateInputType = {
+    id?: true
+    products_id?: true
+    controller_count?: true
+    cpu_model?: true
+    cpu_count?: true
+    cpu_cores?: true
+    cpu_architecture?: true
+    cpu_base_clock?: true
+    cpu_turbo_clock?: true
+    hardware_encryption?: true
+    memory_total?: true
+    memory_installed?: true
+    memory_slots?: true
+    disk_bays?: true
+    disk_bays_max?: true
+    m2_slot?: true
+    disk_host_swappable?: true
+    lan_rj45_1G?: true
+    lan_rj45_2_5G?: true
+    lan_rj45_10G?: true
+    management_prot?: true
+    max_lax_ports?: true
+    usb_3_2_prots?: true
+    expansion_ports?: true
+    expansion_port_types?: true
+    pcie_expansion?: true
+    chassis_type?: true
+    dimensions?: true
+    rack_mount_kit?: true
+    fan_size?: true
+    fan_replaceable?: true
+    led_brightness_adj?: true
+    auto_power_recovery?: true
+    noise_lenel?: true
+    scheduled_power?: true
+    wake_on_lan?: true
+    dual_power_supply?: true
+    ac_input_voltage?: true
+    frequency?: true
+    power_consumption?: true
+    working_temperature?: true
+    storage_temperature?: true
+    relative_humidity?: true
+    warranty?: true
+    environmental_compliance?: true
+    cpu_threads?: true
+  }
+
+  export type Products_hardwareMaxAggregateInputType = {
+    id?: true
+    products_id?: true
+    controller_count?: true
+    cpu_model?: true
+    cpu_count?: true
+    cpu_cores?: true
+    cpu_architecture?: true
+    cpu_base_clock?: true
+    cpu_turbo_clock?: true
+    hardware_encryption?: true
+    memory_total?: true
+    memory_installed?: true
+    memory_slots?: true
+    disk_bays?: true
+    disk_bays_max?: true
+    m2_slot?: true
+    disk_host_swappable?: true
+    lan_rj45_1G?: true
+    lan_rj45_2_5G?: true
+    lan_rj45_10G?: true
+    management_prot?: true
+    max_lax_ports?: true
+    usb_3_2_prots?: true
+    expansion_ports?: true
+    expansion_port_types?: true
+    pcie_expansion?: true
+    chassis_type?: true
+    dimensions?: true
+    rack_mount_kit?: true
+    fan_size?: true
+    fan_replaceable?: true
+    led_brightness_adj?: true
+    auto_power_recovery?: true
+    noise_lenel?: true
+    scheduled_power?: true
+    wake_on_lan?: true
+    dual_power_supply?: true
+    ac_input_voltage?: true
+    frequency?: true
+    power_consumption?: true
+    working_temperature?: true
+    storage_temperature?: true
+    relative_humidity?: true
+    warranty?: true
+    environmental_compliance?: true
+    cpu_threads?: true
+  }
+
+  export type Products_hardwareCountAggregateInputType = {
+    id?: true
+    products_id?: true
+    controller_count?: true
+    cpu_model?: true
+    cpu_count?: true
+    cpu_cores?: true
+    cpu_architecture?: true
+    cpu_base_clock?: true
+    cpu_turbo_clock?: true
+    hardware_encryption?: true
+    memory_total?: true
+    memory_installed?: true
+    memory_slots?: true
+    memory_max?: true
+    disk_bays?: true
+    disk_bays_max?: true
+    disk_types_supported?: true
+    m2_slot?: true
+    disk_host_swappable?: true
+    lan_rj45_1G?: true
+    lan_rj45_2_5G?: true
+    lan_rj45_10G?: true
+    management_prot?: true
+    max_lax_ports?: true
+    usb_3_2_prots?: true
+    expansion_ports?: true
+    expansion_port_types?: true
+    pcie_expansion?: true
+    chassis_type?: true
+    dimensions?: true
+    rack_mount_kit?: true
+    fan_size?: true
+    fan_replaceable?: true
+    led_brightness_adj?: true
+    auto_power_recovery?: true
+    noise_lenel?: true
+    scheduled_power?: true
+    wake_on_lan?: true
+    dual_power_supply?: true
+    ac_input_voltage?: true
+    frequency?: true
+    power_consumption?: true
+    working_temperature?: true
+    storage_temperature?: true
+    relative_humidity?: true
+    certifications?: true
+    warranty?: true
+    environmental_compliance?: true
+    package_contents?: true
+    optional_accessories?: true
+    cpu_threads?: true
+    _all?: true
+  }
+
+  export type Products_hardwareAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which products_hardware to aggregate.
+     */
+    where?: products_hardwareWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of products_hardwares to fetch.
+     */
+    orderBy?: products_hardwareOrderByWithRelationInput | products_hardwareOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: products_hardwareWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` products_hardwares from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` products_hardwares.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned products_hardwares
+    **/
+    _count?: true | Products_hardwareCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Products_hardwareAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Products_hardwareSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Products_hardwareMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Products_hardwareMaxAggregateInputType
+  }
+
+  export type GetProducts_hardwareAggregateType<T extends Products_hardwareAggregateArgs> = {
+        [P in keyof T & keyof AggregateProducts_hardware]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProducts_hardware[P]>
+      : GetScalarType<T[P], AggregateProducts_hardware[P]>
+  }
+
+
+
+
+  export type products_hardwareGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: products_hardwareWhereInput
+    orderBy?: products_hardwareOrderByWithAggregationInput | products_hardwareOrderByWithAggregationInput[]
+    by: Products_hardwareScalarFieldEnum[] | Products_hardwareScalarFieldEnum
+    having?: products_hardwareScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Products_hardwareCountAggregateInputType | true
+    _avg?: Products_hardwareAvgAggregateInputType
+    _sum?: Products_hardwareSumAggregateInputType
+    _min?: Products_hardwareMinAggregateInputType
+    _max?: Products_hardwareMaxAggregateInputType
+  }
+
+  export type Products_hardwareGroupByOutputType = {
+    id: string
+    products_id: string
+    controller_count: number | null
+    cpu_model: string | null
+    cpu_count: number | null
+    cpu_cores: number | null
+    cpu_architecture: string | null
+    cpu_base_clock: Decimal | null
+    cpu_turbo_clock: Decimal | null
+    hardware_encryption: string | null
+    memory_total: string | null
+    memory_installed: string | null
+    memory_slots: number | null
+    memory_max: JsonValue | null
+    disk_bays: number | null
+    disk_bays_max: number | null
+    disk_types_supported: JsonValue | null
+    m2_slot: boolean | null
+    disk_host_swappable: boolean | null
+    lan_rj45_1G: number | null
+    lan_rj45_2_5G: number | null
+    lan_rj45_10G: number | null
+    management_prot: boolean | null
+    max_lax_ports: number | null
+    usb_3_2_prots: number | null
+    expansion_ports: number | null
+    expansion_port_types: string | null
+    pcie_expansion: string | null
+    chassis_type: string | null
+    dimensions: string | null
+    rack_mount_kit: string | null
+    fan_size: string | null
+    fan_replaceable: boolean | null
+    led_brightness_adj: boolean | null
+    auto_power_recovery: boolean | null
+    noise_lenel: string | null
+    scheduled_power: boolean | null
+    wake_on_lan: boolean | null
+    dual_power_supply: boolean | null
+    ac_input_voltage: string | null
+    frequency: string | null
+    power_consumption: string | null
+    working_temperature: string | null
+    storage_temperature: string | null
+    relative_humidity: string | null
+    certifications: JsonValue | null
+    warranty: string | null
+    environmental_compliance: string | null
+    package_contents: JsonValue | null
+    optional_accessories: JsonValue | null
+    cpu_threads: number | null
+    _count: Products_hardwareCountAggregateOutputType | null
+    _avg: Products_hardwareAvgAggregateOutputType | null
+    _sum: Products_hardwareSumAggregateOutputType | null
+    _min: Products_hardwareMinAggregateOutputType | null
+    _max: Products_hardwareMaxAggregateOutputType | null
+  }
+
+  type GetProducts_hardwareGroupByPayload<T extends products_hardwareGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Products_hardwareGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Products_hardwareGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Products_hardwareGroupByOutputType[P]>
+            : GetScalarType<T[P], Products_hardwareGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type products_hardwareSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    products_id?: boolean
+    controller_count?: boolean
+    cpu_model?: boolean
+    cpu_count?: boolean
+    cpu_cores?: boolean
+    cpu_architecture?: boolean
+    cpu_base_clock?: boolean
+    cpu_turbo_clock?: boolean
+    hardware_encryption?: boolean
+    memory_total?: boolean
+    memory_installed?: boolean
+    memory_slots?: boolean
+    memory_max?: boolean
+    disk_bays?: boolean
+    disk_bays_max?: boolean
+    disk_types_supported?: boolean
+    m2_slot?: boolean
+    disk_host_swappable?: boolean
+    lan_rj45_1G?: boolean
+    lan_rj45_2_5G?: boolean
+    lan_rj45_10G?: boolean
+    management_prot?: boolean
+    max_lax_ports?: boolean
+    usb_3_2_prots?: boolean
+    expansion_ports?: boolean
+    expansion_port_types?: boolean
+    pcie_expansion?: boolean
+    chassis_type?: boolean
+    dimensions?: boolean
+    rack_mount_kit?: boolean
+    fan_size?: boolean
+    fan_replaceable?: boolean
+    led_brightness_adj?: boolean
+    auto_power_recovery?: boolean
+    noise_lenel?: boolean
+    scheduled_power?: boolean
+    wake_on_lan?: boolean
+    dual_power_supply?: boolean
+    ac_input_voltage?: boolean
+    frequency?: boolean
+    power_consumption?: boolean
+    working_temperature?: boolean
+    storage_temperature?: boolean
+    relative_humidity?: boolean
+    certifications?: boolean
+    warranty?: boolean
+    environmental_compliance?: boolean
+    package_contents?: boolean
+    optional_accessories?: boolean
+    cpu_threads?: boolean
+    products?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["products_hardware"]>
+
+  export type products_hardwareSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    products_id?: boolean
+    controller_count?: boolean
+    cpu_model?: boolean
+    cpu_count?: boolean
+    cpu_cores?: boolean
+    cpu_architecture?: boolean
+    cpu_base_clock?: boolean
+    cpu_turbo_clock?: boolean
+    hardware_encryption?: boolean
+    memory_total?: boolean
+    memory_installed?: boolean
+    memory_slots?: boolean
+    memory_max?: boolean
+    disk_bays?: boolean
+    disk_bays_max?: boolean
+    disk_types_supported?: boolean
+    m2_slot?: boolean
+    disk_host_swappable?: boolean
+    lan_rj45_1G?: boolean
+    lan_rj45_2_5G?: boolean
+    lan_rj45_10G?: boolean
+    management_prot?: boolean
+    max_lax_ports?: boolean
+    usb_3_2_prots?: boolean
+    expansion_ports?: boolean
+    expansion_port_types?: boolean
+    pcie_expansion?: boolean
+    chassis_type?: boolean
+    dimensions?: boolean
+    rack_mount_kit?: boolean
+    fan_size?: boolean
+    fan_replaceable?: boolean
+    led_brightness_adj?: boolean
+    auto_power_recovery?: boolean
+    noise_lenel?: boolean
+    scheduled_power?: boolean
+    wake_on_lan?: boolean
+    dual_power_supply?: boolean
+    ac_input_voltage?: boolean
+    frequency?: boolean
+    power_consumption?: boolean
+    working_temperature?: boolean
+    storage_temperature?: boolean
+    relative_humidity?: boolean
+    certifications?: boolean
+    warranty?: boolean
+    environmental_compliance?: boolean
+    package_contents?: boolean
+    optional_accessories?: boolean
+    cpu_threads?: boolean
+    products?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["products_hardware"]>
+
+  export type products_hardwareSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    products_id?: boolean
+    controller_count?: boolean
+    cpu_model?: boolean
+    cpu_count?: boolean
+    cpu_cores?: boolean
+    cpu_architecture?: boolean
+    cpu_base_clock?: boolean
+    cpu_turbo_clock?: boolean
+    hardware_encryption?: boolean
+    memory_total?: boolean
+    memory_installed?: boolean
+    memory_slots?: boolean
+    memory_max?: boolean
+    disk_bays?: boolean
+    disk_bays_max?: boolean
+    disk_types_supported?: boolean
+    m2_slot?: boolean
+    disk_host_swappable?: boolean
+    lan_rj45_1G?: boolean
+    lan_rj45_2_5G?: boolean
+    lan_rj45_10G?: boolean
+    management_prot?: boolean
+    max_lax_ports?: boolean
+    usb_3_2_prots?: boolean
+    expansion_ports?: boolean
+    expansion_port_types?: boolean
+    pcie_expansion?: boolean
+    chassis_type?: boolean
+    dimensions?: boolean
+    rack_mount_kit?: boolean
+    fan_size?: boolean
+    fan_replaceable?: boolean
+    led_brightness_adj?: boolean
+    auto_power_recovery?: boolean
+    noise_lenel?: boolean
+    scheduled_power?: boolean
+    wake_on_lan?: boolean
+    dual_power_supply?: boolean
+    ac_input_voltage?: boolean
+    frequency?: boolean
+    power_consumption?: boolean
+    working_temperature?: boolean
+    storage_temperature?: boolean
+    relative_humidity?: boolean
+    certifications?: boolean
+    warranty?: boolean
+    environmental_compliance?: boolean
+    package_contents?: boolean
+    optional_accessories?: boolean
+    cpu_threads?: boolean
+    products?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["products_hardware"]>
+
+  export type products_hardwareSelectScalar = {
+    id?: boolean
+    products_id?: boolean
+    controller_count?: boolean
+    cpu_model?: boolean
+    cpu_count?: boolean
+    cpu_cores?: boolean
+    cpu_architecture?: boolean
+    cpu_base_clock?: boolean
+    cpu_turbo_clock?: boolean
+    hardware_encryption?: boolean
+    memory_total?: boolean
+    memory_installed?: boolean
+    memory_slots?: boolean
+    memory_max?: boolean
+    disk_bays?: boolean
+    disk_bays_max?: boolean
+    disk_types_supported?: boolean
+    m2_slot?: boolean
+    disk_host_swappable?: boolean
+    lan_rj45_1G?: boolean
+    lan_rj45_2_5G?: boolean
+    lan_rj45_10G?: boolean
+    management_prot?: boolean
+    max_lax_ports?: boolean
+    usb_3_2_prots?: boolean
+    expansion_ports?: boolean
+    expansion_port_types?: boolean
+    pcie_expansion?: boolean
+    chassis_type?: boolean
+    dimensions?: boolean
+    rack_mount_kit?: boolean
+    fan_size?: boolean
+    fan_replaceable?: boolean
+    led_brightness_adj?: boolean
+    auto_power_recovery?: boolean
+    noise_lenel?: boolean
+    scheduled_power?: boolean
+    wake_on_lan?: boolean
+    dual_power_supply?: boolean
+    ac_input_voltage?: boolean
+    frequency?: boolean
+    power_consumption?: boolean
+    working_temperature?: boolean
+    storage_temperature?: boolean
+    relative_humidity?: boolean
+    certifications?: boolean
+    warranty?: boolean
+    environmental_compliance?: boolean
+    package_contents?: boolean
+    optional_accessories?: boolean
+    cpu_threads?: boolean
+  }
+
+  export type products_hardwareOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "products_id" | "controller_count" | "cpu_model" | "cpu_count" | "cpu_cores" | "cpu_architecture" | "cpu_base_clock" | "cpu_turbo_clock" | "hardware_encryption" | "memory_total" | "memory_installed" | "memory_slots" | "memory_max" | "disk_bays" | "disk_bays_max" | "disk_types_supported" | "m2_slot" | "disk_host_swappable" | "lan_rj45_1G" | "lan_rj45_2_5G" | "lan_rj45_10G" | "management_prot" | "max_lax_ports" | "usb_3_2_prots" | "expansion_ports" | "expansion_port_types" | "pcie_expansion" | "chassis_type" | "dimensions" | "rack_mount_kit" | "fan_size" | "fan_replaceable" | "led_brightness_adj" | "auto_power_recovery" | "noise_lenel" | "scheduled_power" | "wake_on_lan" | "dual_power_supply" | "ac_input_voltage" | "frequency" | "power_consumption" | "working_temperature" | "storage_temperature" | "relative_humidity" | "certifications" | "warranty" | "environmental_compliance" | "package_contents" | "optional_accessories" | "cpu_threads", ExtArgs["result"]["products_hardware"]>
+  export type products_hardwareInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    products?: boolean | ProductDefaultArgs<ExtArgs>
+  }
+  export type products_hardwareIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    products?: boolean | ProductDefaultArgs<ExtArgs>
+  }
+  export type products_hardwareIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    products?: boolean | ProductDefaultArgs<ExtArgs>
+  }
+
+  export type $products_hardwarePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "products_hardware"
+    objects: {
+      products: Prisma.$ProductPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      products_id: string
+      controller_count: number | null
+      cpu_model: string | null
+      cpu_count: number | null
+      cpu_cores: number | null
+      cpu_architecture: string | null
+      cpu_base_clock: Prisma.Decimal | null
+      cpu_turbo_clock: Prisma.Decimal | null
+      hardware_encryption: string | null
+      memory_total: string | null
+      memory_installed: string | null
+      memory_slots: number | null
+      memory_max: Prisma.JsonValue | null
+      disk_bays: number | null
+      disk_bays_max: number | null
+      disk_types_supported: Prisma.JsonValue | null
+      m2_slot: boolean | null
+      disk_host_swappable: boolean | null
+      lan_rj45_1G: number | null
+      lan_rj45_2_5G: number | null
+      lan_rj45_10G: number | null
+      management_prot: boolean | null
+      max_lax_ports: number | null
+      usb_3_2_prots: number | null
+      expansion_ports: number | null
+      expansion_port_types: string | null
+      pcie_expansion: string | null
+      chassis_type: string | null
+      dimensions: string | null
+      rack_mount_kit: string | null
+      fan_size: string | null
+      fan_replaceable: boolean | null
+      led_brightness_adj: boolean | null
+      auto_power_recovery: boolean | null
+      noise_lenel: string | null
+      scheduled_power: boolean | null
+      wake_on_lan: boolean | null
+      dual_power_supply: boolean | null
+      ac_input_voltage: string | null
+      frequency: string | null
+      power_consumption: string | null
+      working_temperature: string | null
+      storage_temperature: string | null
+      relative_humidity: string | null
+      certifications: Prisma.JsonValue | null
+      warranty: string | null
+      environmental_compliance: string | null
+      package_contents: Prisma.JsonValue | null
+      optional_accessories: Prisma.JsonValue | null
+      cpu_threads: number | null
+    }, ExtArgs["result"]["products_hardware"]>
+    composites: {}
+  }
+
+  type products_hardwareGetPayload<S extends boolean | null | undefined | products_hardwareDefaultArgs> = $Result.GetResult<Prisma.$products_hardwarePayload, S>
+
+  type products_hardwareCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<products_hardwareFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Products_hardwareCountAggregateInputType | true
+    }
+
+  export interface products_hardwareDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['products_hardware'], meta: { name: 'products_hardware' } }
+    /**
+     * Find zero or one Products_hardware that matches the filter.
+     * @param {products_hardwareFindUniqueArgs} args - Arguments to find a Products_hardware
+     * @example
+     * // Get one Products_hardware
+     * const products_hardware = await prisma.products_hardware.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends products_hardwareFindUniqueArgs>(args: SelectSubset<T, products_hardwareFindUniqueArgs<ExtArgs>>): Prisma__products_hardwareClient<$Result.GetResult<Prisma.$products_hardwarePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Products_hardware that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {products_hardwareFindUniqueOrThrowArgs} args - Arguments to find a Products_hardware
+     * @example
+     * // Get one Products_hardware
+     * const products_hardware = await prisma.products_hardware.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends products_hardwareFindUniqueOrThrowArgs>(args: SelectSubset<T, products_hardwareFindUniqueOrThrowArgs<ExtArgs>>): Prisma__products_hardwareClient<$Result.GetResult<Prisma.$products_hardwarePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Products_hardware that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {products_hardwareFindFirstArgs} args - Arguments to find a Products_hardware
+     * @example
+     * // Get one Products_hardware
+     * const products_hardware = await prisma.products_hardware.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends products_hardwareFindFirstArgs>(args?: SelectSubset<T, products_hardwareFindFirstArgs<ExtArgs>>): Prisma__products_hardwareClient<$Result.GetResult<Prisma.$products_hardwarePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Products_hardware that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {products_hardwareFindFirstOrThrowArgs} args - Arguments to find a Products_hardware
+     * @example
+     * // Get one Products_hardware
+     * const products_hardware = await prisma.products_hardware.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends products_hardwareFindFirstOrThrowArgs>(args?: SelectSubset<T, products_hardwareFindFirstOrThrowArgs<ExtArgs>>): Prisma__products_hardwareClient<$Result.GetResult<Prisma.$products_hardwarePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Products_hardwares that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {products_hardwareFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Products_hardwares
+     * const products_hardwares = await prisma.products_hardware.findMany()
+     * 
+     * // Get first 10 Products_hardwares
+     * const products_hardwares = await prisma.products_hardware.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const products_hardwareWithIdOnly = await prisma.products_hardware.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends products_hardwareFindManyArgs>(args?: SelectSubset<T, products_hardwareFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$products_hardwarePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Products_hardware.
+     * @param {products_hardwareCreateArgs} args - Arguments to create a Products_hardware.
+     * @example
+     * // Create one Products_hardware
+     * const Products_hardware = await prisma.products_hardware.create({
+     *   data: {
+     *     // ... data to create a Products_hardware
+     *   }
+     * })
+     * 
+     */
+    create<T extends products_hardwareCreateArgs>(args: SelectSubset<T, products_hardwareCreateArgs<ExtArgs>>): Prisma__products_hardwareClient<$Result.GetResult<Prisma.$products_hardwarePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Products_hardwares.
+     * @param {products_hardwareCreateManyArgs} args - Arguments to create many Products_hardwares.
+     * @example
+     * // Create many Products_hardwares
+     * const products_hardware = await prisma.products_hardware.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends products_hardwareCreateManyArgs>(args?: SelectSubset<T, products_hardwareCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Products_hardwares and returns the data saved in the database.
+     * @param {products_hardwareCreateManyAndReturnArgs} args - Arguments to create many Products_hardwares.
+     * @example
+     * // Create many Products_hardwares
+     * const products_hardware = await prisma.products_hardware.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Products_hardwares and only return the `id`
+     * const products_hardwareWithIdOnly = await prisma.products_hardware.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends products_hardwareCreateManyAndReturnArgs>(args?: SelectSubset<T, products_hardwareCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$products_hardwarePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Products_hardware.
+     * @param {products_hardwareDeleteArgs} args - Arguments to delete one Products_hardware.
+     * @example
+     * // Delete one Products_hardware
+     * const Products_hardware = await prisma.products_hardware.delete({
+     *   where: {
+     *     // ... filter to delete one Products_hardware
+     *   }
+     * })
+     * 
+     */
+    delete<T extends products_hardwareDeleteArgs>(args: SelectSubset<T, products_hardwareDeleteArgs<ExtArgs>>): Prisma__products_hardwareClient<$Result.GetResult<Prisma.$products_hardwarePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Products_hardware.
+     * @param {products_hardwareUpdateArgs} args - Arguments to update one Products_hardware.
+     * @example
+     * // Update one Products_hardware
+     * const products_hardware = await prisma.products_hardware.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends products_hardwareUpdateArgs>(args: SelectSubset<T, products_hardwareUpdateArgs<ExtArgs>>): Prisma__products_hardwareClient<$Result.GetResult<Prisma.$products_hardwarePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Products_hardwares.
+     * @param {products_hardwareDeleteManyArgs} args - Arguments to filter Products_hardwares to delete.
+     * @example
+     * // Delete a few Products_hardwares
+     * const { count } = await prisma.products_hardware.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends products_hardwareDeleteManyArgs>(args?: SelectSubset<T, products_hardwareDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Products_hardwares.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {products_hardwareUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Products_hardwares
+     * const products_hardware = await prisma.products_hardware.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends products_hardwareUpdateManyArgs>(args: SelectSubset<T, products_hardwareUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Products_hardwares and returns the data updated in the database.
+     * @param {products_hardwareUpdateManyAndReturnArgs} args - Arguments to update many Products_hardwares.
+     * @example
+     * // Update many Products_hardwares
+     * const products_hardware = await prisma.products_hardware.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Products_hardwares and only return the `id`
+     * const products_hardwareWithIdOnly = await prisma.products_hardware.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends products_hardwareUpdateManyAndReturnArgs>(args: SelectSubset<T, products_hardwareUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$products_hardwarePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Products_hardware.
+     * @param {products_hardwareUpsertArgs} args - Arguments to update or create a Products_hardware.
+     * @example
+     * // Update or create a Products_hardware
+     * const products_hardware = await prisma.products_hardware.upsert({
+     *   create: {
+     *     // ... data to create a Products_hardware
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Products_hardware we want to update
+     *   }
+     * })
+     */
+    upsert<T extends products_hardwareUpsertArgs>(args: SelectSubset<T, products_hardwareUpsertArgs<ExtArgs>>): Prisma__products_hardwareClient<$Result.GetResult<Prisma.$products_hardwarePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Products_hardwares.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {products_hardwareCountArgs} args - Arguments to filter Products_hardwares to count.
+     * @example
+     * // Count the number of Products_hardwares
+     * const count = await prisma.products_hardware.count({
+     *   where: {
+     *     // ... the filter for the Products_hardwares we want to count
+     *   }
+     * })
+    **/
+    count<T extends products_hardwareCountArgs>(
+      args?: Subset<T, products_hardwareCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Products_hardwareCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Products_hardware.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Products_hardwareAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Products_hardwareAggregateArgs>(args: Subset<T, Products_hardwareAggregateArgs>): Prisma.PrismaPromise<GetProducts_hardwareAggregateType<T>>
+
+    /**
+     * Group by Products_hardware.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {products_hardwareGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends products_hardwareGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: products_hardwareGroupByArgs['orderBy'] }
+        : { orderBy?: products_hardwareGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, products_hardwareGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProducts_hardwareGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the products_hardware model
+   */
+  readonly fields: products_hardwareFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for products_hardware.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__products_hardwareClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    products<T extends ProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductDefaultArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the products_hardware model
+   */
+  interface products_hardwareFieldRefs {
+    readonly id: FieldRef<"products_hardware", 'String'>
+    readonly products_id: FieldRef<"products_hardware", 'String'>
+    readonly controller_count: FieldRef<"products_hardware", 'Int'>
+    readonly cpu_model: FieldRef<"products_hardware", 'String'>
+    readonly cpu_count: FieldRef<"products_hardware", 'Int'>
+    readonly cpu_cores: FieldRef<"products_hardware", 'Int'>
+    readonly cpu_architecture: FieldRef<"products_hardware", 'String'>
+    readonly cpu_base_clock: FieldRef<"products_hardware", 'Decimal'>
+    readonly cpu_turbo_clock: FieldRef<"products_hardware", 'Decimal'>
+    readonly hardware_encryption: FieldRef<"products_hardware", 'String'>
+    readonly memory_total: FieldRef<"products_hardware", 'String'>
+    readonly memory_installed: FieldRef<"products_hardware", 'String'>
+    readonly memory_slots: FieldRef<"products_hardware", 'Int'>
+    readonly memory_max: FieldRef<"products_hardware", 'Json'>
+    readonly disk_bays: FieldRef<"products_hardware", 'Int'>
+    readonly disk_bays_max: FieldRef<"products_hardware", 'Int'>
+    readonly disk_types_supported: FieldRef<"products_hardware", 'Json'>
+    readonly m2_slot: FieldRef<"products_hardware", 'Boolean'>
+    readonly disk_host_swappable: FieldRef<"products_hardware", 'Boolean'>
+    readonly lan_rj45_1G: FieldRef<"products_hardware", 'Int'>
+    readonly lan_rj45_2_5G: FieldRef<"products_hardware", 'Int'>
+    readonly lan_rj45_10G: FieldRef<"products_hardware", 'Int'>
+    readonly management_prot: FieldRef<"products_hardware", 'Boolean'>
+    readonly max_lax_ports: FieldRef<"products_hardware", 'Int'>
+    readonly usb_3_2_prots: FieldRef<"products_hardware", 'Int'>
+    readonly expansion_ports: FieldRef<"products_hardware", 'Int'>
+    readonly expansion_port_types: FieldRef<"products_hardware", 'String'>
+    readonly pcie_expansion: FieldRef<"products_hardware", 'String'>
+    readonly chassis_type: FieldRef<"products_hardware", 'String'>
+    readonly dimensions: FieldRef<"products_hardware", 'String'>
+    readonly rack_mount_kit: FieldRef<"products_hardware", 'String'>
+    readonly fan_size: FieldRef<"products_hardware", 'String'>
+    readonly fan_replaceable: FieldRef<"products_hardware", 'Boolean'>
+    readonly led_brightness_adj: FieldRef<"products_hardware", 'Boolean'>
+    readonly auto_power_recovery: FieldRef<"products_hardware", 'Boolean'>
+    readonly noise_lenel: FieldRef<"products_hardware", 'String'>
+    readonly scheduled_power: FieldRef<"products_hardware", 'Boolean'>
+    readonly wake_on_lan: FieldRef<"products_hardware", 'Boolean'>
+    readonly dual_power_supply: FieldRef<"products_hardware", 'Boolean'>
+    readonly ac_input_voltage: FieldRef<"products_hardware", 'String'>
+    readonly frequency: FieldRef<"products_hardware", 'String'>
+    readonly power_consumption: FieldRef<"products_hardware", 'String'>
+    readonly working_temperature: FieldRef<"products_hardware", 'String'>
+    readonly storage_temperature: FieldRef<"products_hardware", 'String'>
+    readonly relative_humidity: FieldRef<"products_hardware", 'String'>
+    readonly certifications: FieldRef<"products_hardware", 'Json'>
+    readonly warranty: FieldRef<"products_hardware", 'String'>
+    readonly environmental_compliance: FieldRef<"products_hardware", 'String'>
+    readonly package_contents: FieldRef<"products_hardware", 'Json'>
+    readonly optional_accessories: FieldRef<"products_hardware", 'Json'>
+    readonly cpu_threads: FieldRef<"products_hardware", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * products_hardware findUnique
+   */
+  export type products_hardwareFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the products_hardware
+     */
+    select?: products_hardwareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the products_hardware
+     */
+    omit?: products_hardwareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: products_hardwareInclude<ExtArgs> | null
+    /**
+     * Filter, which products_hardware to fetch.
+     */
+    where: products_hardwareWhereUniqueInput
+  }
+
+  /**
+   * products_hardware findUniqueOrThrow
+   */
+  export type products_hardwareFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the products_hardware
+     */
+    select?: products_hardwareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the products_hardware
+     */
+    omit?: products_hardwareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: products_hardwareInclude<ExtArgs> | null
+    /**
+     * Filter, which products_hardware to fetch.
+     */
+    where: products_hardwareWhereUniqueInput
+  }
+
+  /**
+   * products_hardware findFirst
+   */
+  export type products_hardwareFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the products_hardware
+     */
+    select?: products_hardwareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the products_hardware
+     */
+    omit?: products_hardwareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: products_hardwareInclude<ExtArgs> | null
+    /**
+     * Filter, which products_hardware to fetch.
+     */
+    where?: products_hardwareWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of products_hardwares to fetch.
+     */
+    orderBy?: products_hardwareOrderByWithRelationInput | products_hardwareOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for products_hardwares.
+     */
+    cursor?: products_hardwareWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` products_hardwares from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` products_hardwares.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of products_hardwares.
+     */
+    distinct?: Products_hardwareScalarFieldEnum | Products_hardwareScalarFieldEnum[]
+  }
+
+  /**
+   * products_hardware findFirstOrThrow
+   */
+  export type products_hardwareFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the products_hardware
+     */
+    select?: products_hardwareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the products_hardware
+     */
+    omit?: products_hardwareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: products_hardwareInclude<ExtArgs> | null
+    /**
+     * Filter, which products_hardware to fetch.
+     */
+    where?: products_hardwareWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of products_hardwares to fetch.
+     */
+    orderBy?: products_hardwareOrderByWithRelationInput | products_hardwareOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for products_hardwares.
+     */
+    cursor?: products_hardwareWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` products_hardwares from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` products_hardwares.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of products_hardwares.
+     */
+    distinct?: Products_hardwareScalarFieldEnum | Products_hardwareScalarFieldEnum[]
+  }
+
+  /**
+   * products_hardware findMany
+   */
+  export type products_hardwareFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the products_hardware
+     */
+    select?: products_hardwareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the products_hardware
+     */
+    omit?: products_hardwareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: products_hardwareInclude<ExtArgs> | null
+    /**
+     * Filter, which products_hardwares to fetch.
+     */
+    where?: products_hardwareWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of products_hardwares to fetch.
+     */
+    orderBy?: products_hardwareOrderByWithRelationInput | products_hardwareOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing products_hardwares.
+     */
+    cursor?: products_hardwareWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` products_hardwares from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` products_hardwares.
+     */
+    skip?: number
+    distinct?: Products_hardwareScalarFieldEnum | Products_hardwareScalarFieldEnum[]
+  }
+
+  /**
+   * products_hardware create
+   */
+  export type products_hardwareCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the products_hardware
+     */
+    select?: products_hardwareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the products_hardware
+     */
+    omit?: products_hardwareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: products_hardwareInclude<ExtArgs> | null
+    /**
+     * The data needed to create a products_hardware.
+     */
+    data: XOR<products_hardwareCreateInput, products_hardwareUncheckedCreateInput>
+  }
+
+  /**
+   * products_hardware createMany
+   */
+  export type products_hardwareCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many products_hardwares.
+     */
+    data: products_hardwareCreateManyInput | products_hardwareCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * products_hardware createManyAndReturn
+   */
+  export type products_hardwareCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the products_hardware
+     */
+    select?: products_hardwareSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the products_hardware
+     */
+    omit?: products_hardwareOmit<ExtArgs> | null
+    /**
+     * The data used to create many products_hardwares.
+     */
+    data: products_hardwareCreateManyInput | products_hardwareCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: products_hardwareIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * products_hardware update
+   */
+  export type products_hardwareUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the products_hardware
+     */
+    select?: products_hardwareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the products_hardware
+     */
+    omit?: products_hardwareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: products_hardwareInclude<ExtArgs> | null
+    /**
+     * The data needed to update a products_hardware.
+     */
+    data: XOR<products_hardwareUpdateInput, products_hardwareUncheckedUpdateInput>
+    /**
+     * Choose, which products_hardware to update.
+     */
+    where: products_hardwareWhereUniqueInput
+  }
+
+  /**
+   * products_hardware updateMany
+   */
+  export type products_hardwareUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update products_hardwares.
+     */
+    data: XOR<products_hardwareUpdateManyMutationInput, products_hardwareUncheckedUpdateManyInput>
+    /**
+     * Filter which products_hardwares to update
+     */
+    where?: products_hardwareWhereInput
+    /**
+     * Limit how many products_hardwares to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * products_hardware updateManyAndReturn
+   */
+  export type products_hardwareUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the products_hardware
+     */
+    select?: products_hardwareSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the products_hardware
+     */
+    omit?: products_hardwareOmit<ExtArgs> | null
+    /**
+     * The data used to update products_hardwares.
+     */
+    data: XOR<products_hardwareUpdateManyMutationInput, products_hardwareUncheckedUpdateManyInput>
+    /**
+     * Filter which products_hardwares to update
+     */
+    where?: products_hardwareWhereInput
+    /**
+     * Limit how many products_hardwares to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: products_hardwareIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * products_hardware upsert
+   */
+  export type products_hardwareUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the products_hardware
+     */
+    select?: products_hardwareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the products_hardware
+     */
+    omit?: products_hardwareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: products_hardwareInclude<ExtArgs> | null
+    /**
+     * The filter to search for the products_hardware to update in case it exists.
+     */
+    where: products_hardwareWhereUniqueInput
+    /**
+     * In case the products_hardware found by the `where` argument doesn't exist, create a new products_hardware with this data.
+     */
+    create: XOR<products_hardwareCreateInput, products_hardwareUncheckedCreateInput>
+    /**
+     * In case the products_hardware was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<products_hardwareUpdateInput, products_hardwareUncheckedUpdateInput>
+  }
+
+  /**
+   * products_hardware delete
+   */
+  export type products_hardwareDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the products_hardware
+     */
+    select?: products_hardwareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the products_hardware
+     */
+    omit?: products_hardwareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: products_hardwareInclude<ExtArgs> | null
+    /**
+     * Filter which products_hardware to delete.
+     */
+    where: products_hardwareWhereUniqueInput
+  }
+
+  /**
+   * products_hardware deleteMany
+   */
+  export type products_hardwareDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which products_hardwares to delete
+     */
+    where?: products_hardwareWhereInput
+    /**
+     * Limit how many products_hardwares to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * products_hardware without action
+   */
+  export type products_hardwareDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the products_hardware
+     */
+    select?: products_hardwareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the products_hardware
+     */
+    omit?: products_hardwareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: products_hardwareInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model tag_categories
+   */
+
+  export type AggregateTag_categories = {
+    _count: Tag_categoriesCountAggregateOutputType | null
+    _avg: Tag_categoriesAvgAggregateOutputType | null
+    _sum: Tag_categoriesSumAggregateOutputType | null
+    _min: Tag_categoriesMinAggregateOutputType | null
+    _max: Tag_categoriesMaxAggregateOutputType | null
+  }
+
+  export type Tag_categoriesAvgAggregateOutputType = {
+    sort: number | null
+  }
+
+  export type Tag_categoriesSumAggregateOutputType = {
+    sort: number | null
+  }
+
+  export type Tag_categoriesMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    sort: number | null
+    categories_type: string | null
+  }
+
+  export type Tag_categoriesMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    sort: number | null
+    categories_type: string | null
+  }
+
+  export type Tag_categoriesCountAggregateOutputType = {
+    id: number
+    name: number
+    sort: number
+    categories_type: number
+    _all: number
+  }
+
+
+  export type Tag_categoriesAvgAggregateInputType = {
+    sort?: true
+  }
+
+  export type Tag_categoriesSumAggregateInputType = {
+    sort?: true
+  }
+
+  export type Tag_categoriesMinAggregateInputType = {
+    id?: true
+    name?: true
+    sort?: true
+    categories_type?: true
+  }
+
+  export type Tag_categoriesMaxAggregateInputType = {
+    id?: true
+    name?: true
+    sort?: true
+    categories_type?: true
+  }
+
+  export type Tag_categoriesCountAggregateInputType = {
+    id?: true
+    name?: true
+    sort?: true
+    categories_type?: true
+    _all?: true
+  }
+
+  export type Tag_categoriesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tag_categories to aggregate.
+     */
+    where?: tag_categoriesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tag_categories to fetch.
+     */
+    orderBy?: tag_categoriesOrderByWithRelationInput | tag_categoriesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: tag_categoriesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tag_categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tag_categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned tag_categories
+    **/
+    _count?: true | Tag_categoriesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Tag_categoriesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Tag_categoriesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Tag_categoriesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Tag_categoriesMaxAggregateInputType
+  }
+
+  export type GetTag_categoriesAggregateType<T extends Tag_categoriesAggregateArgs> = {
+        [P in keyof T & keyof AggregateTag_categories]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTag_categories[P]>
+      : GetScalarType<T[P], AggregateTag_categories[P]>
+  }
+
+
+
+
+  export type tag_categoriesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: tag_categoriesWhereInput
+    orderBy?: tag_categoriesOrderByWithAggregationInput | tag_categoriesOrderByWithAggregationInput[]
+    by: Tag_categoriesScalarFieldEnum[] | Tag_categoriesScalarFieldEnum
+    having?: tag_categoriesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Tag_categoriesCountAggregateInputType | true
+    _avg?: Tag_categoriesAvgAggregateInputType
+    _sum?: Tag_categoriesSumAggregateInputType
+    _min?: Tag_categoriesMinAggregateInputType
+    _max?: Tag_categoriesMaxAggregateInputType
+  }
+
+  export type Tag_categoriesGroupByOutputType = {
+    id: string
+    name: string
+    sort: number | null
+    categories_type: string | null
+    _count: Tag_categoriesCountAggregateOutputType | null
+    _avg: Tag_categoriesAvgAggregateOutputType | null
+    _sum: Tag_categoriesSumAggregateOutputType | null
+    _min: Tag_categoriesMinAggregateOutputType | null
+    _max: Tag_categoriesMaxAggregateOutputType | null
+  }
+
+  type GetTag_categoriesGroupByPayload<T extends tag_categoriesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Tag_categoriesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Tag_categoriesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Tag_categoriesGroupByOutputType[P]>
+            : GetScalarType<T[P], Tag_categoriesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type tag_categoriesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    sort?: boolean
+    categories_type?: boolean
+    tags?: boolean | tag_categories$tagsArgs<ExtArgs>
+    _count?: boolean | Tag_categoriesCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tag_categories"]>
+
+  export type tag_categoriesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    sort?: boolean
+    categories_type?: boolean
+  }, ExtArgs["result"]["tag_categories"]>
+
+  export type tag_categoriesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    sort?: boolean
+    categories_type?: boolean
+  }, ExtArgs["result"]["tag_categories"]>
+
+  export type tag_categoriesSelectScalar = {
+    id?: boolean
+    name?: boolean
+    sort?: boolean
+    categories_type?: boolean
+  }
+
+  export type tag_categoriesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "sort" | "categories_type", ExtArgs["result"]["tag_categories"]>
+  export type tag_categoriesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tags?: boolean | tag_categories$tagsArgs<ExtArgs>
+    _count?: boolean | Tag_categoriesCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type tag_categoriesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type tag_categoriesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $tag_categoriesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "tag_categories"
+    objects: {
+      tags: Prisma.$tagsPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      sort: number | null
+      categories_type: string | null
+    }, ExtArgs["result"]["tag_categories"]>
+    composites: {}
+  }
+
+  type tag_categoriesGetPayload<S extends boolean | null | undefined | tag_categoriesDefaultArgs> = $Result.GetResult<Prisma.$tag_categoriesPayload, S>
+
+  type tag_categoriesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<tag_categoriesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Tag_categoriesCountAggregateInputType | true
+    }
+
+  export interface tag_categoriesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['tag_categories'], meta: { name: 'tag_categories' } }
+    /**
+     * Find zero or one Tag_categories that matches the filter.
+     * @param {tag_categoriesFindUniqueArgs} args - Arguments to find a Tag_categories
+     * @example
+     * // Get one Tag_categories
+     * const tag_categories = await prisma.tag_categories.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends tag_categoriesFindUniqueArgs>(args: SelectSubset<T, tag_categoriesFindUniqueArgs<ExtArgs>>): Prisma__tag_categoriesClient<$Result.GetResult<Prisma.$tag_categoriesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Tag_categories that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {tag_categoriesFindUniqueOrThrowArgs} args - Arguments to find a Tag_categories
+     * @example
+     * // Get one Tag_categories
+     * const tag_categories = await prisma.tag_categories.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends tag_categoriesFindUniqueOrThrowArgs>(args: SelectSubset<T, tag_categoriesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__tag_categoriesClient<$Result.GetResult<Prisma.$tag_categoriesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tag_categories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tag_categoriesFindFirstArgs} args - Arguments to find a Tag_categories
+     * @example
+     * // Get one Tag_categories
+     * const tag_categories = await prisma.tag_categories.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends tag_categoriesFindFirstArgs>(args?: SelectSubset<T, tag_categoriesFindFirstArgs<ExtArgs>>): Prisma__tag_categoriesClient<$Result.GetResult<Prisma.$tag_categoriesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tag_categories that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tag_categoriesFindFirstOrThrowArgs} args - Arguments to find a Tag_categories
+     * @example
+     * // Get one Tag_categories
+     * const tag_categories = await prisma.tag_categories.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends tag_categoriesFindFirstOrThrowArgs>(args?: SelectSubset<T, tag_categoriesFindFirstOrThrowArgs<ExtArgs>>): Prisma__tag_categoriesClient<$Result.GetResult<Prisma.$tag_categoriesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Tag_categories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tag_categoriesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Tag_categories
+     * const tag_categories = await prisma.tag_categories.findMany()
+     * 
+     * // Get first 10 Tag_categories
+     * const tag_categories = await prisma.tag_categories.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tag_categoriesWithIdOnly = await prisma.tag_categories.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends tag_categoriesFindManyArgs>(args?: SelectSubset<T, tag_categoriesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tag_categoriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Tag_categories.
+     * @param {tag_categoriesCreateArgs} args - Arguments to create a Tag_categories.
+     * @example
+     * // Create one Tag_categories
+     * const Tag_categories = await prisma.tag_categories.create({
+     *   data: {
+     *     // ... data to create a Tag_categories
+     *   }
+     * })
+     * 
+     */
+    create<T extends tag_categoriesCreateArgs>(args: SelectSubset<T, tag_categoriesCreateArgs<ExtArgs>>): Prisma__tag_categoriesClient<$Result.GetResult<Prisma.$tag_categoriesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Tag_categories.
+     * @param {tag_categoriesCreateManyArgs} args - Arguments to create many Tag_categories.
+     * @example
+     * // Create many Tag_categories
+     * const tag_categories = await prisma.tag_categories.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends tag_categoriesCreateManyArgs>(args?: SelectSubset<T, tag_categoriesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Tag_categories and returns the data saved in the database.
+     * @param {tag_categoriesCreateManyAndReturnArgs} args - Arguments to create many Tag_categories.
+     * @example
+     * // Create many Tag_categories
+     * const tag_categories = await prisma.tag_categories.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Tag_categories and only return the `id`
+     * const tag_categoriesWithIdOnly = await prisma.tag_categories.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends tag_categoriesCreateManyAndReturnArgs>(args?: SelectSubset<T, tag_categoriesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tag_categoriesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Tag_categories.
+     * @param {tag_categoriesDeleteArgs} args - Arguments to delete one Tag_categories.
+     * @example
+     * // Delete one Tag_categories
+     * const Tag_categories = await prisma.tag_categories.delete({
+     *   where: {
+     *     // ... filter to delete one Tag_categories
+     *   }
+     * })
+     * 
+     */
+    delete<T extends tag_categoriesDeleteArgs>(args: SelectSubset<T, tag_categoriesDeleteArgs<ExtArgs>>): Prisma__tag_categoriesClient<$Result.GetResult<Prisma.$tag_categoriesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Tag_categories.
+     * @param {tag_categoriesUpdateArgs} args - Arguments to update one Tag_categories.
+     * @example
+     * // Update one Tag_categories
+     * const tag_categories = await prisma.tag_categories.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends tag_categoriesUpdateArgs>(args: SelectSubset<T, tag_categoriesUpdateArgs<ExtArgs>>): Prisma__tag_categoriesClient<$Result.GetResult<Prisma.$tag_categoriesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Tag_categories.
+     * @param {tag_categoriesDeleteManyArgs} args - Arguments to filter Tag_categories to delete.
+     * @example
+     * // Delete a few Tag_categories
+     * const { count } = await prisma.tag_categories.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends tag_categoriesDeleteManyArgs>(args?: SelectSubset<T, tag_categoriesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tag_categories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tag_categoriesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Tag_categories
+     * const tag_categories = await prisma.tag_categories.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends tag_categoriesUpdateManyArgs>(args: SelectSubset<T, tag_categoriesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tag_categories and returns the data updated in the database.
+     * @param {tag_categoriesUpdateManyAndReturnArgs} args - Arguments to update many Tag_categories.
+     * @example
+     * // Update many Tag_categories
+     * const tag_categories = await prisma.tag_categories.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Tag_categories and only return the `id`
+     * const tag_categoriesWithIdOnly = await prisma.tag_categories.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends tag_categoriesUpdateManyAndReturnArgs>(args: SelectSubset<T, tag_categoriesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tag_categoriesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Tag_categories.
+     * @param {tag_categoriesUpsertArgs} args - Arguments to update or create a Tag_categories.
+     * @example
+     * // Update or create a Tag_categories
+     * const tag_categories = await prisma.tag_categories.upsert({
+     *   create: {
+     *     // ... data to create a Tag_categories
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Tag_categories we want to update
+     *   }
+     * })
+     */
+    upsert<T extends tag_categoriesUpsertArgs>(args: SelectSubset<T, tag_categoriesUpsertArgs<ExtArgs>>): Prisma__tag_categoriesClient<$Result.GetResult<Prisma.$tag_categoriesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Tag_categories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tag_categoriesCountArgs} args - Arguments to filter Tag_categories to count.
+     * @example
+     * // Count the number of Tag_categories
+     * const count = await prisma.tag_categories.count({
+     *   where: {
+     *     // ... the filter for the Tag_categories we want to count
+     *   }
+     * })
+    **/
+    count<T extends tag_categoriesCountArgs>(
+      args?: Subset<T, tag_categoriesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Tag_categoriesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Tag_categories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Tag_categoriesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Tag_categoriesAggregateArgs>(args: Subset<T, Tag_categoriesAggregateArgs>): Prisma.PrismaPromise<GetTag_categoriesAggregateType<T>>
+
+    /**
+     * Group by Tag_categories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tag_categoriesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends tag_categoriesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: tag_categoriesGroupByArgs['orderBy'] }
+        : { orderBy?: tag_categoriesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, tag_categoriesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTag_categoriesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the tag_categories model
+   */
+  readonly fields: tag_categoriesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for tag_categories.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__tag_categoriesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tags<T extends tag_categories$tagsArgs<ExtArgs> = {}>(args?: Subset<T, tag_categories$tagsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tagsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the tag_categories model
+   */
+  interface tag_categoriesFieldRefs {
+    readonly id: FieldRef<"tag_categories", 'String'>
+    readonly name: FieldRef<"tag_categories", 'String'>
+    readonly sort: FieldRef<"tag_categories", 'Int'>
+    readonly categories_type: FieldRef<"tag_categories", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * tag_categories findUnique
+   */
+  export type tag_categoriesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tag_categories
+     */
+    select?: tag_categoriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tag_categories
+     */
+    omit?: tag_categoriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tag_categoriesInclude<ExtArgs> | null
+    /**
+     * Filter, which tag_categories to fetch.
+     */
+    where: tag_categoriesWhereUniqueInput
+  }
+
+  /**
+   * tag_categories findUniqueOrThrow
+   */
+  export type tag_categoriesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tag_categories
+     */
+    select?: tag_categoriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tag_categories
+     */
+    omit?: tag_categoriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tag_categoriesInclude<ExtArgs> | null
+    /**
+     * Filter, which tag_categories to fetch.
+     */
+    where: tag_categoriesWhereUniqueInput
+  }
+
+  /**
+   * tag_categories findFirst
+   */
+  export type tag_categoriesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tag_categories
+     */
+    select?: tag_categoriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tag_categories
+     */
+    omit?: tag_categoriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tag_categoriesInclude<ExtArgs> | null
+    /**
+     * Filter, which tag_categories to fetch.
+     */
+    where?: tag_categoriesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tag_categories to fetch.
+     */
+    orderBy?: tag_categoriesOrderByWithRelationInput | tag_categoriesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tag_categories.
+     */
+    cursor?: tag_categoriesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tag_categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tag_categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tag_categories.
+     */
+    distinct?: Tag_categoriesScalarFieldEnum | Tag_categoriesScalarFieldEnum[]
+  }
+
+  /**
+   * tag_categories findFirstOrThrow
+   */
+  export type tag_categoriesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tag_categories
+     */
+    select?: tag_categoriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tag_categories
+     */
+    omit?: tag_categoriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tag_categoriesInclude<ExtArgs> | null
+    /**
+     * Filter, which tag_categories to fetch.
+     */
+    where?: tag_categoriesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tag_categories to fetch.
+     */
+    orderBy?: tag_categoriesOrderByWithRelationInput | tag_categoriesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tag_categories.
+     */
+    cursor?: tag_categoriesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tag_categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tag_categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tag_categories.
+     */
+    distinct?: Tag_categoriesScalarFieldEnum | Tag_categoriesScalarFieldEnum[]
+  }
+
+  /**
+   * tag_categories findMany
+   */
+  export type tag_categoriesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tag_categories
+     */
+    select?: tag_categoriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tag_categories
+     */
+    omit?: tag_categoriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tag_categoriesInclude<ExtArgs> | null
+    /**
+     * Filter, which tag_categories to fetch.
+     */
+    where?: tag_categoriesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tag_categories to fetch.
+     */
+    orderBy?: tag_categoriesOrderByWithRelationInput | tag_categoriesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing tag_categories.
+     */
+    cursor?: tag_categoriesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tag_categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tag_categories.
+     */
+    skip?: number
+    distinct?: Tag_categoriesScalarFieldEnum | Tag_categoriesScalarFieldEnum[]
+  }
+
+  /**
+   * tag_categories create
+   */
+  export type tag_categoriesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tag_categories
+     */
+    select?: tag_categoriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tag_categories
+     */
+    omit?: tag_categoriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tag_categoriesInclude<ExtArgs> | null
+    /**
+     * The data needed to create a tag_categories.
+     */
+    data: XOR<tag_categoriesCreateInput, tag_categoriesUncheckedCreateInput>
+  }
+
+  /**
+   * tag_categories createMany
+   */
+  export type tag_categoriesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many tag_categories.
+     */
+    data: tag_categoriesCreateManyInput | tag_categoriesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * tag_categories createManyAndReturn
+   */
+  export type tag_categoriesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tag_categories
+     */
+    select?: tag_categoriesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the tag_categories
+     */
+    omit?: tag_categoriesOmit<ExtArgs> | null
+    /**
+     * The data used to create many tag_categories.
+     */
+    data: tag_categoriesCreateManyInput | tag_categoriesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * tag_categories update
+   */
+  export type tag_categoriesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tag_categories
+     */
+    select?: tag_categoriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tag_categories
+     */
+    omit?: tag_categoriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tag_categoriesInclude<ExtArgs> | null
+    /**
+     * The data needed to update a tag_categories.
+     */
+    data: XOR<tag_categoriesUpdateInput, tag_categoriesUncheckedUpdateInput>
+    /**
+     * Choose, which tag_categories to update.
+     */
+    where: tag_categoriesWhereUniqueInput
+  }
+
+  /**
+   * tag_categories updateMany
+   */
+  export type tag_categoriesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update tag_categories.
+     */
+    data: XOR<tag_categoriesUpdateManyMutationInput, tag_categoriesUncheckedUpdateManyInput>
+    /**
+     * Filter which tag_categories to update
+     */
+    where?: tag_categoriesWhereInput
+    /**
+     * Limit how many tag_categories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * tag_categories updateManyAndReturn
+   */
+  export type tag_categoriesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tag_categories
+     */
+    select?: tag_categoriesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the tag_categories
+     */
+    omit?: tag_categoriesOmit<ExtArgs> | null
+    /**
+     * The data used to update tag_categories.
+     */
+    data: XOR<tag_categoriesUpdateManyMutationInput, tag_categoriesUncheckedUpdateManyInput>
+    /**
+     * Filter which tag_categories to update
+     */
+    where?: tag_categoriesWhereInput
+    /**
+     * Limit how many tag_categories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * tag_categories upsert
+   */
+  export type tag_categoriesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tag_categories
+     */
+    select?: tag_categoriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tag_categories
+     */
+    omit?: tag_categoriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tag_categoriesInclude<ExtArgs> | null
+    /**
+     * The filter to search for the tag_categories to update in case it exists.
+     */
+    where: tag_categoriesWhereUniqueInput
+    /**
+     * In case the tag_categories found by the `where` argument doesn't exist, create a new tag_categories with this data.
+     */
+    create: XOR<tag_categoriesCreateInput, tag_categoriesUncheckedCreateInput>
+    /**
+     * In case the tag_categories was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<tag_categoriesUpdateInput, tag_categoriesUncheckedUpdateInput>
+  }
+
+  /**
+   * tag_categories delete
+   */
+  export type tag_categoriesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tag_categories
+     */
+    select?: tag_categoriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tag_categories
+     */
+    omit?: tag_categoriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tag_categoriesInclude<ExtArgs> | null
+    /**
+     * Filter which tag_categories to delete.
+     */
+    where: tag_categoriesWhereUniqueInput
+  }
+
+  /**
+   * tag_categories deleteMany
+   */
+  export type tag_categoriesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tag_categories to delete
+     */
+    where?: tag_categoriesWhereInput
+    /**
+     * Limit how many tag_categories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * tag_categories.tags
+   */
+  export type tag_categories$tagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tags
+     */
+    select?: tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tags
+     */
+    omit?: tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tagsInclude<ExtArgs> | null
+    where?: tagsWhereInput
+    orderBy?: tagsOrderByWithRelationInput | tagsOrderByWithRelationInput[]
+    cursor?: tagsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TagsScalarFieldEnum | TagsScalarFieldEnum[]
+  }
+
+  /**
+   * tag_categories without action
+   */
+  export type tag_categoriesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tag_categories
+     */
+    select?: tag_categoriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tag_categories
+     */
+    omit?: tag_categoriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tag_categoriesInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model tags
+   */
+
+  export type AggregateTags = {
+    _count: TagsCountAggregateOutputType | null
+    _avg: TagsAvgAggregateOutputType | null
+    _sum: TagsSumAggregateOutputType | null
+    _min: TagsMinAggregateOutputType | null
+    _max: TagsMaxAggregateOutputType | null
+  }
+
+  export type TagsAvgAggregateOutputType = {
+    sort_type: number | null
+    sort_order: number | null
+  }
+
+  export type TagsSumAggregateOutputType = {
+    sort_type: number | null
+    sort_order: number | null
+  }
+
+  export type TagsMinAggregateOutputType = {
+    id: string | null
+    created_id: string | null
+    product_spec: string | null
+    product_size: string | null
+    sort_type: number | null
+    sort_order: number | null
+    spec_size: string | null
+  }
+
+  export type TagsMaxAggregateOutputType = {
+    id: string | null
+    created_id: string | null
+    product_spec: string | null
+    product_size: string | null
+    sort_type: number | null
+    sort_order: number | null
+    spec_size: string | null
+  }
+
+  export type TagsCountAggregateOutputType = {
+    id: number
+    created_id: number
+    product_spec: number
+    product_size: number
+    sort_type: number
+    sort_order: number
+    spec_size: number
+    _all: number
+  }
+
+
+  export type TagsAvgAggregateInputType = {
+    sort_type?: true
+    sort_order?: true
+  }
+
+  export type TagsSumAggregateInputType = {
+    sort_type?: true
+    sort_order?: true
+  }
+
+  export type TagsMinAggregateInputType = {
+    id?: true
+    created_id?: true
+    product_spec?: true
+    product_size?: true
+    sort_type?: true
+    sort_order?: true
+    spec_size?: true
+  }
+
+  export type TagsMaxAggregateInputType = {
+    id?: true
+    created_id?: true
+    product_spec?: true
+    product_size?: true
+    sort_type?: true
+    sort_order?: true
+    spec_size?: true
+  }
+
+  export type TagsCountAggregateInputType = {
+    id?: true
+    created_id?: true
+    product_spec?: true
+    product_size?: true
+    sort_type?: true
+    sort_order?: true
+    spec_size?: true
+    _all?: true
+  }
+
+  export type TagsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tags to aggregate.
+     */
+    where?: tagsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tags to fetch.
+     */
+    orderBy?: tagsOrderByWithRelationInput | tagsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: tagsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned tags
+    **/
+    _count?: true | TagsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TagsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TagsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TagsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TagsMaxAggregateInputType
+  }
+
+  export type GetTagsAggregateType<T extends TagsAggregateArgs> = {
+        [P in keyof T & keyof AggregateTags]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTags[P]>
+      : GetScalarType<T[P], AggregateTags[P]>
+  }
+
+
+
+
+  export type tagsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: tagsWhereInput
+    orderBy?: tagsOrderByWithAggregationInput | tagsOrderByWithAggregationInput[]
+    by: TagsScalarFieldEnum[] | TagsScalarFieldEnum
+    having?: tagsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TagsCountAggregateInputType | true
+    _avg?: TagsAvgAggregateInputType
+    _sum?: TagsSumAggregateInputType
+    _min?: TagsMinAggregateInputType
+    _max?: TagsMaxAggregateInputType
+  }
+
+  export type TagsGroupByOutputType = {
+    id: string
+    created_id: string
+    product_spec: string | null
+    product_size: string | null
+    sort_type: number | null
+    sort_order: number | null
+    spec_size: string | null
+    _count: TagsCountAggregateOutputType | null
+    _avg: TagsAvgAggregateOutputType | null
+    _sum: TagsSumAggregateOutputType | null
+    _min: TagsMinAggregateOutputType | null
+    _max: TagsMaxAggregateOutputType | null
+  }
+
+  type GetTagsGroupByPayload<T extends tagsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TagsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TagsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TagsGroupByOutputType[P]>
+            : GetScalarType<T[P], TagsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type tagsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    created_id?: boolean
+    product_spec?: boolean
+    product_size?: boolean
+    sort_type?: boolean
+    sort_order?: boolean
+    spec_size?: boolean
+    product_tags?: boolean | tags$product_tagsArgs<ExtArgs>
+    tag_categories?: boolean | tag_categoriesDefaultArgs<ExtArgs>
+    _count?: boolean | TagsCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tags"]>
+
+  export type tagsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    created_id?: boolean
+    product_spec?: boolean
+    product_size?: boolean
+    sort_type?: boolean
+    sort_order?: boolean
+    spec_size?: boolean
+    tag_categories?: boolean | tag_categoriesDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tags"]>
+
+  export type tagsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    created_id?: boolean
+    product_spec?: boolean
+    product_size?: boolean
+    sort_type?: boolean
+    sort_order?: boolean
+    spec_size?: boolean
+    tag_categories?: boolean | tag_categoriesDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tags"]>
+
+  export type tagsSelectScalar = {
+    id?: boolean
+    created_id?: boolean
+    product_spec?: boolean
+    product_size?: boolean
+    sort_type?: boolean
+    sort_order?: boolean
+    spec_size?: boolean
+  }
+
+  export type tagsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_id" | "product_spec" | "product_size" | "sort_type" | "sort_order" | "spec_size", ExtArgs["result"]["tags"]>
+  export type tagsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product_tags?: boolean | tags$product_tagsArgs<ExtArgs>
+    tag_categories?: boolean | tag_categoriesDefaultArgs<ExtArgs>
+    _count?: boolean | TagsCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type tagsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tag_categories?: boolean | tag_categoriesDefaultArgs<ExtArgs>
+  }
+  export type tagsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tag_categories?: boolean | tag_categoriesDefaultArgs<ExtArgs>
+  }
+
+  export type $tagsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "tags"
+    objects: {
+      product_tags: Prisma.$product_tagsPayload<ExtArgs>[]
+      tag_categories: Prisma.$tag_categoriesPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      created_id: string
+      product_spec: string | null
+      product_size: string | null
+      sort_type: number | null
+      sort_order: number | null
+      spec_size: string | null
+    }, ExtArgs["result"]["tags"]>
+    composites: {}
+  }
+
+  type tagsGetPayload<S extends boolean | null | undefined | tagsDefaultArgs> = $Result.GetResult<Prisma.$tagsPayload, S>
+
+  type tagsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<tagsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TagsCountAggregateInputType | true
+    }
+
+  export interface tagsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['tags'], meta: { name: 'tags' } }
+    /**
+     * Find zero or one Tags that matches the filter.
+     * @param {tagsFindUniqueArgs} args - Arguments to find a Tags
+     * @example
+     * // Get one Tags
+     * const tags = await prisma.tags.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends tagsFindUniqueArgs>(args: SelectSubset<T, tagsFindUniqueArgs<ExtArgs>>): Prisma__tagsClient<$Result.GetResult<Prisma.$tagsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Tags that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {tagsFindUniqueOrThrowArgs} args - Arguments to find a Tags
+     * @example
+     * // Get one Tags
+     * const tags = await prisma.tags.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends tagsFindUniqueOrThrowArgs>(args: SelectSubset<T, tagsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__tagsClient<$Result.GetResult<Prisma.$tagsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tags that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tagsFindFirstArgs} args - Arguments to find a Tags
+     * @example
+     * // Get one Tags
+     * const tags = await prisma.tags.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends tagsFindFirstArgs>(args?: SelectSubset<T, tagsFindFirstArgs<ExtArgs>>): Prisma__tagsClient<$Result.GetResult<Prisma.$tagsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tags that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tagsFindFirstOrThrowArgs} args - Arguments to find a Tags
+     * @example
+     * // Get one Tags
+     * const tags = await prisma.tags.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends tagsFindFirstOrThrowArgs>(args?: SelectSubset<T, tagsFindFirstOrThrowArgs<ExtArgs>>): Prisma__tagsClient<$Result.GetResult<Prisma.$tagsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Tags that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tagsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Tags
+     * const tags = await prisma.tags.findMany()
+     * 
+     * // Get first 10 Tags
+     * const tags = await prisma.tags.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tagsWithIdOnly = await prisma.tags.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends tagsFindManyArgs>(args?: SelectSubset<T, tagsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tagsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Tags.
+     * @param {tagsCreateArgs} args - Arguments to create a Tags.
+     * @example
+     * // Create one Tags
+     * const Tags = await prisma.tags.create({
+     *   data: {
+     *     // ... data to create a Tags
+     *   }
+     * })
+     * 
+     */
+    create<T extends tagsCreateArgs>(args: SelectSubset<T, tagsCreateArgs<ExtArgs>>): Prisma__tagsClient<$Result.GetResult<Prisma.$tagsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Tags.
+     * @param {tagsCreateManyArgs} args - Arguments to create many Tags.
+     * @example
+     * // Create many Tags
+     * const tags = await prisma.tags.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends tagsCreateManyArgs>(args?: SelectSubset<T, tagsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Tags and returns the data saved in the database.
+     * @param {tagsCreateManyAndReturnArgs} args - Arguments to create many Tags.
+     * @example
+     * // Create many Tags
+     * const tags = await prisma.tags.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Tags and only return the `id`
+     * const tagsWithIdOnly = await prisma.tags.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends tagsCreateManyAndReturnArgs>(args?: SelectSubset<T, tagsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tagsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Tags.
+     * @param {tagsDeleteArgs} args - Arguments to delete one Tags.
+     * @example
+     * // Delete one Tags
+     * const Tags = await prisma.tags.delete({
+     *   where: {
+     *     // ... filter to delete one Tags
+     *   }
+     * })
+     * 
+     */
+    delete<T extends tagsDeleteArgs>(args: SelectSubset<T, tagsDeleteArgs<ExtArgs>>): Prisma__tagsClient<$Result.GetResult<Prisma.$tagsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Tags.
+     * @param {tagsUpdateArgs} args - Arguments to update one Tags.
+     * @example
+     * // Update one Tags
+     * const tags = await prisma.tags.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends tagsUpdateArgs>(args: SelectSubset<T, tagsUpdateArgs<ExtArgs>>): Prisma__tagsClient<$Result.GetResult<Prisma.$tagsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Tags.
+     * @param {tagsDeleteManyArgs} args - Arguments to filter Tags to delete.
+     * @example
+     * // Delete a few Tags
+     * const { count } = await prisma.tags.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends tagsDeleteManyArgs>(args?: SelectSubset<T, tagsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tagsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Tags
+     * const tags = await prisma.tags.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends tagsUpdateManyArgs>(args: SelectSubset<T, tagsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tags and returns the data updated in the database.
+     * @param {tagsUpdateManyAndReturnArgs} args - Arguments to update many Tags.
+     * @example
+     * // Update many Tags
+     * const tags = await prisma.tags.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Tags and only return the `id`
+     * const tagsWithIdOnly = await prisma.tags.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends tagsUpdateManyAndReturnArgs>(args: SelectSubset<T, tagsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tagsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Tags.
+     * @param {tagsUpsertArgs} args - Arguments to update or create a Tags.
+     * @example
+     * // Update or create a Tags
+     * const tags = await prisma.tags.upsert({
+     *   create: {
+     *     // ... data to create a Tags
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Tags we want to update
+     *   }
+     * })
+     */
+    upsert<T extends tagsUpsertArgs>(args: SelectSubset<T, tagsUpsertArgs<ExtArgs>>): Prisma__tagsClient<$Result.GetResult<Prisma.$tagsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Tags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tagsCountArgs} args - Arguments to filter Tags to count.
+     * @example
+     * // Count the number of Tags
+     * const count = await prisma.tags.count({
+     *   where: {
+     *     // ... the filter for the Tags we want to count
+     *   }
+     * })
+    **/
+    count<T extends tagsCountArgs>(
+      args?: Subset<T, tagsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TagsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Tags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TagsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TagsAggregateArgs>(args: Subset<T, TagsAggregateArgs>): Prisma.PrismaPromise<GetTagsAggregateType<T>>
+
+    /**
+     * Group by Tags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tagsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends tagsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: tagsGroupByArgs['orderBy'] }
+        : { orderBy?: tagsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, tagsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTagsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the tags model
+   */
+  readonly fields: tagsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for tags.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__tagsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    product_tags<T extends tags$product_tagsArgs<ExtArgs> = {}>(args?: Subset<T, tags$product_tagsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$product_tagsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    tag_categories<T extends tag_categoriesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, tag_categoriesDefaultArgs<ExtArgs>>): Prisma__tag_categoriesClient<$Result.GetResult<Prisma.$tag_categoriesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the tags model
+   */
+  interface tagsFieldRefs {
+    readonly id: FieldRef<"tags", 'String'>
+    readonly created_id: FieldRef<"tags", 'String'>
+    readonly product_spec: FieldRef<"tags", 'String'>
+    readonly product_size: FieldRef<"tags", 'String'>
+    readonly sort_type: FieldRef<"tags", 'Int'>
+    readonly sort_order: FieldRef<"tags", 'Int'>
+    readonly spec_size: FieldRef<"tags", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * tags findUnique
+   */
+  export type tagsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tags
+     */
+    select?: tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tags
+     */
+    omit?: tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tagsInclude<ExtArgs> | null
+    /**
+     * Filter, which tags to fetch.
+     */
+    where: tagsWhereUniqueInput
+  }
+
+  /**
+   * tags findUniqueOrThrow
+   */
+  export type tagsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tags
+     */
+    select?: tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tags
+     */
+    omit?: tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tagsInclude<ExtArgs> | null
+    /**
+     * Filter, which tags to fetch.
+     */
+    where: tagsWhereUniqueInput
+  }
+
+  /**
+   * tags findFirst
+   */
+  export type tagsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tags
+     */
+    select?: tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tags
+     */
+    omit?: tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tagsInclude<ExtArgs> | null
+    /**
+     * Filter, which tags to fetch.
+     */
+    where?: tagsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tags to fetch.
+     */
+    orderBy?: tagsOrderByWithRelationInput | tagsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tags.
+     */
+    cursor?: tagsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tags.
+     */
+    distinct?: TagsScalarFieldEnum | TagsScalarFieldEnum[]
+  }
+
+  /**
+   * tags findFirstOrThrow
+   */
+  export type tagsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tags
+     */
+    select?: tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tags
+     */
+    omit?: tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tagsInclude<ExtArgs> | null
+    /**
+     * Filter, which tags to fetch.
+     */
+    where?: tagsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tags to fetch.
+     */
+    orderBy?: tagsOrderByWithRelationInput | tagsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tags.
+     */
+    cursor?: tagsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tags.
+     */
+    distinct?: TagsScalarFieldEnum | TagsScalarFieldEnum[]
+  }
+
+  /**
+   * tags findMany
+   */
+  export type tagsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tags
+     */
+    select?: tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tags
+     */
+    omit?: tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tagsInclude<ExtArgs> | null
+    /**
+     * Filter, which tags to fetch.
+     */
+    where?: tagsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tags to fetch.
+     */
+    orderBy?: tagsOrderByWithRelationInput | tagsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing tags.
+     */
+    cursor?: tagsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tags.
+     */
+    skip?: number
+    distinct?: TagsScalarFieldEnum | TagsScalarFieldEnum[]
+  }
+
+  /**
+   * tags create
+   */
+  export type tagsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tags
+     */
+    select?: tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tags
+     */
+    omit?: tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tagsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a tags.
+     */
+    data: XOR<tagsCreateInput, tagsUncheckedCreateInput>
+  }
+
+  /**
+   * tags createMany
+   */
+  export type tagsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many tags.
+     */
+    data: tagsCreateManyInput | tagsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * tags createManyAndReturn
+   */
+  export type tagsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tags
+     */
+    select?: tagsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the tags
+     */
+    omit?: tagsOmit<ExtArgs> | null
+    /**
+     * The data used to create many tags.
+     */
+    data: tagsCreateManyInput | tagsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tagsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * tags update
+   */
+  export type tagsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tags
+     */
+    select?: tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tags
+     */
+    omit?: tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tagsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a tags.
+     */
+    data: XOR<tagsUpdateInput, tagsUncheckedUpdateInput>
+    /**
+     * Choose, which tags to update.
+     */
+    where: tagsWhereUniqueInput
+  }
+
+  /**
+   * tags updateMany
+   */
+  export type tagsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update tags.
+     */
+    data: XOR<tagsUpdateManyMutationInput, tagsUncheckedUpdateManyInput>
+    /**
+     * Filter which tags to update
+     */
+    where?: tagsWhereInput
+    /**
+     * Limit how many tags to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * tags updateManyAndReturn
+   */
+  export type tagsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tags
+     */
+    select?: tagsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the tags
+     */
+    omit?: tagsOmit<ExtArgs> | null
+    /**
+     * The data used to update tags.
+     */
+    data: XOR<tagsUpdateManyMutationInput, tagsUncheckedUpdateManyInput>
+    /**
+     * Filter which tags to update
+     */
+    where?: tagsWhereInput
+    /**
+     * Limit how many tags to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tagsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * tags upsert
+   */
+  export type tagsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tags
+     */
+    select?: tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tags
+     */
+    omit?: tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tagsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the tags to update in case it exists.
+     */
+    where: tagsWhereUniqueInput
+    /**
+     * In case the tags found by the `where` argument doesn't exist, create a new tags with this data.
+     */
+    create: XOR<tagsCreateInput, tagsUncheckedCreateInput>
+    /**
+     * In case the tags was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<tagsUpdateInput, tagsUncheckedUpdateInput>
+  }
+
+  /**
+   * tags delete
+   */
+  export type tagsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tags
+     */
+    select?: tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tags
+     */
+    omit?: tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tagsInclude<ExtArgs> | null
+    /**
+     * Filter which tags to delete.
+     */
+    where: tagsWhereUniqueInput
+  }
+
+  /**
+   * tags deleteMany
+   */
+  export type tagsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tags to delete
+     */
+    where?: tagsWhereInput
+    /**
+     * Limit how many tags to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * tags.product_tags
+   */
+  export type tags$product_tagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_tags
+     */
+    select?: product_tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_tags
+     */
+    omit?: product_tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_tagsInclude<ExtArgs> | null
+    where?: product_tagsWhereInput
+    orderBy?: product_tagsOrderByWithRelationInput | product_tagsOrderByWithRelationInput[]
+    cursor?: product_tagsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Product_tagsScalarFieldEnum | Product_tagsScalarFieldEnum[]
+  }
+
+  /**
+   * tags without action
+   */
+  export type tagsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tags
+     */
+    select?: tagsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tags
+     */
+    omit?: tagsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tagsInclude<ExtArgs> | null
+  }
+
 
   /**
    * Model User
@@ -1446,9 +7849,9 @@ export namespace Prisma {
 
   export type UserMinAggregateOutputType = {
     id: string | null
-    name: string | null
     email: string | null
     password: string | null
+    name: string | null
     role: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -1456,9 +7859,9 @@ export namespace Prisma {
 
   export type UserMaxAggregateOutputType = {
     id: string | null
-    name: string | null
     email: string | null
     password: string | null
+    name: string | null
     role: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -1466,9 +7869,9 @@ export namespace Prisma {
 
   export type UserCountAggregateOutputType = {
     id: number
-    name: number
     email: number
     password: number
+    name: number
     role: number
     createdAt: number
     updatedAt: number
@@ -1478,9 +7881,9 @@ export namespace Prisma {
 
   export type UserMinAggregateInputType = {
     id?: true
-    name?: true
     email?: true
     password?: true
+    name?: true
     role?: true
     createdAt?: true
     updatedAt?: true
@@ -1488,9 +7891,9 @@ export namespace Prisma {
 
   export type UserMaxAggregateInputType = {
     id?: true
-    name?: true
     email?: true
     password?: true
+    name?: true
     role?: true
     createdAt?: true
     updatedAt?: true
@@ -1498,9 +7901,9 @@ export namespace Prisma {
 
   export type UserCountAggregateInputType = {
     id?: true
-    name?: true
     email?: true
     password?: true
+    name?: true
     role?: true
     createdAt?: true
     updatedAt?: true
@@ -1581,9 +7984,9 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: string
-    name: string
     email: string
     password: string
+    name: string
     role: string
     createdAt: Date
     updatedAt: Date
@@ -1608,9 +8011,9 @@ export namespace Prisma {
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
     email?: boolean
     password?: boolean
+    name?: boolean
     role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -1618,9 +8021,9 @@ export namespace Prisma {
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
     email?: boolean
     password?: boolean
+    name?: boolean
     role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -1628,9 +8031,9 @@ export namespace Prisma {
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
     email?: boolean
     password?: boolean
+    name?: boolean
     role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -1638,24 +8041,24 @@ export namespace Prisma {
 
   export type UserSelectScalar = {
     id?: boolean
-    name?: boolean
     email?: boolean
     password?: boolean
+    name?: boolean
     role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "name" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      name: string
       email: string
       password: string
+      name: string
       role: string
       createdAt: Date
       updatedAt: Date
@@ -2083,9 +8486,9 @@ export namespace Prisma {
    */
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'String'>
-    readonly name: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
+    readonly name: FieldRef<"User", 'String'>
     readonly role: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
@@ -2294,6 +8697,7 @@ export namespace Prisma {
      * The data used to create many Users.
      */
     data: UserCreateManyInput | UserCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -2312,6 +8716,7 @@ export namespace Prisma {
      * The data used to create many Users.
      */
     data: UserCreateManyInput | UserCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -2454,382 +8859,370 @@ export namespace Prisma {
 
 
   /**
-   * Model Category
+   * Model Footer
    */
 
-  export type AggregateCategory = {
-    _count: CategoryCountAggregateOutputType | null
-    _min: CategoryMinAggregateOutputType | null
-    _max: CategoryMaxAggregateOutputType | null
+  export type AggregateFooter = {
+    _count: FooterCountAggregateOutputType | null
+    _min: FooterMinAggregateOutputType | null
+    _max: FooterMaxAggregateOutputType | null
   }
 
-  export type CategoryMinAggregateOutputType = {
+  export type FooterMinAggregateOutputType = {
     id: string | null
-    name: string | null
-    slug: string | null
-    description: string | null
-    parentId: string | null
+    icpNumber: string | null
+    icpLink: string | null
+    copyright: string | null
+    isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type CategoryMaxAggregateOutputType = {
+  export type FooterMaxAggregateOutputType = {
     id: string | null
-    name: string | null
-    slug: string | null
-    description: string | null
-    parentId: string | null
+    icpNumber: string | null
+    icpLink: string | null
+    copyright: string | null
+    isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type CategoryCountAggregateOutputType = {
+  export type FooterCountAggregateOutputType = {
     id: number
-    name: number
-    slug: number
-    description: number
-    parentId: number
+    icpNumber: number
+    icpLink: number
+    copyright: number
+    isActive: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
 
-  export type CategoryMinAggregateInputType = {
+  export type FooterMinAggregateInputType = {
     id?: true
-    name?: true
-    slug?: true
-    description?: true
-    parentId?: true
+    icpNumber?: true
+    icpLink?: true
+    copyright?: true
+    isActive?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type CategoryMaxAggregateInputType = {
+  export type FooterMaxAggregateInputType = {
     id?: true
-    name?: true
-    slug?: true
-    description?: true
-    parentId?: true
+    icpNumber?: true
+    icpLink?: true
+    copyright?: true
+    isActive?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type CategoryCountAggregateInputType = {
+  export type FooterCountAggregateInputType = {
     id?: true
-    name?: true
-    slug?: true
-    description?: true
-    parentId?: true
+    icpNumber?: true
+    icpLink?: true
+    copyright?: true
+    isActive?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
   }
 
-  export type CategoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Category to aggregate.
+     * Filter which Footer to aggregate.
      */
-    where?: CategoryWhereInput
+    where?: FooterWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Categories to fetch.
+     * Determine the order of Footers to fetch.
      */
-    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    orderBy?: FooterOrderByWithRelationInput | FooterOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: CategoryWhereUniqueInput
+    cursor?: FooterWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Categories from the position of the cursor.
+     * Take `±n` Footers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Categories.
+     * Skip the first `n` Footers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Categories
+     * Count returned Footers
     **/
-    _count?: true | CategoryCountAggregateInputType
+    _count?: true | FooterCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: CategoryMinAggregateInputType
+    _min?: FooterMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: CategoryMaxAggregateInputType
+    _max?: FooterMaxAggregateInputType
   }
 
-  export type GetCategoryAggregateType<T extends CategoryAggregateArgs> = {
-        [P in keyof T & keyof AggregateCategory]: P extends '_count' | 'count'
+  export type GetFooterAggregateType<T extends FooterAggregateArgs> = {
+        [P in keyof T & keyof AggregateFooter]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateCategory[P]>
-      : GetScalarType<T[P], AggregateCategory[P]>
+        : GetScalarType<T[P], AggregateFooter[P]>
+      : GetScalarType<T[P], AggregateFooter[P]>
   }
 
 
 
 
-  export type CategoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CategoryWhereInput
-    orderBy?: CategoryOrderByWithAggregationInput | CategoryOrderByWithAggregationInput[]
-    by: CategoryScalarFieldEnum[] | CategoryScalarFieldEnum
-    having?: CategoryScalarWhereWithAggregatesInput
+  export type FooterGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FooterWhereInput
+    orderBy?: FooterOrderByWithAggregationInput | FooterOrderByWithAggregationInput[]
+    by: FooterScalarFieldEnum[] | FooterScalarFieldEnum
+    having?: FooterScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: CategoryCountAggregateInputType | true
-    _min?: CategoryMinAggregateInputType
-    _max?: CategoryMaxAggregateInputType
+    _count?: FooterCountAggregateInputType | true
+    _min?: FooterMinAggregateInputType
+    _max?: FooterMaxAggregateInputType
   }
 
-  export type CategoryGroupByOutputType = {
+  export type FooterGroupByOutputType = {
     id: string
-    name: string
-    slug: string
-    description: string | null
-    parentId: string | null
+    icpNumber: string | null
+    icpLink: string | null
+    copyright: string | null
+    isActive: boolean
     createdAt: Date
     updatedAt: Date
-    _count: CategoryCountAggregateOutputType | null
-    _min: CategoryMinAggregateOutputType | null
-    _max: CategoryMaxAggregateOutputType | null
+    _count: FooterCountAggregateOutputType | null
+    _min: FooterMinAggregateOutputType | null
+    _max: FooterMaxAggregateOutputType | null
   }
 
-  type GetCategoryGroupByPayload<T extends CategoryGroupByArgs> = Prisma.PrismaPromise<
+  type GetFooterGroupByPayload<T extends FooterGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<CategoryGroupByOutputType, T['by']> &
+      PickEnumerable<FooterGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof CategoryGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof FooterGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], CategoryGroupByOutputType[P]>
-            : GetScalarType<T[P], CategoryGroupByOutputType[P]>
+              : GetScalarType<T[P], FooterGroupByOutputType[P]>
+            : GetScalarType<T[P], FooterGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type CategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FooterSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
-    slug?: boolean
-    description?: boolean
-    parentId?: boolean
+    icpNumber?: boolean
+    icpLink?: boolean
+    copyright?: boolean
+    isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    parent?: boolean | Category$parentArgs<ExtArgs>
-    subcategories?: boolean | Category$subcategoriesArgs<ExtArgs>
-    products?: boolean | Category$productsArgs<ExtArgs>
-    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["category"]>
+    links?: boolean | Footer$linksArgs<ExtArgs>
+    _count?: boolean | FooterCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["footer"]>
 
-  export type CategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FooterSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
-    slug?: boolean
-    description?: boolean
-    parentId?: boolean
+    icpNumber?: boolean
+    icpLink?: boolean
+    copyright?: boolean
+    isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    parent?: boolean | Category$parentArgs<ExtArgs>
-  }, ExtArgs["result"]["category"]>
+  }, ExtArgs["result"]["footer"]>
 
-  export type CategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FooterSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
-    slug?: boolean
-    description?: boolean
-    parentId?: boolean
+    icpNumber?: boolean
+    icpLink?: boolean
+    copyright?: boolean
+    isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    parent?: boolean | Category$parentArgs<ExtArgs>
-  }, ExtArgs["result"]["category"]>
+  }, ExtArgs["result"]["footer"]>
 
-  export type CategorySelectScalar = {
+  export type FooterSelectScalar = {
     id?: boolean
-    name?: boolean
-    slug?: boolean
-    description?: boolean
-    parentId?: boolean
+    icpNumber?: boolean
+    icpLink?: boolean
+    copyright?: boolean
+    isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "description" | "parentId" | "createdAt" | "updatedAt", ExtArgs["result"]["category"]>
-  export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    parent?: boolean | Category$parentArgs<ExtArgs>
-    subcategories?: boolean | Category$subcategoriesArgs<ExtArgs>
-    products?: boolean | Category$productsArgs<ExtArgs>
-    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
+  export type FooterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "icpNumber" | "icpLink" | "copyright" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["footer"]>
+  export type FooterInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    links?: boolean | Footer$linksArgs<ExtArgs>
+    _count?: boolean | FooterCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type CategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    parent?: boolean | Category$parentArgs<ExtArgs>
-  }
-  export type CategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    parent?: boolean | Category$parentArgs<ExtArgs>
-  }
+  export type FooterIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type FooterIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $CategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Category"
+  export type $FooterPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Footer"
     objects: {
-      parent: Prisma.$CategoryPayload<ExtArgs> | null
-      subcategories: Prisma.$CategoryPayload<ExtArgs>[]
-      products: Prisma.$ProductPayload<ExtArgs>[]
+      links: Prisma.$FooterLinkPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      name: string
-      slug: string
-      description: string | null
-      parentId: string | null
+      icpNumber: string | null
+      icpLink: string | null
+      copyright: string | null
+      isActive: boolean
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["category"]>
+    }, ExtArgs["result"]["footer"]>
     composites: {}
   }
 
-  type CategoryGetPayload<S extends boolean | null | undefined | CategoryDefaultArgs> = $Result.GetResult<Prisma.$CategoryPayload, S>
+  type FooterGetPayload<S extends boolean | null | undefined | FooterDefaultArgs> = $Result.GetResult<Prisma.$FooterPayload, S>
 
-  type CategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CategoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CategoryCountAggregateInputType | true
+  type FooterCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FooterFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FooterCountAggregateInputType | true
     }
 
-  export interface CategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Category'], meta: { name: 'Category' } }
+  export interface FooterDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Footer'], meta: { name: 'Footer' } }
     /**
-     * Find zero or one Category that matches the filter.
-     * @param {CategoryFindUniqueArgs} args - Arguments to find a Category
+     * Find zero or one Footer that matches the filter.
+     * @param {FooterFindUniqueArgs} args - Arguments to find a Footer
      * @example
-     * // Get one Category
-     * const category = await prisma.category.findUnique({
+     * // Get one Footer
+     * const footer = await prisma.footer.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends CategoryFindUniqueArgs>(args: SelectSubset<T, CategoryFindUniqueArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends FooterFindUniqueArgs>(args: SelectSubset<T, FooterFindUniqueArgs<ExtArgs>>): Prisma__FooterClient<$Result.GetResult<Prisma.$FooterPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Category that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Footer that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {CategoryFindUniqueOrThrowArgs} args - Arguments to find a Category
+     * @param {FooterFindUniqueOrThrowArgs} args - Arguments to find a Footer
      * @example
-     * // Get one Category
-     * const category = await prisma.category.findUniqueOrThrow({
+     * // Get one Footer
+     * const footer = await prisma.footer.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends CategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, CategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends FooterFindUniqueOrThrowArgs>(args: SelectSubset<T, FooterFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FooterClient<$Result.GetResult<Prisma.$FooterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Category that matches the filter.
+     * Find the first Footer that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CategoryFindFirstArgs} args - Arguments to find a Category
+     * @param {FooterFindFirstArgs} args - Arguments to find a Footer
      * @example
-     * // Get one Category
-     * const category = await prisma.category.findFirst({
+     * // Get one Footer
+     * const footer = await prisma.footer.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends CategoryFindFirstArgs>(args?: SelectSubset<T, CategoryFindFirstArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends FooterFindFirstArgs>(args?: SelectSubset<T, FooterFindFirstArgs<ExtArgs>>): Prisma__FooterClient<$Result.GetResult<Prisma.$FooterPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Category that matches the filter or
+     * Find the first Footer that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CategoryFindFirstOrThrowArgs} args - Arguments to find a Category
+     * @param {FooterFindFirstOrThrowArgs} args - Arguments to find a Footer
      * @example
-     * // Get one Category
-     * const category = await prisma.category.findFirstOrThrow({
+     * // Get one Footer
+     * const footer = await prisma.footer.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends CategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, CategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends FooterFindFirstOrThrowArgs>(args?: SelectSubset<T, FooterFindFirstOrThrowArgs<ExtArgs>>): Prisma__FooterClient<$Result.GetResult<Prisma.$FooterPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Categories that matches the filter.
+     * Find zero or more Footers that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CategoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {FooterFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Categories
-     * const categories = await prisma.category.findMany()
+     * // Get all Footers
+     * const footers = await prisma.footer.findMany()
      * 
-     * // Get first 10 Categories
-     * const categories = await prisma.category.findMany({ take: 10 })
+     * // Get first 10 Footers
+     * const footers = await prisma.footer.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const categoryWithIdOnly = await prisma.category.findMany({ select: { id: true } })
+     * const footerWithIdOnly = await prisma.footer.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends CategoryFindManyArgs>(args?: SelectSubset<T, CategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends FooterFindManyArgs>(args?: SelectSubset<T, FooterFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FooterPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Category.
-     * @param {CategoryCreateArgs} args - Arguments to create a Category.
+     * Create a Footer.
+     * @param {FooterCreateArgs} args - Arguments to create a Footer.
      * @example
-     * // Create one Category
-     * const Category = await prisma.category.create({
+     * // Create one Footer
+     * const Footer = await prisma.footer.create({
      *   data: {
-     *     // ... data to create a Category
+     *     // ... data to create a Footer
      *   }
      * })
      * 
      */
-    create<T extends CategoryCreateArgs>(args: SelectSubset<T, CategoryCreateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends FooterCreateArgs>(args: SelectSubset<T, FooterCreateArgs<ExtArgs>>): Prisma__FooterClient<$Result.GetResult<Prisma.$FooterPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Categories.
-     * @param {CategoryCreateManyArgs} args - Arguments to create many Categories.
+     * Create many Footers.
+     * @param {FooterCreateManyArgs} args - Arguments to create many Footers.
      * @example
-     * // Create many Categories
-     * const category = await prisma.category.createMany({
+     * // Create many Footers
+     * const footer = await prisma.footer.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends CategoryCreateManyArgs>(args?: SelectSubset<T, CategoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends FooterCreateManyArgs>(args?: SelectSubset<T, FooterCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Categories and returns the data saved in the database.
-     * @param {CategoryCreateManyAndReturnArgs} args - Arguments to create many Categories.
+     * Create many Footers and returns the data saved in the database.
+     * @param {FooterCreateManyAndReturnArgs} args - Arguments to create many Footers.
      * @example
-     * // Create many Categories
-     * const category = await prisma.category.createManyAndReturn({
+     * // Create many Footers
+     * const footer = await prisma.footer.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Categories and only return the `id`
-     * const categoryWithIdOnly = await prisma.category.createManyAndReturn({
+     * // Create many Footers and only return the `id`
+     * const footerWithIdOnly = await prisma.footer.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -2839,28 +9232,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends CategoryCreateManyAndReturnArgs>(args?: SelectSubset<T, CategoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends FooterCreateManyAndReturnArgs>(args?: SelectSubset<T, FooterCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FooterPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Category.
-     * @param {CategoryDeleteArgs} args - Arguments to delete one Category.
+     * Delete a Footer.
+     * @param {FooterDeleteArgs} args - Arguments to delete one Footer.
      * @example
-     * // Delete one Category
-     * const Category = await prisma.category.delete({
+     * // Delete one Footer
+     * const Footer = await prisma.footer.delete({
      *   where: {
-     *     // ... filter to delete one Category
+     *     // ... filter to delete one Footer
      *   }
      * })
      * 
      */
-    delete<T extends CategoryDeleteArgs>(args: SelectSubset<T, CategoryDeleteArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends FooterDeleteArgs>(args: SelectSubset<T, FooterDeleteArgs<ExtArgs>>): Prisma__FooterClient<$Result.GetResult<Prisma.$FooterPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Category.
-     * @param {CategoryUpdateArgs} args - Arguments to update one Category.
+     * Update one Footer.
+     * @param {FooterUpdateArgs} args - Arguments to update one Footer.
      * @example
-     * // Update one Category
-     * const category = await prisma.category.update({
+     * // Update one Footer
+     * const footer = await prisma.footer.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2870,30 +9263,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends CategoryUpdateArgs>(args: SelectSubset<T, CategoryUpdateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends FooterUpdateArgs>(args: SelectSubset<T, FooterUpdateArgs<ExtArgs>>): Prisma__FooterClient<$Result.GetResult<Prisma.$FooterPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Categories.
-     * @param {CategoryDeleteManyArgs} args - Arguments to filter Categories to delete.
+     * Delete zero or more Footers.
+     * @param {FooterDeleteManyArgs} args - Arguments to filter Footers to delete.
      * @example
-     * // Delete a few Categories
-     * const { count } = await prisma.category.deleteMany({
+     * // Delete a few Footers
+     * const { count } = await prisma.footer.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends CategoryDeleteManyArgs>(args?: SelectSubset<T, CategoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends FooterDeleteManyArgs>(args?: SelectSubset<T, FooterDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Categories.
+     * Update zero or more Footers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CategoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {FooterUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Categories
-     * const category = await prisma.category.updateMany({
+     * // Update many Footers
+     * const footer = await prisma.footer.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2903,14 +9296,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends CategoryUpdateManyArgs>(args: SelectSubset<T, CategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends FooterUpdateManyArgs>(args: SelectSubset<T, FooterUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Categories and returns the data updated in the database.
-     * @param {CategoryUpdateManyAndReturnArgs} args - Arguments to update many Categories.
+     * Update zero or more Footers and returns the data updated in the database.
+     * @param {FooterUpdateManyAndReturnArgs} args - Arguments to update many Footers.
      * @example
-     * // Update many Categories
-     * const category = await prisma.category.updateManyAndReturn({
+     * // Update many Footers
+     * const footer = await prisma.footer.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2919,8 +9312,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Categories and only return the `id`
-     * const categoryWithIdOnly = await prisma.category.updateManyAndReturn({
+     * // Update zero or more Footers and only return the `id`
+     * const footerWithIdOnly = await prisma.footer.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -2933,56 +9326,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends CategoryUpdateManyAndReturnArgs>(args: SelectSubset<T, CategoryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends FooterUpdateManyAndReturnArgs>(args: SelectSubset<T, FooterUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FooterPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Category.
-     * @param {CategoryUpsertArgs} args - Arguments to update or create a Category.
+     * Create or update one Footer.
+     * @param {FooterUpsertArgs} args - Arguments to update or create a Footer.
      * @example
-     * // Update or create a Category
-     * const category = await prisma.category.upsert({
+     * // Update or create a Footer
+     * const footer = await prisma.footer.upsert({
      *   create: {
-     *     // ... data to create a Category
+     *     // ... data to create a Footer
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Category we want to update
+     *     // ... the filter for the Footer we want to update
      *   }
      * })
      */
-    upsert<T extends CategoryUpsertArgs>(args: SelectSubset<T, CategoryUpsertArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends FooterUpsertArgs>(args: SelectSubset<T, FooterUpsertArgs<ExtArgs>>): Prisma__FooterClient<$Result.GetResult<Prisma.$FooterPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Categories.
+     * Count the number of Footers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CategoryCountArgs} args - Arguments to filter Categories to count.
+     * @param {FooterCountArgs} args - Arguments to filter Footers to count.
      * @example
-     * // Count the number of Categories
-     * const count = await prisma.category.count({
+     * // Count the number of Footers
+     * const count = await prisma.footer.count({
      *   where: {
-     *     // ... the filter for the Categories we want to count
+     *     // ... the filter for the Footers we want to count
      *   }
      * })
     **/
-    count<T extends CategoryCountArgs>(
-      args?: Subset<T, CategoryCountArgs>,
+    count<T extends FooterCountArgs>(
+      args?: Subset<T, FooterCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], CategoryCountAggregateOutputType>
+          : GetScalarType<T['select'], FooterCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Category.
+     * Allows you to perform aggregations operations on a Footer.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CategoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {FooterAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -3002,13 +9395,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends CategoryAggregateArgs>(args: Subset<T, CategoryAggregateArgs>): Prisma.PrismaPromise<GetCategoryAggregateType<T>>
+    aggregate<T extends FooterAggregateArgs>(args: Subset<T, FooterAggregateArgs>): Prisma.PrismaPromise<GetFooterAggregateType<T>>
 
     /**
-     * Group by Category.
+     * Group by Footer.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CategoryGroupByArgs} args - Group by arguments.
+     * @param {FooterGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -3023,14 +9416,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends CategoryGroupByArgs,
+      T extends FooterGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CategoryGroupByArgs['orderBy'] }
-        : { orderBy?: CategoryGroupByArgs['orderBy'] },
+        ? { orderBy: FooterGroupByArgs['orderBy'] }
+        : { orderBy?: FooterGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -3079,24 +9472,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, CategoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, FooterGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFooterGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Category model
+   * Fields of the Footer model
    */
-  readonly fields: CategoryFieldRefs;
+  readonly fields: FooterFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Category.
+   * The delegate class that acts as a "Promise-like" for Footer.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__FooterClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    parent<T extends Category$parentArgs<ExtArgs> = {}>(args?: Subset<T, Category$parentArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    subcategories<T extends Category$subcategoriesArgs<ExtArgs> = {}>(args?: Subset<T, Category$subcategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    products<T extends Category$productsArgs<ExtArgs> = {}>(args?: Subset<T, Category$productsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    links<T extends Footer$linksArgs<ExtArgs> = {}>(args?: Subset<T, Footer$linksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FooterLinkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3123,4303 +9514,885 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Category model
+   * Fields of the Footer model
    */
-  interface CategoryFieldRefs {
-    readonly id: FieldRef<"Category", 'String'>
-    readonly name: FieldRef<"Category", 'String'>
-    readonly slug: FieldRef<"Category", 'String'>
-    readonly description: FieldRef<"Category", 'String'>
-    readonly parentId: FieldRef<"Category", 'String'>
-    readonly createdAt: FieldRef<"Category", 'DateTime'>
-    readonly updatedAt: FieldRef<"Category", 'DateTime'>
+  interface FooterFieldRefs {
+    readonly id: FieldRef<"Footer", 'String'>
+    readonly icpNumber: FieldRef<"Footer", 'String'>
+    readonly icpLink: FieldRef<"Footer", 'String'>
+    readonly copyright: FieldRef<"Footer", 'String'>
+    readonly isActive: FieldRef<"Footer", 'Boolean'>
+    readonly createdAt: FieldRef<"Footer", 'DateTime'>
+    readonly updatedAt: FieldRef<"Footer", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Category findUnique
+   * Footer findUnique
    */
-  export type CategoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Category
+     * Select specific fields to fetch from the Footer
      */
-    select?: CategorySelect<ExtArgs> | null
+    select?: FooterSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Category
+     * Omit specific fields from the Footer
      */
-    omit?: CategoryOmit<ExtArgs> | null
+    omit?: FooterOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CategoryInclude<ExtArgs> | null
+    include?: FooterInclude<ExtArgs> | null
     /**
-     * Filter, which Category to fetch.
+     * Filter, which Footer to fetch.
      */
-    where: CategoryWhereUniqueInput
+    where: FooterWhereUniqueInput
   }
 
   /**
-   * Category findUniqueOrThrow
+   * Footer findUniqueOrThrow
    */
-  export type CategoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Category
+     * Select specific fields to fetch from the Footer
      */
-    select?: CategorySelect<ExtArgs> | null
+    select?: FooterSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Category
+     * Omit specific fields from the Footer
      */
-    omit?: CategoryOmit<ExtArgs> | null
+    omit?: FooterOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CategoryInclude<ExtArgs> | null
+    include?: FooterInclude<ExtArgs> | null
     /**
-     * Filter, which Category to fetch.
+     * Filter, which Footer to fetch.
      */
-    where: CategoryWhereUniqueInput
+    where: FooterWhereUniqueInput
   }
 
   /**
-   * Category findFirst
+   * Footer findFirst
    */
-  export type CategoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Category
+     * Select specific fields to fetch from the Footer
      */
-    select?: CategorySelect<ExtArgs> | null
+    select?: FooterSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Category
+     * Omit specific fields from the Footer
      */
-    omit?: CategoryOmit<ExtArgs> | null
+    omit?: FooterOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CategoryInclude<ExtArgs> | null
+    include?: FooterInclude<ExtArgs> | null
     /**
-     * Filter, which Category to fetch.
+     * Filter, which Footer to fetch.
      */
-    where?: CategoryWhereInput
+    where?: FooterWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Categories to fetch.
+     * Determine the order of Footers to fetch.
      */
-    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    orderBy?: FooterOrderByWithRelationInput | FooterOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Categories.
+     * Sets the position for searching for Footers.
      */
-    cursor?: CategoryWhereUniqueInput
+    cursor?: FooterWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Categories from the position of the cursor.
+     * Take `±n` Footers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Categories.
+     * Skip the first `n` Footers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Categories.
+     * Filter by unique combinations of Footers.
      */
-    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+    distinct?: FooterScalarFieldEnum | FooterScalarFieldEnum[]
   }
 
   /**
-   * Category findFirstOrThrow
+   * Footer findFirstOrThrow
    */
-  export type CategoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Category
+     * Select specific fields to fetch from the Footer
      */
-    select?: CategorySelect<ExtArgs> | null
+    select?: FooterSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Category
+     * Omit specific fields from the Footer
      */
-    omit?: CategoryOmit<ExtArgs> | null
+    omit?: FooterOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CategoryInclude<ExtArgs> | null
+    include?: FooterInclude<ExtArgs> | null
     /**
-     * Filter, which Category to fetch.
+     * Filter, which Footer to fetch.
      */
-    where?: CategoryWhereInput
+    where?: FooterWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Categories to fetch.
+     * Determine the order of Footers to fetch.
      */
-    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    orderBy?: FooterOrderByWithRelationInput | FooterOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Categories.
+     * Sets the position for searching for Footers.
      */
-    cursor?: CategoryWhereUniqueInput
+    cursor?: FooterWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Categories from the position of the cursor.
+     * Take `±n` Footers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Categories.
+     * Skip the first `n` Footers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Categories.
+     * Filter by unique combinations of Footers.
      */
-    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+    distinct?: FooterScalarFieldEnum | FooterScalarFieldEnum[]
   }
 
   /**
-   * Category findMany
+   * Footer findMany
    */
-  export type CategoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Category
+     * Select specific fields to fetch from the Footer
      */
-    select?: CategorySelect<ExtArgs> | null
+    select?: FooterSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Category
+     * Omit specific fields from the Footer
      */
-    omit?: CategoryOmit<ExtArgs> | null
+    omit?: FooterOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CategoryInclude<ExtArgs> | null
+    include?: FooterInclude<ExtArgs> | null
     /**
-     * Filter, which Categories to fetch.
+     * Filter, which Footers to fetch.
      */
-    where?: CategoryWhereInput
+    where?: FooterWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Categories to fetch.
+     * Determine the order of Footers to fetch.
      */
-    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    orderBy?: FooterOrderByWithRelationInput | FooterOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Categories.
+     * Sets the position for listing Footers.
      */
-    cursor?: CategoryWhereUniqueInput
+    cursor?: FooterWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Categories from the position of the cursor.
+     * Take `±n` Footers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Categories.
+     * Skip the first `n` Footers.
      */
     skip?: number
-    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+    distinct?: FooterScalarFieldEnum | FooterScalarFieldEnum[]
   }
 
   /**
-   * Category create
+   * Footer create
    */
-  export type CategoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Category
+     * Select specific fields to fetch from the Footer
      */
-    select?: CategorySelect<ExtArgs> | null
+    select?: FooterSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Category
+     * Omit specific fields from the Footer
      */
-    omit?: CategoryOmit<ExtArgs> | null
+    omit?: FooterOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CategoryInclude<ExtArgs> | null
+    include?: FooterInclude<ExtArgs> | null
     /**
-     * The data needed to create a Category.
+     * The data needed to create a Footer.
      */
-    data: XOR<CategoryCreateInput, CategoryUncheckedCreateInput>
+    data?: XOR<FooterCreateInput, FooterUncheckedCreateInput>
   }
 
   /**
-   * Category createMany
+   * Footer createMany
    */
-  export type CategoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Categories.
+     * The data used to create many Footers.
      */
-    data: CategoryCreateManyInput | CategoryCreateManyInput[]
+    data: FooterCreateManyInput | FooterCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
-   * Category createManyAndReturn
+   * Footer createManyAndReturn
    */
-  export type CategoryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Category
+     * Select specific fields to fetch from the Footer
      */
-    select?: CategorySelectCreateManyAndReturn<ExtArgs> | null
+    select?: FooterSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Category
+     * Omit specific fields from the Footer
      */
-    omit?: CategoryOmit<ExtArgs> | null
+    omit?: FooterOmit<ExtArgs> | null
     /**
-     * The data used to create many Categories.
+     * The data used to create many Footers.
      */
-    data: CategoryCreateManyInput | CategoryCreateManyInput[]
+    data: FooterCreateManyInput | FooterCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Footer update
+   */
+  export type FooterUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Footer
+     */
+    select?: FooterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Footer
+     */
+    omit?: FooterOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CategoryIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: FooterInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Footer.
+     */
+    data: XOR<FooterUpdateInput, FooterUncheckedUpdateInput>
+    /**
+     * Choose, which Footer to update.
+     */
+    where: FooterWhereUniqueInput
   }
 
   /**
-   * Category update
+   * Footer updateMany
    */
-  export type CategoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Category
+     * The data used to update Footers.
      */
-    select?: CategorySelect<ExtArgs> | null
+    data: XOR<FooterUpdateManyMutationInput, FooterUncheckedUpdateManyInput>
     /**
-     * Omit specific fields from the Category
+     * Filter which Footers to update
      */
-    omit?: CategoryOmit<ExtArgs> | null
+    where?: FooterWhereInput
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CategoryInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Category.
-     */
-    data: XOR<CategoryUpdateInput, CategoryUncheckedUpdateInput>
-    /**
-     * Choose, which Category to update.
-     */
-    where: CategoryWhereUniqueInput
-  }
-
-  /**
-   * Category updateMany
-   */
-  export type CategoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Categories.
-     */
-    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyInput>
-    /**
-     * Filter which Categories to update
-     */
-    where?: CategoryWhereInput
-    /**
-     * Limit how many Categories to update.
+     * Limit how many Footers to update.
      */
     limit?: number
   }
 
   /**
-   * Category updateManyAndReturn
+   * Footer updateManyAndReturn
    */
-  export type CategoryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Category
+     * Select specific fields to fetch from the Footer
      */
-    select?: CategorySelectUpdateManyAndReturn<ExtArgs> | null
+    select?: FooterSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Category
+     * Omit specific fields from the Footer
      */
-    omit?: CategoryOmit<ExtArgs> | null
+    omit?: FooterOmit<ExtArgs> | null
     /**
-     * The data used to update Categories.
+     * The data used to update Footers.
      */
-    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyInput>
+    data: XOR<FooterUpdateManyMutationInput, FooterUncheckedUpdateManyInput>
     /**
-     * Filter which Categories to update
+     * Filter which Footers to update
      */
-    where?: CategoryWhereInput
+    where?: FooterWhereInput
     /**
-     * Limit how many Categories to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CategoryIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Category upsert
-   */
-  export type CategoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Category
-     */
-    select?: CategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CategoryInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Category to update in case it exists.
-     */
-    where: CategoryWhereUniqueInput
-    /**
-     * In case the Category found by the `where` argument doesn't exist, create a new Category with this data.
-     */
-    create: XOR<CategoryCreateInput, CategoryUncheckedCreateInput>
-    /**
-     * In case the Category was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<CategoryUpdateInput, CategoryUncheckedUpdateInput>
-  }
-
-  /**
-   * Category delete
-   */
-  export type CategoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Category
-     */
-    select?: CategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CategoryInclude<ExtArgs> | null
-    /**
-     * Filter which Category to delete.
-     */
-    where: CategoryWhereUniqueInput
-  }
-
-  /**
-   * Category deleteMany
-   */
-  export type CategoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Categories to delete
-     */
-    where?: CategoryWhereInput
-    /**
-     * Limit how many Categories to delete.
+     * Limit how many Footers to update.
      */
     limit?: number
   }
 
   /**
-   * Category.parent
+   * Footer upsert
    */
-  export type Category$parentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Category
+     * Select specific fields to fetch from the Footer
      */
-    select?: CategorySelect<ExtArgs> | null
+    select?: FooterSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Category
+     * Omit specific fields from the Footer
      */
-    omit?: CategoryOmit<ExtArgs> | null
+    omit?: FooterOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CategoryInclude<ExtArgs> | null
-    where?: CategoryWhereInput
+    include?: FooterInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Footer to update in case it exists.
+     */
+    where: FooterWhereUniqueInput
+    /**
+     * In case the Footer found by the `where` argument doesn't exist, create a new Footer with this data.
+     */
+    create: XOR<FooterCreateInput, FooterUncheckedCreateInput>
+    /**
+     * In case the Footer was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FooterUpdateInput, FooterUncheckedUpdateInput>
   }
 
   /**
-   * Category.subcategories
+   * Footer delete
    */
-  export type Category$subcategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Category
+     * Select specific fields to fetch from the Footer
      */
-    select?: CategorySelect<ExtArgs> | null
+    select?: FooterSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Category
+     * Omit specific fields from the Footer
      */
-    omit?: CategoryOmit<ExtArgs> | null
+    omit?: FooterOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CategoryInclude<ExtArgs> | null
-    where?: CategoryWhereInput
-    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
-    cursor?: CategoryWhereUniqueInput
+    include?: FooterInclude<ExtArgs> | null
+    /**
+     * Filter which Footer to delete.
+     */
+    where: FooterWhereUniqueInput
+  }
+
+  /**
+   * Footer deleteMany
+   */
+  export type FooterDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Footers to delete
+     */
+    where?: FooterWhereInput
+    /**
+     * Limit how many Footers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Footer.links
+   */
+  export type Footer$linksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FooterLink
+     */
+    select?: FooterLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FooterLink
+     */
+    omit?: FooterLinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FooterLinkInclude<ExtArgs> | null
+    where?: FooterLinkWhereInput
+    orderBy?: FooterLinkOrderByWithRelationInput | FooterLinkOrderByWithRelationInput[]
+    cursor?: FooterLinkWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+    distinct?: FooterLinkScalarFieldEnum | FooterLinkScalarFieldEnum[]
   }
 
   /**
-   * Category.products
+   * Footer without action
    */
-  export type Category$productsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Product
+     * Select specific fields to fetch from the Footer
      */
-    select?: ProductSelect<ExtArgs> | null
+    select?: FooterSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Product
+     * Omit specific fields from the Footer
      */
-    omit?: ProductOmit<ExtArgs> | null
+    omit?: FooterOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProductInclude<ExtArgs> | null
-    where?: ProductWhereInput
-    orderBy?: ProductOrderByWithRelationInput | ProductOrderByWithRelationInput[]
-    cursor?: ProductWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
-  }
-
-  /**
-   * Category without action
-   */
-  export type CategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Category
-     */
-    select?: CategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CategoryInclude<ExtArgs> | null
+    include?: FooterInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model Product
+   * Model FooterLink
    */
 
-  export type AggregateProduct = {
-    _count: ProductCountAggregateOutputType | null
-    _min: ProductMinAggregateOutputType | null
-    _max: ProductMaxAggregateOutputType | null
+  export type AggregateFooterLink = {
+    _count: FooterLinkCountAggregateOutputType | null
+    _avg: FooterLinkAvgAggregateOutputType | null
+    _sum: FooterLinkSumAggregateOutputType | null
+    _min: FooterLinkMinAggregateOutputType | null
+    _max: FooterLinkMaxAggregateOutputType | null
   }
 
-  export type ProductMinAggregateOutputType = {
+  export type FooterLinkAvgAggregateOutputType = {
+    sortOrder: number | null
+  }
+
+  export type FooterLinkSumAggregateOutputType = {
+    sortOrder: number | null
+  }
+
+  export type FooterLinkMinAggregateOutputType = {
     id: string | null
     title: string | null
-    slug: string | null
-    description: string | null
-    fullDescription: string | null
-    imageUrl: string | null
-    categoryId: string | null
-    features: string | null
-    specifications: string | null
+    url: string | null
+    category: string | null
+    icon: string | null
+    sortOrder: number | null
+    isActive: boolean | null
+    footerId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type ProductMaxAggregateOutputType = {
+  export type FooterLinkMaxAggregateOutputType = {
     id: string | null
     title: string | null
-    slug: string | null
-    description: string | null
-    fullDescription: string | null
-    imageUrl: string | null
-    categoryId: string | null
-    features: string | null
-    specifications: string | null
+    url: string | null
+    category: string | null
+    icon: string | null
+    sortOrder: number | null
+    isActive: boolean | null
+    footerId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type ProductCountAggregateOutputType = {
+  export type FooterLinkCountAggregateOutputType = {
     id: number
     title: number
-    slug: number
-    description: number
-    fullDescription: number
-    imageUrl: number
-    categoryId: number
-    features: number
-    specifications: number
+    url: number
+    category: number
+    icon: number
+    sortOrder: number
+    isActive: number
+    footerId: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
 
-  export type ProductMinAggregateInputType = {
+  export type FooterLinkAvgAggregateInputType = {
+    sortOrder?: true
+  }
+
+  export type FooterLinkSumAggregateInputType = {
+    sortOrder?: true
+  }
+
+  export type FooterLinkMinAggregateInputType = {
     id?: true
     title?: true
-    slug?: true
-    description?: true
-    fullDescription?: true
-    imageUrl?: true
-    categoryId?: true
-    features?: true
-    specifications?: true
+    url?: true
+    category?: true
+    icon?: true
+    sortOrder?: true
+    isActive?: true
+    footerId?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type ProductMaxAggregateInputType = {
+  export type FooterLinkMaxAggregateInputType = {
     id?: true
     title?: true
-    slug?: true
-    description?: true
-    fullDescription?: true
-    imageUrl?: true
-    categoryId?: true
-    features?: true
-    specifications?: true
+    url?: true
+    category?: true
+    icon?: true
+    sortOrder?: true
+    isActive?: true
+    footerId?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type ProductCountAggregateInputType = {
+  export type FooterLinkCountAggregateInputType = {
     id?: true
     title?: true
-    slug?: true
-    description?: true
-    fullDescription?: true
-    imageUrl?: true
-    categoryId?: true
-    features?: true
-    specifications?: true
-    createdAt?: true
-    updatedAt?: true
-    _all?: true
-  }
-
-  export type ProductAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Product to aggregate.
-     */
-    where?: ProductWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Products to fetch.
-     */
-    orderBy?: ProductOrderByWithRelationInput | ProductOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: ProductWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Products from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Products.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Products
-    **/
-    _count?: true | ProductCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: ProductMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: ProductMaxAggregateInputType
-  }
-
-  export type GetProductAggregateType<T extends ProductAggregateArgs> = {
-        [P in keyof T & keyof AggregateProduct]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateProduct[P]>
-      : GetScalarType<T[P], AggregateProduct[P]>
-  }
-
-
-
-
-  export type ProductGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ProductWhereInput
-    orderBy?: ProductOrderByWithAggregationInput | ProductOrderByWithAggregationInput[]
-    by: ProductScalarFieldEnum[] | ProductScalarFieldEnum
-    having?: ProductScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: ProductCountAggregateInputType | true
-    _min?: ProductMinAggregateInputType
-    _max?: ProductMaxAggregateInputType
-  }
-
-  export type ProductGroupByOutputType = {
-    id: string
-    title: string
-    slug: string
-    description: string
-    fullDescription: string | null
-    imageUrl: string
-    categoryId: string
-    features: string
-    specifications: string | null
-    createdAt: Date
-    updatedAt: Date
-    _count: ProductCountAggregateOutputType | null
-    _min: ProductMinAggregateOutputType | null
-    _max: ProductMaxAggregateOutputType | null
-  }
-
-  type GetProductGroupByPayload<T extends ProductGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<ProductGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ProductGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ProductGroupByOutputType[P]>
-            : GetScalarType<T[P], ProductGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type ProductSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    slug?: boolean
-    description?: boolean
-    fullDescription?: boolean
-    imageUrl?: boolean
-    categoryId?: boolean
-    features?: boolean
-    specifications?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    category?: boolean | CategoryDefaultArgs<ExtArgs>
-    solutions?: boolean | Product$solutionsArgs<ExtArgs>
-    _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["product"]>
-
-  export type ProductSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    slug?: boolean
-    description?: boolean
-    fullDescription?: boolean
-    imageUrl?: boolean
-    categoryId?: boolean
-    features?: boolean
-    specifications?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    category?: boolean | CategoryDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["product"]>
-
-  export type ProductSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    slug?: boolean
-    description?: boolean
-    fullDescription?: boolean
-    imageUrl?: boolean
-    categoryId?: boolean
-    features?: boolean
-    specifications?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    category?: boolean | CategoryDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["product"]>
-
-  export type ProductSelectScalar = {
-    id?: boolean
-    title?: boolean
-    slug?: boolean
-    description?: boolean
-    fullDescription?: boolean
-    imageUrl?: boolean
-    categoryId?: boolean
-    features?: boolean
-    specifications?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }
-
-  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "description" | "fullDescription" | "imageUrl" | "categoryId" | "features" | "specifications" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
-  export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    category?: boolean | CategoryDefaultArgs<ExtArgs>
-    solutions?: boolean | Product$solutionsArgs<ExtArgs>
-    _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type ProductIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    category?: boolean | CategoryDefaultArgs<ExtArgs>
-  }
-  export type ProductIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    category?: boolean | CategoryDefaultArgs<ExtArgs>
-  }
-
-  export type $ProductPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Product"
-    objects: {
-      category: Prisma.$CategoryPayload<ExtArgs>
-      solutions: Prisma.$SolutionPayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      title: string
-      slug: string
-      description: string
-      fullDescription: string | null
-      imageUrl: string
-      categoryId: string
-      features: string
-      specifications: string | null
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["product"]>
-    composites: {}
-  }
-
-  type ProductGetPayload<S extends boolean | null | undefined | ProductDefaultArgs> = $Result.GetResult<Prisma.$ProductPayload, S>
-
-  type ProductCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ProductFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ProductCountAggregateInputType | true
-    }
-
-  export interface ProductDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Product'], meta: { name: 'Product' } }
-    /**
-     * Find zero or one Product that matches the filter.
-     * @param {ProductFindUniqueArgs} args - Arguments to find a Product
-     * @example
-     * // Get one Product
-     * const product = await prisma.product.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends ProductFindUniqueArgs>(args: SelectSubset<T, ProductFindUniqueArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Product that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {ProductFindUniqueOrThrowArgs} args - Arguments to find a Product
-     * @example
-     * // Get one Product
-     * const product = await prisma.product.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends ProductFindUniqueOrThrowArgs>(args: SelectSubset<T, ProductFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Product that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProductFindFirstArgs} args - Arguments to find a Product
-     * @example
-     * // Get one Product
-     * const product = await prisma.product.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends ProductFindFirstArgs>(args?: SelectSubset<T, ProductFindFirstArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Product that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProductFindFirstOrThrowArgs} args - Arguments to find a Product
-     * @example
-     * // Get one Product
-     * const product = await prisma.product.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends ProductFindFirstOrThrowArgs>(args?: SelectSubset<T, ProductFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Products that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProductFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Products
-     * const products = await prisma.product.findMany()
-     * 
-     * // Get first 10 Products
-     * const products = await prisma.product.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const productWithIdOnly = await prisma.product.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends ProductFindManyArgs>(args?: SelectSubset<T, ProductFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Product.
-     * @param {ProductCreateArgs} args - Arguments to create a Product.
-     * @example
-     * // Create one Product
-     * const Product = await prisma.product.create({
-     *   data: {
-     *     // ... data to create a Product
-     *   }
-     * })
-     * 
-     */
-    create<T extends ProductCreateArgs>(args: SelectSubset<T, ProductCreateArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Products.
-     * @param {ProductCreateManyArgs} args - Arguments to create many Products.
-     * @example
-     * // Create many Products
-     * const product = await prisma.product.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends ProductCreateManyArgs>(args?: SelectSubset<T, ProductCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Products and returns the data saved in the database.
-     * @param {ProductCreateManyAndReturnArgs} args - Arguments to create many Products.
-     * @example
-     * // Create many Products
-     * const product = await prisma.product.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Products and only return the `id`
-     * const productWithIdOnly = await prisma.product.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends ProductCreateManyAndReturnArgs>(args?: SelectSubset<T, ProductCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Product.
-     * @param {ProductDeleteArgs} args - Arguments to delete one Product.
-     * @example
-     * // Delete one Product
-     * const Product = await prisma.product.delete({
-     *   where: {
-     *     // ... filter to delete one Product
-     *   }
-     * })
-     * 
-     */
-    delete<T extends ProductDeleteArgs>(args: SelectSubset<T, ProductDeleteArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Product.
-     * @param {ProductUpdateArgs} args - Arguments to update one Product.
-     * @example
-     * // Update one Product
-     * const product = await prisma.product.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends ProductUpdateArgs>(args: SelectSubset<T, ProductUpdateArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Products.
-     * @param {ProductDeleteManyArgs} args - Arguments to filter Products to delete.
-     * @example
-     * // Delete a few Products
-     * const { count } = await prisma.product.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends ProductDeleteManyArgs>(args?: SelectSubset<T, ProductDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Products.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProductUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Products
-     * const product = await prisma.product.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends ProductUpdateManyArgs>(args: SelectSubset<T, ProductUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Products and returns the data updated in the database.
-     * @param {ProductUpdateManyAndReturnArgs} args - Arguments to update many Products.
-     * @example
-     * // Update many Products
-     * const product = await prisma.product.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Products and only return the `id`
-     * const productWithIdOnly = await prisma.product.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends ProductUpdateManyAndReturnArgs>(args: SelectSubset<T, ProductUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Product.
-     * @param {ProductUpsertArgs} args - Arguments to update or create a Product.
-     * @example
-     * // Update or create a Product
-     * const product = await prisma.product.upsert({
-     *   create: {
-     *     // ... data to create a Product
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Product we want to update
-     *   }
-     * })
-     */
-    upsert<T extends ProductUpsertArgs>(args: SelectSubset<T, ProductUpsertArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Products.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProductCountArgs} args - Arguments to filter Products to count.
-     * @example
-     * // Count the number of Products
-     * const count = await prisma.product.count({
-     *   where: {
-     *     // ... the filter for the Products we want to count
-     *   }
-     * })
-    **/
-    count<T extends ProductCountArgs>(
-      args?: Subset<T, ProductCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ProductCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Product.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProductAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends ProductAggregateArgs>(args: Subset<T, ProductAggregateArgs>): Prisma.PrismaPromise<GetProductAggregateType<T>>
-
-    /**
-     * Group by Product.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProductGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends ProductGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ProductGroupByArgs['orderBy'] }
-        : { orderBy?: ProductGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, ProductGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProductGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Product model
-   */
-  readonly fields: ProductFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Product.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__ProductClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    solutions<T extends Product$solutionsArgs<ExtArgs> = {}>(args?: Subset<T, Product$solutionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SolutionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Product model
-   */
-  interface ProductFieldRefs {
-    readonly id: FieldRef<"Product", 'String'>
-    readonly title: FieldRef<"Product", 'String'>
-    readonly slug: FieldRef<"Product", 'String'>
-    readonly description: FieldRef<"Product", 'String'>
-    readonly fullDescription: FieldRef<"Product", 'String'>
-    readonly imageUrl: FieldRef<"Product", 'String'>
-    readonly categoryId: FieldRef<"Product", 'String'>
-    readonly features: FieldRef<"Product", 'String'>
-    readonly specifications: FieldRef<"Product", 'String'>
-    readonly createdAt: FieldRef<"Product", 'DateTime'>
-    readonly updatedAt: FieldRef<"Product", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Product findUnique
-   */
-  export type ProductFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Product
-     */
-    select?: ProductSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Product
-     */
-    omit?: ProductOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProductInclude<ExtArgs> | null
-    /**
-     * Filter, which Product to fetch.
-     */
-    where: ProductWhereUniqueInput
-  }
-
-  /**
-   * Product findUniqueOrThrow
-   */
-  export type ProductFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Product
-     */
-    select?: ProductSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Product
-     */
-    omit?: ProductOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProductInclude<ExtArgs> | null
-    /**
-     * Filter, which Product to fetch.
-     */
-    where: ProductWhereUniqueInput
-  }
-
-  /**
-   * Product findFirst
-   */
-  export type ProductFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Product
-     */
-    select?: ProductSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Product
-     */
-    omit?: ProductOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProductInclude<ExtArgs> | null
-    /**
-     * Filter, which Product to fetch.
-     */
-    where?: ProductWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Products to fetch.
-     */
-    orderBy?: ProductOrderByWithRelationInput | ProductOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Products.
-     */
-    cursor?: ProductWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Products from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Products.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Products.
-     */
-    distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
-  }
-
-  /**
-   * Product findFirstOrThrow
-   */
-  export type ProductFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Product
-     */
-    select?: ProductSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Product
-     */
-    omit?: ProductOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProductInclude<ExtArgs> | null
-    /**
-     * Filter, which Product to fetch.
-     */
-    where?: ProductWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Products to fetch.
-     */
-    orderBy?: ProductOrderByWithRelationInput | ProductOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Products.
-     */
-    cursor?: ProductWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Products from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Products.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Products.
-     */
-    distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
-  }
-
-  /**
-   * Product findMany
-   */
-  export type ProductFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Product
-     */
-    select?: ProductSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Product
-     */
-    omit?: ProductOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProductInclude<ExtArgs> | null
-    /**
-     * Filter, which Products to fetch.
-     */
-    where?: ProductWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Products to fetch.
-     */
-    orderBy?: ProductOrderByWithRelationInput | ProductOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Products.
-     */
-    cursor?: ProductWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Products from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Products.
-     */
-    skip?: number
-    distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
-  }
-
-  /**
-   * Product create
-   */
-  export type ProductCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Product
-     */
-    select?: ProductSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Product
-     */
-    omit?: ProductOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProductInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Product.
-     */
-    data: XOR<ProductCreateInput, ProductUncheckedCreateInput>
-  }
-
-  /**
-   * Product createMany
-   */
-  export type ProductCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Products.
-     */
-    data: ProductCreateManyInput | ProductCreateManyInput[]
-  }
-
-  /**
-   * Product createManyAndReturn
-   */
-  export type ProductCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Product
-     */
-    select?: ProductSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Product
-     */
-    omit?: ProductOmit<ExtArgs> | null
-    /**
-     * The data used to create many Products.
-     */
-    data: ProductCreateManyInput | ProductCreateManyInput[]
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProductIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Product update
-   */
-  export type ProductUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Product
-     */
-    select?: ProductSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Product
-     */
-    omit?: ProductOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProductInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Product.
-     */
-    data: XOR<ProductUpdateInput, ProductUncheckedUpdateInput>
-    /**
-     * Choose, which Product to update.
-     */
-    where: ProductWhereUniqueInput
-  }
-
-  /**
-   * Product updateMany
-   */
-  export type ProductUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Products.
-     */
-    data: XOR<ProductUpdateManyMutationInput, ProductUncheckedUpdateManyInput>
-    /**
-     * Filter which Products to update
-     */
-    where?: ProductWhereInput
-    /**
-     * Limit how many Products to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Product updateManyAndReturn
-   */
-  export type ProductUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Product
-     */
-    select?: ProductSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Product
-     */
-    omit?: ProductOmit<ExtArgs> | null
-    /**
-     * The data used to update Products.
-     */
-    data: XOR<ProductUpdateManyMutationInput, ProductUncheckedUpdateManyInput>
-    /**
-     * Filter which Products to update
-     */
-    where?: ProductWhereInput
-    /**
-     * Limit how many Products to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProductIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Product upsert
-   */
-  export type ProductUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Product
-     */
-    select?: ProductSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Product
-     */
-    omit?: ProductOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProductInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Product to update in case it exists.
-     */
-    where: ProductWhereUniqueInput
-    /**
-     * In case the Product found by the `where` argument doesn't exist, create a new Product with this data.
-     */
-    create: XOR<ProductCreateInput, ProductUncheckedCreateInput>
-    /**
-     * In case the Product was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<ProductUpdateInput, ProductUncheckedUpdateInput>
-  }
-
-  /**
-   * Product delete
-   */
-  export type ProductDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Product
-     */
-    select?: ProductSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Product
-     */
-    omit?: ProductOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProductInclude<ExtArgs> | null
-    /**
-     * Filter which Product to delete.
-     */
-    where: ProductWhereUniqueInput
-  }
-
-  /**
-   * Product deleteMany
-   */
-  export type ProductDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Products to delete
-     */
-    where?: ProductWhereInput
-    /**
-     * Limit how many Products to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Product.solutions
-   */
-  export type Product$solutionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Solution
-     */
-    select?: SolutionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Solution
-     */
-    omit?: SolutionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SolutionInclude<ExtArgs> | null
-    where?: SolutionWhereInput
-    orderBy?: SolutionOrderByWithRelationInput | SolutionOrderByWithRelationInput[]
-    cursor?: SolutionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: SolutionScalarFieldEnum | SolutionScalarFieldEnum[]
-  }
-
-  /**
-   * Product without action
-   */
-  export type ProductDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Product
-     */
-    select?: ProductSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Product
-     */
-    omit?: ProductOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProductInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Solution
-   */
-
-  export type AggregateSolution = {
-    _count: SolutionCountAggregateOutputType | null
-    _min: SolutionMinAggregateOutputType | null
-    _max: SolutionMaxAggregateOutputType | null
-  }
-
-  export type SolutionMinAggregateOutputType = {
-    id: string | null
-    title: string | null
-    slug: string | null
-    description: string | null
-    fullDescription: string | null
-    imageUrl: string | null
-    industry: string | null
-    benefits: string | null
-    features: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type SolutionMaxAggregateOutputType = {
-    id: string | null
-    title: string | null
-    slug: string | null
-    description: string | null
-    fullDescription: string | null
-    imageUrl: string | null
-    industry: string | null
-    benefits: string | null
-    features: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type SolutionCountAggregateOutputType = {
-    id: number
-    title: number
-    slug: number
-    description: number
-    fullDescription: number
-    imageUrl: number
-    industry: number
-    benefits: number
-    features: number
-    createdAt: number
-    updatedAt: number
-    _all: number
-  }
-
-
-  export type SolutionMinAggregateInputType = {
-    id?: true
-    title?: true
-    slug?: true
-    description?: true
-    fullDescription?: true
-    imageUrl?: true
-    industry?: true
-    benefits?: true
-    features?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type SolutionMaxAggregateInputType = {
-    id?: true
-    title?: true
-    slug?: true
-    description?: true
-    fullDescription?: true
-    imageUrl?: true
-    industry?: true
-    benefits?: true
-    features?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type SolutionCountAggregateInputType = {
-    id?: true
-    title?: true
-    slug?: true
-    description?: true
-    fullDescription?: true
-    imageUrl?: true
-    industry?: true
-    benefits?: true
-    features?: true
+    url?: true
+    category?: true
+    icon?: true
+    sortOrder?: true
+    isActive?: true
+    footerId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
   }
 
-  export type SolutionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterLinkAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Solution to aggregate.
+     * Filter which FooterLink to aggregate.
      */
-    where?: SolutionWhereInput
+    where?: FooterLinkWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Solutions to fetch.
+     * Determine the order of FooterLinks to fetch.
      */
-    orderBy?: SolutionOrderByWithRelationInput | SolutionOrderByWithRelationInput[]
+    orderBy?: FooterLinkOrderByWithRelationInput | FooterLinkOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: SolutionWhereUniqueInput
+    cursor?: FooterLinkWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Solutions from the position of the cursor.
+     * Take `±n` FooterLinks from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Solutions.
+     * Skip the first `n` FooterLinks.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Solutions
+     * Count returned FooterLinks
     **/
-    _count?: true | SolutionCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: SolutionMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: SolutionMaxAggregateInputType
-  }
-
-  export type GetSolutionAggregateType<T extends SolutionAggregateArgs> = {
-        [P in keyof T & keyof AggregateSolution]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateSolution[P]>
-      : GetScalarType<T[P], AggregateSolution[P]>
-  }
-
-
-
-
-  export type SolutionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SolutionWhereInput
-    orderBy?: SolutionOrderByWithAggregationInput | SolutionOrderByWithAggregationInput[]
-    by: SolutionScalarFieldEnum[] | SolutionScalarFieldEnum
-    having?: SolutionScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: SolutionCountAggregateInputType | true
-    _min?: SolutionMinAggregateInputType
-    _max?: SolutionMaxAggregateInputType
-  }
-
-  export type SolutionGroupByOutputType = {
-    id: string
-    title: string
-    slug: string
-    description: string
-    fullDescription: string | null
-    imageUrl: string
-    industry: string
-    benefits: string
-    features: string
-    createdAt: Date
-    updatedAt: Date
-    _count: SolutionCountAggregateOutputType | null
-    _min: SolutionMinAggregateOutputType | null
-    _max: SolutionMaxAggregateOutputType | null
-  }
-
-  type GetSolutionGroupByPayload<T extends SolutionGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<SolutionGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof SolutionGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], SolutionGroupByOutputType[P]>
-            : GetScalarType<T[P], SolutionGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type SolutionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    slug?: boolean
-    description?: boolean
-    fullDescription?: boolean
-    imageUrl?: boolean
-    industry?: boolean
-    benefits?: boolean
-    features?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    products?: boolean | Solution$productsArgs<ExtArgs>
-    caseStudies?: boolean | Solution$caseStudiesArgs<ExtArgs>
-    _count?: boolean | SolutionCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["solution"]>
-
-  export type SolutionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    slug?: boolean
-    description?: boolean
-    fullDescription?: boolean
-    imageUrl?: boolean
-    industry?: boolean
-    benefits?: boolean
-    features?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }, ExtArgs["result"]["solution"]>
-
-  export type SolutionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    slug?: boolean
-    description?: boolean
-    fullDescription?: boolean
-    imageUrl?: boolean
-    industry?: boolean
-    benefits?: boolean
-    features?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }, ExtArgs["result"]["solution"]>
-
-  export type SolutionSelectScalar = {
-    id?: boolean
-    title?: boolean
-    slug?: boolean
-    description?: boolean
-    fullDescription?: boolean
-    imageUrl?: boolean
-    industry?: boolean
-    benefits?: boolean
-    features?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }
-
-  export type SolutionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "description" | "fullDescription" | "imageUrl" | "industry" | "benefits" | "features" | "createdAt" | "updatedAt", ExtArgs["result"]["solution"]>
-  export type SolutionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    products?: boolean | Solution$productsArgs<ExtArgs>
-    caseStudies?: boolean | Solution$caseStudiesArgs<ExtArgs>
-    _count?: boolean | SolutionCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type SolutionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type SolutionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-
-  export type $SolutionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Solution"
-    objects: {
-      products: Prisma.$ProductPayload<ExtArgs>[]
-      caseStudies: Prisma.$CaseStudyPayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      title: string
-      slug: string
-      description: string
-      fullDescription: string | null
-      imageUrl: string
-      industry: string
-      benefits: string
-      features: string
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["solution"]>
-    composites: {}
-  }
-
-  type SolutionGetPayload<S extends boolean | null | undefined | SolutionDefaultArgs> = $Result.GetResult<Prisma.$SolutionPayload, S>
-
-  type SolutionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<SolutionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: SolutionCountAggregateInputType | true
-    }
-
-  export interface SolutionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Solution'], meta: { name: 'Solution' } }
-    /**
-     * Find zero or one Solution that matches the filter.
-     * @param {SolutionFindUniqueArgs} args - Arguments to find a Solution
-     * @example
-     * // Get one Solution
-     * const solution = await prisma.solution.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends SolutionFindUniqueArgs>(args: SelectSubset<T, SolutionFindUniqueArgs<ExtArgs>>): Prisma__SolutionClient<$Result.GetResult<Prisma.$SolutionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Solution that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {SolutionFindUniqueOrThrowArgs} args - Arguments to find a Solution
-     * @example
-     * // Get one Solution
-     * const solution = await prisma.solution.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends SolutionFindUniqueOrThrowArgs>(args: SelectSubset<T, SolutionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SolutionClient<$Result.GetResult<Prisma.$SolutionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Solution that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SolutionFindFirstArgs} args - Arguments to find a Solution
-     * @example
-     * // Get one Solution
-     * const solution = await prisma.solution.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends SolutionFindFirstArgs>(args?: SelectSubset<T, SolutionFindFirstArgs<ExtArgs>>): Prisma__SolutionClient<$Result.GetResult<Prisma.$SolutionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Solution that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SolutionFindFirstOrThrowArgs} args - Arguments to find a Solution
-     * @example
-     * // Get one Solution
-     * const solution = await prisma.solution.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends SolutionFindFirstOrThrowArgs>(args?: SelectSubset<T, SolutionFindFirstOrThrowArgs<ExtArgs>>): Prisma__SolutionClient<$Result.GetResult<Prisma.$SolutionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Solutions that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SolutionFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Solutions
-     * const solutions = await prisma.solution.findMany()
-     * 
-     * // Get first 10 Solutions
-     * const solutions = await prisma.solution.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const solutionWithIdOnly = await prisma.solution.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends SolutionFindManyArgs>(args?: SelectSubset<T, SolutionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SolutionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Solution.
-     * @param {SolutionCreateArgs} args - Arguments to create a Solution.
-     * @example
-     * // Create one Solution
-     * const Solution = await prisma.solution.create({
-     *   data: {
-     *     // ... data to create a Solution
-     *   }
-     * })
-     * 
-     */
-    create<T extends SolutionCreateArgs>(args: SelectSubset<T, SolutionCreateArgs<ExtArgs>>): Prisma__SolutionClient<$Result.GetResult<Prisma.$SolutionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Solutions.
-     * @param {SolutionCreateManyArgs} args - Arguments to create many Solutions.
-     * @example
-     * // Create many Solutions
-     * const solution = await prisma.solution.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends SolutionCreateManyArgs>(args?: SelectSubset<T, SolutionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Solutions and returns the data saved in the database.
-     * @param {SolutionCreateManyAndReturnArgs} args - Arguments to create many Solutions.
-     * @example
-     * // Create many Solutions
-     * const solution = await prisma.solution.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Solutions and only return the `id`
-     * const solutionWithIdOnly = await prisma.solution.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends SolutionCreateManyAndReturnArgs>(args?: SelectSubset<T, SolutionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SolutionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Solution.
-     * @param {SolutionDeleteArgs} args - Arguments to delete one Solution.
-     * @example
-     * // Delete one Solution
-     * const Solution = await prisma.solution.delete({
-     *   where: {
-     *     // ... filter to delete one Solution
-     *   }
-     * })
-     * 
-     */
-    delete<T extends SolutionDeleteArgs>(args: SelectSubset<T, SolutionDeleteArgs<ExtArgs>>): Prisma__SolutionClient<$Result.GetResult<Prisma.$SolutionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Solution.
-     * @param {SolutionUpdateArgs} args - Arguments to update one Solution.
-     * @example
-     * // Update one Solution
-     * const solution = await prisma.solution.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends SolutionUpdateArgs>(args: SelectSubset<T, SolutionUpdateArgs<ExtArgs>>): Prisma__SolutionClient<$Result.GetResult<Prisma.$SolutionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Solutions.
-     * @param {SolutionDeleteManyArgs} args - Arguments to filter Solutions to delete.
-     * @example
-     * // Delete a few Solutions
-     * const { count } = await prisma.solution.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends SolutionDeleteManyArgs>(args?: SelectSubset<T, SolutionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Solutions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SolutionUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Solutions
-     * const solution = await prisma.solution.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends SolutionUpdateManyArgs>(args: SelectSubset<T, SolutionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Solutions and returns the data updated in the database.
-     * @param {SolutionUpdateManyAndReturnArgs} args - Arguments to update many Solutions.
-     * @example
-     * // Update many Solutions
-     * const solution = await prisma.solution.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Solutions and only return the `id`
-     * const solutionWithIdOnly = await prisma.solution.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends SolutionUpdateManyAndReturnArgs>(args: SelectSubset<T, SolutionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SolutionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Solution.
-     * @param {SolutionUpsertArgs} args - Arguments to update or create a Solution.
-     * @example
-     * // Update or create a Solution
-     * const solution = await prisma.solution.upsert({
-     *   create: {
-     *     // ... data to create a Solution
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Solution we want to update
-     *   }
-     * })
-     */
-    upsert<T extends SolutionUpsertArgs>(args: SelectSubset<T, SolutionUpsertArgs<ExtArgs>>): Prisma__SolutionClient<$Result.GetResult<Prisma.$SolutionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Solutions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SolutionCountArgs} args - Arguments to filter Solutions to count.
-     * @example
-     * // Count the number of Solutions
-     * const count = await prisma.solution.count({
-     *   where: {
-     *     // ... the filter for the Solutions we want to count
-     *   }
-     * })
-    **/
-    count<T extends SolutionCountArgs>(
-      args?: Subset<T, SolutionCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], SolutionCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Solution.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SolutionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends SolutionAggregateArgs>(args: Subset<T, SolutionAggregateArgs>): Prisma.PrismaPromise<GetSolutionAggregateType<T>>
-
-    /**
-     * Group by Solution.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SolutionGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends SolutionGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: SolutionGroupByArgs['orderBy'] }
-        : { orderBy?: SolutionGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, SolutionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSolutionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Solution model
-   */
-  readonly fields: SolutionFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Solution.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__SolutionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    products<T extends Solution$productsArgs<ExtArgs> = {}>(args?: Subset<T, Solution$productsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    caseStudies<T extends Solution$caseStudiesArgs<ExtArgs> = {}>(args?: Subset<T, Solution$caseStudiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseStudyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Solution model
-   */
-  interface SolutionFieldRefs {
-    readonly id: FieldRef<"Solution", 'String'>
-    readonly title: FieldRef<"Solution", 'String'>
-    readonly slug: FieldRef<"Solution", 'String'>
-    readonly description: FieldRef<"Solution", 'String'>
-    readonly fullDescription: FieldRef<"Solution", 'String'>
-    readonly imageUrl: FieldRef<"Solution", 'String'>
-    readonly industry: FieldRef<"Solution", 'String'>
-    readonly benefits: FieldRef<"Solution", 'String'>
-    readonly features: FieldRef<"Solution", 'String'>
-    readonly createdAt: FieldRef<"Solution", 'DateTime'>
-    readonly updatedAt: FieldRef<"Solution", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Solution findUnique
-   */
-  export type SolutionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Solution
-     */
-    select?: SolutionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Solution
-     */
-    omit?: SolutionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SolutionInclude<ExtArgs> | null
-    /**
-     * Filter, which Solution to fetch.
-     */
-    where: SolutionWhereUniqueInput
-  }
-
-  /**
-   * Solution findUniqueOrThrow
-   */
-  export type SolutionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Solution
-     */
-    select?: SolutionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Solution
-     */
-    omit?: SolutionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SolutionInclude<ExtArgs> | null
-    /**
-     * Filter, which Solution to fetch.
-     */
-    where: SolutionWhereUniqueInput
-  }
-
-  /**
-   * Solution findFirst
-   */
-  export type SolutionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Solution
-     */
-    select?: SolutionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Solution
-     */
-    omit?: SolutionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SolutionInclude<ExtArgs> | null
-    /**
-     * Filter, which Solution to fetch.
-     */
-    where?: SolutionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Solutions to fetch.
-     */
-    orderBy?: SolutionOrderByWithRelationInput | SolutionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Solutions.
-     */
-    cursor?: SolutionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Solutions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Solutions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Solutions.
-     */
-    distinct?: SolutionScalarFieldEnum | SolutionScalarFieldEnum[]
-  }
-
-  /**
-   * Solution findFirstOrThrow
-   */
-  export type SolutionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Solution
-     */
-    select?: SolutionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Solution
-     */
-    omit?: SolutionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SolutionInclude<ExtArgs> | null
-    /**
-     * Filter, which Solution to fetch.
-     */
-    where?: SolutionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Solutions to fetch.
-     */
-    orderBy?: SolutionOrderByWithRelationInput | SolutionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Solutions.
-     */
-    cursor?: SolutionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Solutions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Solutions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Solutions.
-     */
-    distinct?: SolutionScalarFieldEnum | SolutionScalarFieldEnum[]
-  }
-
-  /**
-   * Solution findMany
-   */
-  export type SolutionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Solution
-     */
-    select?: SolutionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Solution
-     */
-    omit?: SolutionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SolutionInclude<ExtArgs> | null
-    /**
-     * Filter, which Solutions to fetch.
-     */
-    where?: SolutionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Solutions to fetch.
-     */
-    orderBy?: SolutionOrderByWithRelationInput | SolutionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Solutions.
-     */
-    cursor?: SolutionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Solutions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Solutions.
-     */
-    skip?: number
-    distinct?: SolutionScalarFieldEnum | SolutionScalarFieldEnum[]
-  }
-
-  /**
-   * Solution create
-   */
-  export type SolutionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Solution
-     */
-    select?: SolutionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Solution
-     */
-    omit?: SolutionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SolutionInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Solution.
-     */
-    data: XOR<SolutionCreateInput, SolutionUncheckedCreateInput>
-  }
-
-  /**
-   * Solution createMany
-   */
-  export type SolutionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Solutions.
-     */
-    data: SolutionCreateManyInput | SolutionCreateManyInput[]
-  }
-
-  /**
-   * Solution createManyAndReturn
-   */
-  export type SolutionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Solution
-     */
-    select?: SolutionSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Solution
-     */
-    omit?: SolutionOmit<ExtArgs> | null
-    /**
-     * The data used to create many Solutions.
-     */
-    data: SolutionCreateManyInput | SolutionCreateManyInput[]
-  }
-
-  /**
-   * Solution update
-   */
-  export type SolutionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Solution
-     */
-    select?: SolutionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Solution
-     */
-    omit?: SolutionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SolutionInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Solution.
-     */
-    data: XOR<SolutionUpdateInput, SolutionUncheckedUpdateInput>
-    /**
-     * Choose, which Solution to update.
-     */
-    where: SolutionWhereUniqueInput
-  }
-
-  /**
-   * Solution updateMany
-   */
-  export type SolutionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Solutions.
-     */
-    data: XOR<SolutionUpdateManyMutationInput, SolutionUncheckedUpdateManyInput>
-    /**
-     * Filter which Solutions to update
-     */
-    where?: SolutionWhereInput
-    /**
-     * Limit how many Solutions to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Solution updateManyAndReturn
-   */
-  export type SolutionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Solution
-     */
-    select?: SolutionSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Solution
-     */
-    omit?: SolutionOmit<ExtArgs> | null
-    /**
-     * The data used to update Solutions.
-     */
-    data: XOR<SolutionUpdateManyMutationInput, SolutionUncheckedUpdateManyInput>
-    /**
-     * Filter which Solutions to update
-     */
-    where?: SolutionWhereInput
-    /**
-     * Limit how many Solutions to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Solution upsert
-   */
-  export type SolutionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Solution
-     */
-    select?: SolutionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Solution
-     */
-    omit?: SolutionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SolutionInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Solution to update in case it exists.
-     */
-    where: SolutionWhereUniqueInput
-    /**
-     * In case the Solution found by the `where` argument doesn't exist, create a new Solution with this data.
-     */
-    create: XOR<SolutionCreateInput, SolutionUncheckedCreateInput>
-    /**
-     * In case the Solution was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<SolutionUpdateInput, SolutionUncheckedUpdateInput>
-  }
-
-  /**
-   * Solution delete
-   */
-  export type SolutionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Solution
-     */
-    select?: SolutionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Solution
-     */
-    omit?: SolutionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SolutionInclude<ExtArgs> | null
-    /**
-     * Filter which Solution to delete.
-     */
-    where: SolutionWhereUniqueInput
-  }
-
-  /**
-   * Solution deleteMany
-   */
-  export type SolutionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Solutions to delete
-     */
-    where?: SolutionWhereInput
-    /**
-     * Limit how many Solutions to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Solution.products
-   */
-  export type Solution$productsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Product
-     */
-    select?: ProductSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Product
-     */
-    omit?: ProductOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProductInclude<ExtArgs> | null
-    where?: ProductWhereInput
-    orderBy?: ProductOrderByWithRelationInput | ProductOrderByWithRelationInput[]
-    cursor?: ProductWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
-  }
-
-  /**
-   * Solution.caseStudies
-   */
-  export type Solution$caseStudiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseStudy
-     */
-    select?: CaseStudySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseStudy
-     */
-    omit?: CaseStudyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseStudyInclude<ExtArgs> | null
-    where?: CaseStudyWhereInput
-    orderBy?: CaseStudyOrderByWithRelationInput | CaseStudyOrderByWithRelationInput[]
-    cursor?: CaseStudyWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CaseStudyScalarFieldEnum | CaseStudyScalarFieldEnum[]
-  }
-
-  /**
-   * Solution without action
-   */
-  export type SolutionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Solution
-     */
-    select?: SolutionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Solution
-     */
-    omit?: SolutionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SolutionInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model CaseStudy
-   */
-
-  export type AggregateCaseStudy = {
-    _count: CaseStudyCountAggregateOutputType | null
-    _min: CaseStudyMinAggregateOutputType | null
-    _max: CaseStudyMaxAggregateOutputType | null
-  }
-
-  export type CaseStudyMinAggregateOutputType = {
-    id: string | null
-    title: string | null
-    description: string | null
-    solutionId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type CaseStudyMaxAggregateOutputType = {
-    id: string | null
-    title: string | null
-    description: string | null
-    solutionId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type CaseStudyCountAggregateOutputType = {
-    id: number
-    title: number
-    description: number
-    solutionId: number
-    createdAt: number
-    updatedAt: number
-    _all: number
-  }
-
-
-  export type CaseStudyMinAggregateInputType = {
-    id?: true
-    title?: true
-    description?: true
-    solutionId?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type CaseStudyMaxAggregateInputType = {
-    id?: true
-    title?: true
-    description?: true
-    solutionId?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type CaseStudyCountAggregateInputType = {
-    id?: true
-    title?: true
-    description?: true
-    solutionId?: true
-    createdAt?: true
-    updatedAt?: true
-    _all?: true
-  }
-
-  export type CaseStudyAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which CaseStudy to aggregate.
-     */
-    where?: CaseStudyWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CaseStudies to fetch.
-     */
-    orderBy?: CaseStudyOrderByWithRelationInput | CaseStudyOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: CaseStudyWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CaseStudies from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CaseStudies.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned CaseStudies
-    **/
-    _count?: true | CaseStudyCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: CaseStudyMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: CaseStudyMaxAggregateInputType
-  }
-
-  export type GetCaseStudyAggregateType<T extends CaseStudyAggregateArgs> = {
-        [P in keyof T & keyof AggregateCaseStudy]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateCaseStudy[P]>
-      : GetScalarType<T[P], AggregateCaseStudy[P]>
-  }
-
-
-
-
-  export type CaseStudyGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CaseStudyWhereInput
-    orderBy?: CaseStudyOrderByWithAggregationInput | CaseStudyOrderByWithAggregationInput[]
-    by: CaseStudyScalarFieldEnum[] | CaseStudyScalarFieldEnum
-    having?: CaseStudyScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: CaseStudyCountAggregateInputType | true
-    _min?: CaseStudyMinAggregateInputType
-    _max?: CaseStudyMaxAggregateInputType
-  }
-
-  export type CaseStudyGroupByOutputType = {
-    id: string
-    title: string
-    description: string
-    solutionId: string
-    createdAt: Date
-    updatedAt: Date
-    _count: CaseStudyCountAggregateOutputType | null
-    _min: CaseStudyMinAggregateOutputType | null
-    _max: CaseStudyMaxAggregateOutputType | null
-  }
-
-  type GetCaseStudyGroupByPayload<T extends CaseStudyGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<CaseStudyGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof CaseStudyGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], CaseStudyGroupByOutputType[P]>
-            : GetScalarType<T[P], CaseStudyGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type CaseStudySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    description?: boolean
-    solutionId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    solution?: boolean | SolutionDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["caseStudy"]>
-
-  export type CaseStudySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    description?: boolean
-    solutionId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    solution?: boolean | SolutionDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["caseStudy"]>
-
-  export type CaseStudySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    description?: boolean
-    solutionId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    solution?: boolean | SolutionDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["caseStudy"]>
-
-  export type CaseStudySelectScalar = {
-    id?: boolean
-    title?: boolean
-    description?: boolean
-    solutionId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }
-
-  export type CaseStudyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "solutionId" | "createdAt" | "updatedAt", ExtArgs["result"]["caseStudy"]>
-  export type CaseStudyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    solution?: boolean | SolutionDefaultArgs<ExtArgs>
-  }
-  export type CaseStudyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    solution?: boolean | SolutionDefaultArgs<ExtArgs>
-  }
-  export type CaseStudyIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    solution?: boolean | SolutionDefaultArgs<ExtArgs>
-  }
-
-  export type $CaseStudyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "CaseStudy"
-    objects: {
-      solution: Prisma.$SolutionPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      title: string
-      description: string
-      solutionId: string
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["caseStudy"]>
-    composites: {}
-  }
-
-  type CaseStudyGetPayload<S extends boolean | null | undefined | CaseStudyDefaultArgs> = $Result.GetResult<Prisma.$CaseStudyPayload, S>
-
-  type CaseStudyCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CaseStudyFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CaseStudyCountAggregateInputType | true
-    }
-
-  export interface CaseStudyDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CaseStudy'], meta: { name: 'CaseStudy' } }
-    /**
-     * Find zero or one CaseStudy that matches the filter.
-     * @param {CaseStudyFindUniqueArgs} args - Arguments to find a CaseStudy
-     * @example
-     * // Get one CaseStudy
-     * const caseStudy = await prisma.caseStudy.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends CaseStudyFindUniqueArgs>(args: SelectSubset<T, CaseStudyFindUniqueArgs<ExtArgs>>): Prisma__CaseStudyClient<$Result.GetResult<Prisma.$CaseStudyPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one CaseStudy that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {CaseStudyFindUniqueOrThrowArgs} args - Arguments to find a CaseStudy
-     * @example
-     * // Get one CaseStudy
-     * const caseStudy = await prisma.caseStudy.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends CaseStudyFindUniqueOrThrowArgs>(args: SelectSubset<T, CaseStudyFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CaseStudyClient<$Result.GetResult<Prisma.$CaseStudyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first CaseStudy that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CaseStudyFindFirstArgs} args - Arguments to find a CaseStudy
-     * @example
-     * // Get one CaseStudy
-     * const caseStudy = await prisma.caseStudy.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends CaseStudyFindFirstArgs>(args?: SelectSubset<T, CaseStudyFindFirstArgs<ExtArgs>>): Prisma__CaseStudyClient<$Result.GetResult<Prisma.$CaseStudyPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first CaseStudy that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CaseStudyFindFirstOrThrowArgs} args - Arguments to find a CaseStudy
-     * @example
-     * // Get one CaseStudy
-     * const caseStudy = await prisma.caseStudy.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends CaseStudyFindFirstOrThrowArgs>(args?: SelectSubset<T, CaseStudyFindFirstOrThrowArgs<ExtArgs>>): Prisma__CaseStudyClient<$Result.GetResult<Prisma.$CaseStudyPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more CaseStudies that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CaseStudyFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all CaseStudies
-     * const caseStudies = await prisma.caseStudy.findMany()
-     * 
-     * // Get first 10 CaseStudies
-     * const caseStudies = await prisma.caseStudy.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const caseStudyWithIdOnly = await prisma.caseStudy.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends CaseStudyFindManyArgs>(args?: SelectSubset<T, CaseStudyFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseStudyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a CaseStudy.
-     * @param {CaseStudyCreateArgs} args - Arguments to create a CaseStudy.
-     * @example
-     * // Create one CaseStudy
-     * const CaseStudy = await prisma.caseStudy.create({
-     *   data: {
-     *     // ... data to create a CaseStudy
-     *   }
-     * })
-     * 
-     */
-    create<T extends CaseStudyCreateArgs>(args: SelectSubset<T, CaseStudyCreateArgs<ExtArgs>>): Prisma__CaseStudyClient<$Result.GetResult<Prisma.$CaseStudyPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many CaseStudies.
-     * @param {CaseStudyCreateManyArgs} args - Arguments to create many CaseStudies.
-     * @example
-     * // Create many CaseStudies
-     * const caseStudy = await prisma.caseStudy.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends CaseStudyCreateManyArgs>(args?: SelectSubset<T, CaseStudyCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many CaseStudies and returns the data saved in the database.
-     * @param {CaseStudyCreateManyAndReturnArgs} args - Arguments to create many CaseStudies.
-     * @example
-     * // Create many CaseStudies
-     * const caseStudy = await prisma.caseStudy.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many CaseStudies and only return the `id`
-     * const caseStudyWithIdOnly = await prisma.caseStudy.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends CaseStudyCreateManyAndReturnArgs>(args?: SelectSubset<T, CaseStudyCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseStudyPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a CaseStudy.
-     * @param {CaseStudyDeleteArgs} args - Arguments to delete one CaseStudy.
-     * @example
-     * // Delete one CaseStudy
-     * const CaseStudy = await prisma.caseStudy.delete({
-     *   where: {
-     *     // ... filter to delete one CaseStudy
-     *   }
-     * })
-     * 
-     */
-    delete<T extends CaseStudyDeleteArgs>(args: SelectSubset<T, CaseStudyDeleteArgs<ExtArgs>>): Prisma__CaseStudyClient<$Result.GetResult<Prisma.$CaseStudyPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one CaseStudy.
-     * @param {CaseStudyUpdateArgs} args - Arguments to update one CaseStudy.
-     * @example
-     * // Update one CaseStudy
-     * const caseStudy = await prisma.caseStudy.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends CaseStudyUpdateArgs>(args: SelectSubset<T, CaseStudyUpdateArgs<ExtArgs>>): Prisma__CaseStudyClient<$Result.GetResult<Prisma.$CaseStudyPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more CaseStudies.
-     * @param {CaseStudyDeleteManyArgs} args - Arguments to filter CaseStudies to delete.
-     * @example
-     * // Delete a few CaseStudies
-     * const { count } = await prisma.caseStudy.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends CaseStudyDeleteManyArgs>(args?: SelectSubset<T, CaseStudyDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more CaseStudies.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CaseStudyUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many CaseStudies
-     * const caseStudy = await prisma.caseStudy.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends CaseStudyUpdateManyArgs>(args: SelectSubset<T, CaseStudyUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more CaseStudies and returns the data updated in the database.
-     * @param {CaseStudyUpdateManyAndReturnArgs} args - Arguments to update many CaseStudies.
-     * @example
-     * // Update many CaseStudies
-     * const caseStudy = await prisma.caseStudy.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more CaseStudies and only return the `id`
-     * const caseStudyWithIdOnly = await prisma.caseStudy.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends CaseStudyUpdateManyAndReturnArgs>(args: SelectSubset<T, CaseStudyUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseStudyPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one CaseStudy.
-     * @param {CaseStudyUpsertArgs} args - Arguments to update or create a CaseStudy.
-     * @example
-     * // Update or create a CaseStudy
-     * const caseStudy = await prisma.caseStudy.upsert({
-     *   create: {
-     *     // ... data to create a CaseStudy
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the CaseStudy we want to update
-     *   }
-     * })
-     */
-    upsert<T extends CaseStudyUpsertArgs>(args: SelectSubset<T, CaseStudyUpsertArgs<ExtArgs>>): Prisma__CaseStudyClient<$Result.GetResult<Prisma.$CaseStudyPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of CaseStudies.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CaseStudyCountArgs} args - Arguments to filter CaseStudies to count.
-     * @example
-     * // Count the number of CaseStudies
-     * const count = await prisma.caseStudy.count({
-     *   where: {
-     *     // ... the filter for the CaseStudies we want to count
-     *   }
-     * })
-    **/
-    count<T extends CaseStudyCountArgs>(
-      args?: Subset<T, CaseStudyCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], CaseStudyCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a CaseStudy.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CaseStudyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends CaseStudyAggregateArgs>(args: Subset<T, CaseStudyAggregateArgs>): Prisma.PrismaPromise<GetCaseStudyAggregateType<T>>
-
-    /**
-     * Group by CaseStudy.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CaseStudyGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends CaseStudyGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CaseStudyGroupByArgs['orderBy'] }
-        : { orderBy?: CaseStudyGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, CaseStudyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCaseStudyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the CaseStudy model
-   */
-  readonly fields: CaseStudyFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for CaseStudy.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__CaseStudyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    solution<T extends SolutionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SolutionDefaultArgs<ExtArgs>>): Prisma__SolutionClient<$Result.GetResult<Prisma.$SolutionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the CaseStudy model
-   */
-  interface CaseStudyFieldRefs {
-    readonly id: FieldRef<"CaseStudy", 'String'>
-    readonly title: FieldRef<"CaseStudy", 'String'>
-    readonly description: FieldRef<"CaseStudy", 'String'>
-    readonly solutionId: FieldRef<"CaseStudy", 'String'>
-    readonly createdAt: FieldRef<"CaseStudy", 'DateTime'>
-    readonly updatedAt: FieldRef<"CaseStudy", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * CaseStudy findUnique
-   */
-  export type CaseStudyFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseStudy
-     */
-    select?: CaseStudySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseStudy
-     */
-    omit?: CaseStudyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseStudyInclude<ExtArgs> | null
-    /**
-     * Filter, which CaseStudy to fetch.
-     */
-    where: CaseStudyWhereUniqueInput
-  }
-
-  /**
-   * CaseStudy findUniqueOrThrow
-   */
-  export type CaseStudyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseStudy
-     */
-    select?: CaseStudySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseStudy
-     */
-    omit?: CaseStudyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseStudyInclude<ExtArgs> | null
-    /**
-     * Filter, which CaseStudy to fetch.
-     */
-    where: CaseStudyWhereUniqueInput
-  }
-
-  /**
-   * CaseStudy findFirst
-   */
-  export type CaseStudyFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseStudy
-     */
-    select?: CaseStudySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseStudy
-     */
-    omit?: CaseStudyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseStudyInclude<ExtArgs> | null
-    /**
-     * Filter, which CaseStudy to fetch.
-     */
-    where?: CaseStudyWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CaseStudies to fetch.
-     */
-    orderBy?: CaseStudyOrderByWithRelationInput | CaseStudyOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for CaseStudies.
-     */
-    cursor?: CaseStudyWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CaseStudies from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CaseStudies.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of CaseStudies.
-     */
-    distinct?: CaseStudyScalarFieldEnum | CaseStudyScalarFieldEnum[]
-  }
-
-  /**
-   * CaseStudy findFirstOrThrow
-   */
-  export type CaseStudyFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseStudy
-     */
-    select?: CaseStudySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseStudy
-     */
-    omit?: CaseStudyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseStudyInclude<ExtArgs> | null
-    /**
-     * Filter, which CaseStudy to fetch.
-     */
-    where?: CaseStudyWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CaseStudies to fetch.
-     */
-    orderBy?: CaseStudyOrderByWithRelationInput | CaseStudyOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for CaseStudies.
-     */
-    cursor?: CaseStudyWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CaseStudies from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CaseStudies.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of CaseStudies.
-     */
-    distinct?: CaseStudyScalarFieldEnum | CaseStudyScalarFieldEnum[]
-  }
-
-  /**
-   * CaseStudy findMany
-   */
-  export type CaseStudyFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseStudy
-     */
-    select?: CaseStudySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseStudy
-     */
-    omit?: CaseStudyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseStudyInclude<ExtArgs> | null
-    /**
-     * Filter, which CaseStudies to fetch.
-     */
-    where?: CaseStudyWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CaseStudies to fetch.
-     */
-    orderBy?: CaseStudyOrderByWithRelationInput | CaseStudyOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing CaseStudies.
-     */
-    cursor?: CaseStudyWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CaseStudies from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CaseStudies.
-     */
-    skip?: number
-    distinct?: CaseStudyScalarFieldEnum | CaseStudyScalarFieldEnum[]
-  }
-
-  /**
-   * CaseStudy create
-   */
-  export type CaseStudyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseStudy
-     */
-    select?: CaseStudySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseStudy
-     */
-    omit?: CaseStudyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseStudyInclude<ExtArgs> | null
-    /**
-     * The data needed to create a CaseStudy.
-     */
-    data: XOR<CaseStudyCreateInput, CaseStudyUncheckedCreateInput>
-  }
-
-  /**
-   * CaseStudy createMany
-   */
-  export type CaseStudyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many CaseStudies.
-     */
-    data: CaseStudyCreateManyInput | CaseStudyCreateManyInput[]
-  }
-
-  /**
-   * CaseStudy createManyAndReturn
-   */
-  export type CaseStudyCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseStudy
-     */
-    select?: CaseStudySelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseStudy
-     */
-    omit?: CaseStudyOmit<ExtArgs> | null
-    /**
-     * The data used to create many CaseStudies.
-     */
-    data: CaseStudyCreateManyInput | CaseStudyCreateManyInput[]
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseStudyIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * CaseStudy update
-   */
-  export type CaseStudyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseStudy
-     */
-    select?: CaseStudySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseStudy
-     */
-    omit?: CaseStudyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseStudyInclude<ExtArgs> | null
-    /**
-     * The data needed to update a CaseStudy.
-     */
-    data: XOR<CaseStudyUpdateInput, CaseStudyUncheckedUpdateInput>
-    /**
-     * Choose, which CaseStudy to update.
-     */
-    where: CaseStudyWhereUniqueInput
-  }
-
-  /**
-   * CaseStudy updateMany
-   */
-  export type CaseStudyUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update CaseStudies.
-     */
-    data: XOR<CaseStudyUpdateManyMutationInput, CaseStudyUncheckedUpdateManyInput>
-    /**
-     * Filter which CaseStudies to update
-     */
-    where?: CaseStudyWhereInput
-    /**
-     * Limit how many CaseStudies to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * CaseStudy updateManyAndReturn
-   */
-  export type CaseStudyUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseStudy
-     */
-    select?: CaseStudySelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseStudy
-     */
-    omit?: CaseStudyOmit<ExtArgs> | null
-    /**
-     * The data used to update CaseStudies.
-     */
-    data: XOR<CaseStudyUpdateManyMutationInput, CaseStudyUncheckedUpdateManyInput>
-    /**
-     * Filter which CaseStudies to update
-     */
-    where?: CaseStudyWhereInput
-    /**
-     * Limit how many CaseStudies to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseStudyIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * CaseStudy upsert
-   */
-  export type CaseStudyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseStudy
-     */
-    select?: CaseStudySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseStudy
-     */
-    omit?: CaseStudyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseStudyInclude<ExtArgs> | null
-    /**
-     * The filter to search for the CaseStudy to update in case it exists.
-     */
-    where: CaseStudyWhereUniqueInput
-    /**
-     * In case the CaseStudy found by the `where` argument doesn't exist, create a new CaseStudy with this data.
-     */
-    create: XOR<CaseStudyCreateInput, CaseStudyUncheckedCreateInput>
-    /**
-     * In case the CaseStudy was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<CaseStudyUpdateInput, CaseStudyUncheckedUpdateInput>
-  }
-
-  /**
-   * CaseStudy delete
-   */
-  export type CaseStudyDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseStudy
-     */
-    select?: CaseStudySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseStudy
-     */
-    omit?: CaseStudyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseStudyInclude<ExtArgs> | null
-    /**
-     * Filter which CaseStudy to delete.
-     */
-    where: CaseStudyWhereUniqueInput
-  }
-
-  /**
-   * CaseStudy deleteMany
-   */
-  export type CaseStudyDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which CaseStudies to delete
-     */
-    where?: CaseStudyWhereInput
-    /**
-     * Limit how many CaseStudies to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * CaseStudy without action
-   */
-  export type CaseStudyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseStudy
-     */
-    select?: CaseStudySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseStudy
-     */
-    omit?: CaseStudyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseStudyInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Media
-   */
-
-  export type AggregateMedia = {
-    _count: MediaCountAggregateOutputType | null
-    _avg: MediaAvgAggregateOutputType | null
-    _sum: MediaSumAggregateOutputType | null
-    _min: MediaMinAggregateOutputType | null
-    _max: MediaMaxAggregateOutputType | null
-  }
-
-  export type MediaAvgAggregateOutputType = {
-    fileSize: number | null
-  }
-
-  export type MediaSumAggregateOutputType = {
-    fileSize: number | null
-  }
-
-  export type MediaMinAggregateOutputType = {
-    id: string | null
-    fileName: string | null
-    filePath: string | null
-    fileType: string | null
-    fileSize: number | null
-    entityType: string | null
-    entityId: string | null
-    createdAt: Date | null
-  }
-
-  export type MediaMaxAggregateOutputType = {
-    id: string | null
-    fileName: string | null
-    filePath: string | null
-    fileType: string | null
-    fileSize: number | null
-    entityType: string | null
-    entityId: string | null
-    createdAt: Date | null
-  }
-
-  export type MediaCountAggregateOutputType = {
-    id: number
-    fileName: number
-    filePath: number
-    fileType: number
-    fileSize: number
-    entityType: number
-    entityId: number
-    createdAt: number
-    _all: number
-  }
-
-
-  export type MediaAvgAggregateInputType = {
-    fileSize?: true
-  }
-
-  export type MediaSumAggregateInputType = {
-    fileSize?: true
-  }
-
-  export type MediaMinAggregateInputType = {
-    id?: true
-    fileName?: true
-    filePath?: true
-    fileType?: true
-    fileSize?: true
-    entityType?: true
-    entityId?: true
-    createdAt?: true
-  }
-
-  export type MediaMaxAggregateInputType = {
-    id?: true
-    fileName?: true
-    filePath?: true
-    fileType?: true
-    fileSize?: true
-    entityType?: true
-    entityId?: true
-    createdAt?: true
-  }
-
-  export type MediaCountAggregateInputType = {
-    id?: true
-    fileName?: true
-    filePath?: true
-    fileType?: true
-    fileSize?: true
-    entityType?: true
-    entityId?: true
-    createdAt?: true
-    _all?: true
-  }
-
-  export type MediaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Media to aggregate.
-     */
-    where?: MediaWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Media to fetch.
-     */
-    orderBy?: MediaOrderByWithRelationInput | MediaOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: MediaWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Media from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Media.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Media
-    **/
-    _count?: true | MediaCountAggregateInputType
+    _count?: true | FooterLinkCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: MediaAvgAggregateInputType
+    _avg?: FooterLinkAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: MediaSumAggregateInputType
+    _sum?: FooterLinkSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: MediaMinAggregateInputType
+    _min?: FooterLinkMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: MediaMaxAggregateInputType
+    _max?: FooterLinkMaxAggregateInputType
   }
 
-  export type GetMediaAggregateType<T extends MediaAggregateArgs> = {
-        [P in keyof T & keyof AggregateMedia]: P extends '_count' | 'count'
+  export type GetFooterLinkAggregateType<T extends FooterLinkAggregateArgs> = {
+        [P in keyof T & keyof AggregateFooterLink]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateMedia[P]>
-      : GetScalarType<T[P], AggregateMedia[P]>
+        : GetScalarType<T[P], AggregateFooterLink[P]>
+      : GetScalarType<T[P], AggregateFooterLink[P]>
   }
 
 
 
 
-  export type MediaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: MediaWhereInput
-    orderBy?: MediaOrderByWithAggregationInput | MediaOrderByWithAggregationInput[]
-    by: MediaScalarFieldEnum[] | MediaScalarFieldEnum
-    having?: MediaScalarWhereWithAggregatesInput
+  export type FooterLinkGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FooterLinkWhereInput
+    orderBy?: FooterLinkOrderByWithAggregationInput | FooterLinkOrderByWithAggregationInput[]
+    by: FooterLinkScalarFieldEnum[] | FooterLinkScalarFieldEnum
+    having?: FooterLinkScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: MediaCountAggregateInputType | true
-    _avg?: MediaAvgAggregateInputType
-    _sum?: MediaSumAggregateInputType
-    _min?: MediaMinAggregateInputType
-    _max?: MediaMaxAggregateInputType
+    _count?: FooterLinkCountAggregateInputType | true
+    _avg?: FooterLinkAvgAggregateInputType
+    _sum?: FooterLinkSumAggregateInputType
+    _min?: FooterLinkMinAggregateInputType
+    _max?: FooterLinkMaxAggregateInputType
   }
 
-  export type MediaGroupByOutputType = {
+  export type FooterLinkGroupByOutputType = {
     id: string
-    fileName: string
-    filePath: string
-    fileType: string
-    fileSize: number
-    entityType: string | null
-    entityId: string | null
+    title: string
+    url: string
+    category: string
+    icon: string | null
+    sortOrder: number
+    isActive: boolean
+    footerId: string
     createdAt: Date
-    _count: MediaCountAggregateOutputType | null
-    _avg: MediaAvgAggregateOutputType | null
-    _sum: MediaSumAggregateOutputType | null
-    _min: MediaMinAggregateOutputType | null
-    _max: MediaMaxAggregateOutputType | null
+    updatedAt: Date
+    _count: FooterLinkCountAggregateOutputType | null
+    _avg: FooterLinkAvgAggregateOutputType | null
+    _sum: FooterLinkSumAggregateOutputType | null
+    _min: FooterLinkMinAggregateOutputType | null
+    _max: FooterLinkMaxAggregateOutputType | null
   }
 
-  type GetMediaGroupByPayload<T extends MediaGroupByArgs> = Prisma.PrismaPromise<
+  type GetFooterLinkGroupByPayload<T extends FooterLinkGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<MediaGroupByOutputType, T['by']> &
+      PickEnumerable<FooterLinkGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof MediaGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof FooterLinkGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], MediaGroupByOutputType[P]>
-            : GetScalarType<T[P], MediaGroupByOutputType[P]>
+              : GetScalarType<T[P], FooterLinkGroupByOutputType[P]>
+            : GetScalarType<T[P], FooterLinkGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type MediaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FooterLinkSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    fileName?: boolean
-    filePath?: boolean
-    fileType?: boolean
-    fileSize?: boolean
-    entityType?: boolean
-    entityId?: boolean
+    title?: boolean
+    url?: boolean
+    category?: boolean
+    icon?: boolean
+    sortOrder?: boolean
+    isActive?: boolean
+    footerId?: boolean
     createdAt?: boolean
-  }, ExtArgs["result"]["media"]>
+    updatedAt?: boolean
+    footer?: boolean | FooterDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["footerLink"]>
 
-  export type MediaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FooterLinkSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    fileName?: boolean
-    filePath?: boolean
-    fileType?: boolean
-    fileSize?: boolean
-    entityType?: boolean
-    entityId?: boolean
+    title?: boolean
+    url?: boolean
+    category?: boolean
+    icon?: boolean
+    sortOrder?: boolean
+    isActive?: boolean
+    footerId?: boolean
     createdAt?: boolean
-  }, ExtArgs["result"]["media"]>
+    updatedAt?: boolean
+    footer?: boolean | FooterDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["footerLink"]>
 
-  export type MediaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FooterLinkSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    fileName?: boolean
-    filePath?: boolean
-    fileType?: boolean
-    fileSize?: boolean
-    entityType?: boolean
-    entityId?: boolean
+    title?: boolean
+    url?: boolean
+    category?: boolean
+    icon?: boolean
+    sortOrder?: boolean
+    isActive?: boolean
+    footerId?: boolean
     createdAt?: boolean
-  }, ExtArgs["result"]["media"]>
+    updatedAt?: boolean
+    footer?: boolean | FooterDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["footerLink"]>
 
-  export type MediaSelectScalar = {
+  export type FooterLinkSelectScalar = {
     id?: boolean
-    fileName?: boolean
-    filePath?: boolean
-    fileType?: boolean
-    fileSize?: boolean
-    entityType?: boolean
-    entityId?: boolean
+    title?: boolean
+    url?: boolean
+    category?: boolean
+    icon?: boolean
+    sortOrder?: boolean
+    isActive?: boolean
+    footerId?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type MediaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fileName" | "filePath" | "fileType" | "fileSize" | "entityType" | "entityId" | "createdAt", ExtArgs["result"]["media"]>
+  export type FooterLinkOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "url" | "category" | "icon" | "sortOrder" | "isActive" | "footerId" | "createdAt" | "updatedAt", ExtArgs["result"]["footerLink"]>
+  export type FooterLinkInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    footer?: boolean | FooterDefaultArgs<ExtArgs>
+  }
+  export type FooterLinkIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    footer?: boolean | FooterDefaultArgs<ExtArgs>
+  }
+  export type FooterLinkIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    footer?: boolean | FooterDefaultArgs<ExtArgs>
+  }
 
-  export type $MediaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Media"
-    objects: {}
+  export type $FooterLinkPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FooterLink"
+    objects: {
+      footer: Prisma.$FooterPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      fileName: string
-      filePath: string
-      fileType: string
-      fileSize: number
-      entityType: string | null
-      entityId: string | null
+      title: string
+      url: string
+      category: string
+      icon: string | null
+      sortOrder: number
+      isActive: boolean
+      footerId: string
       createdAt: Date
-    }, ExtArgs["result"]["media"]>
+      updatedAt: Date
+    }, ExtArgs["result"]["footerLink"]>
     composites: {}
   }
 
-  type MediaGetPayload<S extends boolean | null | undefined | MediaDefaultArgs> = $Result.GetResult<Prisma.$MediaPayload, S>
+  type FooterLinkGetPayload<S extends boolean | null | undefined | FooterLinkDefaultArgs> = $Result.GetResult<Prisma.$FooterLinkPayload, S>
 
-  type MediaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<MediaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: MediaCountAggregateInputType | true
+  type FooterLinkCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FooterLinkFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FooterLinkCountAggregateInputType | true
     }
 
-  export interface MediaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Media'], meta: { name: 'Media' } }
+  export interface FooterLinkDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FooterLink'], meta: { name: 'FooterLink' } }
     /**
-     * Find zero or one Media that matches the filter.
-     * @param {MediaFindUniqueArgs} args - Arguments to find a Media
+     * Find zero or one FooterLink that matches the filter.
+     * @param {FooterLinkFindUniqueArgs} args - Arguments to find a FooterLink
      * @example
-     * // Get one Media
-     * const media = await prisma.media.findUnique({
+     * // Get one FooterLink
+     * const footerLink = await prisma.footerLink.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends MediaFindUniqueArgs>(args: SelectSubset<T, MediaFindUniqueArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends FooterLinkFindUniqueArgs>(args: SelectSubset<T, FooterLinkFindUniqueArgs<ExtArgs>>): Prisma__FooterLinkClient<$Result.GetResult<Prisma.$FooterLinkPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Media that matches the filter or throw an error with `error.code='P2025'`
+     * Find one FooterLink that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {MediaFindUniqueOrThrowArgs} args - Arguments to find a Media
+     * @param {FooterLinkFindUniqueOrThrowArgs} args - Arguments to find a FooterLink
      * @example
-     * // Get one Media
-     * const media = await prisma.media.findUniqueOrThrow({
+     * // Get one FooterLink
+     * const footerLink = await prisma.footerLink.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends MediaFindUniqueOrThrowArgs>(args: SelectSubset<T, MediaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends FooterLinkFindUniqueOrThrowArgs>(args: SelectSubset<T, FooterLinkFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FooterLinkClient<$Result.GetResult<Prisma.$FooterLinkPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Media that matches the filter.
+     * Find the first FooterLink that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MediaFindFirstArgs} args - Arguments to find a Media
+     * @param {FooterLinkFindFirstArgs} args - Arguments to find a FooterLink
      * @example
-     * // Get one Media
-     * const media = await prisma.media.findFirst({
+     * // Get one FooterLink
+     * const footerLink = await prisma.footerLink.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends MediaFindFirstArgs>(args?: SelectSubset<T, MediaFindFirstArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends FooterLinkFindFirstArgs>(args?: SelectSubset<T, FooterLinkFindFirstArgs<ExtArgs>>): Prisma__FooterLinkClient<$Result.GetResult<Prisma.$FooterLinkPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Media that matches the filter or
+     * Find the first FooterLink that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MediaFindFirstOrThrowArgs} args - Arguments to find a Media
+     * @param {FooterLinkFindFirstOrThrowArgs} args - Arguments to find a FooterLink
      * @example
-     * // Get one Media
-     * const media = await prisma.media.findFirstOrThrow({
+     * // Get one FooterLink
+     * const footerLink = await prisma.footerLink.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends MediaFindFirstOrThrowArgs>(args?: SelectSubset<T, MediaFindFirstOrThrowArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends FooterLinkFindFirstOrThrowArgs>(args?: SelectSubset<T, FooterLinkFindFirstOrThrowArgs<ExtArgs>>): Prisma__FooterLinkClient<$Result.GetResult<Prisma.$FooterLinkPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Media that matches the filter.
+     * Find zero or more FooterLinks that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MediaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {FooterLinkFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Media
-     * const media = await prisma.media.findMany()
+     * // Get all FooterLinks
+     * const footerLinks = await prisma.footerLink.findMany()
      * 
-     * // Get first 10 Media
-     * const media = await prisma.media.findMany({ take: 10 })
+     * // Get first 10 FooterLinks
+     * const footerLinks = await prisma.footerLink.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const mediaWithIdOnly = await prisma.media.findMany({ select: { id: true } })
+     * const footerLinkWithIdOnly = await prisma.footerLink.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends MediaFindManyArgs>(args?: SelectSubset<T, MediaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends FooterLinkFindManyArgs>(args?: SelectSubset<T, FooterLinkFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FooterLinkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Media.
-     * @param {MediaCreateArgs} args - Arguments to create a Media.
+     * Create a FooterLink.
+     * @param {FooterLinkCreateArgs} args - Arguments to create a FooterLink.
      * @example
-     * // Create one Media
-     * const Media = await prisma.media.create({
+     * // Create one FooterLink
+     * const FooterLink = await prisma.footerLink.create({
      *   data: {
-     *     // ... data to create a Media
+     *     // ... data to create a FooterLink
      *   }
      * })
      * 
      */
-    create<T extends MediaCreateArgs>(args: SelectSubset<T, MediaCreateArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends FooterLinkCreateArgs>(args: SelectSubset<T, FooterLinkCreateArgs<ExtArgs>>): Prisma__FooterLinkClient<$Result.GetResult<Prisma.$FooterLinkPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Media.
-     * @param {MediaCreateManyArgs} args - Arguments to create many Media.
+     * Create many FooterLinks.
+     * @param {FooterLinkCreateManyArgs} args - Arguments to create many FooterLinks.
      * @example
-     * // Create many Media
-     * const media = await prisma.media.createMany({
+     * // Create many FooterLinks
+     * const footerLink = await prisma.footerLink.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends MediaCreateManyArgs>(args?: SelectSubset<T, MediaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends FooterLinkCreateManyArgs>(args?: SelectSubset<T, FooterLinkCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Media and returns the data saved in the database.
-     * @param {MediaCreateManyAndReturnArgs} args - Arguments to create many Media.
+     * Create many FooterLinks and returns the data saved in the database.
+     * @param {FooterLinkCreateManyAndReturnArgs} args - Arguments to create many FooterLinks.
      * @example
-     * // Create many Media
-     * const media = await prisma.media.createManyAndReturn({
+     * // Create many FooterLinks
+     * const footerLink = await prisma.footerLink.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Media and only return the `id`
-     * const mediaWithIdOnly = await prisma.media.createManyAndReturn({
+     * // Create many FooterLinks and only return the `id`
+     * const footerLinkWithIdOnly = await prisma.footerLink.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -7429,28 +10402,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends MediaCreateManyAndReturnArgs>(args?: SelectSubset<T, MediaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends FooterLinkCreateManyAndReturnArgs>(args?: SelectSubset<T, FooterLinkCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FooterLinkPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Media.
-     * @param {MediaDeleteArgs} args - Arguments to delete one Media.
+     * Delete a FooterLink.
+     * @param {FooterLinkDeleteArgs} args - Arguments to delete one FooterLink.
      * @example
-     * // Delete one Media
-     * const Media = await prisma.media.delete({
+     * // Delete one FooterLink
+     * const FooterLink = await prisma.footerLink.delete({
      *   where: {
-     *     // ... filter to delete one Media
+     *     // ... filter to delete one FooterLink
      *   }
      * })
      * 
      */
-    delete<T extends MediaDeleteArgs>(args: SelectSubset<T, MediaDeleteArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends FooterLinkDeleteArgs>(args: SelectSubset<T, FooterLinkDeleteArgs<ExtArgs>>): Prisma__FooterLinkClient<$Result.GetResult<Prisma.$FooterLinkPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Media.
-     * @param {MediaUpdateArgs} args - Arguments to update one Media.
+     * Update one FooterLink.
+     * @param {FooterLinkUpdateArgs} args - Arguments to update one FooterLink.
      * @example
-     * // Update one Media
-     * const media = await prisma.media.update({
+     * // Update one FooterLink
+     * const footerLink = await prisma.footerLink.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7460,30 +10433,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends MediaUpdateArgs>(args: SelectSubset<T, MediaUpdateArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends FooterLinkUpdateArgs>(args: SelectSubset<T, FooterLinkUpdateArgs<ExtArgs>>): Prisma__FooterLinkClient<$Result.GetResult<Prisma.$FooterLinkPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Media.
-     * @param {MediaDeleteManyArgs} args - Arguments to filter Media to delete.
+     * Delete zero or more FooterLinks.
+     * @param {FooterLinkDeleteManyArgs} args - Arguments to filter FooterLinks to delete.
      * @example
-     * // Delete a few Media
-     * const { count } = await prisma.media.deleteMany({
+     * // Delete a few FooterLinks
+     * const { count } = await prisma.footerLink.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends MediaDeleteManyArgs>(args?: SelectSubset<T, MediaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends FooterLinkDeleteManyArgs>(args?: SelectSubset<T, FooterLinkDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Media.
+     * Update zero or more FooterLinks.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MediaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {FooterLinkUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Media
-     * const media = await prisma.media.updateMany({
+     * // Update many FooterLinks
+     * const footerLink = await prisma.footerLink.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7493,14 +10466,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends MediaUpdateManyArgs>(args: SelectSubset<T, MediaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends FooterLinkUpdateManyArgs>(args: SelectSubset<T, FooterLinkUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Media and returns the data updated in the database.
-     * @param {MediaUpdateManyAndReturnArgs} args - Arguments to update many Media.
+     * Update zero or more FooterLinks and returns the data updated in the database.
+     * @param {FooterLinkUpdateManyAndReturnArgs} args - Arguments to update many FooterLinks.
      * @example
-     * // Update many Media
-     * const media = await prisma.media.updateManyAndReturn({
+     * // Update many FooterLinks
+     * const footerLink = await prisma.footerLink.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7509,8 +10482,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Media and only return the `id`
-     * const mediaWithIdOnly = await prisma.media.updateManyAndReturn({
+     * // Update zero or more FooterLinks and only return the `id`
+     * const footerLinkWithIdOnly = await prisma.footerLink.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -7523,56 +10496,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends MediaUpdateManyAndReturnArgs>(args: SelectSubset<T, MediaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends FooterLinkUpdateManyAndReturnArgs>(args: SelectSubset<T, FooterLinkUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FooterLinkPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Media.
-     * @param {MediaUpsertArgs} args - Arguments to update or create a Media.
+     * Create or update one FooterLink.
+     * @param {FooterLinkUpsertArgs} args - Arguments to update or create a FooterLink.
      * @example
-     * // Update or create a Media
-     * const media = await prisma.media.upsert({
+     * // Update or create a FooterLink
+     * const footerLink = await prisma.footerLink.upsert({
      *   create: {
-     *     // ... data to create a Media
+     *     // ... data to create a FooterLink
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Media we want to update
+     *     // ... the filter for the FooterLink we want to update
      *   }
      * })
      */
-    upsert<T extends MediaUpsertArgs>(args: SelectSubset<T, MediaUpsertArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends FooterLinkUpsertArgs>(args: SelectSubset<T, FooterLinkUpsertArgs<ExtArgs>>): Prisma__FooterLinkClient<$Result.GetResult<Prisma.$FooterLinkPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Media.
+     * Count the number of FooterLinks.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MediaCountArgs} args - Arguments to filter Media to count.
+     * @param {FooterLinkCountArgs} args - Arguments to filter FooterLinks to count.
      * @example
-     * // Count the number of Media
-     * const count = await prisma.media.count({
+     * // Count the number of FooterLinks
+     * const count = await prisma.footerLink.count({
      *   where: {
-     *     // ... the filter for the Media we want to count
+     *     // ... the filter for the FooterLinks we want to count
      *   }
      * })
     **/
-    count<T extends MediaCountArgs>(
-      args?: Subset<T, MediaCountArgs>,
+    count<T extends FooterLinkCountArgs>(
+      args?: Subset<T, FooterLinkCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], MediaCountAggregateOutputType>
+          : GetScalarType<T['select'], FooterLinkCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Media.
+     * Allows you to perform aggregations operations on a FooterLink.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MediaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {FooterLinkAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -7592,13 +10565,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends MediaAggregateArgs>(args: Subset<T, MediaAggregateArgs>): Prisma.PrismaPromise<GetMediaAggregateType<T>>
+    aggregate<T extends FooterLinkAggregateArgs>(args: Subset<T, FooterLinkAggregateArgs>): Prisma.PrismaPromise<GetFooterLinkAggregateType<T>>
 
     /**
-     * Group by Media.
+     * Group by FooterLink.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MediaGroupByArgs} args - Group by arguments.
+     * @param {FooterLinkGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -7613,14 +10586,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends MediaGroupByArgs,
+      T extends FooterLinkGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: MediaGroupByArgs['orderBy'] }
-        : { orderBy?: MediaGroupByArgs['orderBy'] },
+        ? { orderBy: FooterLinkGroupByArgs['orderBy'] }
+        : { orderBy?: FooterLinkGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -7669,21 +10642,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, MediaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMediaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, FooterLinkGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFooterLinkGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Media model
+   * Fields of the FooterLink model
    */
-  readonly fields: MediaFieldRefs;
+  readonly fields: FooterLinkFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Media.
+   * The delegate class that acts as a "Promise-like" for FooterLink.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__MediaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__FooterLinkClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    footer<T extends FooterDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FooterDefaultArgs<ExtArgs>>): Prisma__FooterClient<$Result.GetResult<Prisma.$FooterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7710,378 +10684,430 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Media model
+   * Fields of the FooterLink model
    */
-  interface MediaFieldRefs {
-    readonly id: FieldRef<"Media", 'String'>
-    readonly fileName: FieldRef<"Media", 'String'>
-    readonly filePath: FieldRef<"Media", 'String'>
-    readonly fileType: FieldRef<"Media", 'String'>
-    readonly fileSize: FieldRef<"Media", 'Int'>
-    readonly entityType: FieldRef<"Media", 'String'>
-    readonly entityId: FieldRef<"Media", 'String'>
-    readonly createdAt: FieldRef<"Media", 'DateTime'>
+  interface FooterLinkFieldRefs {
+    readonly id: FieldRef<"FooterLink", 'String'>
+    readonly title: FieldRef<"FooterLink", 'String'>
+    readonly url: FieldRef<"FooterLink", 'String'>
+    readonly category: FieldRef<"FooterLink", 'String'>
+    readonly icon: FieldRef<"FooterLink", 'String'>
+    readonly sortOrder: FieldRef<"FooterLink", 'Int'>
+    readonly isActive: FieldRef<"FooterLink", 'Boolean'>
+    readonly footerId: FieldRef<"FooterLink", 'String'>
+    readonly createdAt: FieldRef<"FooterLink", 'DateTime'>
+    readonly updatedAt: FieldRef<"FooterLink", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Media findUnique
+   * FooterLink findUnique
    */
-  export type MediaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterLinkFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Media
+     * Select specific fields to fetch from the FooterLink
      */
-    select?: MediaSelect<ExtArgs> | null
+    select?: FooterLinkSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Media
+     * Omit specific fields from the FooterLink
      */
-    omit?: MediaOmit<ExtArgs> | null
+    omit?: FooterLinkOmit<ExtArgs> | null
     /**
-     * Filter, which Media to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where: MediaWhereUniqueInput
+    include?: FooterLinkInclude<ExtArgs> | null
+    /**
+     * Filter, which FooterLink to fetch.
+     */
+    where: FooterLinkWhereUniqueInput
   }
 
   /**
-   * Media findUniqueOrThrow
+   * FooterLink findUniqueOrThrow
    */
-  export type MediaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterLinkFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Media
+     * Select specific fields to fetch from the FooterLink
      */
-    select?: MediaSelect<ExtArgs> | null
+    select?: FooterLinkSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Media
+     * Omit specific fields from the FooterLink
      */
-    omit?: MediaOmit<ExtArgs> | null
+    omit?: FooterLinkOmit<ExtArgs> | null
     /**
-     * Filter, which Media to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where: MediaWhereUniqueInput
+    include?: FooterLinkInclude<ExtArgs> | null
+    /**
+     * Filter, which FooterLink to fetch.
+     */
+    where: FooterLinkWhereUniqueInput
   }
 
   /**
-   * Media findFirst
+   * FooterLink findFirst
    */
-  export type MediaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterLinkFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Media
+     * Select specific fields to fetch from the FooterLink
      */
-    select?: MediaSelect<ExtArgs> | null
+    select?: FooterLinkSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Media
+     * Omit specific fields from the FooterLink
      */
-    omit?: MediaOmit<ExtArgs> | null
+    omit?: FooterLinkOmit<ExtArgs> | null
     /**
-     * Filter, which Media to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where?: MediaWhereInput
+    include?: FooterLinkInclude<ExtArgs> | null
+    /**
+     * Filter, which FooterLink to fetch.
+     */
+    where?: FooterLinkWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Media to fetch.
+     * Determine the order of FooterLinks to fetch.
      */
-    orderBy?: MediaOrderByWithRelationInput | MediaOrderByWithRelationInput[]
+    orderBy?: FooterLinkOrderByWithRelationInput | FooterLinkOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Media.
+     * Sets the position for searching for FooterLinks.
      */
-    cursor?: MediaWhereUniqueInput
+    cursor?: FooterLinkWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Media from the position of the cursor.
+     * Take `±n` FooterLinks from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Media.
+     * Skip the first `n` FooterLinks.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Media.
+     * Filter by unique combinations of FooterLinks.
      */
-    distinct?: MediaScalarFieldEnum | MediaScalarFieldEnum[]
+    distinct?: FooterLinkScalarFieldEnum | FooterLinkScalarFieldEnum[]
   }
 
   /**
-   * Media findFirstOrThrow
+   * FooterLink findFirstOrThrow
    */
-  export type MediaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterLinkFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Media
+     * Select specific fields to fetch from the FooterLink
      */
-    select?: MediaSelect<ExtArgs> | null
+    select?: FooterLinkSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Media
+     * Omit specific fields from the FooterLink
      */
-    omit?: MediaOmit<ExtArgs> | null
+    omit?: FooterLinkOmit<ExtArgs> | null
     /**
-     * Filter, which Media to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where?: MediaWhereInput
+    include?: FooterLinkInclude<ExtArgs> | null
+    /**
+     * Filter, which FooterLink to fetch.
+     */
+    where?: FooterLinkWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Media to fetch.
+     * Determine the order of FooterLinks to fetch.
      */
-    orderBy?: MediaOrderByWithRelationInput | MediaOrderByWithRelationInput[]
+    orderBy?: FooterLinkOrderByWithRelationInput | FooterLinkOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Media.
+     * Sets the position for searching for FooterLinks.
      */
-    cursor?: MediaWhereUniqueInput
+    cursor?: FooterLinkWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Media from the position of the cursor.
+     * Take `±n` FooterLinks from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Media.
+     * Skip the first `n` FooterLinks.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Media.
+     * Filter by unique combinations of FooterLinks.
      */
-    distinct?: MediaScalarFieldEnum | MediaScalarFieldEnum[]
+    distinct?: FooterLinkScalarFieldEnum | FooterLinkScalarFieldEnum[]
   }
 
   /**
-   * Media findMany
+   * FooterLink findMany
    */
-  export type MediaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterLinkFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Media
+     * Select specific fields to fetch from the FooterLink
      */
-    select?: MediaSelect<ExtArgs> | null
+    select?: FooterLinkSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Media
+     * Omit specific fields from the FooterLink
      */
-    omit?: MediaOmit<ExtArgs> | null
+    omit?: FooterLinkOmit<ExtArgs> | null
     /**
-     * Filter, which Media to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where?: MediaWhereInput
+    include?: FooterLinkInclude<ExtArgs> | null
+    /**
+     * Filter, which FooterLinks to fetch.
+     */
+    where?: FooterLinkWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Media to fetch.
+     * Determine the order of FooterLinks to fetch.
      */
-    orderBy?: MediaOrderByWithRelationInput | MediaOrderByWithRelationInput[]
+    orderBy?: FooterLinkOrderByWithRelationInput | FooterLinkOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Media.
+     * Sets the position for listing FooterLinks.
      */
-    cursor?: MediaWhereUniqueInput
+    cursor?: FooterLinkWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Media from the position of the cursor.
+     * Take `±n` FooterLinks from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Media.
+     * Skip the first `n` FooterLinks.
      */
     skip?: number
-    distinct?: MediaScalarFieldEnum | MediaScalarFieldEnum[]
+    distinct?: FooterLinkScalarFieldEnum | FooterLinkScalarFieldEnum[]
   }
 
   /**
-   * Media create
+   * FooterLink create
    */
-  export type MediaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterLinkCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Media
+     * Select specific fields to fetch from the FooterLink
      */
-    select?: MediaSelect<ExtArgs> | null
+    select?: FooterLinkSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Media
+     * Omit specific fields from the FooterLink
      */
-    omit?: MediaOmit<ExtArgs> | null
+    omit?: FooterLinkOmit<ExtArgs> | null
     /**
-     * The data needed to create a Media.
+     * Choose, which related nodes to fetch as well
      */
-    data: XOR<MediaCreateInput, MediaUncheckedCreateInput>
+    include?: FooterLinkInclude<ExtArgs> | null
+    /**
+     * The data needed to create a FooterLink.
+     */
+    data: XOR<FooterLinkCreateInput, FooterLinkUncheckedCreateInput>
   }
 
   /**
-   * Media createMany
+   * FooterLink createMany
    */
-  export type MediaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterLinkCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Media.
+     * The data used to create many FooterLinks.
      */
-    data: MediaCreateManyInput | MediaCreateManyInput[]
+    data: FooterLinkCreateManyInput | FooterLinkCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
-   * Media createManyAndReturn
+   * FooterLink createManyAndReturn
    */
-  export type MediaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterLinkCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Media
+     * Select specific fields to fetch from the FooterLink
      */
-    select?: MediaSelectCreateManyAndReturn<ExtArgs> | null
+    select?: FooterLinkSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Media
+     * Omit specific fields from the FooterLink
      */
-    omit?: MediaOmit<ExtArgs> | null
+    omit?: FooterLinkOmit<ExtArgs> | null
     /**
-     * The data used to create many Media.
+     * The data used to create many FooterLinks.
      */
-    data: MediaCreateManyInput | MediaCreateManyInput[]
+    data: FooterLinkCreateManyInput | FooterLinkCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FooterLinkIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Media update
+   * FooterLink update
    */
-  export type MediaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterLinkUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Media
+     * Select specific fields to fetch from the FooterLink
      */
-    select?: MediaSelect<ExtArgs> | null
+    select?: FooterLinkSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Media
+     * Omit specific fields from the FooterLink
      */
-    omit?: MediaOmit<ExtArgs> | null
+    omit?: FooterLinkOmit<ExtArgs> | null
     /**
-     * The data needed to update a Media.
+     * Choose, which related nodes to fetch as well
      */
-    data: XOR<MediaUpdateInput, MediaUncheckedUpdateInput>
+    include?: FooterLinkInclude<ExtArgs> | null
     /**
-     * Choose, which Media to update.
+     * The data needed to update a FooterLink.
      */
-    where: MediaWhereUniqueInput
+    data: XOR<FooterLinkUpdateInput, FooterLinkUncheckedUpdateInput>
+    /**
+     * Choose, which FooterLink to update.
+     */
+    where: FooterLinkWhereUniqueInput
   }
 
   /**
-   * Media updateMany
+   * FooterLink updateMany
    */
-  export type MediaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterLinkUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Media.
+     * The data used to update FooterLinks.
      */
-    data: XOR<MediaUpdateManyMutationInput, MediaUncheckedUpdateManyInput>
+    data: XOR<FooterLinkUpdateManyMutationInput, FooterLinkUncheckedUpdateManyInput>
     /**
-     * Filter which Media to update
+     * Filter which FooterLinks to update
      */
-    where?: MediaWhereInput
+    where?: FooterLinkWhereInput
     /**
-     * Limit how many Media to update.
+     * Limit how many FooterLinks to update.
      */
     limit?: number
   }
 
   /**
-   * Media updateManyAndReturn
+   * FooterLink updateManyAndReturn
    */
-  export type MediaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterLinkUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Media
+     * Select specific fields to fetch from the FooterLink
      */
-    select?: MediaSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: FooterLinkSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Media
+     * Omit specific fields from the FooterLink
      */
-    omit?: MediaOmit<ExtArgs> | null
+    omit?: FooterLinkOmit<ExtArgs> | null
     /**
-     * The data used to update Media.
+     * The data used to update FooterLinks.
      */
-    data: XOR<MediaUpdateManyMutationInput, MediaUncheckedUpdateManyInput>
+    data: XOR<FooterLinkUpdateManyMutationInput, FooterLinkUncheckedUpdateManyInput>
     /**
-     * Filter which Media to update
+     * Filter which FooterLinks to update
      */
-    where?: MediaWhereInput
+    where?: FooterLinkWhereInput
     /**
-     * Limit how many Media to update.
+     * Limit how many FooterLinks to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FooterLinkIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * FooterLink upsert
+   */
+  export type FooterLinkUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FooterLink
+     */
+    select?: FooterLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FooterLink
+     */
+    omit?: FooterLinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FooterLinkInclude<ExtArgs> | null
+    /**
+     * The filter to search for the FooterLink to update in case it exists.
+     */
+    where: FooterLinkWhereUniqueInput
+    /**
+     * In case the FooterLink found by the `where` argument doesn't exist, create a new FooterLink with this data.
+     */
+    create: XOR<FooterLinkCreateInput, FooterLinkUncheckedCreateInput>
+    /**
+     * In case the FooterLink was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FooterLinkUpdateInput, FooterLinkUncheckedUpdateInput>
+  }
+
+  /**
+   * FooterLink delete
+   */
+  export type FooterLinkDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FooterLink
+     */
+    select?: FooterLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FooterLink
+     */
+    omit?: FooterLinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FooterLinkInclude<ExtArgs> | null
+    /**
+     * Filter which FooterLink to delete.
+     */
+    where: FooterLinkWhereUniqueInput
+  }
+
+  /**
+   * FooterLink deleteMany
+   */
+  export type FooterLinkDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FooterLinks to delete
+     */
+    where?: FooterLinkWhereInput
+    /**
+     * Limit how many FooterLinks to delete.
      */
     limit?: number
   }
 
   /**
-   * Media upsert
+   * FooterLink without action
    */
-  export type MediaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FooterLinkDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Media
+     * Select specific fields to fetch from the FooterLink
      */
-    select?: MediaSelect<ExtArgs> | null
+    select?: FooterLinkSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Media
+     * Omit specific fields from the FooterLink
      */
-    omit?: MediaOmit<ExtArgs> | null
+    omit?: FooterLinkOmit<ExtArgs> | null
     /**
-     * The filter to search for the Media to update in case it exists.
+     * Choose, which related nodes to fetch as well
      */
-    where: MediaWhereUniqueInput
-    /**
-     * In case the Media found by the `where` argument doesn't exist, create a new Media with this data.
-     */
-    create: XOR<MediaCreateInput, MediaUncheckedCreateInput>
-    /**
-     * In case the Media was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<MediaUpdateInput, MediaUncheckedUpdateInput>
-  }
-
-  /**
-   * Media delete
-   */
-  export type MediaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Media
-     */
-    select?: MediaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Media
-     */
-    omit?: MediaOmit<ExtArgs> | null
-    /**
-     * Filter which Media to delete.
-     */
-    where: MediaWhereUniqueInput
-  }
-
-  /**
-   * Media deleteMany
-   */
-  export type MediaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Media to delete
-     */
-    where?: MediaWhereInput
-    /**
-     * Limit how many Media to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Media without action
-   */
-  export type MediaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Media
-     */
-    select?: MediaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Media
-     */
-    omit?: MediaOmit<ExtArgs> | null
+    include?: FooterLinkInclude<ExtArgs> | null
   }
 
 
@@ -8090,17 +11116,128 @@ export namespace Prisma {
    */
 
   export const TransactionIsolationLevel: {
+    ReadUncommitted: 'ReadUncommitted',
+    ReadCommitted: 'ReadCommitted',
+    RepeatableRead: 'RepeatableRead',
     Serializable: 'Serializable'
   };
 
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const UserScalarFieldEnum: {
+  export const ProductScalarFieldEnum: {
     id: 'id',
     name: 'name',
+    description: 'description',
+    cover_image: 'cover_image',
+    spec_pdf_url: 'spec_pdf_url',
+    is_active: 'is_active',
+    description_i18n: 'description_i18n',
+    software_space: 'software_space',
+    hardware_space: 'hardware_space',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
+
+
+  export const Product_tagsScalarFieldEnum: {
+    product_id: 'product_id',
+    tag_id: 'tag_id',
+    product_name: 'product_name',
+    tag_spec: 'tag_spec',
+    tag_size: 'tag_size'
+  };
+
+  export type Product_tagsScalarFieldEnum = (typeof Product_tagsScalarFieldEnum)[keyof typeof Product_tagsScalarFieldEnum]
+
+
+  export const Products_hardwareScalarFieldEnum: {
+    id: 'id',
+    products_id: 'products_id',
+    controller_count: 'controller_count',
+    cpu_model: 'cpu_model',
+    cpu_count: 'cpu_count',
+    cpu_cores: 'cpu_cores',
+    cpu_architecture: 'cpu_architecture',
+    cpu_base_clock: 'cpu_base_clock',
+    cpu_turbo_clock: 'cpu_turbo_clock',
+    hardware_encryption: 'hardware_encryption',
+    memory_total: 'memory_total',
+    memory_installed: 'memory_installed',
+    memory_slots: 'memory_slots',
+    memory_max: 'memory_max',
+    disk_bays: 'disk_bays',
+    disk_bays_max: 'disk_bays_max',
+    disk_types_supported: 'disk_types_supported',
+    m2_slot: 'm2_slot',
+    disk_host_swappable: 'disk_host_swappable',
+    lan_rj45_1G: 'lan_rj45_1G',
+    lan_rj45_2_5G: 'lan_rj45_2_5G',
+    lan_rj45_10G: 'lan_rj45_10G',
+    management_prot: 'management_prot',
+    max_lax_ports: 'max_lax_ports',
+    usb_3_2_prots: 'usb_3_2_prots',
+    expansion_ports: 'expansion_ports',
+    expansion_port_types: 'expansion_port_types',
+    pcie_expansion: 'pcie_expansion',
+    chassis_type: 'chassis_type',
+    dimensions: 'dimensions',
+    rack_mount_kit: 'rack_mount_kit',
+    fan_size: 'fan_size',
+    fan_replaceable: 'fan_replaceable',
+    led_brightness_adj: 'led_brightness_adj',
+    auto_power_recovery: 'auto_power_recovery',
+    noise_lenel: 'noise_lenel',
+    scheduled_power: 'scheduled_power',
+    wake_on_lan: 'wake_on_lan',
+    dual_power_supply: 'dual_power_supply',
+    ac_input_voltage: 'ac_input_voltage',
+    frequency: 'frequency',
+    power_consumption: 'power_consumption',
+    working_temperature: 'working_temperature',
+    storage_temperature: 'storage_temperature',
+    relative_humidity: 'relative_humidity',
+    certifications: 'certifications',
+    warranty: 'warranty',
+    environmental_compliance: 'environmental_compliance',
+    package_contents: 'package_contents',
+    optional_accessories: 'optional_accessories',
+    cpu_threads: 'cpu_threads'
+  };
+
+  export type Products_hardwareScalarFieldEnum = (typeof Products_hardwareScalarFieldEnum)[keyof typeof Products_hardwareScalarFieldEnum]
+
+
+  export const Tag_categoriesScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    sort: 'sort',
+    categories_type: 'categories_type'
+  };
+
+  export type Tag_categoriesScalarFieldEnum = (typeof Tag_categoriesScalarFieldEnum)[keyof typeof Tag_categoriesScalarFieldEnum]
+
+
+  export const TagsScalarFieldEnum: {
+    id: 'id',
+    created_id: 'created_id',
+    product_spec: 'product_spec',
+    product_size: 'product_size',
+    sort_type: 'sort_type',
+    sort_order: 'sort_order',
+    spec_size: 'spec_size'
+  };
+
+  export type TagsScalarFieldEnum = (typeof TagsScalarFieldEnum)[keyof typeof TagsScalarFieldEnum]
+
+
+  export const UserScalarFieldEnum: {
+    id: 'id',
     email: 'email',
     password: 'password',
+    name: 'name',
     role: 'role',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -8109,77 +11246,33 @@ export namespace Prisma {
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
-  export const CategoryScalarFieldEnum: {
+  export const FooterScalarFieldEnum: {
     id: 'id',
-    name: 'name',
-    slug: 'slug',
-    description: 'description',
-    parentId: 'parentId',
+    icpNumber: 'icpNumber',
+    icpLink: 'icpLink',
+    copyright: 'copyright',
+    isActive: 'isActive',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
-  export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
+  export type FooterScalarFieldEnum = (typeof FooterScalarFieldEnum)[keyof typeof FooterScalarFieldEnum]
 
 
-  export const ProductScalarFieldEnum: {
+  export const FooterLinkScalarFieldEnum: {
     id: 'id',
     title: 'title',
-    slug: 'slug',
-    description: 'description',
-    fullDescription: 'fullDescription',
-    imageUrl: 'imageUrl',
-    categoryId: 'categoryId',
-    features: 'features',
-    specifications: 'specifications',
+    url: 'url',
+    category: 'category',
+    icon: 'icon',
+    sortOrder: 'sortOrder',
+    isActive: 'isActive',
+    footerId: 'footerId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
-  export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
-
-
-  export const SolutionScalarFieldEnum: {
-    id: 'id',
-    title: 'title',
-    slug: 'slug',
-    description: 'description',
-    fullDescription: 'fullDescription',
-    imageUrl: 'imageUrl',
-    industry: 'industry',
-    benefits: 'benefits',
-    features: 'features',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type SolutionScalarFieldEnum = (typeof SolutionScalarFieldEnum)[keyof typeof SolutionScalarFieldEnum]
-
-
-  export const CaseStudyScalarFieldEnum: {
-    id: 'id',
-    title: 'title',
-    description: 'description',
-    solutionId: 'solutionId',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type CaseStudyScalarFieldEnum = (typeof CaseStudyScalarFieldEnum)[keyof typeof CaseStudyScalarFieldEnum]
-
-
-  export const MediaScalarFieldEnum: {
-    id: 'id',
-    fileName: 'fileName',
-    filePath: 'filePath',
-    fileType: 'fileType',
-    fileSize: 'fileSize',
-    entityType: 'entityType',
-    entityId: 'entityId',
-    createdAt: 'createdAt'
-  };
-
-  export type MediaScalarFieldEnum = (typeof MediaScalarFieldEnum)[keyof typeof MediaScalarFieldEnum]
+  export type FooterLinkScalarFieldEnum = (typeof FooterLinkScalarFieldEnum)[keyof typeof FooterLinkScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -8188,6 +11281,31 @@ export namespace Prisma {
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+  export const QueryMode: {
+    default: 'default',
+    insensitive: 'insensitive'
+  };
+
+  export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   export const NullsOrder: {
@@ -8211,9 +11329,44 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'String[]'
+   */
+  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'QueryMode'
+   */
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -8225,23 +11378,607 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal'
+   */
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal[]'
+   */
+  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
    */
 
 
+  export type ProductWhereInput = {
+    AND?: ProductWhereInput | ProductWhereInput[]
+    OR?: ProductWhereInput[]
+    NOT?: ProductWhereInput | ProductWhereInput[]
+    id?: UuidFilter<"Product"> | string
+    name?: StringFilter<"Product"> | string
+    description?: StringNullableFilter<"Product"> | string | null
+    cover_image?: StringNullableFilter<"Product"> | string | null
+    spec_pdf_url?: StringNullableFilter<"Product"> | string | null
+    is_active?: BoolFilter<"Product"> | boolean
+    description_i18n?: JsonNullableFilter<"Product">
+    software_space?: JsonNullableFilter<"Product">
+    hardware_space?: JsonNullableFilter<"Product">
+    createdAt?: DateTimeNullableFilter<"Product"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
+    product_tags?: Product_tagsListRelationFilter
+    products_hardware?: Products_hardwareListRelationFilter
+  }
+
+  export type ProductOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    cover_image?: SortOrderInput | SortOrder
+    spec_pdf_url?: SortOrderInput | SortOrder
+    is_active?: SortOrder
+    description_i18n?: SortOrderInput | SortOrder
+    software_space?: SortOrderInput | SortOrder
+    hardware_space?: SortOrderInput | SortOrder
+    createdAt?: SortOrderInput | SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    product_tags?: product_tagsOrderByRelationAggregateInput
+    products_hardware?: products_hardwareOrderByRelationAggregateInput
+  }
+
+  export type ProductWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ProductWhereInput | ProductWhereInput[]
+    OR?: ProductWhereInput[]
+    NOT?: ProductWhereInput | ProductWhereInput[]
+    name?: StringFilter<"Product"> | string
+    description?: StringNullableFilter<"Product"> | string | null
+    cover_image?: StringNullableFilter<"Product"> | string | null
+    spec_pdf_url?: StringNullableFilter<"Product"> | string | null
+    is_active?: BoolFilter<"Product"> | boolean
+    description_i18n?: JsonNullableFilter<"Product">
+    software_space?: JsonNullableFilter<"Product">
+    hardware_space?: JsonNullableFilter<"Product">
+    createdAt?: DateTimeNullableFilter<"Product"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
+    product_tags?: Product_tagsListRelationFilter
+    products_hardware?: Products_hardwareListRelationFilter
+  }, "id">
+
+  export type ProductOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    cover_image?: SortOrderInput | SortOrder
+    spec_pdf_url?: SortOrderInput | SortOrder
+    is_active?: SortOrder
+    description_i18n?: SortOrderInput | SortOrder
+    software_space?: SortOrderInput | SortOrder
+    hardware_space?: SortOrderInput | SortOrder
+    createdAt?: SortOrderInput | SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    _count?: ProductCountOrderByAggregateInput
+    _max?: ProductMaxOrderByAggregateInput
+    _min?: ProductMinOrderByAggregateInput
+  }
+
+  export type ProductScalarWhereWithAggregatesInput = {
+    AND?: ProductScalarWhereWithAggregatesInput | ProductScalarWhereWithAggregatesInput[]
+    OR?: ProductScalarWhereWithAggregatesInput[]
+    NOT?: ProductScalarWhereWithAggregatesInput | ProductScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"Product"> | string
+    name?: StringWithAggregatesFilter<"Product"> | string
+    description?: StringNullableWithAggregatesFilter<"Product"> | string | null
+    cover_image?: StringNullableWithAggregatesFilter<"Product"> | string | null
+    spec_pdf_url?: StringNullableWithAggregatesFilter<"Product"> | string | null
+    is_active?: BoolWithAggregatesFilter<"Product"> | boolean
+    description_i18n?: JsonNullableWithAggregatesFilter<"Product">
+    software_space?: JsonNullableWithAggregatesFilter<"Product">
+    hardware_space?: JsonNullableWithAggregatesFilter<"Product">
+    createdAt?: DateTimeNullableWithAggregatesFilter<"Product"> | Date | string | null
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Product"> | Date | string | null
+  }
+
+  export type product_tagsWhereInput = {
+    AND?: product_tagsWhereInput | product_tagsWhereInput[]
+    OR?: product_tagsWhereInput[]
+    NOT?: product_tagsWhereInput | product_tagsWhereInput[]
+    product_id?: UuidFilter<"product_tags"> | string
+    tag_id?: UuidFilter<"product_tags"> | string
+    product_name?: StringNullableFilter<"product_tags"> | string | null
+    tag_spec?: StringNullableFilter<"product_tags"> | string | null
+    tag_size?: StringNullableFilter<"product_tags"> | string | null
+    products?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+    tags?: XOR<TagsScalarRelationFilter, tagsWhereInput>
+  }
+
+  export type product_tagsOrderByWithRelationInput = {
+    product_id?: SortOrder
+    tag_id?: SortOrder
+    product_name?: SortOrderInput | SortOrder
+    tag_spec?: SortOrderInput | SortOrder
+    tag_size?: SortOrderInput | SortOrder
+    products?: ProductOrderByWithRelationInput
+    tags?: tagsOrderByWithRelationInput
+  }
+
+  export type product_tagsWhereUniqueInput = Prisma.AtLeast<{
+    product_id_tag_id?: product_tagsProduct_idTag_idCompoundUniqueInput
+    AND?: product_tagsWhereInput | product_tagsWhereInput[]
+    OR?: product_tagsWhereInput[]
+    NOT?: product_tagsWhereInput | product_tagsWhereInput[]
+    product_id?: UuidFilter<"product_tags"> | string
+    tag_id?: UuidFilter<"product_tags"> | string
+    product_name?: StringNullableFilter<"product_tags"> | string | null
+    tag_spec?: StringNullableFilter<"product_tags"> | string | null
+    tag_size?: StringNullableFilter<"product_tags"> | string | null
+    products?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+    tags?: XOR<TagsScalarRelationFilter, tagsWhereInput>
+  }, "product_id_tag_id">
+
+  export type product_tagsOrderByWithAggregationInput = {
+    product_id?: SortOrder
+    tag_id?: SortOrder
+    product_name?: SortOrderInput | SortOrder
+    tag_spec?: SortOrderInput | SortOrder
+    tag_size?: SortOrderInput | SortOrder
+    _count?: product_tagsCountOrderByAggregateInput
+    _max?: product_tagsMaxOrderByAggregateInput
+    _min?: product_tagsMinOrderByAggregateInput
+  }
+
+  export type product_tagsScalarWhereWithAggregatesInput = {
+    AND?: product_tagsScalarWhereWithAggregatesInput | product_tagsScalarWhereWithAggregatesInput[]
+    OR?: product_tagsScalarWhereWithAggregatesInput[]
+    NOT?: product_tagsScalarWhereWithAggregatesInput | product_tagsScalarWhereWithAggregatesInput[]
+    product_id?: UuidWithAggregatesFilter<"product_tags"> | string
+    tag_id?: UuidWithAggregatesFilter<"product_tags"> | string
+    product_name?: StringNullableWithAggregatesFilter<"product_tags"> | string | null
+    tag_spec?: StringNullableWithAggregatesFilter<"product_tags"> | string | null
+    tag_size?: StringNullableWithAggregatesFilter<"product_tags"> | string | null
+  }
+
+  export type products_hardwareWhereInput = {
+    AND?: products_hardwareWhereInput | products_hardwareWhereInput[]
+    OR?: products_hardwareWhereInput[]
+    NOT?: products_hardwareWhereInput | products_hardwareWhereInput[]
+    id?: UuidFilter<"products_hardware"> | string
+    products_id?: UuidFilter<"products_hardware"> | string
+    controller_count?: IntNullableFilter<"products_hardware"> | number | null
+    cpu_model?: StringNullableFilter<"products_hardware"> | string | null
+    cpu_count?: IntNullableFilter<"products_hardware"> | number | null
+    cpu_cores?: IntNullableFilter<"products_hardware"> | number | null
+    cpu_architecture?: StringNullableFilter<"products_hardware"> | string | null
+    cpu_base_clock?: DecimalNullableFilter<"products_hardware"> | Decimal | DecimalJsLike | number | string | null
+    cpu_turbo_clock?: DecimalNullableFilter<"products_hardware"> | Decimal | DecimalJsLike | number | string | null
+    hardware_encryption?: StringNullableFilter<"products_hardware"> | string | null
+    memory_total?: StringNullableFilter<"products_hardware"> | string | null
+    memory_installed?: StringNullableFilter<"products_hardware"> | string | null
+    memory_slots?: IntNullableFilter<"products_hardware"> | number | null
+    memory_max?: JsonNullableFilter<"products_hardware">
+    disk_bays?: IntNullableFilter<"products_hardware"> | number | null
+    disk_bays_max?: IntNullableFilter<"products_hardware"> | number | null
+    disk_types_supported?: JsonNullableFilter<"products_hardware">
+    m2_slot?: BoolNullableFilter<"products_hardware"> | boolean | null
+    disk_host_swappable?: BoolNullableFilter<"products_hardware"> | boolean | null
+    lan_rj45_1G?: IntNullableFilter<"products_hardware"> | number | null
+    lan_rj45_2_5G?: IntNullableFilter<"products_hardware"> | number | null
+    lan_rj45_10G?: IntNullableFilter<"products_hardware"> | number | null
+    management_prot?: BoolNullableFilter<"products_hardware"> | boolean | null
+    max_lax_ports?: IntNullableFilter<"products_hardware"> | number | null
+    usb_3_2_prots?: IntNullableFilter<"products_hardware"> | number | null
+    expansion_ports?: IntNullableFilter<"products_hardware"> | number | null
+    expansion_port_types?: StringNullableFilter<"products_hardware"> | string | null
+    pcie_expansion?: StringNullableFilter<"products_hardware"> | string | null
+    chassis_type?: StringNullableFilter<"products_hardware"> | string | null
+    dimensions?: StringNullableFilter<"products_hardware"> | string | null
+    rack_mount_kit?: StringNullableFilter<"products_hardware"> | string | null
+    fan_size?: StringNullableFilter<"products_hardware"> | string | null
+    fan_replaceable?: BoolNullableFilter<"products_hardware"> | boolean | null
+    led_brightness_adj?: BoolNullableFilter<"products_hardware"> | boolean | null
+    auto_power_recovery?: BoolNullableFilter<"products_hardware"> | boolean | null
+    noise_lenel?: StringNullableFilter<"products_hardware"> | string | null
+    scheduled_power?: BoolNullableFilter<"products_hardware"> | boolean | null
+    wake_on_lan?: BoolNullableFilter<"products_hardware"> | boolean | null
+    dual_power_supply?: BoolNullableFilter<"products_hardware"> | boolean | null
+    ac_input_voltage?: StringNullableFilter<"products_hardware"> | string | null
+    frequency?: StringNullableFilter<"products_hardware"> | string | null
+    power_consumption?: StringNullableFilter<"products_hardware"> | string | null
+    working_temperature?: StringNullableFilter<"products_hardware"> | string | null
+    storage_temperature?: StringNullableFilter<"products_hardware"> | string | null
+    relative_humidity?: StringNullableFilter<"products_hardware"> | string | null
+    certifications?: JsonNullableFilter<"products_hardware">
+    warranty?: StringNullableFilter<"products_hardware"> | string | null
+    environmental_compliance?: StringNullableFilter<"products_hardware"> | string | null
+    package_contents?: JsonNullableFilter<"products_hardware">
+    optional_accessories?: JsonNullableFilter<"products_hardware">
+    cpu_threads?: IntNullableFilter<"products_hardware"> | number | null
+    products?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+  }
+
+  export type products_hardwareOrderByWithRelationInput = {
+    id?: SortOrder
+    products_id?: SortOrder
+    controller_count?: SortOrderInput | SortOrder
+    cpu_model?: SortOrderInput | SortOrder
+    cpu_count?: SortOrderInput | SortOrder
+    cpu_cores?: SortOrderInput | SortOrder
+    cpu_architecture?: SortOrderInput | SortOrder
+    cpu_base_clock?: SortOrderInput | SortOrder
+    cpu_turbo_clock?: SortOrderInput | SortOrder
+    hardware_encryption?: SortOrderInput | SortOrder
+    memory_total?: SortOrderInput | SortOrder
+    memory_installed?: SortOrderInput | SortOrder
+    memory_slots?: SortOrderInput | SortOrder
+    memory_max?: SortOrderInput | SortOrder
+    disk_bays?: SortOrderInput | SortOrder
+    disk_bays_max?: SortOrderInput | SortOrder
+    disk_types_supported?: SortOrderInput | SortOrder
+    m2_slot?: SortOrderInput | SortOrder
+    disk_host_swappable?: SortOrderInput | SortOrder
+    lan_rj45_1G?: SortOrderInput | SortOrder
+    lan_rj45_2_5G?: SortOrderInput | SortOrder
+    lan_rj45_10G?: SortOrderInput | SortOrder
+    management_prot?: SortOrderInput | SortOrder
+    max_lax_ports?: SortOrderInput | SortOrder
+    usb_3_2_prots?: SortOrderInput | SortOrder
+    expansion_ports?: SortOrderInput | SortOrder
+    expansion_port_types?: SortOrderInput | SortOrder
+    pcie_expansion?: SortOrderInput | SortOrder
+    chassis_type?: SortOrderInput | SortOrder
+    dimensions?: SortOrderInput | SortOrder
+    rack_mount_kit?: SortOrderInput | SortOrder
+    fan_size?: SortOrderInput | SortOrder
+    fan_replaceable?: SortOrderInput | SortOrder
+    led_brightness_adj?: SortOrderInput | SortOrder
+    auto_power_recovery?: SortOrderInput | SortOrder
+    noise_lenel?: SortOrderInput | SortOrder
+    scheduled_power?: SortOrderInput | SortOrder
+    wake_on_lan?: SortOrderInput | SortOrder
+    dual_power_supply?: SortOrderInput | SortOrder
+    ac_input_voltage?: SortOrderInput | SortOrder
+    frequency?: SortOrderInput | SortOrder
+    power_consumption?: SortOrderInput | SortOrder
+    working_temperature?: SortOrderInput | SortOrder
+    storage_temperature?: SortOrderInput | SortOrder
+    relative_humidity?: SortOrderInput | SortOrder
+    certifications?: SortOrderInput | SortOrder
+    warranty?: SortOrderInput | SortOrder
+    environmental_compliance?: SortOrderInput | SortOrder
+    package_contents?: SortOrderInput | SortOrder
+    optional_accessories?: SortOrderInput | SortOrder
+    cpu_threads?: SortOrderInput | SortOrder
+    products?: ProductOrderByWithRelationInput
+  }
+
+  export type products_hardwareWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: products_hardwareWhereInput | products_hardwareWhereInput[]
+    OR?: products_hardwareWhereInput[]
+    NOT?: products_hardwareWhereInput | products_hardwareWhereInput[]
+    products_id?: UuidFilter<"products_hardware"> | string
+    controller_count?: IntNullableFilter<"products_hardware"> | number | null
+    cpu_model?: StringNullableFilter<"products_hardware"> | string | null
+    cpu_count?: IntNullableFilter<"products_hardware"> | number | null
+    cpu_cores?: IntNullableFilter<"products_hardware"> | number | null
+    cpu_architecture?: StringNullableFilter<"products_hardware"> | string | null
+    cpu_base_clock?: DecimalNullableFilter<"products_hardware"> | Decimal | DecimalJsLike | number | string | null
+    cpu_turbo_clock?: DecimalNullableFilter<"products_hardware"> | Decimal | DecimalJsLike | number | string | null
+    hardware_encryption?: StringNullableFilter<"products_hardware"> | string | null
+    memory_total?: StringNullableFilter<"products_hardware"> | string | null
+    memory_installed?: StringNullableFilter<"products_hardware"> | string | null
+    memory_slots?: IntNullableFilter<"products_hardware"> | number | null
+    memory_max?: JsonNullableFilter<"products_hardware">
+    disk_bays?: IntNullableFilter<"products_hardware"> | number | null
+    disk_bays_max?: IntNullableFilter<"products_hardware"> | number | null
+    disk_types_supported?: JsonNullableFilter<"products_hardware">
+    m2_slot?: BoolNullableFilter<"products_hardware"> | boolean | null
+    disk_host_swappable?: BoolNullableFilter<"products_hardware"> | boolean | null
+    lan_rj45_1G?: IntNullableFilter<"products_hardware"> | number | null
+    lan_rj45_2_5G?: IntNullableFilter<"products_hardware"> | number | null
+    lan_rj45_10G?: IntNullableFilter<"products_hardware"> | number | null
+    management_prot?: BoolNullableFilter<"products_hardware"> | boolean | null
+    max_lax_ports?: IntNullableFilter<"products_hardware"> | number | null
+    usb_3_2_prots?: IntNullableFilter<"products_hardware"> | number | null
+    expansion_ports?: IntNullableFilter<"products_hardware"> | number | null
+    expansion_port_types?: StringNullableFilter<"products_hardware"> | string | null
+    pcie_expansion?: StringNullableFilter<"products_hardware"> | string | null
+    chassis_type?: StringNullableFilter<"products_hardware"> | string | null
+    dimensions?: StringNullableFilter<"products_hardware"> | string | null
+    rack_mount_kit?: StringNullableFilter<"products_hardware"> | string | null
+    fan_size?: StringNullableFilter<"products_hardware"> | string | null
+    fan_replaceable?: BoolNullableFilter<"products_hardware"> | boolean | null
+    led_brightness_adj?: BoolNullableFilter<"products_hardware"> | boolean | null
+    auto_power_recovery?: BoolNullableFilter<"products_hardware"> | boolean | null
+    noise_lenel?: StringNullableFilter<"products_hardware"> | string | null
+    scheduled_power?: BoolNullableFilter<"products_hardware"> | boolean | null
+    wake_on_lan?: BoolNullableFilter<"products_hardware"> | boolean | null
+    dual_power_supply?: BoolNullableFilter<"products_hardware"> | boolean | null
+    ac_input_voltage?: StringNullableFilter<"products_hardware"> | string | null
+    frequency?: StringNullableFilter<"products_hardware"> | string | null
+    power_consumption?: StringNullableFilter<"products_hardware"> | string | null
+    working_temperature?: StringNullableFilter<"products_hardware"> | string | null
+    storage_temperature?: StringNullableFilter<"products_hardware"> | string | null
+    relative_humidity?: StringNullableFilter<"products_hardware"> | string | null
+    certifications?: JsonNullableFilter<"products_hardware">
+    warranty?: StringNullableFilter<"products_hardware"> | string | null
+    environmental_compliance?: StringNullableFilter<"products_hardware"> | string | null
+    package_contents?: JsonNullableFilter<"products_hardware">
+    optional_accessories?: JsonNullableFilter<"products_hardware">
+    cpu_threads?: IntNullableFilter<"products_hardware"> | number | null
+    products?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+  }, "id">
+
+  export type products_hardwareOrderByWithAggregationInput = {
+    id?: SortOrder
+    products_id?: SortOrder
+    controller_count?: SortOrderInput | SortOrder
+    cpu_model?: SortOrderInput | SortOrder
+    cpu_count?: SortOrderInput | SortOrder
+    cpu_cores?: SortOrderInput | SortOrder
+    cpu_architecture?: SortOrderInput | SortOrder
+    cpu_base_clock?: SortOrderInput | SortOrder
+    cpu_turbo_clock?: SortOrderInput | SortOrder
+    hardware_encryption?: SortOrderInput | SortOrder
+    memory_total?: SortOrderInput | SortOrder
+    memory_installed?: SortOrderInput | SortOrder
+    memory_slots?: SortOrderInput | SortOrder
+    memory_max?: SortOrderInput | SortOrder
+    disk_bays?: SortOrderInput | SortOrder
+    disk_bays_max?: SortOrderInput | SortOrder
+    disk_types_supported?: SortOrderInput | SortOrder
+    m2_slot?: SortOrderInput | SortOrder
+    disk_host_swappable?: SortOrderInput | SortOrder
+    lan_rj45_1G?: SortOrderInput | SortOrder
+    lan_rj45_2_5G?: SortOrderInput | SortOrder
+    lan_rj45_10G?: SortOrderInput | SortOrder
+    management_prot?: SortOrderInput | SortOrder
+    max_lax_ports?: SortOrderInput | SortOrder
+    usb_3_2_prots?: SortOrderInput | SortOrder
+    expansion_ports?: SortOrderInput | SortOrder
+    expansion_port_types?: SortOrderInput | SortOrder
+    pcie_expansion?: SortOrderInput | SortOrder
+    chassis_type?: SortOrderInput | SortOrder
+    dimensions?: SortOrderInput | SortOrder
+    rack_mount_kit?: SortOrderInput | SortOrder
+    fan_size?: SortOrderInput | SortOrder
+    fan_replaceable?: SortOrderInput | SortOrder
+    led_brightness_adj?: SortOrderInput | SortOrder
+    auto_power_recovery?: SortOrderInput | SortOrder
+    noise_lenel?: SortOrderInput | SortOrder
+    scheduled_power?: SortOrderInput | SortOrder
+    wake_on_lan?: SortOrderInput | SortOrder
+    dual_power_supply?: SortOrderInput | SortOrder
+    ac_input_voltage?: SortOrderInput | SortOrder
+    frequency?: SortOrderInput | SortOrder
+    power_consumption?: SortOrderInput | SortOrder
+    working_temperature?: SortOrderInput | SortOrder
+    storage_temperature?: SortOrderInput | SortOrder
+    relative_humidity?: SortOrderInput | SortOrder
+    certifications?: SortOrderInput | SortOrder
+    warranty?: SortOrderInput | SortOrder
+    environmental_compliance?: SortOrderInput | SortOrder
+    package_contents?: SortOrderInput | SortOrder
+    optional_accessories?: SortOrderInput | SortOrder
+    cpu_threads?: SortOrderInput | SortOrder
+    _count?: products_hardwareCountOrderByAggregateInput
+    _avg?: products_hardwareAvgOrderByAggregateInput
+    _max?: products_hardwareMaxOrderByAggregateInput
+    _min?: products_hardwareMinOrderByAggregateInput
+    _sum?: products_hardwareSumOrderByAggregateInput
+  }
+
+  export type products_hardwareScalarWhereWithAggregatesInput = {
+    AND?: products_hardwareScalarWhereWithAggregatesInput | products_hardwareScalarWhereWithAggregatesInput[]
+    OR?: products_hardwareScalarWhereWithAggregatesInput[]
+    NOT?: products_hardwareScalarWhereWithAggregatesInput | products_hardwareScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"products_hardware"> | string
+    products_id?: UuidWithAggregatesFilter<"products_hardware"> | string
+    controller_count?: IntNullableWithAggregatesFilter<"products_hardware"> | number | null
+    cpu_model?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    cpu_count?: IntNullableWithAggregatesFilter<"products_hardware"> | number | null
+    cpu_cores?: IntNullableWithAggregatesFilter<"products_hardware"> | number | null
+    cpu_architecture?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    cpu_base_clock?: DecimalNullableWithAggregatesFilter<"products_hardware"> | Decimal | DecimalJsLike | number | string | null
+    cpu_turbo_clock?: DecimalNullableWithAggregatesFilter<"products_hardware"> | Decimal | DecimalJsLike | number | string | null
+    hardware_encryption?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    memory_total?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    memory_installed?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    memory_slots?: IntNullableWithAggregatesFilter<"products_hardware"> | number | null
+    memory_max?: JsonNullableWithAggregatesFilter<"products_hardware">
+    disk_bays?: IntNullableWithAggregatesFilter<"products_hardware"> | number | null
+    disk_bays_max?: IntNullableWithAggregatesFilter<"products_hardware"> | number | null
+    disk_types_supported?: JsonNullableWithAggregatesFilter<"products_hardware">
+    m2_slot?: BoolNullableWithAggregatesFilter<"products_hardware"> | boolean | null
+    disk_host_swappable?: BoolNullableWithAggregatesFilter<"products_hardware"> | boolean | null
+    lan_rj45_1G?: IntNullableWithAggregatesFilter<"products_hardware"> | number | null
+    lan_rj45_2_5G?: IntNullableWithAggregatesFilter<"products_hardware"> | number | null
+    lan_rj45_10G?: IntNullableWithAggregatesFilter<"products_hardware"> | number | null
+    management_prot?: BoolNullableWithAggregatesFilter<"products_hardware"> | boolean | null
+    max_lax_ports?: IntNullableWithAggregatesFilter<"products_hardware"> | number | null
+    usb_3_2_prots?: IntNullableWithAggregatesFilter<"products_hardware"> | number | null
+    expansion_ports?: IntNullableWithAggregatesFilter<"products_hardware"> | number | null
+    expansion_port_types?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    pcie_expansion?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    chassis_type?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    dimensions?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    rack_mount_kit?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    fan_size?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    fan_replaceable?: BoolNullableWithAggregatesFilter<"products_hardware"> | boolean | null
+    led_brightness_adj?: BoolNullableWithAggregatesFilter<"products_hardware"> | boolean | null
+    auto_power_recovery?: BoolNullableWithAggregatesFilter<"products_hardware"> | boolean | null
+    noise_lenel?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    scheduled_power?: BoolNullableWithAggregatesFilter<"products_hardware"> | boolean | null
+    wake_on_lan?: BoolNullableWithAggregatesFilter<"products_hardware"> | boolean | null
+    dual_power_supply?: BoolNullableWithAggregatesFilter<"products_hardware"> | boolean | null
+    ac_input_voltage?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    frequency?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    power_consumption?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    working_temperature?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    storage_temperature?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    relative_humidity?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    certifications?: JsonNullableWithAggregatesFilter<"products_hardware">
+    warranty?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    environmental_compliance?: StringNullableWithAggregatesFilter<"products_hardware"> | string | null
+    package_contents?: JsonNullableWithAggregatesFilter<"products_hardware">
+    optional_accessories?: JsonNullableWithAggregatesFilter<"products_hardware">
+    cpu_threads?: IntNullableWithAggregatesFilter<"products_hardware"> | number | null
+  }
+
+  export type tag_categoriesWhereInput = {
+    AND?: tag_categoriesWhereInput | tag_categoriesWhereInput[]
+    OR?: tag_categoriesWhereInput[]
+    NOT?: tag_categoriesWhereInput | tag_categoriesWhereInput[]
+    id?: UuidFilter<"tag_categories"> | string
+    name?: StringFilter<"tag_categories"> | string
+    sort?: IntNullableFilter<"tag_categories"> | number | null
+    categories_type?: StringNullableFilter<"tag_categories"> | string | null
+    tags?: TagsListRelationFilter
+  }
+
+  export type tag_categoriesOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    sort?: SortOrderInput | SortOrder
+    categories_type?: SortOrderInput | SortOrder
+    tags?: tagsOrderByRelationAggregateInput
+  }
+
+  export type tag_categoriesWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: tag_categoriesWhereInput | tag_categoriesWhereInput[]
+    OR?: tag_categoriesWhereInput[]
+    NOT?: tag_categoriesWhereInput | tag_categoriesWhereInput[]
+    name?: StringFilter<"tag_categories"> | string
+    sort?: IntNullableFilter<"tag_categories"> | number | null
+    categories_type?: StringNullableFilter<"tag_categories"> | string | null
+    tags?: TagsListRelationFilter
+  }, "id">
+
+  export type tag_categoriesOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    sort?: SortOrderInput | SortOrder
+    categories_type?: SortOrderInput | SortOrder
+    _count?: tag_categoriesCountOrderByAggregateInput
+    _avg?: tag_categoriesAvgOrderByAggregateInput
+    _max?: tag_categoriesMaxOrderByAggregateInput
+    _min?: tag_categoriesMinOrderByAggregateInput
+    _sum?: tag_categoriesSumOrderByAggregateInput
+  }
+
+  export type tag_categoriesScalarWhereWithAggregatesInput = {
+    AND?: tag_categoriesScalarWhereWithAggregatesInput | tag_categoriesScalarWhereWithAggregatesInput[]
+    OR?: tag_categoriesScalarWhereWithAggregatesInput[]
+    NOT?: tag_categoriesScalarWhereWithAggregatesInput | tag_categoriesScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"tag_categories"> | string
+    name?: StringWithAggregatesFilter<"tag_categories"> | string
+    sort?: IntNullableWithAggregatesFilter<"tag_categories"> | number | null
+    categories_type?: StringNullableWithAggregatesFilter<"tag_categories"> | string | null
+  }
+
+  export type tagsWhereInput = {
+    AND?: tagsWhereInput | tagsWhereInput[]
+    OR?: tagsWhereInput[]
+    NOT?: tagsWhereInput | tagsWhereInput[]
+    id?: UuidFilter<"tags"> | string
+    created_id?: UuidFilter<"tags"> | string
+    product_spec?: StringNullableFilter<"tags"> | string | null
+    product_size?: StringNullableFilter<"tags"> | string | null
+    sort_type?: IntNullableFilter<"tags"> | number | null
+    sort_order?: IntNullableFilter<"tags"> | number | null
+    spec_size?: StringNullableFilter<"tags"> | string | null
+    product_tags?: Product_tagsListRelationFilter
+    tag_categories?: XOR<Tag_categoriesScalarRelationFilter, tag_categoriesWhereInput>
+  }
+
+  export type tagsOrderByWithRelationInput = {
+    id?: SortOrder
+    created_id?: SortOrder
+    product_spec?: SortOrderInput | SortOrder
+    product_size?: SortOrderInput | SortOrder
+    sort_type?: SortOrderInput | SortOrder
+    sort_order?: SortOrderInput | SortOrder
+    spec_size?: SortOrderInput | SortOrder
+    product_tags?: product_tagsOrderByRelationAggregateInput
+    tag_categories?: tag_categoriesOrderByWithRelationInput
+  }
+
+  export type tagsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: tagsWhereInput | tagsWhereInput[]
+    OR?: tagsWhereInput[]
+    NOT?: tagsWhereInput | tagsWhereInput[]
+    created_id?: UuidFilter<"tags"> | string
+    product_spec?: StringNullableFilter<"tags"> | string | null
+    product_size?: StringNullableFilter<"tags"> | string | null
+    sort_type?: IntNullableFilter<"tags"> | number | null
+    sort_order?: IntNullableFilter<"tags"> | number | null
+    spec_size?: StringNullableFilter<"tags"> | string | null
+    product_tags?: Product_tagsListRelationFilter
+    tag_categories?: XOR<Tag_categoriesScalarRelationFilter, tag_categoriesWhereInput>
+  }, "id">
+
+  export type tagsOrderByWithAggregationInput = {
+    id?: SortOrder
+    created_id?: SortOrder
+    product_spec?: SortOrderInput | SortOrder
+    product_size?: SortOrderInput | SortOrder
+    sort_type?: SortOrderInput | SortOrder
+    sort_order?: SortOrderInput | SortOrder
+    spec_size?: SortOrderInput | SortOrder
+    _count?: tagsCountOrderByAggregateInput
+    _avg?: tagsAvgOrderByAggregateInput
+    _max?: tagsMaxOrderByAggregateInput
+    _min?: tagsMinOrderByAggregateInput
+    _sum?: tagsSumOrderByAggregateInput
+  }
+
+  export type tagsScalarWhereWithAggregatesInput = {
+    AND?: tagsScalarWhereWithAggregatesInput | tagsScalarWhereWithAggregatesInput[]
+    OR?: tagsScalarWhereWithAggregatesInput[]
+    NOT?: tagsScalarWhereWithAggregatesInput | tagsScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"tags"> | string
+    created_id?: UuidWithAggregatesFilter<"tags"> | string
+    product_spec?: StringNullableWithAggregatesFilter<"tags"> | string | null
+    product_size?: StringNullableWithAggregatesFilter<"tags"> | string | null
+    sort_type?: IntNullableWithAggregatesFilter<"tags"> | number | null
+    sort_order?: IntNullableWithAggregatesFilter<"tags"> | number | null
+    spec_size?: StringNullableWithAggregatesFilter<"tags"> | string | null
+  }
+
   export type UserWhereInput = {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    id?: StringFilter<"User"> | string
-    name?: StringFilter<"User"> | string
+    id?: UuidFilter<"User"> | string
     email?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    name?: StringFilter<"User"> | string
     role?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
@@ -8249,9 +11986,9 @@ export namespace Prisma {
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    name?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    name?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8263,8 +12000,8 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    name?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    name?: StringFilter<"User"> | string
     role?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
@@ -8272,9 +12009,9 @@ export namespace Prisma {
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    name?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    name?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8287,396 +12024,830 @@ export namespace Prisma {
     AND?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"User"> | string
-    name?: StringWithAggregatesFilter<"User"> | string
+    id?: UuidWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
+    name?: StringWithAggregatesFilter<"User"> | string
     role?: StringWithAggregatesFilter<"User"> | string
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
 
-  export type CategoryWhereInput = {
-    AND?: CategoryWhereInput | CategoryWhereInput[]
-    OR?: CategoryWhereInput[]
-    NOT?: CategoryWhereInput | CategoryWhereInput[]
-    id?: StringFilter<"Category"> | string
-    name?: StringFilter<"Category"> | string
-    slug?: StringFilter<"Category"> | string
-    description?: StringNullableFilter<"Category"> | string | null
-    parentId?: StringNullableFilter<"Category"> | string | null
-    createdAt?: DateTimeFilter<"Category"> | Date | string
-    updatedAt?: DateTimeFilter<"Category"> | Date | string
-    parent?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
-    subcategories?: CategoryListRelationFilter
-    products?: ProductListRelationFilter
+  export type FooterWhereInput = {
+    AND?: FooterWhereInput | FooterWhereInput[]
+    OR?: FooterWhereInput[]
+    NOT?: FooterWhereInput | FooterWhereInput[]
+    id?: UuidFilter<"Footer"> | string
+    icpNumber?: StringNullableFilter<"Footer"> | string | null
+    icpLink?: StringNullableFilter<"Footer"> | string | null
+    copyright?: StringNullableFilter<"Footer"> | string | null
+    isActive?: BoolFilter<"Footer"> | boolean
+    createdAt?: DateTimeFilter<"Footer"> | Date | string
+    updatedAt?: DateTimeFilter<"Footer"> | Date | string
+    links?: FooterLinkListRelationFilter
   }
 
-  export type CategoryOrderByWithRelationInput = {
+  export type FooterOrderByWithRelationInput = {
     id?: SortOrder
-    name?: SortOrder
-    slug?: SortOrder
-    description?: SortOrderInput | SortOrder
-    parentId?: SortOrderInput | SortOrder
+    icpNumber?: SortOrderInput | SortOrder
+    icpLink?: SortOrderInput | SortOrder
+    copyright?: SortOrderInput | SortOrder
+    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    parent?: CategoryOrderByWithRelationInput
-    subcategories?: CategoryOrderByRelationAggregateInput
-    products?: ProductOrderByRelationAggregateInput
+    links?: FooterLinkOrderByRelationAggregateInput
   }
 
-  export type CategoryWhereUniqueInput = Prisma.AtLeast<{
+  export type FooterWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    slug?: string
-    AND?: CategoryWhereInput | CategoryWhereInput[]
-    OR?: CategoryWhereInput[]
-    NOT?: CategoryWhereInput | CategoryWhereInput[]
-    name?: StringFilter<"Category"> | string
-    description?: StringNullableFilter<"Category"> | string | null
-    parentId?: StringNullableFilter<"Category"> | string | null
-    createdAt?: DateTimeFilter<"Category"> | Date | string
-    updatedAt?: DateTimeFilter<"Category"> | Date | string
-    parent?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
-    subcategories?: CategoryListRelationFilter
-    products?: ProductListRelationFilter
-  }, "id" | "slug">
-
-  export type CategoryOrderByWithAggregationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    slug?: SortOrder
-    description?: SortOrderInput | SortOrder
-    parentId?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: CategoryCountOrderByAggregateInput
-    _max?: CategoryMaxOrderByAggregateInput
-    _min?: CategoryMinOrderByAggregateInput
-  }
-
-  export type CategoryScalarWhereWithAggregatesInput = {
-    AND?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
-    OR?: CategoryScalarWhereWithAggregatesInput[]
-    NOT?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Category"> | string
-    name?: StringWithAggregatesFilter<"Category"> | string
-    slug?: StringWithAggregatesFilter<"Category"> | string
-    description?: StringNullableWithAggregatesFilter<"Category"> | string | null
-    parentId?: StringNullableWithAggregatesFilter<"Category"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
-  }
-
-  export type ProductWhereInput = {
-    AND?: ProductWhereInput | ProductWhereInput[]
-    OR?: ProductWhereInput[]
-    NOT?: ProductWhereInput | ProductWhereInput[]
-    id?: StringFilter<"Product"> | string
-    title?: StringFilter<"Product"> | string
-    slug?: StringFilter<"Product"> | string
-    description?: StringFilter<"Product"> | string
-    fullDescription?: StringNullableFilter<"Product"> | string | null
-    imageUrl?: StringFilter<"Product"> | string
-    categoryId?: StringFilter<"Product"> | string
-    features?: StringFilter<"Product"> | string
-    specifications?: StringNullableFilter<"Product"> | string | null
-    createdAt?: DateTimeFilter<"Product"> | Date | string
-    updatedAt?: DateTimeFilter<"Product"> | Date | string
-    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
-    solutions?: SolutionListRelationFilter
-  }
-
-  export type ProductOrderByWithRelationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    slug?: SortOrder
-    description?: SortOrder
-    fullDescription?: SortOrderInput | SortOrder
-    imageUrl?: SortOrder
-    categoryId?: SortOrder
-    features?: SortOrder
-    specifications?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    category?: CategoryOrderByWithRelationInput
-    solutions?: SolutionOrderByRelationAggregateInput
-  }
-
-  export type ProductWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    slug?: string
-    AND?: ProductWhereInput | ProductWhereInput[]
-    OR?: ProductWhereInput[]
-    NOT?: ProductWhereInput | ProductWhereInput[]
-    title?: StringFilter<"Product"> | string
-    description?: StringFilter<"Product"> | string
-    fullDescription?: StringNullableFilter<"Product"> | string | null
-    imageUrl?: StringFilter<"Product"> | string
-    categoryId?: StringFilter<"Product"> | string
-    features?: StringFilter<"Product"> | string
-    specifications?: StringNullableFilter<"Product"> | string | null
-    createdAt?: DateTimeFilter<"Product"> | Date | string
-    updatedAt?: DateTimeFilter<"Product"> | Date | string
-    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
-    solutions?: SolutionListRelationFilter
-  }, "id" | "slug">
-
-  export type ProductOrderByWithAggregationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    slug?: SortOrder
-    description?: SortOrder
-    fullDescription?: SortOrderInput | SortOrder
-    imageUrl?: SortOrder
-    categoryId?: SortOrder
-    features?: SortOrder
-    specifications?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: ProductCountOrderByAggregateInput
-    _max?: ProductMaxOrderByAggregateInput
-    _min?: ProductMinOrderByAggregateInput
-  }
-
-  export type ProductScalarWhereWithAggregatesInput = {
-    AND?: ProductScalarWhereWithAggregatesInput | ProductScalarWhereWithAggregatesInput[]
-    OR?: ProductScalarWhereWithAggregatesInput[]
-    NOT?: ProductScalarWhereWithAggregatesInput | ProductScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Product"> | string
-    title?: StringWithAggregatesFilter<"Product"> | string
-    slug?: StringWithAggregatesFilter<"Product"> | string
-    description?: StringWithAggregatesFilter<"Product"> | string
-    fullDescription?: StringNullableWithAggregatesFilter<"Product"> | string | null
-    imageUrl?: StringWithAggregatesFilter<"Product"> | string
-    categoryId?: StringWithAggregatesFilter<"Product"> | string
-    features?: StringWithAggregatesFilter<"Product"> | string
-    specifications?: StringNullableWithAggregatesFilter<"Product"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
-  }
-
-  export type SolutionWhereInput = {
-    AND?: SolutionWhereInput | SolutionWhereInput[]
-    OR?: SolutionWhereInput[]
-    NOT?: SolutionWhereInput | SolutionWhereInput[]
-    id?: StringFilter<"Solution"> | string
-    title?: StringFilter<"Solution"> | string
-    slug?: StringFilter<"Solution"> | string
-    description?: StringFilter<"Solution"> | string
-    fullDescription?: StringNullableFilter<"Solution"> | string | null
-    imageUrl?: StringFilter<"Solution"> | string
-    industry?: StringFilter<"Solution"> | string
-    benefits?: StringFilter<"Solution"> | string
-    features?: StringFilter<"Solution"> | string
-    createdAt?: DateTimeFilter<"Solution"> | Date | string
-    updatedAt?: DateTimeFilter<"Solution"> | Date | string
-    products?: ProductListRelationFilter
-    caseStudies?: CaseStudyListRelationFilter
-  }
-
-  export type SolutionOrderByWithRelationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    slug?: SortOrder
-    description?: SortOrder
-    fullDescription?: SortOrderInput | SortOrder
-    imageUrl?: SortOrder
-    industry?: SortOrder
-    benefits?: SortOrder
-    features?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    products?: ProductOrderByRelationAggregateInput
-    caseStudies?: CaseStudyOrderByRelationAggregateInput
-  }
-
-  export type SolutionWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    slug?: string
-    AND?: SolutionWhereInput | SolutionWhereInput[]
-    OR?: SolutionWhereInput[]
-    NOT?: SolutionWhereInput | SolutionWhereInput[]
-    title?: StringFilter<"Solution"> | string
-    description?: StringFilter<"Solution"> | string
-    fullDescription?: StringNullableFilter<"Solution"> | string | null
-    imageUrl?: StringFilter<"Solution"> | string
-    industry?: StringFilter<"Solution"> | string
-    benefits?: StringFilter<"Solution"> | string
-    features?: StringFilter<"Solution"> | string
-    createdAt?: DateTimeFilter<"Solution"> | Date | string
-    updatedAt?: DateTimeFilter<"Solution"> | Date | string
-    products?: ProductListRelationFilter
-    caseStudies?: CaseStudyListRelationFilter
-  }, "id" | "slug">
-
-  export type SolutionOrderByWithAggregationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    slug?: SortOrder
-    description?: SortOrder
-    fullDescription?: SortOrderInput | SortOrder
-    imageUrl?: SortOrder
-    industry?: SortOrder
-    benefits?: SortOrder
-    features?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: SolutionCountOrderByAggregateInput
-    _max?: SolutionMaxOrderByAggregateInput
-    _min?: SolutionMinOrderByAggregateInput
-  }
-
-  export type SolutionScalarWhereWithAggregatesInput = {
-    AND?: SolutionScalarWhereWithAggregatesInput | SolutionScalarWhereWithAggregatesInput[]
-    OR?: SolutionScalarWhereWithAggregatesInput[]
-    NOT?: SolutionScalarWhereWithAggregatesInput | SolutionScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Solution"> | string
-    title?: StringWithAggregatesFilter<"Solution"> | string
-    slug?: StringWithAggregatesFilter<"Solution"> | string
-    description?: StringWithAggregatesFilter<"Solution"> | string
-    fullDescription?: StringNullableWithAggregatesFilter<"Solution"> | string | null
-    imageUrl?: StringWithAggregatesFilter<"Solution"> | string
-    industry?: StringWithAggregatesFilter<"Solution"> | string
-    benefits?: StringWithAggregatesFilter<"Solution"> | string
-    features?: StringWithAggregatesFilter<"Solution"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Solution"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Solution"> | Date | string
-  }
-
-  export type CaseStudyWhereInput = {
-    AND?: CaseStudyWhereInput | CaseStudyWhereInput[]
-    OR?: CaseStudyWhereInput[]
-    NOT?: CaseStudyWhereInput | CaseStudyWhereInput[]
-    id?: StringFilter<"CaseStudy"> | string
-    title?: StringFilter<"CaseStudy"> | string
-    description?: StringFilter<"CaseStudy"> | string
-    solutionId?: StringFilter<"CaseStudy"> | string
-    createdAt?: DateTimeFilter<"CaseStudy"> | Date | string
-    updatedAt?: DateTimeFilter<"CaseStudy"> | Date | string
-    solution?: XOR<SolutionScalarRelationFilter, SolutionWhereInput>
-  }
-
-  export type CaseStudyOrderByWithRelationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    solutionId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    solution?: SolutionOrderByWithRelationInput
-  }
-
-  export type CaseStudyWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: CaseStudyWhereInput | CaseStudyWhereInput[]
-    OR?: CaseStudyWhereInput[]
-    NOT?: CaseStudyWhereInput | CaseStudyWhereInput[]
-    title?: StringFilter<"CaseStudy"> | string
-    description?: StringFilter<"CaseStudy"> | string
-    solutionId?: StringFilter<"CaseStudy"> | string
-    createdAt?: DateTimeFilter<"CaseStudy"> | Date | string
-    updatedAt?: DateTimeFilter<"CaseStudy"> | Date | string
-    solution?: XOR<SolutionScalarRelationFilter, SolutionWhereInput>
+    AND?: FooterWhereInput | FooterWhereInput[]
+    OR?: FooterWhereInput[]
+    NOT?: FooterWhereInput | FooterWhereInput[]
+    icpNumber?: StringNullableFilter<"Footer"> | string | null
+    icpLink?: StringNullableFilter<"Footer"> | string | null
+    copyright?: StringNullableFilter<"Footer"> | string | null
+    isActive?: BoolFilter<"Footer"> | boolean
+    createdAt?: DateTimeFilter<"Footer"> | Date | string
+    updatedAt?: DateTimeFilter<"Footer"> | Date | string
+    links?: FooterLinkListRelationFilter
   }, "id">
 
-  export type CaseStudyOrderByWithAggregationInput = {
+  export type FooterOrderByWithAggregationInput = {
     id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    solutionId?: SortOrder
+    icpNumber?: SortOrderInput | SortOrder
+    icpLink?: SortOrderInput | SortOrder
+    copyright?: SortOrderInput | SortOrder
+    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: CaseStudyCountOrderByAggregateInput
-    _max?: CaseStudyMaxOrderByAggregateInput
-    _min?: CaseStudyMinOrderByAggregateInput
+    _count?: FooterCountOrderByAggregateInput
+    _max?: FooterMaxOrderByAggregateInput
+    _min?: FooterMinOrderByAggregateInput
   }
 
-  export type CaseStudyScalarWhereWithAggregatesInput = {
-    AND?: CaseStudyScalarWhereWithAggregatesInput | CaseStudyScalarWhereWithAggregatesInput[]
-    OR?: CaseStudyScalarWhereWithAggregatesInput[]
-    NOT?: CaseStudyScalarWhereWithAggregatesInput | CaseStudyScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"CaseStudy"> | string
-    title?: StringWithAggregatesFilter<"CaseStudy"> | string
-    description?: StringWithAggregatesFilter<"CaseStudy"> | string
-    solutionId?: StringWithAggregatesFilter<"CaseStudy"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"CaseStudy"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"CaseStudy"> | Date | string
+  export type FooterScalarWhereWithAggregatesInput = {
+    AND?: FooterScalarWhereWithAggregatesInput | FooterScalarWhereWithAggregatesInput[]
+    OR?: FooterScalarWhereWithAggregatesInput[]
+    NOT?: FooterScalarWhereWithAggregatesInput | FooterScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"Footer"> | string
+    icpNumber?: StringNullableWithAggregatesFilter<"Footer"> | string | null
+    icpLink?: StringNullableWithAggregatesFilter<"Footer"> | string | null
+    copyright?: StringNullableWithAggregatesFilter<"Footer"> | string | null
+    isActive?: BoolWithAggregatesFilter<"Footer"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Footer"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Footer"> | Date | string
   }
 
-  export type MediaWhereInput = {
-    AND?: MediaWhereInput | MediaWhereInput[]
-    OR?: MediaWhereInput[]
-    NOT?: MediaWhereInput | MediaWhereInput[]
-    id?: StringFilter<"Media"> | string
-    fileName?: StringFilter<"Media"> | string
-    filePath?: StringFilter<"Media"> | string
-    fileType?: StringFilter<"Media"> | string
-    fileSize?: IntFilter<"Media"> | number
-    entityType?: StringNullableFilter<"Media"> | string | null
-    entityId?: StringNullableFilter<"Media"> | string | null
-    createdAt?: DateTimeFilter<"Media"> | Date | string
+  export type FooterLinkWhereInput = {
+    AND?: FooterLinkWhereInput | FooterLinkWhereInput[]
+    OR?: FooterLinkWhereInput[]
+    NOT?: FooterLinkWhereInput | FooterLinkWhereInput[]
+    id?: UuidFilter<"FooterLink"> | string
+    title?: StringFilter<"FooterLink"> | string
+    url?: StringFilter<"FooterLink"> | string
+    category?: StringFilter<"FooterLink"> | string
+    icon?: StringNullableFilter<"FooterLink"> | string | null
+    sortOrder?: IntFilter<"FooterLink"> | number
+    isActive?: BoolFilter<"FooterLink"> | boolean
+    footerId?: UuidFilter<"FooterLink"> | string
+    createdAt?: DateTimeFilter<"FooterLink"> | Date | string
+    updatedAt?: DateTimeFilter<"FooterLink"> | Date | string
+    footer?: XOR<FooterScalarRelationFilter, FooterWhereInput>
   }
 
-  export type MediaOrderByWithRelationInput = {
+  export type FooterLinkOrderByWithRelationInput = {
     id?: SortOrder
-    fileName?: SortOrder
-    filePath?: SortOrder
-    fileType?: SortOrder
-    fileSize?: SortOrder
-    entityType?: SortOrderInput | SortOrder
-    entityId?: SortOrderInput | SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    category?: SortOrder
+    icon?: SortOrderInput | SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    footerId?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
+    footer?: FooterOrderByWithRelationInput
   }
 
-  export type MediaWhereUniqueInput = Prisma.AtLeast<{
+  export type FooterLinkWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: MediaWhereInput | MediaWhereInput[]
-    OR?: MediaWhereInput[]
-    NOT?: MediaWhereInput | MediaWhereInput[]
-    fileName?: StringFilter<"Media"> | string
-    filePath?: StringFilter<"Media"> | string
-    fileType?: StringFilter<"Media"> | string
-    fileSize?: IntFilter<"Media"> | number
-    entityType?: StringNullableFilter<"Media"> | string | null
-    entityId?: StringNullableFilter<"Media"> | string | null
-    createdAt?: DateTimeFilter<"Media"> | Date | string
+    AND?: FooterLinkWhereInput | FooterLinkWhereInput[]
+    OR?: FooterLinkWhereInput[]
+    NOT?: FooterLinkWhereInput | FooterLinkWhereInput[]
+    title?: StringFilter<"FooterLink"> | string
+    url?: StringFilter<"FooterLink"> | string
+    category?: StringFilter<"FooterLink"> | string
+    icon?: StringNullableFilter<"FooterLink"> | string | null
+    sortOrder?: IntFilter<"FooterLink"> | number
+    isActive?: BoolFilter<"FooterLink"> | boolean
+    footerId?: UuidFilter<"FooterLink"> | string
+    createdAt?: DateTimeFilter<"FooterLink"> | Date | string
+    updatedAt?: DateTimeFilter<"FooterLink"> | Date | string
+    footer?: XOR<FooterScalarRelationFilter, FooterWhereInput>
   }, "id">
 
-  export type MediaOrderByWithAggregationInput = {
+  export type FooterLinkOrderByWithAggregationInput = {
     id?: SortOrder
-    fileName?: SortOrder
-    filePath?: SortOrder
-    fileType?: SortOrder
-    fileSize?: SortOrder
-    entityType?: SortOrderInput | SortOrder
-    entityId?: SortOrderInput | SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    category?: SortOrder
+    icon?: SortOrderInput | SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    footerId?: SortOrder
     createdAt?: SortOrder
-    _count?: MediaCountOrderByAggregateInput
-    _avg?: MediaAvgOrderByAggregateInput
-    _max?: MediaMaxOrderByAggregateInput
-    _min?: MediaMinOrderByAggregateInput
-    _sum?: MediaSumOrderByAggregateInput
+    updatedAt?: SortOrder
+    _count?: FooterLinkCountOrderByAggregateInput
+    _avg?: FooterLinkAvgOrderByAggregateInput
+    _max?: FooterLinkMaxOrderByAggregateInput
+    _min?: FooterLinkMinOrderByAggregateInput
+    _sum?: FooterLinkSumOrderByAggregateInput
   }
 
-  export type MediaScalarWhereWithAggregatesInput = {
-    AND?: MediaScalarWhereWithAggregatesInput | MediaScalarWhereWithAggregatesInput[]
-    OR?: MediaScalarWhereWithAggregatesInput[]
-    NOT?: MediaScalarWhereWithAggregatesInput | MediaScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Media"> | string
-    fileName?: StringWithAggregatesFilter<"Media"> | string
-    filePath?: StringWithAggregatesFilter<"Media"> | string
-    fileType?: StringWithAggregatesFilter<"Media"> | string
-    fileSize?: IntWithAggregatesFilter<"Media"> | number
-    entityType?: StringNullableWithAggregatesFilter<"Media"> | string | null
-    entityId?: StringNullableWithAggregatesFilter<"Media"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"Media"> | Date | string
+  export type FooterLinkScalarWhereWithAggregatesInput = {
+    AND?: FooterLinkScalarWhereWithAggregatesInput | FooterLinkScalarWhereWithAggregatesInput[]
+    OR?: FooterLinkScalarWhereWithAggregatesInput[]
+    NOT?: FooterLinkScalarWhereWithAggregatesInput | FooterLinkScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"FooterLink"> | string
+    title?: StringWithAggregatesFilter<"FooterLink"> | string
+    url?: StringWithAggregatesFilter<"FooterLink"> | string
+    category?: StringWithAggregatesFilter<"FooterLink"> | string
+    icon?: StringNullableWithAggregatesFilter<"FooterLink"> | string | null
+    sortOrder?: IntWithAggregatesFilter<"FooterLink"> | number
+    isActive?: BoolWithAggregatesFilter<"FooterLink"> | boolean
+    footerId?: UuidWithAggregatesFilter<"FooterLink"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"FooterLink"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"FooterLink"> | Date | string
+  }
+
+  export type ProductCreateInput = {
+    id?: string
+    name?: string
+    description?: string | null
+    cover_image?: string | null
+    spec_pdf_url?: string | null
+    is_active?: boolean
+    description_i18n?: NullableJsonNullValueInput | InputJsonValue
+    software_space?: NullableJsonNullValueInput | InputJsonValue
+    hardware_space?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    product_tags?: product_tagsCreateNestedManyWithoutProductsInput
+    products_hardware?: products_hardwareCreateNestedManyWithoutProductsInput
+  }
+
+  export type ProductUncheckedCreateInput = {
+    id?: string
+    name?: string
+    description?: string | null
+    cover_image?: string | null
+    spec_pdf_url?: string | null
+    is_active?: boolean
+    description_i18n?: NullableJsonNullValueInput | InputJsonValue
+    software_space?: NullableJsonNullValueInput | InputJsonValue
+    hardware_space?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    product_tags?: product_tagsUncheckedCreateNestedManyWithoutProductsInput
+    products_hardware?: products_hardwareUncheckedCreateNestedManyWithoutProductsInput
+  }
+
+  export type ProductUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    cover_image?: NullableStringFieldUpdateOperationsInput | string | null
+    spec_pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    description_i18n?: NullableJsonNullValueInput | InputJsonValue
+    software_space?: NullableJsonNullValueInput | InputJsonValue
+    hardware_space?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    product_tags?: product_tagsUpdateManyWithoutProductsNestedInput
+    products_hardware?: products_hardwareUpdateManyWithoutProductsNestedInput
+  }
+
+  export type ProductUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    cover_image?: NullableStringFieldUpdateOperationsInput | string | null
+    spec_pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    description_i18n?: NullableJsonNullValueInput | InputJsonValue
+    software_space?: NullableJsonNullValueInput | InputJsonValue
+    hardware_space?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    product_tags?: product_tagsUncheckedUpdateManyWithoutProductsNestedInput
+    products_hardware?: products_hardwareUncheckedUpdateManyWithoutProductsNestedInput
+  }
+
+  export type ProductCreateManyInput = {
+    id?: string
+    name?: string
+    description?: string | null
+    cover_image?: string | null
+    spec_pdf_url?: string | null
+    is_active?: boolean
+    description_i18n?: NullableJsonNullValueInput | InputJsonValue
+    software_space?: NullableJsonNullValueInput | InputJsonValue
+    hardware_space?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type ProductUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    cover_image?: NullableStringFieldUpdateOperationsInput | string | null
+    spec_pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    description_i18n?: NullableJsonNullValueInput | InputJsonValue
+    software_space?: NullableJsonNullValueInput | InputJsonValue
+    hardware_space?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ProductUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    cover_image?: NullableStringFieldUpdateOperationsInput | string | null
+    spec_pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    description_i18n?: NullableJsonNullValueInput | InputJsonValue
+    software_space?: NullableJsonNullValueInput | InputJsonValue
+    hardware_space?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type product_tagsCreateInput = {
+    product_name?: string | null
+    tag_spec?: string | null
+    tag_size?: string | null
+    products?: ProductCreateNestedOneWithoutProduct_tagsInput
+    tags?: tagsCreateNestedOneWithoutProduct_tagsInput
+  }
+
+  export type product_tagsUncheckedCreateInput = {
+    product_id?: string
+    tag_id?: string
+    product_name?: string | null
+    tag_spec?: string | null
+    tag_size?: string | null
+  }
+
+  export type product_tagsUpdateInput = {
+    product_name?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_spec?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_size?: NullableStringFieldUpdateOperationsInput | string | null
+    products?: ProductUpdateOneRequiredWithoutProduct_tagsNestedInput
+    tags?: tagsUpdateOneRequiredWithoutProduct_tagsNestedInput
+  }
+
+  export type product_tagsUncheckedUpdateInput = {
+    product_id?: StringFieldUpdateOperationsInput | string
+    tag_id?: StringFieldUpdateOperationsInput | string
+    product_name?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_spec?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_size?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type product_tagsCreateManyInput = {
+    product_id?: string
+    tag_id?: string
+    product_name?: string | null
+    tag_spec?: string | null
+    tag_size?: string | null
+  }
+
+  export type product_tagsUpdateManyMutationInput = {
+    product_name?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_spec?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_size?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type product_tagsUncheckedUpdateManyInput = {
+    product_id?: StringFieldUpdateOperationsInput | string
+    tag_id?: StringFieldUpdateOperationsInput | string
+    product_name?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_spec?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_size?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type products_hardwareCreateInput = {
+    id?: string
+    controller_count?: number | null
+    cpu_model?: string | null
+    cpu_count?: number | null
+    cpu_cores?: number | null
+    cpu_architecture?: string | null
+    cpu_base_clock?: Decimal | DecimalJsLike | number | string | null
+    cpu_turbo_clock?: Decimal | DecimalJsLike | number | string | null
+    hardware_encryption?: string | null
+    memory_total?: string | null
+    memory_installed?: string | null
+    memory_slots?: number | null
+    memory_max?: NullableJsonNullValueInput | InputJsonValue
+    disk_bays?: number | null
+    disk_bays_max?: number | null
+    disk_types_supported?: NullableJsonNullValueInput | InputJsonValue
+    m2_slot?: boolean | null
+    disk_host_swappable?: boolean | null
+    lan_rj45_1G?: number | null
+    lan_rj45_2_5G?: number | null
+    lan_rj45_10G?: number | null
+    management_prot?: boolean | null
+    max_lax_ports?: number | null
+    usb_3_2_prots?: number | null
+    expansion_ports?: number | null
+    expansion_port_types?: string | null
+    pcie_expansion?: string | null
+    chassis_type?: string | null
+    dimensions?: string | null
+    rack_mount_kit?: string | null
+    fan_size?: string | null
+    fan_replaceable?: boolean | null
+    led_brightness_adj?: boolean | null
+    auto_power_recovery?: boolean | null
+    noise_lenel?: string | null
+    scheduled_power?: boolean | null
+    wake_on_lan?: boolean | null
+    dual_power_supply?: boolean | null
+    ac_input_voltage?: string | null
+    frequency?: string | null
+    power_consumption?: string | null
+    working_temperature?: string | null
+    storage_temperature?: string | null
+    relative_humidity?: string | null
+    certifications?: NullableJsonNullValueInput | InputJsonValue
+    warranty?: string | null
+    environmental_compliance?: string | null
+    package_contents?: NullableJsonNullValueInput | InputJsonValue
+    optional_accessories?: NullableJsonNullValueInput | InputJsonValue
+    cpu_threads?: number | null
+    products?: ProductCreateNestedOneWithoutProducts_hardwareInput
+  }
+
+  export type products_hardwareUncheckedCreateInput = {
+    id?: string
+    products_id?: string
+    controller_count?: number | null
+    cpu_model?: string | null
+    cpu_count?: number | null
+    cpu_cores?: number | null
+    cpu_architecture?: string | null
+    cpu_base_clock?: Decimal | DecimalJsLike | number | string | null
+    cpu_turbo_clock?: Decimal | DecimalJsLike | number | string | null
+    hardware_encryption?: string | null
+    memory_total?: string | null
+    memory_installed?: string | null
+    memory_slots?: number | null
+    memory_max?: NullableJsonNullValueInput | InputJsonValue
+    disk_bays?: number | null
+    disk_bays_max?: number | null
+    disk_types_supported?: NullableJsonNullValueInput | InputJsonValue
+    m2_slot?: boolean | null
+    disk_host_swappable?: boolean | null
+    lan_rj45_1G?: number | null
+    lan_rj45_2_5G?: number | null
+    lan_rj45_10G?: number | null
+    management_prot?: boolean | null
+    max_lax_ports?: number | null
+    usb_3_2_prots?: number | null
+    expansion_ports?: number | null
+    expansion_port_types?: string | null
+    pcie_expansion?: string | null
+    chassis_type?: string | null
+    dimensions?: string | null
+    rack_mount_kit?: string | null
+    fan_size?: string | null
+    fan_replaceable?: boolean | null
+    led_brightness_adj?: boolean | null
+    auto_power_recovery?: boolean | null
+    noise_lenel?: string | null
+    scheduled_power?: boolean | null
+    wake_on_lan?: boolean | null
+    dual_power_supply?: boolean | null
+    ac_input_voltage?: string | null
+    frequency?: string | null
+    power_consumption?: string | null
+    working_temperature?: string | null
+    storage_temperature?: string | null
+    relative_humidity?: string | null
+    certifications?: NullableJsonNullValueInput | InputJsonValue
+    warranty?: string | null
+    environmental_compliance?: string | null
+    package_contents?: NullableJsonNullValueInput | InputJsonValue
+    optional_accessories?: NullableJsonNullValueInput | InputJsonValue
+    cpu_threads?: number | null
+  }
+
+  export type products_hardwareUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    controller_count?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_model?: NullableStringFieldUpdateOperationsInput | string | null
+    cpu_count?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_cores?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_architecture?: NullableStringFieldUpdateOperationsInput | string | null
+    cpu_base_clock?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    cpu_turbo_clock?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    hardware_encryption?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_total?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_installed?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_slots?: NullableIntFieldUpdateOperationsInput | number | null
+    memory_max?: NullableJsonNullValueInput | InputJsonValue
+    disk_bays?: NullableIntFieldUpdateOperationsInput | number | null
+    disk_bays_max?: NullableIntFieldUpdateOperationsInput | number | null
+    disk_types_supported?: NullableJsonNullValueInput | InputJsonValue
+    m2_slot?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    disk_host_swappable?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lan_rj45_1G?: NullableIntFieldUpdateOperationsInput | number | null
+    lan_rj45_2_5G?: NullableIntFieldUpdateOperationsInput | number | null
+    lan_rj45_10G?: NullableIntFieldUpdateOperationsInput | number | null
+    management_prot?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    max_lax_ports?: NullableIntFieldUpdateOperationsInput | number | null
+    usb_3_2_prots?: NullableIntFieldUpdateOperationsInput | number | null
+    expansion_ports?: NullableIntFieldUpdateOperationsInput | number | null
+    expansion_port_types?: NullableStringFieldUpdateOperationsInput | string | null
+    pcie_expansion?: NullableStringFieldUpdateOperationsInput | string | null
+    chassis_type?: NullableStringFieldUpdateOperationsInput | string | null
+    dimensions?: NullableStringFieldUpdateOperationsInput | string | null
+    rack_mount_kit?: NullableStringFieldUpdateOperationsInput | string | null
+    fan_size?: NullableStringFieldUpdateOperationsInput | string | null
+    fan_replaceable?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    led_brightness_adj?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    auto_power_recovery?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    noise_lenel?: NullableStringFieldUpdateOperationsInput | string | null
+    scheduled_power?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    wake_on_lan?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dual_power_supply?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ac_input_voltage?: NullableStringFieldUpdateOperationsInput | string | null
+    frequency?: NullableStringFieldUpdateOperationsInput | string | null
+    power_consumption?: NullableStringFieldUpdateOperationsInput | string | null
+    working_temperature?: NullableStringFieldUpdateOperationsInput | string | null
+    storage_temperature?: NullableStringFieldUpdateOperationsInput | string | null
+    relative_humidity?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableJsonNullValueInput | InputJsonValue
+    warranty?: NullableStringFieldUpdateOperationsInput | string | null
+    environmental_compliance?: NullableStringFieldUpdateOperationsInput | string | null
+    package_contents?: NullableJsonNullValueInput | InputJsonValue
+    optional_accessories?: NullableJsonNullValueInput | InputJsonValue
+    cpu_threads?: NullableIntFieldUpdateOperationsInput | number | null
+    products?: ProductUpdateOneRequiredWithoutProducts_hardwareNestedInput
+  }
+
+  export type products_hardwareUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    products_id?: StringFieldUpdateOperationsInput | string
+    controller_count?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_model?: NullableStringFieldUpdateOperationsInput | string | null
+    cpu_count?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_cores?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_architecture?: NullableStringFieldUpdateOperationsInput | string | null
+    cpu_base_clock?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    cpu_turbo_clock?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    hardware_encryption?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_total?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_installed?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_slots?: NullableIntFieldUpdateOperationsInput | number | null
+    memory_max?: NullableJsonNullValueInput | InputJsonValue
+    disk_bays?: NullableIntFieldUpdateOperationsInput | number | null
+    disk_bays_max?: NullableIntFieldUpdateOperationsInput | number | null
+    disk_types_supported?: NullableJsonNullValueInput | InputJsonValue
+    m2_slot?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    disk_host_swappable?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lan_rj45_1G?: NullableIntFieldUpdateOperationsInput | number | null
+    lan_rj45_2_5G?: NullableIntFieldUpdateOperationsInput | number | null
+    lan_rj45_10G?: NullableIntFieldUpdateOperationsInput | number | null
+    management_prot?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    max_lax_ports?: NullableIntFieldUpdateOperationsInput | number | null
+    usb_3_2_prots?: NullableIntFieldUpdateOperationsInput | number | null
+    expansion_ports?: NullableIntFieldUpdateOperationsInput | number | null
+    expansion_port_types?: NullableStringFieldUpdateOperationsInput | string | null
+    pcie_expansion?: NullableStringFieldUpdateOperationsInput | string | null
+    chassis_type?: NullableStringFieldUpdateOperationsInput | string | null
+    dimensions?: NullableStringFieldUpdateOperationsInput | string | null
+    rack_mount_kit?: NullableStringFieldUpdateOperationsInput | string | null
+    fan_size?: NullableStringFieldUpdateOperationsInput | string | null
+    fan_replaceable?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    led_brightness_adj?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    auto_power_recovery?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    noise_lenel?: NullableStringFieldUpdateOperationsInput | string | null
+    scheduled_power?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    wake_on_lan?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dual_power_supply?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ac_input_voltage?: NullableStringFieldUpdateOperationsInput | string | null
+    frequency?: NullableStringFieldUpdateOperationsInput | string | null
+    power_consumption?: NullableStringFieldUpdateOperationsInput | string | null
+    working_temperature?: NullableStringFieldUpdateOperationsInput | string | null
+    storage_temperature?: NullableStringFieldUpdateOperationsInput | string | null
+    relative_humidity?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableJsonNullValueInput | InputJsonValue
+    warranty?: NullableStringFieldUpdateOperationsInput | string | null
+    environmental_compliance?: NullableStringFieldUpdateOperationsInput | string | null
+    package_contents?: NullableJsonNullValueInput | InputJsonValue
+    optional_accessories?: NullableJsonNullValueInput | InputJsonValue
+    cpu_threads?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type products_hardwareCreateManyInput = {
+    id?: string
+    products_id?: string
+    controller_count?: number | null
+    cpu_model?: string | null
+    cpu_count?: number | null
+    cpu_cores?: number | null
+    cpu_architecture?: string | null
+    cpu_base_clock?: Decimal | DecimalJsLike | number | string | null
+    cpu_turbo_clock?: Decimal | DecimalJsLike | number | string | null
+    hardware_encryption?: string | null
+    memory_total?: string | null
+    memory_installed?: string | null
+    memory_slots?: number | null
+    memory_max?: NullableJsonNullValueInput | InputJsonValue
+    disk_bays?: number | null
+    disk_bays_max?: number | null
+    disk_types_supported?: NullableJsonNullValueInput | InputJsonValue
+    m2_slot?: boolean | null
+    disk_host_swappable?: boolean | null
+    lan_rj45_1G?: number | null
+    lan_rj45_2_5G?: number | null
+    lan_rj45_10G?: number | null
+    management_prot?: boolean | null
+    max_lax_ports?: number | null
+    usb_3_2_prots?: number | null
+    expansion_ports?: number | null
+    expansion_port_types?: string | null
+    pcie_expansion?: string | null
+    chassis_type?: string | null
+    dimensions?: string | null
+    rack_mount_kit?: string | null
+    fan_size?: string | null
+    fan_replaceable?: boolean | null
+    led_brightness_adj?: boolean | null
+    auto_power_recovery?: boolean | null
+    noise_lenel?: string | null
+    scheduled_power?: boolean | null
+    wake_on_lan?: boolean | null
+    dual_power_supply?: boolean | null
+    ac_input_voltage?: string | null
+    frequency?: string | null
+    power_consumption?: string | null
+    working_temperature?: string | null
+    storage_temperature?: string | null
+    relative_humidity?: string | null
+    certifications?: NullableJsonNullValueInput | InputJsonValue
+    warranty?: string | null
+    environmental_compliance?: string | null
+    package_contents?: NullableJsonNullValueInput | InputJsonValue
+    optional_accessories?: NullableJsonNullValueInput | InputJsonValue
+    cpu_threads?: number | null
+  }
+
+  export type products_hardwareUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    controller_count?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_model?: NullableStringFieldUpdateOperationsInput | string | null
+    cpu_count?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_cores?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_architecture?: NullableStringFieldUpdateOperationsInput | string | null
+    cpu_base_clock?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    cpu_turbo_clock?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    hardware_encryption?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_total?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_installed?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_slots?: NullableIntFieldUpdateOperationsInput | number | null
+    memory_max?: NullableJsonNullValueInput | InputJsonValue
+    disk_bays?: NullableIntFieldUpdateOperationsInput | number | null
+    disk_bays_max?: NullableIntFieldUpdateOperationsInput | number | null
+    disk_types_supported?: NullableJsonNullValueInput | InputJsonValue
+    m2_slot?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    disk_host_swappable?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lan_rj45_1G?: NullableIntFieldUpdateOperationsInput | number | null
+    lan_rj45_2_5G?: NullableIntFieldUpdateOperationsInput | number | null
+    lan_rj45_10G?: NullableIntFieldUpdateOperationsInput | number | null
+    management_prot?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    max_lax_ports?: NullableIntFieldUpdateOperationsInput | number | null
+    usb_3_2_prots?: NullableIntFieldUpdateOperationsInput | number | null
+    expansion_ports?: NullableIntFieldUpdateOperationsInput | number | null
+    expansion_port_types?: NullableStringFieldUpdateOperationsInput | string | null
+    pcie_expansion?: NullableStringFieldUpdateOperationsInput | string | null
+    chassis_type?: NullableStringFieldUpdateOperationsInput | string | null
+    dimensions?: NullableStringFieldUpdateOperationsInput | string | null
+    rack_mount_kit?: NullableStringFieldUpdateOperationsInput | string | null
+    fan_size?: NullableStringFieldUpdateOperationsInput | string | null
+    fan_replaceable?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    led_brightness_adj?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    auto_power_recovery?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    noise_lenel?: NullableStringFieldUpdateOperationsInput | string | null
+    scheduled_power?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    wake_on_lan?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dual_power_supply?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ac_input_voltage?: NullableStringFieldUpdateOperationsInput | string | null
+    frequency?: NullableStringFieldUpdateOperationsInput | string | null
+    power_consumption?: NullableStringFieldUpdateOperationsInput | string | null
+    working_temperature?: NullableStringFieldUpdateOperationsInput | string | null
+    storage_temperature?: NullableStringFieldUpdateOperationsInput | string | null
+    relative_humidity?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableJsonNullValueInput | InputJsonValue
+    warranty?: NullableStringFieldUpdateOperationsInput | string | null
+    environmental_compliance?: NullableStringFieldUpdateOperationsInput | string | null
+    package_contents?: NullableJsonNullValueInput | InputJsonValue
+    optional_accessories?: NullableJsonNullValueInput | InputJsonValue
+    cpu_threads?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type products_hardwareUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    products_id?: StringFieldUpdateOperationsInput | string
+    controller_count?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_model?: NullableStringFieldUpdateOperationsInput | string | null
+    cpu_count?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_cores?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_architecture?: NullableStringFieldUpdateOperationsInput | string | null
+    cpu_base_clock?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    cpu_turbo_clock?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    hardware_encryption?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_total?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_installed?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_slots?: NullableIntFieldUpdateOperationsInput | number | null
+    memory_max?: NullableJsonNullValueInput | InputJsonValue
+    disk_bays?: NullableIntFieldUpdateOperationsInput | number | null
+    disk_bays_max?: NullableIntFieldUpdateOperationsInput | number | null
+    disk_types_supported?: NullableJsonNullValueInput | InputJsonValue
+    m2_slot?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    disk_host_swappable?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lan_rj45_1G?: NullableIntFieldUpdateOperationsInput | number | null
+    lan_rj45_2_5G?: NullableIntFieldUpdateOperationsInput | number | null
+    lan_rj45_10G?: NullableIntFieldUpdateOperationsInput | number | null
+    management_prot?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    max_lax_ports?: NullableIntFieldUpdateOperationsInput | number | null
+    usb_3_2_prots?: NullableIntFieldUpdateOperationsInput | number | null
+    expansion_ports?: NullableIntFieldUpdateOperationsInput | number | null
+    expansion_port_types?: NullableStringFieldUpdateOperationsInput | string | null
+    pcie_expansion?: NullableStringFieldUpdateOperationsInput | string | null
+    chassis_type?: NullableStringFieldUpdateOperationsInput | string | null
+    dimensions?: NullableStringFieldUpdateOperationsInput | string | null
+    rack_mount_kit?: NullableStringFieldUpdateOperationsInput | string | null
+    fan_size?: NullableStringFieldUpdateOperationsInput | string | null
+    fan_replaceable?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    led_brightness_adj?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    auto_power_recovery?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    noise_lenel?: NullableStringFieldUpdateOperationsInput | string | null
+    scheduled_power?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    wake_on_lan?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dual_power_supply?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ac_input_voltage?: NullableStringFieldUpdateOperationsInput | string | null
+    frequency?: NullableStringFieldUpdateOperationsInput | string | null
+    power_consumption?: NullableStringFieldUpdateOperationsInput | string | null
+    working_temperature?: NullableStringFieldUpdateOperationsInput | string | null
+    storage_temperature?: NullableStringFieldUpdateOperationsInput | string | null
+    relative_humidity?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableJsonNullValueInput | InputJsonValue
+    warranty?: NullableStringFieldUpdateOperationsInput | string | null
+    environmental_compliance?: NullableStringFieldUpdateOperationsInput | string | null
+    package_contents?: NullableJsonNullValueInput | InputJsonValue
+    optional_accessories?: NullableJsonNullValueInput | InputJsonValue
+    cpu_threads?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type tag_categoriesCreateInput = {
+    id?: string
+    name: string
+    sort?: number | null
+    categories_type?: string | null
+    tags?: tagsCreateNestedManyWithoutTag_categoriesInput
+  }
+
+  export type tag_categoriesUncheckedCreateInput = {
+    id?: string
+    name: string
+    sort?: number | null
+    categories_type?: string | null
+    tags?: tagsUncheckedCreateNestedManyWithoutTag_categoriesInput
+  }
+
+  export type tag_categoriesUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    sort?: NullableIntFieldUpdateOperationsInput | number | null
+    categories_type?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: tagsUpdateManyWithoutTag_categoriesNestedInput
+  }
+
+  export type tag_categoriesUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    sort?: NullableIntFieldUpdateOperationsInput | number | null
+    categories_type?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: tagsUncheckedUpdateManyWithoutTag_categoriesNestedInput
+  }
+
+  export type tag_categoriesCreateManyInput = {
+    id?: string
+    name: string
+    sort?: number | null
+    categories_type?: string | null
+  }
+
+  export type tag_categoriesUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    sort?: NullableIntFieldUpdateOperationsInput | number | null
+    categories_type?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type tag_categoriesUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    sort?: NullableIntFieldUpdateOperationsInput | number | null
+    categories_type?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type tagsCreateInput = {
+    id?: string
+    product_spec?: string | null
+    product_size?: string | null
+    sort_type?: number | null
+    sort_order?: number | null
+    spec_size?: string | null
+    product_tags?: product_tagsCreateNestedManyWithoutTagsInput
+    tag_categories?: tag_categoriesCreateNestedOneWithoutTagsInput
+  }
+
+  export type tagsUncheckedCreateInput = {
+    id?: string
+    created_id?: string
+    product_spec?: string | null
+    product_size?: string | null
+    sort_type?: number | null
+    sort_order?: number | null
+    spec_size?: string | null
+    product_tags?: product_tagsUncheckedCreateNestedManyWithoutTagsInput
+  }
+
+  export type tagsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    product_spec?: NullableStringFieldUpdateOperationsInput | string | null
+    product_size?: NullableStringFieldUpdateOperationsInput | string | null
+    sort_type?: NullableIntFieldUpdateOperationsInput | number | null
+    sort_order?: NullableIntFieldUpdateOperationsInput | number | null
+    spec_size?: NullableStringFieldUpdateOperationsInput | string | null
+    product_tags?: product_tagsUpdateManyWithoutTagsNestedInput
+    tag_categories?: tag_categoriesUpdateOneRequiredWithoutTagsNestedInput
+  }
+
+  export type tagsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    created_id?: StringFieldUpdateOperationsInput | string
+    product_spec?: NullableStringFieldUpdateOperationsInput | string | null
+    product_size?: NullableStringFieldUpdateOperationsInput | string | null
+    sort_type?: NullableIntFieldUpdateOperationsInput | number | null
+    sort_order?: NullableIntFieldUpdateOperationsInput | number | null
+    spec_size?: NullableStringFieldUpdateOperationsInput | string | null
+    product_tags?: product_tagsUncheckedUpdateManyWithoutTagsNestedInput
+  }
+
+  export type tagsCreateManyInput = {
+    id?: string
+    created_id?: string
+    product_spec?: string | null
+    product_size?: string | null
+    sort_type?: number | null
+    sort_order?: number | null
+    spec_size?: string | null
+  }
+
+  export type tagsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    product_spec?: NullableStringFieldUpdateOperationsInput | string | null
+    product_size?: NullableStringFieldUpdateOperationsInput | string | null
+    sort_type?: NullableIntFieldUpdateOperationsInput | number | null
+    sort_order?: NullableIntFieldUpdateOperationsInput | number | null
+    spec_size?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type tagsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    created_id?: StringFieldUpdateOperationsInput | string
+    product_spec?: NullableStringFieldUpdateOperationsInput | string | null
+    product_size?: NullableStringFieldUpdateOperationsInput | string | null
+    sort_type?: NullableIntFieldUpdateOperationsInput | number | null
+    sort_order?: NullableIntFieldUpdateOperationsInput | number | null
+    spec_size?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserCreateInput = {
     id?: string
-    name: string
     email: string
     password: string
+    name: string
     role?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8684,9 +12855,9 @@ export namespace Prisma {
 
   export type UserUncheckedCreateInput = {
     id?: string
-    name: string
     email: string
     password: string
+    name: string
     role?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8694,9 +12865,9 @@ export namespace Prisma {
 
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8704,9 +12875,9 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8714,9 +12885,9 @@ export namespace Prisma {
 
   export type UserCreateManyInput = {
     id?: string
-    name: string
     email: string
     password: string
+    name: string
     role?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8724,9 +12895,9 @@ export namespace Prisma {
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8734,441 +12905,194 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CategoryCreateInput = {
+  export type FooterCreateInput = {
     id?: string
-    name: string
-    slug: string
-    description?: string | null
+    icpNumber?: string | null
+    icpLink?: string | null
+    copyright?: string | null
+    isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    parent?: CategoryCreateNestedOneWithoutSubcategoriesInput
-    subcategories?: CategoryCreateNestedManyWithoutParentInput
-    products?: ProductCreateNestedManyWithoutCategoryInput
+    links?: FooterLinkCreateNestedManyWithoutFooterInput
   }
 
-  export type CategoryUncheckedCreateInput = {
+  export type FooterUncheckedCreateInput = {
     id?: string
-    name: string
-    slug: string
-    description?: string | null
-    parentId?: string | null
+    icpNumber?: string | null
+    icpLink?: string | null
+    copyright?: string | null
+    isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    subcategories?: CategoryUncheckedCreateNestedManyWithoutParentInput
-    products?: ProductUncheckedCreateNestedManyWithoutCategoryInput
+    links?: FooterLinkUncheckedCreateNestedManyWithoutFooterInput
   }
 
-  export type CategoryUpdateInput = {
+  export type FooterUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
+    icpNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    icpLink?: NullableStringFieldUpdateOperationsInput | string | null
+    copyright?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    parent?: CategoryUpdateOneWithoutSubcategoriesNestedInput
-    subcategories?: CategoryUpdateManyWithoutParentNestedInput
-    products?: ProductUpdateManyWithoutCategoryNestedInput
+    links?: FooterLinkUpdateManyWithoutFooterNestedInput
   }
 
-  export type CategoryUncheckedUpdateInput = {
+  export type FooterUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    icpNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    icpLink?: NullableStringFieldUpdateOperationsInput | string | null
+    copyright?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    subcategories?: CategoryUncheckedUpdateManyWithoutParentNestedInput
-    products?: ProductUncheckedUpdateManyWithoutCategoryNestedInput
+    links?: FooterLinkUncheckedUpdateManyWithoutFooterNestedInput
   }
 
-  export type CategoryCreateManyInput = {
+  export type FooterCreateManyInput = {
     id?: string
-    name: string
-    slug: string
-    description?: string | null
-    parentId?: string | null
+    icpNumber?: string | null
+    icpLink?: string | null
+    copyright?: string | null
+    isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type CategoryUpdateManyMutationInput = {
+  export type FooterUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
+    icpNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    icpLink?: NullableStringFieldUpdateOperationsInput | string | null
+    copyright?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CategoryUncheckedUpdateManyInput = {
+  export type FooterUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    icpNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    icpLink?: NullableStringFieldUpdateOperationsInput | string | null
+    copyright?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ProductCreateInput = {
+  export type FooterLinkCreateInput = {
     id?: string
     title: string
-    slug: string
-    description: string
-    fullDescription?: string | null
-    imageUrl: string
-    features: string
-    specifications?: string | null
+    url: string
+    category: string
+    icon?: string | null
+    sortOrder?: number
+    isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    category: CategoryCreateNestedOneWithoutProductsInput
-    solutions?: SolutionCreateNestedManyWithoutProductsInput
+    footer: FooterCreateNestedOneWithoutLinksInput
   }
 
-  export type ProductUncheckedCreateInput = {
+  export type FooterLinkUncheckedCreateInput = {
     id?: string
     title: string
-    slug: string
-    description: string
-    fullDescription?: string | null
-    imageUrl: string
-    categoryId: string
-    features: string
-    specifications?: string | null
+    url: string
+    category: string
+    icon?: string | null
+    sortOrder?: number
+    isActive?: boolean
+    footerId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    solutions?: SolutionUncheckedCreateNestedManyWithoutProductsInput
   }
 
-  export type ProductUpdateInput = {
+  export type FooterLinkUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    features?: StringFieldUpdateOperationsInput | string
-    specifications?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
-    solutions?: SolutionUpdateManyWithoutProductsNestedInput
+    footer?: FooterUpdateOneRequiredWithoutLinksNestedInput
   }
 
-  export type ProductUncheckedUpdateInput = {
+  export type FooterLinkUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    categoryId?: StringFieldUpdateOperationsInput | string
-    features?: StringFieldUpdateOperationsInput | string
-    specifications?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    footerId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    solutions?: SolutionUncheckedUpdateManyWithoutProductsNestedInput
   }
 
-  export type ProductCreateManyInput = {
+  export type FooterLinkCreateManyInput = {
     id?: string
     title: string
-    slug: string
-    description: string
-    fullDescription?: string | null
-    imageUrl: string
-    categoryId: string
-    features: string
-    specifications?: string | null
+    url: string
+    category: string
+    icon?: string | null
+    sortOrder?: number
+    isActive?: boolean
+    footerId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type ProductUpdateManyMutationInput = {
+  export type FooterLinkUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    features?: StringFieldUpdateOperationsInput | string
-    specifications?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ProductUncheckedUpdateManyInput = {
+  export type FooterLinkUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    categoryId?: StringFieldUpdateOperationsInput | string
-    features?: StringFieldUpdateOperationsInput | string
-    specifications?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    footerId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type SolutionCreateInput = {
-    id?: string
-    title: string
-    slug: string
-    description: string
-    fullDescription?: string | null
-    imageUrl: string
-    industry: string
-    benefits: string
-    features: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    products?: ProductCreateNestedManyWithoutSolutionsInput
-    caseStudies?: CaseStudyCreateNestedManyWithoutSolutionInput
-  }
-
-  export type SolutionUncheckedCreateInput = {
-    id?: string
-    title: string
-    slug: string
-    description: string
-    fullDescription?: string | null
-    imageUrl: string
-    industry: string
-    benefits: string
-    features: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    products?: ProductUncheckedCreateNestedManyWithoutSolutionsInput
-    caseStudies?: CaseStudyUncheckedCreateNestedManyWithoutSolutionInput
-  }
-
-  export type SolutionUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    industry?: StringFieldUpdateOperationsInput | string
-    benefits?: StringFieldUpdateOperationsInput | string
-    features?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    products?: ProductUpdateManyWithoutSolutionsNestedInput
-    caseStudies?: CaseStudyUpdateManyWithoutSolutionNestedInput
-  }
-
-  export type SolutionUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    industry?: StringFieldUpdateOperationsInput | string
-    benefits?: StringFieldUpdateOperationsInput | string
-    features?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    products?: ProductUncheckedUpdateManyWithoutSolutionsNestedInput
-    caseStudies?: CaseStudyUncheckedUpdateManyWithoutSolutionNestedInput
-  }
-
-  export type SolutionCreateManyInput = {
-    id?: string
-    title: string
-    slug: string
-    description: string
-    fullDescription?: string | null
-    imageUrl: string
-    industry: string
-    benefits: string
-    features: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type SolutionUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    industry?: StringFieldUpdateOperationsInput | string
-    benefits?: StringFieldUpdateOperationsInput | string
-    features?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type SolutionUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    industry?: StringFieldUpdateOperationsInput | string
-    benefits?: StringFieldUpdateOperationsInput | string
-    features?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CaseStudyCreateInput = {
-    id?: string
-    title: string
-    description: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    solution: SolutionCreateNestedOneWithoutCaseStudiesInput
-  }
-
-  export type CaseStudyUncheckedCreateInput = {
-    id?: string
-    title: string
-    description: string
-    solutionId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type CaseStudyUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    solution?: SolutionUpdateOneRequiredWithoutCaseStudiesNestedInput
-  }
-
-  export type CaseStudyUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    solutionId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CaseStudyCreateManyInput = {
-    id?: string
-    title: string
-    description: string
-    solutionId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type CaseStudyUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CaseStudyUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    solutionId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type MediaCreateInput = {
-    id?: string
-    fileName: string
-    filePath: string
-    fileType: string
-    fileSize: number
-    entityType?: string | null
-    entityId?: string | null
-    createdAt?: Date | string
-  }
-
-  export type MediaUncheckedCreateInput = {
-    id?: string
-    fileName: string
-    filePath: string
-    fileType: string
-    fileSize: number
-    entityType?: string | null
-    entityId?: string | null
-    createdAt?: Date | string
-  }
-
-  export type MediaUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    fileName?: StringFieldUpdateOperationsInput | string
-    filePath?: StringFieldUpdateOperationsInput | string
-    fileType?: StringFieldUpdateOperationsInput | string
-    fileSize?: IntFieldUpdateOperationsInput | number
-    entityType?: NullableStringFieldUpdateOperationsInput | string | null
-    entityId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type MediaUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    fileName?: StringFieldUpdateOperationsInput | string
-    filePath?: StringFieldUpdateOperationsInput | string
-    fileType?: StringFieldUpdateOperationsInput | string
-    fileSize?: IntFieldUpdateOperationsInput | number
-    entityType?: NullableStringFieldUpdateOperationsInput | string | null
-    entityId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type MediaCreateManyInput = {
-    id?: string
-    fileName: string
-    filePath: string
-    fileType: string
-    fileSize: number
-    entityType?: string | null
-    entityId?: string | null
-    createdAt?: Date | string
-  }
-
-  export type MediaUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    fileName?: StringFieldUpdateOperationsInput | string
-    filePath?: StringFieldUpdateOperationsInput | string
-    fileType?: StringFieldUpdateOperationsInput | string
-    fileSize?: IntFieldUpdateOperationsInput | number
-    entityType?: NullableStringFieldUpdateOperationsInput | string | null
-    entityId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type MediaUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    fileName?: StringFieldUpdateOperationsInput | string
-    filePath?: StringFieldUpdateOperationsInput | string
-    fileType?: StringFieldUpdateOperationsInput | string
-    fileSize?: IntFieldUpdateOperationsInput | number
-    entityType?: NullableStringFieldUpdateOperationsInput | string | null
-    entityId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type UuidFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidFilter<$PrismaModel> | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -9176,13 +13100,606 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type Product_tagsListRelationFilter = {
+    every?: product_tagsWhereInput
+    some?: product_tagsWhereInput
+    none?: product_tagsWhereInput
+  }
+
+  export type Products_hardwareListRelationFilter = {
+    every?: products_hardwareWhereInput
+    some?: products_hardwareWhereInput
+    none?: products_hardwareWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type product_tagsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type products_hardwareOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ProductCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    cover_image?: SortOrder
+    spec_pdf_url?: SortOrder
+    is_active?: SortOrder
+    description_i18n?: SortOrder
+    software_space?: SortOrder
+    hardware_space?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProductMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    cover_image?: SortOrder
+    spec_pdf_url?: SortOrder
+    is_active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProductMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    cover_image?: SortOrder
+    spec_pdf_url?: SortOrder
+    is_active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UuidWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type ProductScalarRelationFilter = {
+    is?: ProductWhereInput
+    isNot?: ProductWhereInput
+  }
+
+  export type TagsScalarRelationFilter = {
+    is?: tagsWhereInput
+    isNot?: tagsWhereInput
+  }
+
+  export type product_tagsProduct_idTag_idCompoundUniqueInput = {
+    product_id: string
+    tag_id: string
+  }
+
+  export type product_tagsCountOrderByAggregateInput = {
+    product_id?: SortOrder
+    tag_id?: SortOrder
+    product_name?: SortOrder
+    tag_spec?: SortOrder
+    tag_size?: SortOrder
+  }
+
+  export type product_tagsMaxOrderByAggregateInput = {
+    product_id?: SortOrder
+    tag_id?: SortOrder
+    product_name?: SortOrder
+    tag_spec?: SortOrder
+    tag_size?: SortOrder
+  }
+
+  export type product_tagsMinOrderByAggregateInput = {
+    product_id?: SortOrder
+    tag_id?: SortOrder
+    product_name?: SortOrder
+    tag_spec?: SortOrder
+    tag_size?: SortOrder
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type DecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type products_hardwareCountOrderByAggregateInput = {
+    id?: SortOrder
+    products_id?: SortOrder
+    controller_count?: SortOrder
+    cpu_model?: SortOrder
+    cpu_count?: SortOrder
+    cpu_cores?: SortOrder
+    cpu_architecture?: SortOrder
+    cpu_base_clock?: SortOrder
+    cpu_turbo_clock?: SortOrder
+    hardware_encryption?: SortOrder
+    memory_total?: SortOrder
+    memory_installed?: SortOrder
+    memory_slots?: SortOrder
+    memory_max?: SortOrder
+    disk_bays?: SortOrder
+    disk_bays_max?: SortOrder
+    disk_types_supported?: SortOrder
+    m2_slot?: SortOrder
+    disk_host_swappable?: SortOrder
+    lan_rj45_1G?: SortOrder
+    lan_rj45_2_5G?: SortOrder
+    lan_rj45_10G?: SortOrder
+    management_prot?: SortOrder
+    max_lax_ports?: SortOrder
+    usb_3_2_prots?: SortOrder
+    expansion_ports?: SortOrder
+    expansion_port_types?: SortOrder
+    pcie_expansion?: SortOrder
+    chassis_type?: SortOrder
+    dimensions?: SortOrder
+    rack_mount_kit?: SortOrder
+    fan_size?: SortOrder
+    fan_replaceable?: SortOrder
+    led_brightness_adj?: SortOrder
+    auto_power_recovery?: SortOrder
+    noise_lenel?: SortOrder
+    scheduled_power?: SortOrder
+    wake_on_lan?: SortOrder
+    dual_power_supply?: SortOrder
+    ac_input_voltage?: SortOrder
+    frequency?: SortOrder
+    power_consumption?: SortOrder
+    working_temperature?: SortOrder
+    storage_temperature?: SortOrder
+    relative_humidity?: SortOrder
+    certifications?: SortOrder
+    warranty?: SortOrder
+    environmental_compliance?: SortOrder
+    package_contents?: SortOrder
+    optional_accessories?: SortOrder
+    cpu_threads?: SortOrder
+  }
+
+  export type products_hardwareAvgOrderByAggregateInput = {
+    controller_count?: SortOrder
+    cpu_count?: SortOrder
+    cpu_cores?: SortOrder
+    cpu_base_clock?: SortOrder
+    cpu_turbo_clock?: SortOrder
+    memory_slots?: SortOrder
+    disk_bays?: SortOrder
+    disk_bays_max?: SortOrder
+    lan_rj45_1G?: SortOrder
+    lan_rj45_2_5G?: SortOrder
+    lan_rj45_10G?: SortOrder
+    max_lax_ports?: SortOrder
+    usb_3_2_prots?: SortOrder
+    expansion_ports?: SortOrder
+    cpu_threads?: SortOrder
+  }
+
+  export type products_hardwareMaxOrderByAggregateInput = {
+    id?: SortOrder
+    products_id?: SortOrder
+    controller_count?: SortOrder
+    cpu_model?: SortOrder
+    cpu_count?: SortOrder
+    cpu_cores?: SortOrder
+    cpu_architecture?: SortOrder
+    cpu_base_clock?: SortOrder
+    cpu_turbo_clock?: SortOrder
+    hardware_encryption?: SortOrder
+    memory_total?: SortOrder
+    memory_installed?: SortOrder
+    memory_slots?: SortOrder
+    disk_bays?: SortOrder
+    disk_bays_max?: SortOrder
+    m2_slot?: SortOrder
+    disk_host_swappable?: SortOrder
+    lan_rj45_1G?: SortOrder
+    lan_rj45_2_5G?: SortOrder
+    lan_rj45_10G?: SortOrder
+    management_prot?: SortOrder
+    max_lax_ports?: SortOrder
+    usb_3_2_prots?: SortOrder
+    expansion_ports?: SortOrder
+    expansion_port_types?: SortOrder
+    pcie_expansion?: SortOrder
+    chassis_type?: SortOrder
+    dimensions?: SortOrder
+    rack_mount_kit?: SortOrder
+    fan_size?: SortOrder
+    fan_replaceable?: SortOrder
+    led_brightness_adj?: SortOrder
+    auto_power_recovery?: SortOrder
+    noise_lenel?: SortOrder
+    scheduled_power?: SortOrder
+    wake_on_lan?: SortOrder
+    dual_power_supply?: SortOrder
+    ac_input_voltage?: SortOrder
+    frequency?: SortOrder
+    power_consumption?: SortOrder
+    working_temperature?: SortOrder
+    storage_temperature?: SortOrder
+    relative_humidity?: SortOrder
+    warranty?: SortOrder
+    environmental_compliance?: SortOrder
+    cpu_threads?: SortOrder
+  }
+
+  export type products_hardwareMinOrderByAggregateInput = {
+    id?: SortOrder
+    products_id?: SortOrder
+    controller_count?: SortOrder
+    cpu_model?: SortOrder
+    cpu_count?: SortOrder
+    cpu_cores?: SortOrder
+    cpu_architecture?: SortOrder
+    cpu_base_clock?: SortOrder
+    cpu_turbo_clock?: SortOrder
+    hardware_encryption?: SortOrder
+    memory_total?: SortOrder
+    memory_installed?: SortOrder
+    memory_slots?: SortOrder
+    disk_bays?: SortOrder
+    disk_bays_max?: SortOrder
+    m2_slot?: SortOrder
+    disk_host_swappable?: SortOrder
+    lan_rj45_1G?: SortOrder
+    lan_rj45_2_5G?: SortOrder
+    lan_rj45_10G?: SortOrder
+    management_prot?: SortOrder
+    max_lax_ports?: SortOrder
+    usb_3_2_prots?: SortOrder
+    expansion_ports?: SortOrder
+    expansion_port_types?: SortOrder
+    pcie_expansion?: SortOrder
+    chassis_type?: SortOrder
+    dimensions?: SortOrder
+    rack_mount_kit?: SortOrder
+    fan_size?: SortOrder
+    fan_replaceable?: SortOrder
+    led_brightness_adj?: SortOrder
+    auto_power_recovery?: SortOrder
+    noise_lenel?: SortOrder
+    scheduled_power?: SortOrder
+    wake_on_lan?: SortOrder
+    dual_power_supply?: SortOrder
+    ac_input_voltage?: SortOrder
+    frequency?: SortOrder
+    power_consumption?: SortOrder
+    working_temperature?: SortOrder
+    storage_temperature?: SortOrder
+    relative_humidity?: SortOrder
+    warranty?: SortOrder
+    environmental_compliance?: SortOrder
+    cpu_threads?: SortOrder
+  }
+
+  export type products_hardwareSumOrderByAggregateInput = {
+    controller_count?: SortOrder
+    cpu_count?: SortOrder
+    cpu_cores?: SortOrder
+    cpu_base_clock?: SortOrder
+    cpu_turbo_clock?: SortOrder
+    memory_slots?: SortOrder
+    disk_bays?: SortOrder
+    disk_bays_max?: SortOrder
+    lan_rj45_1G?: SortOrder
+    lan_rj45_2_5G?: SortOrder
+    lan_rj45_10G?: SortOrder
+    max_lax_ports?: SortOrder
+    usb_3_2_prots?: SortOrder
+    expansion_ports?: SortOrder
+    cpu_threads?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type TagsListRelationFilter = {
+    every?: tagsWhereInput
+    some?: tagsWhereInput
+    none?: tagsWhereInput
+  }
+
+  export type tagsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type tag_categoriesCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    sort?: SortOrder
+    categories_type?: SortOrder
+  }
+
+  export type tag_categoriesAvgOrderByAggregateInput = {
+    sort?: SortOrder
+  }
+
+  export type tag_categoriesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    sort?: SortOrder
+    categories_type?: SortOrder
+  }
+
+  export type tag_categoriesMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    sort?: SortOrder
+    categories_type?: SortOrder
+  }
+
+  export type tag_categoriesSumOrderByAggregateInput = {
+    sort?: SortOrder
+  }
+
+  export type Tag_categoriesScalarRelationFilter = {
+    is?: tag_categoriesWhereInput
+    isNot?: tag_categoriesWhereInput
+  }
+
+  export type tagsCountOrderByAggregateInput = {
+    id?: SortOrder
+    created_id?: SortOrder
+    product_spec?: SortOrder
+    product_size?: SortOrder
+    sort_type?: SortOrder
+    sort_order?: SortOrder
+    spec_size?: SortOrder
+  }
+
+  export type tagsAvgOrderByAggregateInput = {
+    sort_type?: SortOrder
+    sort_order?: SortOrder
+  }
+
+  export type tagsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    created_id?: SortOrder
+    product_spec?: SortOrder
+    product_size?: SortOrder
+    sort_type?: SortOrder
+    sort_order?: SortOrder
+    spec_size?: SortOrder
+  }
+
+  export type tagsMinOrderByAggregateInput = {
+    id?: SortOrder
+    created_id?: SortOrder
+    product_spec?: SortOrder
+    product_size?: SortOrder
+    sort_type?: SortOrder
+    sort_order?: SortOrder
+    spec_size?: SortOrder
+  }
+
+  export type tagsSumOrderByAggregateInput = {
+    sort_type?: SortOrder
+    sort_order?: SortOrder
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -9192,9 +13709,9 @@ export namespace Prisma {
 
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    name?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -9202,9 +13719,9 @@ export namespace Prisma {
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    name?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -9212,35 +13729,18 @@ export namespace Prisma {
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    name?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -9251,242 +13751,50 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  export type FooterLinkListRelationFilter = {
+    every?: FooterLinkWhereInput
+    some?: FooterLinkWhereInput
+    none?: FooterLinkWhereInput
   }
 
-  export type CategoryNullableScalarRelationFilter = {
-    is?: CategoryWhereInput | null
-    isNot?: CategoryWhereInput | null
-  }
-
-  export type CategoryListRelationFilter = {
-    every?: CategoryWhereInput
-    some?: CategoryWhereInput
-    none?: CategoryWhereInput
-  }
-
-  export type ProductListRelationFilter = {
-    every?: ProductWhereInput
-    some?: ProductWhereInput
-    none?: ProductWhereInput
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
-  export type CategoryOrderByRelationAggregateInput = {
+  export type FooterLinkOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type ProductOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type CategoryCountOrderByAggregateInput = {
+  export type FooterCountOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
-    slug?: SortOrder
-    description?: SortOrder
-    parentId?: SortOrder
+    icpNumber?: SortOrder
+    icpLink?: SortOrder
+    copyright?: SortOrder
+    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type CategoryMaxOrderByAggregateInput = {
+  export type FooterMaxOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
-    slug?: SortOrder
-    description?: SortOrder
-    parentId?: SortOrder
+    icpNumber?: SortOrder
+    icpLink?: SortOrder
+    copyright?: SortOrder
+    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type CategoryMinOrderByAggregateInput = {
+  export type FooterMinOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
-    slug?: SortOrder
-    description?: SortOrder
-    parentId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type CategoryScalarRelationFilter = {
-    is?: CategoryWhereInput
-    isNot?: CategoryWhereInput
-  }
-
-  export type SolutionListRelationFilter = {
-    every?: SolutionWhereInput
-    some?: SolutionWhereInput
-    none?: SolutionWhereInput
-  }
-
-  export type SolutionOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type ProductCountOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    slug?: SortOrder
-    description?: SortOrder
-    fullDescription?: SortOrder
-    imageUrl?: SortOrder
-    categoryId?: SortOrder
-    features?: SortOrder
-    specifications?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type ProductMaxOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    slug?: SortOrder
-    description?: SortOrder
-    fullDescription?: SortOrder
-    imageUrl?: SortOrder
-    categoryId?: SortOrder
-    features?: SortOrder
-    specifications?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type ProductMinOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    slug?: SortOrder
-    description?: SortOrder
-    fullDescription?: SortOrder
-    imageUrl?: SortOrder
-    categoryId?: SortOrder
-    features?: SortOrder
-    specifications?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type CaseStudyListRelationFilter = {
-    every?: CaseStudyWhereInput
-    some?: CaseStudyWhereInput
-    none?: CaseStudyWhereInput
-  }
-
-  export type CaseStudyOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type SolutionCountOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    slug?: SortOrder
-    description?: SortOrder
-    fullDescription?: SortOrder
-    imageUrl?: SortOrder
-    industry?: SortOrder
-    benefits?: SortOrder
-    features?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type SolutionMaxOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    slug?: SortOrder
-    description?: SortOrder
-    fullDescription?: SortOrder
-    imageUrl?: SortOrder
-    industry?: SortOrder
-    benefits?: SortOrder
-    features?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type SolutionMinOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    slug?: SortOrder
-    description?: SortOrder
-    fullDescription?: SortOrder
-    imageUrl?: SortOrder
-    industry?: SortOrder
-    benefits?: SortOrder
-    features?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type SolutionScalarRelationFilter = {
-    is?: SolutionWhereInput
-    isNot?: SolutionWhereInput
-  }
-
-  export type CaseStudyCountOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    solutionId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type CaseStudyMaxOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    solutionId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type CaseStudyMinOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    solutionId?: SortOrder
+    icpNumber?: SortOrder
+    icpLink?: SortOrder
+    copyright?: SortOrder
+    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -9494,51 +13802,62 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type MediaCountOrderByAggregateInput = {
+  export type FooterScalarRelationFilter = {
+    is?: FooterWhereInput
+    isNot?: FooterWhereInput
+  }
+
+  export type FooterLinkCountOrderByAggregateInput = {
     id?: SortOrder
-    fileName?: SortOrder
-    filePath?: SortOrder
-    fileType?: SortOrder
-    fileSize?: SortOrder
-    entityType?: SortOrder
-    entityId?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    category?: SortOrder
+    icon?: SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    footerId?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
-  export type MediaAvgOrderByAggregateInput = {
-    fileSize?: SortOrder
+  export type FooterLinkAvgOrderByAggregateInput = {
+    sortOrder?: SortOrder
   }
 
-  export type MediaMaxOrderByAggregateInput = {
+  export type FooterLinkMaxOrderByAggregateInput = {
     id?: SortOrder
-    fileName?: SortOrder
-    filePath?: SortOrder
-    fileType?: SortOrder
-    fileSize?: SortOrder
-    entityType?: SortOrder
-    entityId?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    category?: SortOrder
+    icon?: SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    footerId?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
-  export type MediaMinOrderByAggregateInput = {
+  export type FooterLinkMinOrderByAggregateInput = {
     id?: SortOrder
-    fileName?: SortOrder
-    filePath?: SortOrder
-    fileType?: SortOrder
-    fileSize?: SortOrder
-    entityType?: SortOrder
-    entityId?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    category?: SortOrder
+    icon?: SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    footerId?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
-  export type MediaSumOrderByAggregateInput = {
-    fileSize?: SortOrder
+  export type FooterLinkSumOrderByAggregateInput = {
+    sortOrder?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -9551,262 +13870,316 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
+  export type product_tagsCreateNestedManyWithoutProductsInput = {
+    create?: XOR<product_tagsCreateWithoutProductsInput, product_tagsUncheckedCreateWithoutProductsInput> | product_tagsCreateWithoutProductsInput[] | product_tagsUncheckedCreateWithoutProductsInput[]
+    connectOrCreate?: product_tagsCreateOrConnectWithoutProductsInput | product_tagsCreateOrConnectWithoutProductsInput[]
+    createMany?: product_tagsCreateManyProductsInputEnvelope
+    connect?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
+  }
+
+  export type products_hardwareCreateNestedManyWithoutProductsInput = {
+    create?: XOR<products_hardwareCreateWithoutProductsInput, products_hardwareUncheckedCreateWithoutProductsInput> | products_hardwareCreateWithoutProductsInput[] | products_hardwareUncheckedCreateWithoutProductsInput[]
+    connectOrCreate?: products_hardwareCreateOrConnectWithoutProductsInput | products_hardwareCreateOrConnectWithoutProductsInput[]
+    createMany?: products_hardwareCreateManyProductsInputEnvelope
+    connect?: products_hardwareWhereUniqueInput | products_hardwareWhereUniqueInput[]
+  }
+
+  export type product_tagsUncheckedCreateNestedManyWithoutProductsInput = {
+    create?: XOR<product_tagsCreateWithoutProductsInput, product_tagsUncheckedCreateWithoutProductsInput> | product_tagsCreateWithoutProductsInput[] | product_tagsUncheckedCreateWithoutProductsInput[]
+    connectOrCreate?: product_tagsCreateOrConnectWithoutProductsInput | product_tagsCreateOrConnectWithoutProductsInput[]
+    createMany?: product_tagsCreateManyProductsInputEnvelope
+    connect?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
+  }
+
+  export type products_hardwareUncheckedCreateNestedManyWithoutProductsInput = {
+    create?: XOR<products_hardwareCreateWithoutProductsInput, products_hardwareUncheckedCreateWithoutProductsInput> | products_hardwareCreateWithoutProductsInput[] | products_hardwareUncheckedCreateWithoutProductsInput[]
+    connectOrCreate?: products_hardwareCreateOrConnectWithoutProductsInput | products_hardwareCreateOrConnectWithoutProductsInput[]
+    createMany?: products_hardwareCreateManyProductsInputEnvelope
+    connect?: products_hardwareWhereUniqueInput | products_hardwareWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
-  }
-
-  export type CategoryCreateNestedOneWithoutSubcategoriesInput = {
-    create?: XOR<CategoryCreateWithoutSubcategoriesInput, CategoryUncheckedCreateWithoutSubcategoriesInput>
-    connectOrCreate?: CategoryCreateOrConnectWithoutSubcategoriesInput
-    connect?: CategoryWhereUniqueInput
-  }
-
-  export type CategoryCreateNestedManyWithoutParentInput = {
-    create?: XOR<CategoryCreateWithoutParentInput, CategoryUncheckedCreateWithoutParentInput> | CategoryCreateWithoutParentInput[] | CategoryUncheckedCreateWithoutParentInput[]
-    connectOrCreate?: CategoryCreateOrConnectWithoutParentInput | CategoryCreateOrConnectWithoutParentInput[]
-    createMany?: CategoryCreateManyParentInputEnvelope
-    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-  }
-
-  export type ProductCreateNestedManyWithoutCategoryInput = {
-    create?: XOR<ProductCreateWithoutCategoryInput, ProductUncheckedCreateWithoutCategoryInput> | ProductCreateWithoutCategoryInput[] | ProductUncheckedCreateWithoutCategoryInput[]
-    connectOrCreate?: ProductCreateOrConnectWithoutCategoryInput | ProductCreateOrConnectWithoutCategoryInput[]
-    createMany?: ProductCreateManyCategoryInputEnvelope
-    connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
-  }
-
-  export type CategoryUncheckedCreateNestedManyWithoutParentInput = {
-    create?: XOR<CategoryCreateWithoutParentInput, CategoryUncheckedCreateWithoutParentInput> | CategoryCreateWithoutParentInput[] | CategoryUncheckedCreateWithoutParentInput[]
-    connectOrCreate?: CategoryCreateOrConnectWithoutParentInput | CategoryCreateOrConnectWithoutParentInput[]
-    createMany?: CategoryCreateManyParentInputEnvelope
-    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-  }
-
-  export type ProductUncheckedCreateNestedManyWithoutCategoryInput = {
-    create?: XOR<ProductCreateWithoutCategoryInput, ProductUncheckedCreateWithoutCategoryInput> | ProductCreateWithoutCategoryInput[] | ProductUncheckedCreateWithoutCategoryInput[]
-    connectOrCreate?: ProductCreateOrConnectWithoutCategoryInput | ProductCreateOrConnectWithoutCategoryInput[]
-    createMany?: ProductCreateManyCategoryInputEnvelope
-    connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
 
-  export type CategoryUpdateOneWithoutSubcategoriesNestedInput = {
-    create?: XOR<CategoryCreateWithoutSubcategoriesInput, CategoryUncheckedCreateWithoutSubcategoriesInput>
-    connectOrCreate?: CategoryCreateOrConnectWithoutSubcategoriesInput
-    upsert?: CategoryUpsertWithoutSubcategoriesInput
-    disconnect?: CategoryWhereInput | boolean
-    delete?: CategoryWhereInput | boolean
-    connect?: CategoryWhereUniqueInput
-    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutSubcategoriesInput, CategoryUpdateWithoutSubcategoriesInput>, CategoryUncheckedUpdateWithoutSubcategoriesInput>
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
-  export type CategoryUpdateManyWithoutParentNestedInput = {
-    create?: XOR<CategoryCreateWithoutParentInput, CategoryUncheckedCreateWithoutParentInput> | CategoryCreateWithoutParentInput[] | CategoryUncheckedCreateWithoutParentInput[]
-    connectOrCreate?: CategoryCreateOrConnectWithoutParentInput | CategoryCreateOrConnectWithoutParentInput[]
-    upsert?: CategoryUpsertWithWhereUniqueWithoutParentInput | CategoryUpsertWithWhereUniqueWithoutParentInput[]
-    createMany?: CategoryCreateManyParentInputEnvelope
-    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    update?: CategoryUpdateWithWhereUniqueWithoutParentInput | CategoryUpdateWithWhereUniqueWithoutParentInput[]
-    updateMany?: CategoryUpdateManyWithWhereWithoutParentInput | CategoryUpdateManyWithWhereWithoutParentInput[]
-    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
-  export type ProductUpdateManyWithoutCategoryNestedInput = {
-    create?: XOR<ProductCreateWithoutCategoryInput, ProductUncheckedCreateWithoutCategoryInput> | ProductCreateWithoutCategoryInput[] | ProductUncheckedCreateWithoutCategoryInput[]
-    connectOrCreate?: ProductCreateOrConnectWithoutCategoryInput | ProductCreateOrConnectWithoutCategoryInput[]
-    upsert?: ProductUpsertWithWhereUniqueWithoutCategoryInput | ProductUpsertWithWhereUniqueWithoutCategoryInput[]
-    createMany?: ProductCreateManyCategoryInputEnvelope
-    set?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
-    disconnect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
-    delete?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
-    connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
-    update?: ProductUpdateWithWhereUniqueWithoutCategoryInput | ProductUpdateWithWhereUniqueWithoutCategoryInput[]
-    updateMany?: ProductUpdateManyWithWhereWithoutCategoryInput | ProductUpdateManyWithWhereWithoutCategoryInput[]
-    deleteMany?: ProductScalarWhereInput | ProductScalarWhereInput[]
+  export type product_tagsUpdateManyWithoutProductsNestedInput = {
+    create?: XOR<product_tagsCreateWithoutProductsInput, product_tagsUncheckedCreateWithoutProductsInput> | product_tagsCreateWithoutProductsInput[] | product_tagsUncheckedCreateWithoutProductsInput[]
+    connectOrCreate?: product_tagsCreateOrConnectWithoutProductsInput | product_tagsCreateOrConnectWithoutProductsInput[]
+    upsert?: product_tagsUpsertWithWhereUniqueWithoutProductsInput | product_tagsUpsertWithWhereUniqueWithoutProductsInput[]
+    createMany?: product_tagsCreateManyProductsInputEnvelope
+    set?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
+    disconnect?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
+    delete?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
+    connect?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
+    update?: product_tagsUpdateWithWhereUniqueWithoutProductsInput | product_tagsUpdateWithWhereUniqueWithoutProductsInput[]
+    updateMany?: product_tagsUpdateManyWithWhereWithoutProductsInput | product_tagsUpdateManyWithWhereWithoutProductsInput[]
+    deleteMany?: product_tagsScalarWhereInput | product_tagsScalarWhereInput[]
   }
 
-  export type CategoryUncheckedUpdateManyWithoutParentNestedInput = {
-    create?: XOR<CategoryCreateWithoutParentInput, CategoryUncheckedCreateWithoutParentInput> | CategoryCreateWithoutParentInput[] | CategoryUncheckedCreateWithoutParentInput[]
-    connectOrCreate?: CategoryCreateOrConnectWithoutParentInput | CategoryCreateOrConnectWithoutParentInput[]
-    upsert?: CategoryUpsertWithWhereUniqueWithoutParentInput | CategoryUpsertWithWhereUniqueWithoutParentInput[]
-    createMany?: CategoryCreateManyParentInputEnvelope
-    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    update?: CategoryUpdateWithWhereUniqueWithoutParentInput | CategoryUpdateWithWhereUniqueWithoutParentInput[]
-    updateMany?: CategoryUpdateManyWithWhereWithoutParentInput | CategoryUpdateManyWithWhereWithoutParentInput[]
-    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+  export type products_hardwareUpdateManyWithoutProductsNestedInput = {
+    create?: XOR<products_hardwareCreateWithoutProductsInput, products_hardwareUncheckedCreateWithoutProductsInput> | products_hardwareCreateWithoutProductsInput[] | products_hardwareUncheckedCreateWithoutProductsInput[]
+    connectOrCreate?: products_hardwareCreateOrConnectWithoutProductsInput | products_hardwareCreateOrConnectWithoutProductsInput[]
+    upsert?: products_hardwareUpsertWithWhereUniqueWithoutProductsInput | products_hardwareUpsertWithWhereUniqueWithoutProductsInput[]
+    createMany?: products_hardwareCreateManyProductsInputEnvelope
+    set?: products_hardwareWhereUniqueInput | products_hardwareWhereUniqueInput[]
+    disconnect?: products_hardwareWhereUniqueInput | products_hardwareWhereUniqueInput[]
+    delete?: products_hardwareWhereUniqueInput | products_hardwareWhereUniqueInput[]
+    connect?: products_hardwareWhereUniqueInput | products_hardwareWhereUniqueInput[]
+    update?: products_hardwareUpdateWithWhereUniqueWithoutProductsInput | products_hardwareUpdateWithWhereUniqueWithoutProductsInput[]
+    updateMany?: products_hardwareUpdateManyWithWhereWithoutProductsInput | products_hardwareUpdateManyWithWhereWithoutProductsInput[]
+    deleteMany?: products_hardwareScalarWhereInput | products_hardwareScalarWhereInput[]
   }
 
-  export type ProductUncheckedUpdateManyWithoutCategoryNestedInput = {
-    create?: XOR<ProductCreateWithoutCategoryInput, ProductUncheckedCreateWithoutCategoryInput> | ProductCreateWithoutCategoryInput[] | ProductUncheckedCreateWithoutCategoryInput[]
-    connectOrCreate?: ProductCreateOrConnectWithoutCategoryInput | ProductCreateOrConnectWithoutCategoryInput[]
-    upsert?: ProductUpsertWithWhereUniqueWithoutCategoryInput | ProductUpsertWithWhereUniqueWithoutCategoryInput[]
-    createMany?: ProductCreateManyCategoryInputEnvelope
-    set?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
-    disconnect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
-    delete?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
-    connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
-    update?: ProductUpdateWithWhereUniqueWithoutCategoryInput | ProductUpdateWithWhereUniqueWithoutCategoryInput[]
-    updateMany?: ProductUpdateManyWithWhereWithoutCategoryInput | ProductUpdateManyWithWhereWithoutCategoryInput[]
-    deleteMany?: ProductScalarWhereInput | ProductScalarWhereInput[]
+  export type product_tagsUncheckedUpdateManyWithoutProductsNestedInput = {
+    create?: XOR<product_tagsCreateWithoutProductsInput, product_tagsUncheckedCreateWithoutProductsInput> | product_tagsCreateWithoutProductsInput[] | product_tagsUncheckedCreateWithoutProductsInput[]
+    connectOrCreate?: product_tagsCreateOrConnectWithoutProductsInput | product_tagsCreateOrConnectWithoutProductsInput[]
+    upsert?: product_tagsUpsertWithWhereUniqueWithoutProductsInput | product_tagsUpsertWithWhereUniqueWithoutProductsInput[]
+    createMany?: product_tagsCreateManyProductsInputEnvelope
+    set?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
+    disconnect?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
+    delete?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
+    connect?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
+    update?: product_tagsUpdateWithWhereUniqueWithoutProductsInput | product_tagsUpdateWithWhereUniqueWithoutProductsInput[]
+    updateMany?: product_tagsUpdateManyWithWhereWithoutProductsInput | product_tagsUpdateManyWithWhereWithoutProductsInput[]
+    deleteMany?: product_tagsScalarWhereInput | product_tagsScalarWhereInput[]
   }
 
-  export type CategoryCreateNestedOneWithoutProductsInput = {
-    create?: XOR<CategoryCreateWithoutProductsInput, CategoryUncheckedCreateWithoutProductsInput>
-    connectOrCreate?: CategoryCreateOrConnectWithoutProductsInput
-    connect?: CategoryWhereUniqueInput
+  export type products_hardwareUncheckedUpdateManyWithoutProductsNestedInput = {
+    create?: XOR<products_hardwareCreateWithoutProductsInput, products_hardwareUncheckedCreateWithoutProductsInput> | products_hardwareCreateWithoutProductsInput[] | products_hardwareUncheckedCreateWithoutProductsInput[]
+    connectOrCreate?: products_hardwareCreateOrConnectWithoutProductsInput | products_hardwareCreateOrConnectWithoutProductsInput[]
+    upsert?: products_hardwareUpsertWithWhereUniqueWithoutProductsInput | products_hardwareUpsertWithWhereUniqueWithoutProductsInput[]
+    createMany?: products_hardwareCreateManyProductsInputEnvelope
+    set?: products_hardwareWhereUniqueInput | products_hardwareWhereUniqueInput[]
+    disconnect?: products_hardwareWhereUniqueInput | products_hardwareWhereUniqueInput[]
+    delete?: products_hardwareWhereUniqueInput | products_hardwareWhereUniqueInput[]
+    connect?: products_hardwareWhereUniqueInput | products_hardwareWhereUniqueInput[]
+    update?: products_hardwareUpdateWithWhereUniqueWithoutProductsInput | products_hardwareUpdateWithWhereUniqueWithoutProductsInput[]
+    updateMany?: products_hardwareUpdateManyWithWhereWithoutProductsInput | products_hardwareUpdateManyWithWhereWithoutProductsInput[]
+    deleteMany?: products_hardwareScalarWhereInput | products_hardwareScalarWhereInput[]
   }
 
-  export type SolutionCreateNestedManyWithoutProductsInput = {
-    create?: XOR<SolutionCreateWithoutProductsInput, SolutionUncheckedCreateWithoutProductsInput> | SolutionCreateWithoutProductsInput[] | SolutionUncheckedCreateWithoutProductsInput[]
-    connectOrCreate?: SolutionCreateOrConnectWithoutProductsInput | SolutionCreateOrConnectWithoutProductsInput[]
-    connect?: SolutionWhereUniqueInput | SolutionWhereUniqueInput[]
+  export type ProductCreateNestedOneWithoutProduct_tagsInput = {
+    create?: XOR<ProductCreateWithoutProduct_tagsInput, ProductUncheckedCreateWithoutProduct_tagsInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutProduct_tagsInput
+    connect?: ProductWhereUniqueInput
   }
 
-  export type SolutionUncheckedCreateNestedManyWithoutProductsInput = {
-    create?: XOR<SolutionCreateWithoutProductsInput, SolutionUncheckedCreateWithoutProductsInput> | SolutionCreateWithoutProductsInput[] | SolutionUncheckedCreateWithoutProductsInput[]
-    connectOrCreate?: SolutionCreateOrConnectWithoutProductsInput | SolutionCreateOrConnectWithoutProductsInput[]
-    connect?: SolutionWhereUniqueInput | SolutionWhereUniqueInput[]
+  export type tagsCreateNestedOneWithoutProduct_tagsInput = {
+    create?: XOR<tagsCreateWithoutProduct_tagsInput, tagsUncheckedCreateWithoutProduct_tagsInput>
+    connectOrCreate?: tagsCreateOrConnectWithoutProduct_tagsInput
+    connect?: tagsWhereUniqueInput
   }
 
-  export type CategoryUpdateOneRequiredWithoutProductsNestedInput = {
-    create?: XOR<CategoryCreateWithoutProductsInput, CategoryUncheckedCreateWithoutProductsInput>
-    connectOrCreate?: CategoryCreateOrConnectWithoutProductsInput
-    upsert?: CategoryUpsertWithoutProductsInput
-    connect?: CategoryWhereUniqueInput
-    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutProductsInput, CategoryUpdateWithoutProductsInput>, CategoryUncheckedUpdateWithoutProductsInput>
+  export type ProductUpdateOneRequiredWithoutProduct_tagsNestedInput = {
+    create?: XOR<ProductCreateWithoutProduct_tagsInput, ProductUncheckedCreateWithoutProduct_tagsInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutProduct_tagsInput
+    upsert?: ProductUpsertWithoutProduct_tagsInput
+    connect?: ProductWhereUniqueInput
+    update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutProduct_tagsInput, ProductUpdateWithoutProduct_tagsInput>, ProductUncheckedUpdateWithoutProduct_tagsInput>
   }
 
-  export type SolutionUpdateManyWithoutProductsNestedInput = {
-    create?: XOR<SolutionCreateWithoutProductsInput, SolutionUncheckedCreateWithoutProductsInput> | SolutionCreateWithoutProductsInput[] | SolutionUncheckedCreateWithoutProductsInput[]
-    connectOrCreate?: SolutionCreateOrConnectWithoutProductsInput | SolutionCreateOrConnectWithoutProductsInput[]
-    upsert?: SolutionUpsertWithWhereUniqueWithoutProductsInput | SolutionUpsertWithWhereUniqueWithoutProductsInput[]
-    set?: SolutionWhereUniqueInput | SolutionWhereUniqueInput[]
-    disconnect?: SolutionWhereUniqueInput | SolutionWhereUniqueInput[]
-    delete?: SolutionWhereUniqueInput | SolutionWhereUniqueInput[]
-    connect?: SolutionWhereUniqueInput | SolutionWhereUniqueInput[]
-    update?: SolutionUpdateWithWhereUniqueWithoutProductsInput | SolutionUpdateWithWhereUniqueWithoutProductsInput[]
-    updateMany?: SolutionUpdateManyWithWhereWithoutProductsInput | SolutionUpdateManyWithWhereWithoutProductsInput[]
-    deleteMany?: SolutionScalarWhereInput | SolutionScalarWhereInput[]
+  export type tagsUpdateOneRequiredWithoutProduct_tagsNestedInput = {
+    create?: XOR<tagsCreateWithoutProduct_tagsInput, tagsUncheckedCreateWithoutProduct_tagsInput>
+    connectOrCreate?: tagsCreateOrConnectWithoutProduct_tagsInput
+    upsert?: tagsUpsertWithoutProduct_tagsInput
+    connect?: tagsWhereUniqueInput
+    update?: XOR<XOR<tagsUpdateToOneWithWhereWithoutProduct_tagsInput, tagsUpdateWithoutProduct_tagsInput>, tagsUncheckedUpdateWithoutProduct_tagsInput>
   }
 
-  export type SolutionUncheckedUpdateManyWithoutProductsNestedInput = {
-    create?: XOR<SolutionCreateWithoutProductsInput, SolutionUncheckedCreateWithoutProductsInput> | SolutionCreateWithoutProductsInput[] | SolutionUncheckedCreateWithoutProductsInput[]
-    connectOrCreate?: SolutionCreateOrConnectWithoutProductsInput | SolutionCreateOrConnectWithoutProductsInput[]
-    upsert?: SolutionUpsertWithWhereUniqueWithoutProductsInput | SolutionUpsertWithWhereUniqueWithoutProductsInput[]
-    set?: SolutionWhereUniqueInput | SolutionWhereUniqueInput[]
-    disconnect?: SolutionWhereUniqueInput | SolutionWhereUniqueInput[]
-    delete?: SolutionWhereUniqueInput | SolutionWhereUniqueInput[]
-    connect?: SolutionWhereUniqueInput | SolutionWhereUniqueInput[]
-    update?: SolutionUpdateWithWhereUniqueWithoutProductsInput | SolutionUpdateWithWhereUniqueWithoutProductsInput[]
-    updateMany?: SolutionUpdateManyWithWhereWithoutProductsInput | SolutionUpdateManyWithWhereWithoutProductsInput[]
-    deleteMany?: SolutionScalarWhereInput | SolutionScalarWhereInput[]
+  export type ProductCreateNestedOneWithoutProducts_hardwareInput = {
+    create?: XOR<ProductCreateWithoutProducts_hardwareInput, ProductUncheckedCreateWithoutProducts_hardwareInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutProducts_hardwareInput
+    connect?: ProductWhereUniqueInput
   }
 
-  export type ProductCreateNestedManyWithoutSolutionsInput = {
-    create?: XOR<ProductCreateWithoutSolutionsInput, ProductUncheckedCreateWithoutSolutionsInput> | ProductCreateWithoutSolutionsInput[] | ProductUncheckedCreateWithoutSolutionsInput[]
-    connectOrCreate?: ProductCreateOrConnectWithoutSolutionsInput | ProductCreateOrConnectWithoutSolutionsInput[]
-    connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
-  export type CaseStudyCreateNestedManyWithoutSolutionInput = {
-    create?: XOR<CaseStudyCreateWithoutSolutionInput, CaseStudyUncheckedCreateWithoutSolutionInput> | CaseStudyCreateWithoutSolutionInput[] | CaseStudyUncheckedCreateWithoutSolutionInput[]
-    connectOrCreate?: CaseStudyCreateOrConnectWithoutSolutionInput | CaseStudyCreateOrConnectWithoutSolutionInput[]
-    createMany?: CaseStudyCreateManySolutionInputEnvelope
-    connect?: CaseStudyWhereUniqueInput | CaseStudyWhereUniqueInput[]
+  export type NullableDecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string | null
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
   }
 
-  export type ProductUncheckedCreateNestedManyWithoutSolutionsInput = {
-    create?: XOR<ProductCreateWithoutSolutionsInput, ProductUncheckedCreateWithoutSolutionsInput> | ProductCreateWithoutSolutionsInput[] | ProductUncheckedCreateWithoutSolutionsInput[]
-    connectOrCreate?: ProductCreateOrConnectWithoutSolutionsInput | ProductCreateOrConnectWithoutSolutionsInput[]
-    connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
   }
 
-  export type CaseStudyUncheckedCreateNestedManyWithoutSolutionInput = {
-    create?: XOR<CaseStudyCreateWithoutSolutionInput, CaseStudyUncheckedCreateWithoutSolutionInput> | CaseStudyCreateWithoutSolutionInput[] | CaseStudyUncheckedCreateWithoutSolutionInput[]
-    connectOrCreate?: CaseStudyCreateOrConnectWithoutSolutionInput | CaseStudyCreateOrConnectWithoutSolutionInput[]
-    createMany?: CaseStudyCreateManySolutionInputEnvelope
-    connect?: CaseStudyWhereUniqueInput | CaseStudyWhereUniqueInput[]
+  export type ProductUpdateOneRequiredWithoutProducts_hardwareNestedInput = {
+    create?: XOR<ProductCreateWithoutProducts_hardwareInput, ProductUncheckedCreateWithoutProducts_hardwareInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutProducts_hardwareInput
+    upsert?: ProductUpsertWithoutProducts_hardwareInput
+    connect?: ProductWhereUniqueInput
+    update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutProducts_hardwareInput, ProductUpdateWithoutProducts_hardwareInput>, ProductUncheckedUpdateWithoutProducts_hardwareInput>
   }
 
-  export type ProductUpdateManyWithoutSolutionsNestedInput = {
-    create?: XOR<ProductCreateWithoutSolutionsInput, ProductUncheckedCreateWithoutSolutionsInput> | ProductCreateWithoutSolutionsInput[] | ProductUncheckedCreateWithoutSolutionsInput[]
-    connectOrCreate?: ProductCreateOrConnectWithoutSolutionsInput | ProductCreateOrConnectWithoutSolutionsInput[]
-    upsert?: ProductUpsertWithWhereUniqueWithoutSolutionsInput | ProductUpsertWithWhereUniqueWithoutSolutionsInput[]
-    set?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
-    disconnect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
-    delete?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
-    connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
-    update?: ProductUpdateWithWhereUniqueWithoutSolutionsInput | ProductUpdateWithWhereUniqueWithoutSolutionsInput[]
-    updateMany?: ProductUpdateManyWithWhereWithoutSolutionsInput | ProductUpdateManyWithWhereWithoutSolutionsInput[]
-    deleteMany?: ProductScalarWhereInput | ProductScalarWhereInput[]
+  export type tagsCreateNestedManyWithoutTag_categoriesInput = {
+    create?: XOR<tagsCreateWithoutTag_categoriesInput, tagsUncheckedCreateWithoutTag_categoriesInput> | tagsCreateWithoutTag_categoriesInput[] | tagsUncheckedCreateWithoutTag_categoriesInput[]
+    connectOrCreate?: tagsCreateOrConnectWithoutTag_categoriesInput | tagsCreateOrConnectWithoutTag_categoriesInput[]
+    createMany?: tagsCreateManyTag_categoriesInputEnvelope
+    connect?: tagsWhereUniqueInput | tagsWhereUniqueInput[]
   }
 
-  export type CaseStudyUpdateManyWithoutSolutionNestedInput = {
-    create?: XOR<CaseStudyCreateWithoutSolutionInput, CaseStudyUncheckedCreateWithoutSolutionInput> | CaseStudyCreateWithoutSolutionInput[] | CaseStudyUncheckedCreateWithoutSolutionInput[]
-    connectOrCreate?: CaseStudyCreateOrConnectWithoutSolutionInput | CaseStudyCreateOrConnectWithoutSolutionInput[]
-    upsert?: CaseStudyUpsertWithWhereUniqueWithoutSolutionInput | CaseStudyUpsertWithWhereUniqueWithoutSolutionInput[]
-    createMany?: CaseStudyCreateManySolutionInputEnvelope
-    set?: CaseStudyWhereUniqueInput | CaseStudyWhereUniqueInput[]
-    disconnect?: CaseStudyWhereUniqueInput | CaseStudyWhereUniqueInput[]
-    delete?: CaseStudyWhereUniqueInput | CaseStudyWhereUniqueInput[]
-    connect?: CaseStudyWhereUniqueInput | CaseStudyWhereUniqueInput[]
-    update?: CaseStudyUpdateWithWhereUniqueWithoutSolutionInput | CaseStudyUpdateWithWhereUniqueWithoutSolutionInput[]
-    updateMany?: CaseStudyUpdateManyWithWhereWithoutSolutionInput | CaseStudyUpdateManyWithWhereWithoutSolutionInput[]
-    deleteMany?: CaseStudyScalarWhereInput | CaseStudyScalarWhereInput[]
+  export type tagsUncheckedCreateNestedManyWithoutTag_categoriesInput = {
+    create?: XOR<tagsCreateWithoutTag_categoriesInput, tagsUncheckedCreateWithoutTag_categoriesInput> | tagsCreateWithoutTag_categoriesInput[] | tagsUncheckedCreateWithoutTag_categoriesInput[]
+    connectOrCreate?: tagsCreateOrConnectWithoutTag_categoriesInput | tagsCreateOrConnectWithoutTag_categoriesInput[]
+    createMany?: tagsCreateManyTag_categoriesInputEnvelope
+    connect?: tagsWhereUniqueInput | tagsWhereUniqueInput[]
   }
 
-  export type ProductUncheckedUpdateManyWithoutSolutionsNestedInput = {
-    create?: XOR<ProductCreateWithoutSolutionsInput, ProductUncheckedCreateWithoutSolutionsInput> | ProductCreateWithoutSolutionsInput[] | ProductUncheckedCreateWithoutSolutionsInput[]
-    connectOrCreate?: ProductCreateOrConnectWithoutSolutionsInput | ProductCreateOrConnectWithoutSolutionsInput[]
-    upsert?: ProductUpsertWithWhereUniqueWithoutSolutionsInput | ProductUpsertWithWhereUniqueWithoutSolutionsInput[]
-    set?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
-    disconnect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
-    delete?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
-    connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
-    update?: ProductUpdateWithWhereUniqueWithoutSolutionsInput | ProductUpdateWithWhereUniqueWithoutSolutionsInput[]
-    updateMany?: ProductUpdateManyWithWhereWithoutSolutionsInput | ProductUpdateManyWithWhereWithoutSolutionsInput[]
-    deleteMany?: ProductScalarWhereInput | ProductScalarWhereInput[]
+  export type tagsUpdateManyWithoutTag_categoriesNestedInput = {
+    create?: XOR<tagsCreateWithoutTag_categoriesInput, tagsUncheckedCreateWithoutTag_categoriesInput> | tagsCreateWithoutTag_categoriesInput[] | tagsUncheckedCreateWithoutTag_categoriesInput[]
+    connectOrCreate?: tagsCreateOrConnectWithoutTag_categoriesInput | tagsCreateOrConnectWithoutTag_categoriesInput[]
+    upsert?: tagsUpsertWithWhereUniqueWithoutTag_categoriesInput | tagsUpsertWithWhereUniqueWithoutTag_categoriesInput[]
+    createMany?: tagsCreateManyTag_categoriesInputEnvelope
+    set?: tagsWhereUniqueInput | tagsWhereUniqueInput[]
+    disconnect?: tagsWhereUniqueInput | tagsWhereUniqueInput[]
+    delete?: tagsWhereUniqueInput | tagsWhereUniqueInput[]
+    connect?: tagsWhereUniqueInput | tagsWhereUniqueInput[]
+    update?: tagsUpdateWithWhereUniqueWithoutTag_categoriesInput | tagsUpdateWithWhereUniqueWithoutTag_categoriesInput[]
+    updateMany?: tagsUpdateManyWithWhereWithoutTag_categoriesInput | tagsUpdateManyWithWhereWithoutTag_categoriesInput[]
+    deleteMany?: tagsScalarWhereInput | tagsScalarWhereInput[]
   }
 
-  export type CaseStudyUncheckedUpdateManyWithoutSolutionNestedInput = {
-    create?: XOR<CaseStudyCreateWithoutSolutionInput, CaseStudyUncheckedCreateWithoutSolutionInput> | CaseStudyCreateWithoutSolutionInput[] | CaseStudyUncheckedCreateWithoutSolutionInput[]
-    connectOrCreate?: CaseStudyCreateOrConnectWithoutSolutionInput | CaseStudyCreateOrConnectWithoutSolutionInput[]
-    upsert?: CaseStudyUpsertWithWhereUniqueWithoutSolutionInput | CaseStudyUpsertWithWhereUniqueWithoutSolutionInput[]
-    createMany?: CaseStudyCreateManySolutionInputEnvelope
-    set?: CaseStudyWhereUniqueInput | CaseStudyWhereUniqueInput[]
-    disconnect?: CaseStudyWhereUniqueInput | CaseStudyWhereUniqueInput[]
-    delete?: CaseStudyWhereUniqueInput | CaseStudyWhereUniqueInput[]
-    connect?: CaseStudyWhereUniqueInput | CaseStudyWhereUniqueInput[]
-    update?: CaseStudyUpdateWithWhereUniqueWithoutSolutionInput | CaseStudyUpdateWithWhereUniqueWithoutSolutionInput[]
-    updateMany?: CaseStudyUpdateManyWithWhereWithoutSolutionInput | CaseStudyUpdateManyWithWhereWithoutSolutionInput[]
-    deleteMany?: CaseStudyScalarWhereInput | CaseStudyScalarWhereInput[]
+  export type tagsUncheckedUpdateManyWithoutTag_categoriesNestedInput = {
+    create?: XOR<tagsCreateWithoutTag_categoriesInput, tagsUncheckedCreateWithoutTag_categoriesInput> | tagsCreateWithoutTag_categoriesInput[] | tagsUncheckedCreateWithoutTag_categoriesInput[]
+    connectOrCreate?: tagsCreateOrConnectWithoutTag_categoriesInput | tagsCreateOrConnectWithoutTag_categoriesInput[]
+    upsert?: tagsUpsertWithWhereUniqueWithoutTag_categoriesInput | tagsUpsertWithWhereUniqueWithoutTag_categoriesInput[]
+    createMany?: tagsCreateManyTag_categoriesInputEnvelope
+    set?: tagsWhereUniqueInput | tagsWhereUniqueInput[]
+    disconnect?: tagsWhereUniqueInput | tagsWhereUniqueInput[]
+    delete?: tagsWhereUniqueInput | tagsWhereUniqueInput[]
+    connect?: tagsWhereUniqueInput | tagsWhereUniqueInput[]
+    update?: tagsUpdateWithWhereUniqueWithoutTag_categoriesInput | tagsUpdateWithWhereUniqueWithoutTag_categoriesInput[]
+    updateMany?: tagsUpdateManyWithWhereWithoutTag_categoriesInput | tagsUpdateManyWithWhereWithoutTag_categoriesInput[]
+    deleteMany?: tagsScalarWhereInput | tagsScalarWhereInput[]
   }
 
-  export type SolutionCreateNestedOneWithoutCaseStudiesInput = {
-    create?: XOR<SolutionCreateWithoutCaseStudiesInput, SolutionUncheckedCreateWithoutCaseStudiesInput>
-    connectOrCreate?: SolutionCreateOrConnectWithoutCaseStudiesInput
-    connect?: SolutionWhereUniqueInput
+  export type product_tagsCreateNestedManyWithoutTagsInput = {
+    create?: XOR<product_tagsCreateWithoutTagsInput, product_tagsUncheckedCreateWithoutTagsInput> | product_tagsCreateWithoutTagsInput[] | product_tagsUncheckedCreateWithoutTagsInput[]
+    connectOrCreate?: product_tagsCreateOrConnectWithoutTagsInput | product_tagsCreateOrConnectWithoutTagsInput[]
+    createMany?: product_tagsCreateManyTagsInputEnvelope
+    connect?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
   }
 
-  export type SolutionUpdateOneRequiredWithoutCaseStudiesNestedInput = {
-    create?: XOR<SolutionCreateWithoutCaseStudiesInput, SolutionUncheckedCreateWithoutCaseStudiesInput>
-    connectOrCreate?: SolutionCreateOrConnectWithoutCaseStudiesInput
-    upsert?: SolutionUpsertWithoutCaseStudiesInput
-    connect?: SolutionWhereUniqueInput
-    update?: XOR<XOR<SolutionUpdateToOneWithWhereWithoutCaseStudiesInput, SolutionUpdateWithoutCaseStudiesInput>, SolutionUncheckedUpdateWithoutCaseStudiesInput>
+  export type tag_categoriesCreateNestedOneWithoutTagsInput = {
+    create?: XOR<tag_categoriesCreateWithoutTagsInput, tag_categoriesUncheckedCreateWithoutTagsInput>
+    connectOrCreate?: tag_categoriesCreateOrConnectWithoutTagsInput
+    connect?: tag_categoriesWhereUniqueInput
+  }
+
+  export type product_tagsUncheckedCreateNestedManyWithoutTagsInput = {
+    create?: XOR<product_tagsCreateWithoutTagsInput, product_tagsUncheckedCreateWithoutTagsInput> | product_tagsCreateWithoutTagsInput[] | product_tagsUncheckedCreateWithoutTagsInput[]
+    connectOrCreate?: product_tagsCreateOrConnectWithoutTagsInput | product_tagsCreateOrConnectWithoutTagsInput[]
+    createMany?: product_tagsCreateManyTagsInputEnvelope
+    connect?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
+  }
+
+  export type product_tagsUpdateManyWithoutTagsNestedInput = {
+    create?: XOR<product_tagsCreateWithoutTagsInput, product_tagsUncheckedCreateWithoutTagsInput> | product_tagsCreateWithoutTagsInput[] | product_tagsUncheckedCreateWithoutTagsInput[]
+    connectOrCreate?: product_tagsCreateOrConnectWithoutTagsInput | product_tagsCreateOrConnectWithoutTagsInput[]
+    upsert?: product_tagsUpsertWithWhereUniqueWithoutTagsInput | product_tagsUpsertWithWhereUniqueWithoutTagsInput[]
+    createMany?: product_tagsCreateManyTagsInputEnvelope
+    set?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
+    disconnect?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
+    delete?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
+    connect?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
+    update?: product_tagsUpdateWithWhereUniqueWithoutTagsInput | product_tagsUpdateWithWhereUniqueWithoutTagsInput[]
+    updateMany?: product_tagsUpdateManyWithWhereWithoutTagsInput | product_tagsUpdateManyWithWhereWithoutTagsInput[]
+    deleteMany?: product_tagsScalarWhereInput | product_tagsScalarWhereInput[]
+  }
+
+  export type tag_categoriesUpdateOneRequiredWithoutTagsNestedInput = {
+    create?: XOR<tag_categoriesCreateWithoutTagsInput, tag_categoriesUncheckedCreateWithoutTagsInput>
+    connectOrCreate?: tag_categoriesCreateOrConnectWithoutTagsInput
+    upsert?: tag_categoriesUpsertWithoutTagsInput
+    connect?: tag_categoriesWhereUniqueInput
+    update?: XOR<XOR<tag_categoriesUpdateToOneWithWhereWithoutTagsInput, tag_categoriesUpdateWithoutTagsInput>, tag_categoriesUncheckedUpdateWithoutTagsInput>
+  }
+
+  export type product_tagsUncheckedUpdateManyWithoutTagsNestedInput = {
+    create?: XOR<product_tagsCreateWithoutTagsInput, product_tagsUncheckedCreateWithoutTagsInput> | product_tagsCreateWithoutTagsInput[] | product_tagsUncheckedCreateWithoutTagsInput[]
+    connectOrCreate?: product_tagsCreateOrConnectWithoutTagsInput | product_tagsCreateOrConnectWithoutTagsInput[]
+    upsert?: product_tagsUpsertWithWhereUniqueWithoutTagsInput | product_tagsUpsertWithWhereUniqueWithoutTagsInput[]
+    createMany?: product_tagsCreateManyTagsInputEnvelope
+    set?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
+    disconnect?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
+    delete?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
+    connect?: product_tagsWhereUniqueInput | product_tagsWhereUniqueInput[]
+    update?: product_tagsUpdateWithWhereUniqueWithoutTagsInput | product_tagsUpdateWithWhereUniqueWithoutTagsInput[]
+    updateMany?: product_tagsUpdateManyWithWhereWithoutTagsInput | product_tagsUpdateManyWithWhereWithoutTagsInput[]
+    deleteMany?: product_tagsScalarWhereInput | product_tagsScalarWhereInput[]
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type FooterLinkCreateNestedManyWithoutFooterInput = {
+    create?: XOR<FooterLinkCreateWithoutFooterInput, FooterLinkUncheckedCreateWithoutFooterInput> | FooterLinkCreateWithoutFooterInput[] | FooterLinkUncheckedCreateWithoutFooterInput[]
+    connectOrCreate?: FooterLinkCreateOrConnectWithoutFooterInput | FooterLinkCreateOrConnectWithoutFooterInput[]
+    createMany?: FooterLinkCreateManyFooterInputEnvelope
+    connect?: FooterLinkWhereUniqueInput | FooterLinkWhereUniqueInput[]
+  }
+
+  export type FooterLinkUncheckedCreateNestedManyWithoutFooterInput = {
+    create?: XOR<FooterLinkCreateWithoutFooterInput, FooterLinkUncheckedCreateWithoutFooterInput> | FooterLinkCreateWithoutFooterInput[] | FooterLinkUncheckedCreateWithoutFooterInput[]
+    connectOrCreate?: FooterLinkCreateOrConnectWithoutFooterInput | FooterLinkCreateOrConnectWithoutFooterInput[]
+    createMany?: FooterLinkCreateManyFooterInputEnvelope
+    connect?: FooterLinkWhereUniqueInput | FooterLinkWhereUniqueInput[]
+  }
+
+  export type FooterLinkUpdateManyWithoutFooterNestedInput = {
+    create?: XOR<FooterLinkCreateWithoutFooterInput, FooterLinkUncheckedCreateWithoutFooterInput> | FooterLinkCreateWithoutFooterInput[] | FooterLinkUncheckedCreateWithoutFooterInput[]
+    connectOrCreate?: FooterLinkCreateOrConnectWithoutFooterInput | FooterLinkCreateOrConnectWithoutFooterInput[]
+    upsert?: FooterLinkUpsertWithWhereUniqueWithoutFooterInput | FooterLinkUpsertWithWhereUniqueWithoutFooterInput[]
+    createMany?: FooterLinkCreateManyFooterInputEnvelope
+    set?: FooterLinkWhereUniqueInput | FooterLinkWhereUniqueInput[]
+    disconnect?: FooterLinkWhereUniqueInput | FooterLinkWhereUniqueInput[]
+    delete?: FooterLinkWhereUniqueInput | FooterLinkWhereUniqueInput[]
+    connect?: FooterLinkWhereUniqueInput | FooterLinkWhereUniqueInput[]
+    update?: FooterLinkUpdateWithWhereUniqueWithoutFooterInput | FooterLinkUpdateWithWhereUniqueWithoutFooterInput[]
+    updateMany?: FooterLinkUpdateManyWithWhereWithoutFooterInput | FooterLinkUpdateManyWithWhereWithoutFooterInput[]
+    deleteMany?: FooterLinkScalarWhereInput | FooterLinkScalarWhereInput[]
+  }
+
+  export type FooterLinkUncheckedUpdateManyWithoutFooterNestedInput = {
+    create?: XOR<FooterLinkCreateWithoutFooterInput, FooterLinkUncheckedCreateWithoutFooterInput> | FooterLinkCreateWithoutFooterInput[] | FooterLinkUncheckedCreateWithoutFooterInput[]
+    connectOrCreate?: FooterLinkCreateOrConnectWithoutFooterInput | FooterLinkCreateOrConnectWithoutFooterInput[]
+    upsert?: FooterLinkUpsertWithWhereUniqueWithoutFooterInput | FooterLinkUpsertWithWhereUniqueWithoutFooterInput[]
+    createMany?: FooterLinkCreateManyFooterInputEnvelope
+    set?: FooterLinkWhereUniqueInput | FooterLinkWhereUniqueInput[]
+    disconnect?: FooterLinkWhereUniqueInput | FooterLinkWhereUniqueInput[]
+    delete?: FooterLinkWhereUniqueInput | FooterLinkWhereUniqueInput[]
+    connect?: FooterLinkWhereUniqueInput | FooterLinkWhereUniqueInput[]
+    update?: FooterLinkUpdateWithWhereUniqueWithoutFooterInput | FooterLinkUpdateWithWhereUniqueWithoutFooterInput[]
+    updateMany?: FooterLinkUpdateManyWithWhereWithoutFooterInput | FooterLinkUpdateManyWithWhereWithoutFooterInput[]
+    deleteMany?: FooterLinkScalarWhereInput | FooterLinkScalarWhereInput[]
+  }
+
+  export type FooterCreateNestedOneWithoutLinksInput = {
+    create?: XOR<FooterCreateWithoutLinksInput, FooterUncheckedCreateWithoutLinksInput>
+    connectOrCreate?: FooterCreateOrConnectWithoutLinksInput
+    connect?: FooterWhereUniqueInput
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -9817,10 +14190,29 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type FooterUpdateOneRequiredWithoutLinksNestedInput = {
+    create?: XOR<FooterCreateWithoutLinksInput, FooterUncheckedCreateWithoutLinksInput>
+    connectOrCreate?: FooterCreateOrConnectWithoutLinksInput
+    upsert?: FooterUpsertWithoutLinksInput
+    connect?: FooterWhereUniqueInput
+    update?: XOR<XOR<FooterUpdateToOneWithWhereWithoutLinksInput, FooterUpdateWithoutLinksInput>, FooterUncheckedUpdateWithoutLinksInput>
+  }
+
+  export type NestedUuidFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidFilter<$PrismaModel> | string
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -9831,21 +14223,65 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedUuidWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -9859,49 +14295,10 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -9917,8 +14314,8 @@ export namespace Prisma {
 
   export type NestedIntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -9926,10 +14323,147 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -9944,8 +14478,8 @@ export namespace Prisma {
 
   export type NestedFloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -9953,710 +14487,1069 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type CategoryCreateWithoutSubcategoriesInput = {
+  export type product_tagsCreateWithoutProductsInput = {
+    product_name?: string | null
+    tag_spec?: string | null
+    tag_size?: string | null
+    tags?: tagsCreateNestedOneWithoutProduct_tagsInput
+  }
+
+  export type product_tagsUncheckedCreateWithoutProductsInput = {
+    tag_id?: string
+    product_name?: string | null
+    tag_spec?: string | null
+    tag_size?: string | null
+  }
+
+  export type product_tagsCreateOrConnectWithoutProductsInput = {
+    where: product_tagsWhereUniqueInput
+    create: XOR<product_tagsCreateWithoutProductsInput, product_tagsUncheckedCreateWithoutProductsInput>
+  }
+
+  export type product_tagsCreateManyProductsInputEnvelope = {
+    data: product_tagsCreateManyProductsInput | product_tagsCreateManyProductsInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type products_hardwareCreateWithoutProductsInput = {
     id?: string
-    name: string
-    slug: string
+    controller_count?: number | null
+    cpu_model?: string | null
+    cpu_count?: number | null
+    cpu_cores?: number | null
+    cpu_architecture?: string | null
+    cpu_base_clock?: Decimal | DecimalJsLike | number | string | null
+    cpu_turbo_clock?: Decimal | DecimalJsLike | number | string | null
+    hardware_encryption?: string | null
+    memory_total?: string | null
+    memory_installed?: string | null
+    memory_slots?: number | null
+    memory_max?: NullableJsonNullValueInput | InputJsonValue
+    disk_bays?: number | null
+    disk_bays_max?: number | null
+    disk_types_supported?: NullableJsonNullValueInput | InputJsonValue
+    m2_slot?: boolean | null
+    disk_host_swappable?: boolean | null
+    lan_rj45_1G?: number | null
+    lan_rj45_2_5G?: number | null
+    lan_rj45_10G?: number | null
+    management_prot?: boolean | null
+    max_lax_ports?: number | null
+    usb_3_2_prots?: number | null
+    expansion_ports?: number | null
+    expansion_port_types?: string | null
+    pcie_expansion?: string | null
+    chassis_type?: string | null
+    dimensions?: string | null
+    rack_mount_kit?: string | null
+    fan_size?: string | null
+    fan_replaceable?: boolean | null
+    led_brightness_adj?: boolean | null
+    auto_power_recovery?: boolean | null
+    noise_lenel?: string | null
+    scheduled_power?: boolean | null
+    wake_on_lan?: boolean | null
+    dual_power_supply?: boolean | null
+    ac_input_voltage?: string | null
+    frequency?: string | null
+    power_consumption?: string | null
+    working_temperature?: string | null
+    storage_temperature?: string | null
+    relative_humidity?: string | null
+    certifications?: NullableJsonNullValueInput | InputJsonValue
+    warranty?: string | null
+    environmental_compliance?: string | null
+    package_contents?: NullableJsonNullValueInput | InputJsonValue
+    optional_accessories?: NullableJsonNullValueInput | InputJsonValue
+    cpu_threads?: number | null
+  }
+
+  export type products_hardwareUncheckedCreateWithoutProductsInput = {
+    id?: string
+    controller_count?: number | null
+    cpu_model?: string | null
+    cpu_count?: number | null
+    cpu_cores?: number | null
+    cpu_architecture?: string | null
+    cpu_base_clock?: Decimal | DecimalJsLike | number | string | null
+    cpu_turbo_clock?: Decimal | DecimalJsLike | number | string | null
+    hardware_encryption?: string | null
+    memory_total?: string | null
+    memory_installed?: string | null
+    memory_slots?: number | null
+    memory_max?: NullableJsonNullValueInput | InputJsonValue
+    disk_bays?: number | null
+    disk_bays_max?: number | null
+    disk_types_supported?: NullableJsonNullValueInput | InputJsonValue
+    m2_slot?: boolean | null
+    disk_host_swappable?: boolean | null
+    lan_rj45_1G?: number | null
+    lan_rj45_2_5G?: number | null
+    lan_rj45_10G?: number | null
+    management_prot?: boolean | null
+    max_lax_ports?: number | null
+    usb_3_2_prots?: number | null
+    expansion_ports?: number | null
+    expansion_port_types?: string | null
+    pcie_expansion?: string | null
+    chassis_type?: string | null
+    dimensions?: string | null
+    rack_mount_kit?: string | null
+    fan_size?: string | null
+    fan_replaceable?: boolean | null
+    led_brightness_adj?: boolean | null
+    auto_power_recovery?: boolean | null
+    noise_lenel?: string | null
+    scheduled_power?: boolean | null
+    wake_on_lan?: boolean | null
+    dual_power_supply?: boolean | null
+    ac_input_voltage?: string | null
+    frequency?: string | null
+    power_consumption?: string | null
+    working_temperature?: string | null
+    storage_temperature?: string | null
+    relative_humidity?: string | null
+    certifications?: NullableJsonNullValueInput | InputJsonValue
+    warranty?: string | null
+    environmental_compliance?: string | null
+    package_contents?: NullableJsonNullValueInput | InputJsonValue
+    optional_accessories?: NullableJsonNullValueInput | InputJsonValue
+    cpu_threads?: number | null
+  }
+
+  export type products_hardwareCreateOrConnectWithoutProductsInput = {
+    where: products_hardwareWhereUniqueInput
+    create: XOR<products_hardwareCreateWithoutProductsInput, products_hardwareUncheckedCreateWithoutProductsInput>
+  }
+
+  export type products_hardwareCreateManyProductsInputEnvelope = {
+    data: products_hardwareCreateManyProductsInput | products_hardwareCreateManyProductsInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type product_tagsUpsertWithWhereUniqueWithoutProductsInput = {
+    where: product_tagsWhereUniqueInput
+    update: XOR<product_tagsUpdateWithoutProductsInput, product_tagsUncheckedUpdateWithoutProductsInput>
+    create: XOR<product_tagsCreateWithoutProductsInput, product_tagsUncheckedCreateWithoutProductsInput>
+  }
+
+  export type product_tagsUpdateWithWhereUniqueWithoutProductsInput = {
+    where: product_tagsWhereUniqueInput
+    data: XOR<product_tagsUpdateWithoutProductsInput, product_tagsUncheckedUpdateWithoutProductsInput>
+  }
+
+  export type product_tagsUpdateManyWithWhereWithoutProductsInput = {
+    where: product_tagsScalarWhereInput
+    data: XOR<product_tagsUpdateManyMutationInput, product_tagsUncheckedUpdateManyWithoutProductsInput>
+  }
+
+  export type product_tagsScalarWhereInput = {
+    AND?: product_tagsScalarWhereInput | product_tagsScalarWhereInput[]
+    OR?: product_tagsScalarWhereInput[]
+    NOT?: product_tagsScalarWhereInput | product_tagsScalarWhereInput[]
+    product_id?: UuidFilter<"product_tags"> | string
+    tag_id?: UuidFilter<"product_tags"> | string
+    product_name?: StringNullableFilter<"product_tags"> | string | null
+    tag_spec?: StringNullableFilter<"product_tags"> | string | null
+    tag_size?: StringNullableFilter<"product_tags"> | string | null
+  }
+
+  export type products_hardwareUpsertWithWhereUniqueWithoutProductsInput = {
+    where: products_hardwareWhereUniqueInput
+    update: XOR<products_hardwareUpdateWithoutProductsInput, products_hardwareUncheckedUpdateWithoutProductsInput>
+    create: XOR<products_hardwareCreateWithoutProductsInput, products_hardwareUncheckedCreateWithoutProductsInput>
+  }
+
+  export type products_hardwareUpdateWithWhereUniqueWithoutProductsInput = {
+    where: products_hardwareWhereUniqueInput
+    data: XOR<products_hardwareUpdateWithoutProductsInput, products_hardwareUncheckedUpdateWithoutProductsInput>
+  }
+
+  export type products_hardwareUpdateManyWithWhereWithoutProductsInput = {
+    where: products_hardwareScalarWhereInput
+    data: XOR<products_hardwareUpdateManyMutationInput, products_hardwareUncheckedUpdateManyWithoutProductsInput>
+  }
+
+  export type products_hardwareScalarWhereInput = {
+    AND?: products_hardwareScalarWhereInput | products_hardwareScalarWhereInput[]
+    OR?: products_hardwareScalarWhereInput[]
+    NOT?: products_hardwareScalarWhereInput | products_hardwareScalarWhereInput[]
+    id?: UuidFilter<"products_hardware"> | string
+    products_id?: UuidFilter<"products_hardware"> | string
+    controller_count?: IntNullableFilter<"products_hardware"> | number | null
+    cpu_model?: StringNullableFilter<"products_hardware"> | string | null
+    cpu_count?: IntNullableFilter<"products_hardware"> | number | null
+    cpu_cores?: IntNullableFilter<"products_hardware"> | number | null
+    cpu_architecture?: StringNullableFilter<"products_hardware"> | string | null
+    cpu_base_clock?: DecimalNullableFilter<"products_hardware"> | Decimal | DecimalJsLike | number | string | null
+    cpu_turbo_clock?: DecimalNullableFilter<"products_hardware"> | Decimal | DecimalJsLike | number | string | null
+    hardware_encryption?: StringNullableFilter<"products_hardware"> | string | null
+    memory_total?: StringNullableFilter<"products_hardware"> | string | null
+    memory_installed?: StringNullableFilter<"products_hardware"> | string | null
+    memory_slots?: IntNullableFilter<"products_hardware"> | number | null
+    memory_max?: JsonNullableFilter<"products_hardware">
+    disk_bays?: IntNullableFilter<"products_hardware"> | number | null
+    disk_bays_max?: IntNullableFilter<"products_hardware"> | number | null
+    disk_types_supported?: JsonNullableFilter<"products_hardware">
+    m2_slot?: BoolNullableFilter<"products_hardware"> | boolean | null
+    disk_host_swappable?: BoolNullableFilter<"products_hardware"> | boolean | null
+    lan_rj45_1G?: IntNullableFilter<"products_hardware"> | number | null
+    lan_rj45_2_5G?: IntNullableFilter<"products_hardware"> | number | null
+    lan_rj45_10G?: IntNullableFilter<"products_hardware"> | number | null
+    management_prot?: BoolNullableFilter<"products_hardware"> | boolean | null
+    max_lax_ports?: IntNullableFilter<"products_hardware"> | number | null
+    usb_3_2_prots?: IntNullableFilter<"products_hardware"> | number | null
+    expansion_ports?: IntNullableFilter<"products_hardware"> | number | null
+    expansion_port_types?: StringNullableFilter<"products_hardware"> | string | null
+    pcie_expansion?: StringNullableFilter<"products_hardware"> | string | null
+    chassis_type?: StringNullableFilter<"products_hardware"> | string | null
+    dimensions?: StringNullableFilter<"products_hardware"> | string | null
+    rack_mount_kit?: StringNullableFilter<"products_hardware"> | string | null
+    fan_size?: StringNullableFilter<"products_hardware"> | string | null
+    fan_replaceable?: BoolNullableFilter<"products_hardware"> | boolean | null
+    led_brightness_adj?: BoolNullableFilter<"products_hardware"> | boolean | null
+    auto_power_recovery?: BoolNullableFilter<"products_hardware"> | boolean | null
+    noise_lenel?: StringNullableFilter<"products_hardware"> | string | null
+    scheduled_power?: BoolNullableFilter<"products_hardware"> | boolean | null
+    wake_on_lan?: BoolNullableFilter<"products_hardware"> | boolean | null
+    dual_power_supply?: BoolNullableFilter<"products_hardware"> | boolean | null
+    ac_input_voltage?: StringNullableFilter<"products_hardware"> | string | null
+    frequency?: StringNullableFilter<"products_hardware"> | string | null
+    power_consumption?: StringNullableFilter<"products_hardware"> | string | null
+    working_temperature?: StringNullableFilter<"products_hardware"> | string | null
+    storage_temperature?: StringNullableFilter<"products_hardware"> | string | null
+    relative_humidity?: StringNullableFilter<"products_hardware"> | string | null
+    certifications?: JsonNullableFilter<"products_hardware">
+    warranty?: StringNullableFilter<"products_hardware"> | string | null
+    environmental_compliance?: StringNullableFilter<"products_hardware"> | string | null
+    package_contents?: JsonNullableFilter<"products_hardware">
+    optional_accessories?: JsonNullableFilter<"products_hardware">
+    cpu_threads?: IntNullableFilter<"products_hardware"> | number | null
+  }
+
+  export type ProductCreateWithoutProduct_tagsInput = {
+    id?: string
+    name?: string
     description?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    parent?: CategoryCreateNestedOneWithoutSubcategoriesInput
-    products?: ProductCreateNestedManyWithoutCategoryInput
+    cover_image?: string | null
+    spec_pdf_url?: string | null
+    is_active?: boolean
+    description_i18n?: NullableJsonNullValueInput | InputJsonValue
+    software_space?: NullableJsonNullValueInput | InputJsonValue
+    hardware_space?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    products_hardware?: products_hardwareCreateNestedManyWithoutProductsInput
   }
 
-  export type CategoryUncheckedCreateWithoutSubcategoriesInput = {
+  export type ProductUncheckedCreateWithoutProduct_tagsInput = {
     id?: string
-    name: string
-    slug: string
+    name?: string
     description?: string | null
-    parentId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    products?: ProductUncheckedCreateNestedManyWithoutCategoryInput
+    cover_image?: string | null
+    spec_pdf_url?: string | null
+    is_active?: boolean
+    description_i18n?: NullableJsonNullValueInput | InputJsonValue
+    software_space?: NullableJsonNullValueInput | InputJsonValue
+    hardware_space?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    products_hardware?: products_hardwareUncheckedCreateNestedManyWithoutProductsInput
   }
 
-  export type CategoryCreateOrConnectWithoutSubcategoriesInput = {
-    where: CategoryWhereUniqueInput
-    create: XOR<CategoryCreateWithoutSubcategoriesInput, CategoryUncheckedCreateWithoutSubcategoriesInput>
-  }
-
-  export type CategoryCreateWithoutParentInput = {
-    id?: string
-    name: string
-    slug: string
-    description?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    subcategories?: CategoryCreateNestedManyWithoutParentInput
-    products?: ProductCreateNestedManyWithoutCategoryInput
-  }
-
-  export type CategoryUncheckedCreateWithoutParentInput = {
-    id?: string
-    name: string
-    slug: string
-    description?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    subcategories?: CategoryUncheckedCreateNestedManyWithoutParentInput
-    products?: ProductUncheckedCreateNestedManyWithoutCategoryInput
-  }
-
-  export type CategoryCreateOrConnectWithoutParentInput = {
-    where: CategoryWhereUniqueInput
-    create: XOR<CategoryCreateWithoutParentInput, CategoryUncheckedCreateWithoutParentInput>
-  }
-
-  export type CategoryCreateManyParentInputEnvelope = {
-    data: CategoryCreateManyParentInput | CategoryCreateManyParentInput[]
-  }
-
-  export type ProductCreateWithoutCategoryInput = {
-    id?: string
-    title: string
-    slug: string
-    description: string
-    fullDescription?: string | null
-    imageUrl: string
-    features: string
-    specifications?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    solutions?: SolutionCreateNestedManyWithoutProductsInput
-  }
-
-  export type ProductUncheckedCreateWithoutCategoryInput = {
-    id?: string
-    title: string
-    slug: string
-    description: string
-    fullDescription?: string | null
-    imageUrl: string
-    features: string
-    specifications?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    solutions?: SolutionUncheckedCreateNestedManyWithoutProductsInput
-  }
-
-  export type ProductCreateOrConnectWithoutCategoryInput = {
+  export type ProductCreateOrConnectWithoutProduct_tagsInput = {
     where: ProductWhereUniqueInput
-    create: XOR<ProductCreateWithoutCategoryInput, ProductUncheckedCreateWithoutCategoryInput>
+    create: XOR<ProductCreateWithoutProduct_tagsInput, ProductUncheckedCreateWithoutProduct_tagsInput>
   }
 
-  export type ProductCreateManyCategoryInputEnvelope = {
-    data: ProductCreateManyCategoryInput | ProductCreateManyCategoryInput[]
+  export type tagsCreateWithoutProduct_tagsInput = {
+    id?: string
+    product_spec?: string | null
+    product_size?: string | null
+    sort_type?: number | null
+    sort_order?: number | null
+    spec_size?: string | null
+    tag_categories?: tag_categoriesCreateNestedOneWithoutTagsInput
   }
 
-  export type CategoryUpsertWithoutSubcategoriesInput = {
-    update: XOR<CategoryUpdateWithoutSubcategoriesInput, CategoryUncheckedUpdateWithoutSubcategoriesInput>
-    create: XOR<CategoryCreateWithoutSubcategoriesInput, CategoryUncheckedCreateWithoutSubcategoriesInput>
-    where?: CategoryWhereInput
+  export type tagsUncheckedCreateWithoutProduct_tagsInput = {
+    id?: string
+    created_id?: string
+    product_spec?: string | null
+    product_size?: string | null
+    sort_type?: number | null
+    sort_order?: number | null
+    spec_size?: string | null
   }
 
-  export type CategoryUpdateToOneWithWhereWithoutSubcategoriesInput = {
-    where?: CategoryWhereInput
-    data: XOR<CategoryUpdateWithoutSubcategoriesInput, CategoryUncheckedUpdateWithoutSubcategoriesInput>
+  export type tagsCreateOrConnectWithoutProduct_tagsInput = {
+    where: tagsWhereUniqueInput
+    create: XOR<tagsCreateWithoutProduct_tagsInput, tagsUncheckedCreateWithoutProduct_tagsInput>
   }
 
-  export type CategoryUpdateWithoutSubcategoriesInput = {
+  export type ProductUpsertWithoutProduct_tagsInput = {
+    update: XOR<ProductUpdateWithoutProduct_tagsInput, ProductUncheckedUpdateWithoutProduct_tagsInput>
+    create: XOR<ProductCreateWithoutProduct_tagsInput, ProductUncheckedCreateWithoutProduct_tagsInput>
+    where?: ProductWhereInput
+  }
+
+  export type ProductUpdateToOneWithWhereWithoutProduct_tagsInput = {
+    where?: ProductWhereInput
+    data: XOR<ProductUpdateWithoutProduct_tagsInput, ProductUncheckedUpdateWithoutProduct_tagsInput>
+  }
+
+  export type ProductUpdateWithoutProduct_tagsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    parent?: CategoryUpdateOneWithoutSubcategoriesNestedInput
-    products?: ProductUpdateManyWithoutCategoryNestedInput
+    cover_image?: NullableStringFieldUpdateOperationsInput | string | null
+    spec_pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    description_i18n?: NullableJsonNullValueInput | InputJsonValue
+    software_space?: NullableJsonNullValueInput | InputJsonValue
+    hardware_space?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    products_hardware?: products_hardwareUpdateManyWithoutProductsNestedInput
   }
 
-  export type CategoryUncheckedUpdateWithoutSubcategoriesInput = {
+  export type ProductUncheckedUpdateWithoutProduct_tagsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    parentId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    products?: ProductUncheckedUpdateManyWithoutCategoryNestedInput
+    cover_image?: NullableStringFieldUpdateOperationsInput | string | null
+    spec_pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    description_i18n?: NullableJsonNullValueInput | InputJsonValue
+    software_space?: NullableJsonNullValueInput | InputJsonValue
+    hardware_space?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    products_hardware?: products_hardwareUncheckedUpdateManyWithoutProductsNestedInput
   }
 
-  export type CategoryUpsertWithWhereUniqueWithoutParentInput = {
-    where: CategoryWhereUniqueInput
-    update: XOR<CategoryUpdateWithoutParentInput, CategoryUncheckedUpdateWithoutParentInput>
-    create: XOR<CategoryCreateWithoutParentInput, CategoryUncheckedCreateWithoutParentInput>
+  export type tagsUpsertWithoutProduct_tagsInput = {
+    update: XOR<tagsUpdateWithoutProduct_tagsInput, tagsUncheckedUpdateWithoutProduct_tagsInput>
+    create: XOR<tagsCreateWithoutProduct_tagsInput, tagsUncheckedCreateWithoutProduct_tagsInput>
+    where?: tagsWhereInput
   }
 
-  export type CategoryUpdateWithWhereUniqueWithoutParentInput = {
-    where: CategoryWhereUniqueInput
-    data: XOR<CategoryUpdateWithoutParentInput, CategoryUncheckedUpdateWithoutParentInput>
+  export type tagsUpdateToOneWithWhereWithoutProduct_tagsInput = {
+    where?: tagsWhereInput
+    data: XOR<tagsUpdateWithoutProduct_tagsInput, tagsUncheckedUpdateWithoutProduct_tagsInput>
   }
 
-  export type CategoryUpdateManyWithWhereWithoutParentInput = {
-    where: CategoryScalarWhereInput
-    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyWithoutParentInput>
+  export type tagsUpdateWithoutProduct_tagsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    product_spec?: NullableStringFieldUpdateOperationsInput | string | null
+    product_size?: NullableStringFieldUpdateOperationsInput | string | null
+    sort_type?: NullableIntFieldUpdateOperationsInput | number | null
+    sort_order?: NullableIntFieldUpdateOperationsInput | number | null
+    spec_size?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_categories?: tag_categoriesUpdateOneRequiredWithoutTagsNestedInput
   }
 
-  export type CategoryScalarWhereInput = {
-    AND?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
-    OR?: CategoryScalarWhereInput[]
-    NOT?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
-    id?: StringFilter<"Category"> | string
-    name?: StringFilter<"Category"> | string
-    slug?: StringFilter<"Category"> | string
-    description?: StringNullableFilter<"Category"> | string | null
-    parentId?: StringNullableFilter<"Category"> | string | null
-    createdAt?: DateTimeFilter<"Category"> | Date | string
-    updatedAt?: DateTimeFilter<"Category"> | Date | string
+  export type tagsUncheckedUpdateWithoutProduct_tagsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    created_id?: StringFieldUpdateOperationsInput | string
+    product_spec?: NullableStringFieldUpdateOperationsInput | string | null
+    product_size?: NullableStringFieldUpdateOperationsInput | string | null
+    sort_type?: NullableIntFieldUpdateOperationsInput | number | null
+    sort_order?: NullableIntFieldUpdateOperationsInput | number | null
+    spec_size?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type ProductUpsertWithWhereUniqueWithoutCategoryInput = {
+  export type ProductCreateWithoutProducts_hardwareInput = {
+    id?: string
+    name?: string
+    description?: string | null
+    cover_image?: string | null
+    spec_pdf_url?: string | null
+    is_active?: boolean
+    description_i18n?: NullableJsonNullValueInput | InputJsonValue
+    software_space?: NullableJsonNullValueInput | InputJsonValue
+    hardware_space?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    product_tags?: product_tagsCreateNestedManyWithoutProductsInput
+  }
+
+  export type ProductUncheckedCreateWithoutProducts_hardwareInput = {
+    id?: string
+    name?: string
+    description?: string | null
+    cover_image?: string | null
+    spec_pdf_url?: string | null
+    is_active?: boolean
+    description_i18n?: NullableJsonNullValueInput | InputJsonValue
+    software_space?: NullableJsonNullValueInput | InputJsonValue
+    hardware_space?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    product_tags?: product_tagsUncheckedCreateNestedManyWithoutProductsInput
+  }
+
+  export type ProductCreateOrConnectWithoutProducts_hardwareInput = {
     where: ProductWhereUniqueInput
-    update: XOR<ProductUpdateWithoutCategoryInput, ProductUncheckedUpdateWithoutCategoryInput>
-    create: XOR<ProductCreateWithoutCategoryInput, ProductUncheckedCreateWithoutCategoryInput>
+    create: XOR<ProductCreateWithoutProducts_hardwareInput, ProductUncheckedCreateWithoutProducts_hardwareInput>
   }
 
-  export type ProductUpdateWithWhereUniqueWithoutCategoryInput = {
-    where: ProductWhereUniqueInput
-    data: XOR<ProductUpdateWithoutCategoryInput, ProductUncheckedUpdateWithoutCategoryInput>
+  export type ProductUpsertWithoutProducts_hardwareInput = {
+    update: XOR<ProductUpdateWithoutProducts_hardwareInput, ProductUncheckedUpdateWithoutProducts_hardwareInput>
+    create: XOR<ProductCreateWithoutProducts_hardwareInput, ProductUncheckedCreateWithoutProducts_hardwareInput>
+    where?: ProductWhereInput
   }
 
-  export type ProductUpdateManyWithWhereWithoutCategoryInput = {
-    where: ProductScalarWhereInput
-    data: XOR<ProductUpdateManyMutationInput, ProductUncheckedUpdateManyWithoutCategoryInput>
+  export type ProductUpdateToOneWithWhereWithoutProducts_hardwareInput = {
+    where?: ProductWhereInput
+    data: XOR<ProductUpdateWithoutProducts_hardwareInput, ProductUncheckedUpdateWithoutProducts_hardwareInput>
   }
 
-  export type ProductScalarWhereInput = {
-    AND?: ProductScalarWhereInput | ProductScalarWhereInput[]
-    OR?: ProductScalarWhereInput[]
-    NOT?: ProductScalarWhereInput | ProductScalarWhereInput[]
-    id?: StringFilter<"Product"> | string
-    title?: StringFilter<"Product"> | string
-    slug?: StringFilter<"Product"> | string
-    description?: StringFilter<"Product"> | string
-    fullDescription?: StringNullableFilter<"Product"> | string | null
-    imageUrl?: StringFilter<"Product"> | string
-    categoryId?: StringFilter<"Product"> | string
-    features?: StringFilter<"Product"> | string
-    specifications?: StringNullableFilter<"Product"> | string | null
-    createdAt?: DateTimeFilter<"Product"> | Date | string
-    updatedAt?: DateTimeFilter<"Product"> | Date | string
+  export type ProductUpdateWithoutProducts_hardwareInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    cover_image?: NullableStringFieldUpdateOperationsInput | string | null
+    spec_pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    description_i18n?: NullableJsonNullValueInput | InputJsonValue
+    software_space?: NullableJsonNullValueInput | InputJsonValue
+    hardware_space?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    product_tags?: product_tagsUpdateManyWithoutProductsNestedInput
   }
 
-  export type CategoryCreateWithoutProductsInput = {
+  export type ProductUncheckedUpdateWithoutProducts_hardwareInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    cover_image?: NullableStringFieldUpdateOperationsInput | string | null
+    spec_pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    description_i18n?: NullableJsonNullValueInput | InputJsonValue
+    software_space?: NullableJsonNullValueInput | InputJsonValue
+    hardware_space?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    product_tags?: product_tagsUncheckedUpdateManyWithoutProductsNestedInput
+  }
+
+  export type tagsCreateWithoutTag_categoriesInput = {
+    id?: string
+    product_spec?: string | null
+    product_size?: string | null
+    sort_type?: number | null
+    sort_order?: number | null
+    spec_size?: string | null
+    product_tags?: product_tagsCreateNestedManyWithoutTagsInput
+  }
+
+  export type tagsUncheckedCreateWithoutTag_categoriesInput = {
+    id?: string
+    product_spec?: string | null
+    product_size?: string | null
+    sort_type?: number | null
+    sort_order?: number | null
+    spec_size?: string | null
+    product_tags?: product_tagsUncheckedCreateNestedManyWithoutTagsInput
+  }
+
+  export type tagsCreateOrConnectWithoutTag_categoriesInput = {
+    where: tagsWhereUniqueInput
+    create: XOR<tagsCreateWithoutTag_categoriesInput, tagsUncheckedCreateWithoutTag_categoriesInput>
+  }
+
+  export type tagsCreateManyTag_categoriesInputEnvelope = {
+    data: tagsCreateManyTag_categoriesInput | tagsCreateManyTag_categoriesInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type tagsUpsertWithWhereUniqueWithoutTag_categoriesInput = {
+    where: tagsWhereUniqueInput
+    update: XOR<tagsUpdateWithoutTag_categoriesInput, tagsUncheckedUpdateWithoutTag_categoriesInput>
+    create: XOR<tagsCreateWithoutTag_categoriesInput, tagsUncheckedCreateWithoutTag_categoriesInput>
+  }
+
+  export type tagsUpdateWithWhereUniqueWithoutTag_categoriesInput = {
+    where: tagsWhereUniqueInput
+    data: XOR<tagsUpdateWithoutTag_categoriesInput, tagsUncheckedUpdateWithoutTag_categoriesInput>
+  }
+
+  export type tagsUpdateManyWithWhereWithoutTag_categoriesInput = {
+    where: tagsScalarWhereInput
+    data: XOR<tagsUpdateManyMutationInput, tagsUncheckedUpdateManyWithoutTag_categoriesInput>
+  }
+
+  export type tagsScalarWhereInput = {
+    AND?: tagsScalarWhereInput | tagsScalarWhereInput[]
+    OR?: tagsScalarWhereInput[]
+    NOT?: tagsScalarWhereInput | tagsScalarWhereInput[]
+    id?: UuidFilter<"tags"> | string
+    created_id?: UuidFilter<"tags"> | string
+    product_spec?: StringNullableFilter<"tags"> | string | null
+    product_size?: StringNullableFilter<"tags"> | string | null
+    sort_type?: IntNullableFilter<"tags"> | number | null
+    sort_order?: IntNullableFilter<"tags"> | number | null
+    spec_size?: StringNullableFilter<"tags"> | string | null
+  }
+
+  export type product_tagsCreateWithoutTagsInput = {
+    product_name?: string | null
+    tag_spec?: string | null
+    tag_size?: string | null
+    products?: ProductCreateNestedOneWithoutProduct_tagsInput
+  }
+
+  export type product_tagsUncheckedCreateWithoutTagsInput = {
+    product_id?: string
+    product_name?: string | null
+    tag_spec?: string | null
+    tag_size?: string | null
+  }
+
+  export type product_tagsCreateOrConnectWithoutTagsInput = {
+    where: product_tagsWhereUniqueInput
+    create: XOR<product_tagsCreateWithoutTagsInput, product_tagsUncheckedCreateWithoutTagsInput>
+  }
+
+  export type product_tagsCreateManyTagsInputEnvelope = {
+    data: product_tagsCreateManyTagsInput | product_tagsCreateManyTagsInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type tag_categoriesCreateWithoutTagsInput = {
     id?: string
     name: string
-    slug: string
-    description?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    parent?: CategoryCreateNestedOneWithoutSubcategoriesInput
-    subcategories?: CategoryCreateNestedManyWithoutParentInput
+    sort?: number | null
+    categories_type?: string | null
   }
 
-  export type CategoryUncheckedCreateWithoutProductsInput = {
+  export type tag_categoriesUncheckedCreateWithoutTagsInput = {
     id?: string
     name: string
-    slug: string
-    description?: string | null
-    parentId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    subcategories?: CategoryUncheckedCreateNestedManyWithoutParentInput
+    sort?: number | null
+    categories_type?: string | null
   }
 
-  export type CategoryCreateOrConnectWithoutProductsInput = {
-    where: CategoryWhereUniqueInput
-    create: XOR<CategoryCreateWithoutProductsInput, CategoryUncheckedCreateWithoutProductsInput>
+  export type tag_categoriesCreateOrConnectWithoutTagsInput = {
+    where: tag_categoriesWhereUniqueInput
+    create: XOR<tag_categoriesCreateWithoutTagsInput, tag_categoriesUncheckedCreateWithoutTagsInput>
   }
 
-  export type SolutionCreateWithoutProductsInput = {
-    id?: string
-    title: string
-    slug: string
-    description: string
-    fullDescription?: string | null
-    imageUrl: string
-    industry: string
-    benefits: string
-    features: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    caseStudies?: CaseStudyCreateNestedManyWithoutSolutionInput
+  export type product_tagsUpsertWithWhereUniqueWithoutTagsInput = {
+    where: product_tagsWhereUniqueInput
+    update: XOR<product_tagsUpdateWithoutTagsInput, product_tagsUncheckedUpdateWithoutTagsInput>
+    create: XOR<product_tagsCreateWithoutTagsInput, product_tagsUncheckedCreateWithoutTagsInput>
   }
 
-  export type SolutionUncheckedCreateWithoutProductsInput = {
-    id?: string
-    title: string
-    slug: string
-    description: string
-    fullDescription?: string | null
-    imageUrl: string
-    industry: string
-    benefits: string
-    features: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    caseStudies?: CaseStudyUncheckedCreateNestedManyWithoutSolutionInput
+  export type product_tagsUpdateWithWhereUniqueWithoutTagsInput = {
+    where: product_tagsWhereUniqueInput
+    data: XOR<product_tagsUpdateWithoutTagsInput, product_tagsUncheckedUpdateWithoutTagsInput>
   }
 
-  export type SolutionCreateOrConnectWithoutProductsInput = {
-    where: SolutionWhereUniqueInput
-    create: XOR<SolutionCreateWithoutProductsInput, SolutionUncheckedCreateWithoutProductsInput>
+  export type product_tagsUpdateManyWithWhereWithoutTagsInput = {
+    where: product_tagsScalarWhereInput
+    data: XOR<product_tagsUpdateManyMutationInput, product_tagsUncheckedUpdateManyWithoutTagsInput>
   }
 
-  export type CategoryUpsertWithoutProductsInput = {
-    update: XOR<CategoryUpdateWithoutProductsInput, CategoryUncheckedUpdateWithoutProductsInput>
-    create: XOR<CategoryCreateWithoutProductsInput, CategoryUncheckedCreateWithoutProductsInput>
-    where?: CategoryWhereInput
+  export type tag_categoriesUpsertWithoutTagsInput = {
+    update: XOR<tag_categoriesUpdateWithoutTagsInput, tag_categoriesUncheckedUpdateWithoutTagsInput>
+    create: XOR<tag_categoriesCreateWithoutTagsInput, tag_categoriesUncheckedCreateWithoutTagsInput>
+    where?: tag_categoriesWhereInput
   }
 
-  export type CategoryUpdateToOneWithWhereWithoutProductsInput = {
-    where?: CategoryWhereInput
-    data: XOR<CategoryUpdateWithoutProductsInput, CategoryUncheckedUpdateWithoutProductsInput>
+  export type tag_categoriesUpdateToOneWithWhereWithoutTagsInput = {
+    where?: tag_categoriesWhereInput
+    data: XOR<tag_categoriesUpdateWithoutTagsInput, tag_categoriesUncheckedUpdateWithoutTagsInput>
   }
 
-  export type CategoryUpdateWithoutProductsInput = {
+  export type tag_categoriesUpdateWithoutTagsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    parent?: CategoryUpdateOneWithoutSubcategoriesNestedInput
-    subcategories?: CategoryUpdateManyWithoutParentNestedInput
+    sort?: NullableIntFieldUpdateOperationsInput | number | null
+    categories_type?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type CategoryUncheckedUpdateWithoutProductsInput = {
+  export type tag_categoriesUncheckedUpdateWithoutTagsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    parentId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    subcategories?: CategoryUncheckedUpdateManyWithoutParentNestedInput
+    sort?: NullableIntFieldUpdateOperationsInput | number | null
+    categories_type?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type SolutionUpsertWithWhereUniqueWithoutProductsInput = {
-    where: SolutionWhereUniqueInput
-    update: XOR<SolutionUpdateWithoutProductsInput, SolutionUncheckedUpdateWithoutProductsInput>
-    create: XOR<SolutionCreateWithoutProductsInput, SolutionUncheckedCreateWithoutProductsInput>
-  }
-
-  export type SolutionUpdateWithWhereUniqueWithoutProductsInput = {
-    where: SolutionWhereUniqueInput
-    data: XOR<SolutionUpdateWithoutProductsInput, SolutionUncheckedUpdateWithoutProductsInput>
-  }
-
-  export type SolutionUpdateManyWithWhereWithoutProductsInput = {
-    where: SolutionScalarWhereInput
-    data: XOR<SolutionUpdateManyMutationInput, SolutionUncheckedUpdateManyWithoutProductsInput>
-  }
-
-  export type SolutionScalarWhereInput = {
-    AND?: SolutionScalarWhereInput | SolutionScalarWhereInput[]
-    OR?: SolutionScalarWhereInput[]
-    NOT?: SolutionScalarWhereInput | SolutionScalarWhereInput[]
-    id?: StringFilter<"Solution"> | string
-    title?: StringFilter<"Solution"> | string
-    slug?: StringFilter<"Solution"> | string
-    description?: StringFilter<"Solution"> | string
-    fullDescription?: StringNullableFilter<"Solution"> | string | null
-    imageUrl?: StringFilter<"Solution"> | string
-    industry?: StringFilter<"Solution"> | string
-    benefits?: StringFilter<"Solution"> | string
-    features?: StringFilter<"Solution"> | string
-    createdAt?: DateTimeFilter<"Solution"> | Date | string
-    updatedAt?: DateTimeFilter<"Solution"> | Date | string
-  }
-
-  export type ProductCreateWithoutSolutionsInput = {
+  export type FooterLinkCreateWithoutFooterInput = {
     id?: string
     title: string
-    slug: string
-    description: string
-    fullDescription?: string | null
-    imageUrl: string
-    features: string
-    specifications?: string | null
+    url: string
+    category: string
+    icon?: string | null
+    sortOrder?: number
+    isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    category: CategoryCreateNestedOneWithoutProductsInput
   }
 
-  export type ProductUncheckedCreateWithoutSolutionsInput = {
+  export type FooterLinkUncheckedCreateWithoutFooterInput = {
     id?: string
     title: string
-    slug: string
-    description: string
-    fullDescription?: string | null
-    imageUrl: string
-    categoryId: string
-    features: string
-    specifications?: string | null
+    url: string
+    category: string
+    icon?: string | null
+    sortOrder?: number
+    isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type ProductCreateOrConnectWithoutSolutionsInput = {
-    where: ProductWhereUniqueInput
-    create: XOR<ProductCreateWithoutSolutionsInput, ProductUncheckedCreateWithoutSolutionsInput>
+  export type FooterLinkCreateOrConnectWithoutFooterInput = {
+    where: FooterLinkWhereUniqueInput
+    create: XOR<FooterLinkCreateWithoutFooterInput, FooterLinkUncheckedCreateWithoutFooterInput>
   }
 
-  export type CaseStudyCreateWithoutSolutionInput = {
+  export type FooterLinkCreateManyFooterInputEnvelope = {
+    data: FooterLinkCreateManyFooterInput | FooterLinkCreateManyFooterInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FooterLinkUpsertWithWhereUniqueWithoutFooterInput = {
+    where: FooterLinkWhereUniqueInput
+    update: XOR<FooterLinkUpdateWithoutFooterInput, FooterLinkUncheckedUpdateWithoutFooterInput>
+    create: XOR<FooterLinkCreateWithoutFooterInput, FooterLinkUncheckedCreateWithoutFooterInput>
+  }
+
+  export type FooterLinkUpdateWithWhereUniqueWithoutFooterInput = {
+    where: FooterLinkWhereUniqueInput
+    data: XOR<FooterLinkUpdateWithoutFooterInput, FooterLinkUncheckedUpdateWithoutFooterInput>
+  }
+
+  export type FooterLinkUpdateManyWithWhereWithoutFooterInput = {
+    where: FooterLinkScalarWhereInput
+    data: XOR<FooterLinkUpdateManyMutationInput, FooterLinkUncheckedUpdateManyWithoutFooterInput>
+  }
+
+  export type FooterLinkScalarWhereInput = {
+    AND?: FooterLinkScalarWhereInput | FooterLinkScalarWhereInput[]
+    OR?: FooterLinkScalarWhereInput[]
+    NOT?: FooterLinkScalarWhereInput | FooterLinkScalarWhereInput[]
+    id?: UuidFilter<"FooterLink"> | string
+    title?: StringFilter<"FooterLink"> | string
+    url?: StringFilter<"FooterLink"> | string
+    category?: StringFilter<"FooterLink"> | string
+    icon?: StringNullableFilter<"FooterLink"> | string | null
+    sortOrder?: IntFilter<"FooterLink"> | number
+    isActive?: BoolFilter<"FooterLink"> | boolean
+    footerId?: UuidFilter<"FooterLink"> | string
+    createdAt?: DateTimeFilter<"FooterLink"> | Date | string
+    updatedAt?: DateTimeFilter<"FooterLink"> | Date | string
+  }
+
+  export type FooterCreateWithoutLinksInput = {
+    id?: string
+    icpNumber?: string | null
+    icpLink?: string | null
+    copyright?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FooterUncheckedCreateWithoutLinksInput = {
+    id?: string
+    icpNumber?: string | null
+    icpLink?: string | null
+    copyright?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FooterCreateOrConnectWithoutLinksInput = {
+    where: FooterWhereUniqueInput
+    create: XOR<FooterCreateWithoutLinksInput, FooterUncheckedCreateWithoutLinksInput>
+  }
+
+  export type FooterUpsertWithoutLinksInput = {
+    update: XOR<FooterUpdateWithoutLinksInput, FooterUncheckedUpdateWithoutLinksInput>
+    create: XOR<FooterCreateWithoutLinksInput, FooterUncheckedCreateWithoutLinksInput>
+    where?: FooterWhereInput
+  }
+
+  export type FooterUpdateToOneWithWhereWithoutLinksInput = {
+    where?: FooterWhereInput
+    data: XOR<FooterUpdateWithoutLinksInput, FooterUncheckedUpdateWithoutLinksInput>
+  }
+
+  export type FooterUpdateWithoutLinksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    icpNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    icpLink?: NullableStringFieldUpdateOperationsInput | string | null
+    copyright?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FooterUncheckedUpdateWithoutLinksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    icpNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    icpLink?: NullableStringFieldUpdateOperationsInput | string | null
+    copyright?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type product_tagsCreateManyProductsInput = {
+    tag_id?: string
+    product_name?: string | null
+    tag_spec?: string | null
+    tag_size?: string | null
+  }
+
+  export type products_hardwareCreateManyProductsInput = {
+    id?: string
+    controller_count?: number | null
+    cpu_model?: string | null
+    cpu_count?: number | null
+    cpu_cores?: number | null
+    cpu_architecture?: string | null
+    cpu_base_clock?: Decimal | DecimalJsLike | number | string | null
+    cpu_turbo_clock?: Decimal | DecimalJsLike | number | string | null
+    hardware_encryption?: string | null
+    memory_total?: string | null
+    memory_installed?: string | null
+    memory_slots?: number | null
+    memory_max?: NullableJsonNullValueInput | InputJsonValue
+    disk_bays?: number | null
+    disk_bays_max?: number | null
+    disk_types_supported?: NullableJsonNullValueInput | InputJsonValue
+    m2_slot?: boolean | null
+    disk_host_swappable?: boolean | null
+    lan_rj45_1G?: number | null
+    lan_rj45_2_5G?: number | null
+    lan_rj45_10G?: number | null
+    management_prot?: boolean | null
+    max_lax_ports?: number | null
+    usb_3_2_prots?: number | null
+    expansion_ports?: number | null
+    expansion_port_types?: string | null
+    pcie_expansion?: string | null
+    chassis_type?: string | null
+    dimensions?: string | null
+    rack_mount_kit?: string | null
+    fan_size?: string | null
+    fan_replaceable?: boolean | null
+    led_brightness_adj?: boolean | null
+    auto_power_recovery?: boolean | null
+    noise_lenel?: string | null
+    scheduled_power?: boolean | null
+    wake_on_lan?: boolean | null
+    dual_power_supply?: boolean | null
+    ac_input_voltage?: string | null
+    frequency?: string | null
+    power_consumption?: string | null
+    working_temperature?: string | null
+    storage_temperature?: string | null
+    relative_humidity?: string | null
+    certifications?: NullableJsonNullValueInput | InputJsonValue
+    warranty?: string | null
+    environmental_compliance?: string | null
+    package_contents?: NullableJsonNullValueInput | InputJsonValue
+    optional_accessories?: NullableJsonNullValueInput | InputJsonValue
+    cpu_threads?: number | null
+  }
+
+  export type product_tagsUpdateWithoutProductsInput = {
+    product_name?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_spec?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_size?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: tagsUpdateOneRequiredWithoutProduct_tagsNestedInput
+  }
+
+  export type product_tagsUncheckedUpdateWithoutProductsInput = {
+    tag_id?: StringFieldUpdateOperationsInput | string
+    product_name?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_spec?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_size?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type product_tagsUncheckedUpdateManyWithoutProductsInput = {
+    tag_id?: StringFieldUpdateOperationsInput | string
+    product_name?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_spec?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_size?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type products_hardwareUpdateWithoutProductsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    controller_count?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_model?: NullableStringFieldUpdateOperationsInput | string | null
+    cpu_count?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_cores?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_architecture?: NullableStringFieldUpdateOperationsInput | string | null
+    cpu_base_clock?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    cpu_turbo_clock?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    hardware_encryption?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_total?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_installed?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_slots?: NullableIntFieldUpdateOperationsInput | number | null
+    memory_max?: NullableJsonNullValueInput | InputJsonValue
+    disk_bays?: NullableIntFieldUpdateOperationsInput | number | null
+    disk_bays_max?: NullableIntFieldUpdateOperationsInput | number | null
+    disk_types_supported?: NullableJsonNullValueInput | InputJsonValue
+    m2_slot?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    disk_host_swappable?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lan_rj45_1G?: NullableIntFieldUpdateOperationsInput | number | null
+    lan_rj45_2_5G?: NullableIntFieldUpdateOperationsInput | number | null
+    lan_rj45_10G?: NullableIntFieldUpdateOperationsInput | number | null
+    management_prot?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    max_lax_ports?: NullableIntFieldUpdateOperationsInput | number | null
+    usb_3_2_prots?: NullableIntFieldUpdateOperationsInput | number | null
+    expansion_ports?: NullableIntFieldUpdateOperationsInput | number | null
+    expansion_port_types?: NullableStringFieldUpdateOperationsInput | string | null
+    pcie_expansion?: NullableStringFieldUpdateOperationsInput | string | null
+    chassis_type?: NullableStringFieldUpdateOperationsInput | string | null
+    dimensions?: NullableStringFieldUpdateOperationsInput | string | null
+    rack_mount_kit?: NullableStringFieldUpdateOperationsInput | string | null
+    fan_size?: NullableStringFieldUpdateOperationsInput | string | null
+    fan_replaceable?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    led_brightness_adj?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    auto_power_recovery?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    noise_lenel?: NullableStringFieldUpdateOperationsInput | string | null
+    scheduled_power?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    wake_on_lan?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dual_power_supply?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ac_input_voltage?: NullableStringFieldUpdateOperationsInput | string | null
+    frequency?: NullableStringFieldUpdateOperationsInput | string | null
+    power_consumption?: NullableStringFieldUpdateOperationsInput | string | null
+    working_temperature?: NullableStringFieldUpdateOperationsInput | string | null
+    storage_temperature?: NullableStringFieldUpdateOperationsInput | string | null
+    relative_humidity?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableJsonNullValueInput | InputJsonValue
+    warranty?: NullableStringFieldUpdateOperationsInput | string | null
+    environmental_compliance?: NullableStringFieldUpdateOperationsInput | string | null
+    package_contents?: NullableJsonNullValueInput | InputJsonValue
+    optional_accessories?: NullableJsonNullValueInput | InputJsonValue
+    cpu_threads?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type products_hardwareUncheckedUpdateWithoutProductsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    controller_count?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_model?: NullableStringFieldUpdateOperationsInput | string | null
+    cpu_count?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_cores?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_architecture?: NullableStringFieldUpdateOperationsInput | string | null
+    cpu_base_clock?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    cpu_turbo_clock?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    hardware_encryption?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_total?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_installed?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_slots?: NullableIntFieldUpdateOperationsInput | number | null
+    memory_max?: NullableJsonNullValueInput | InputJsonValue
+    disk_bays?: NullableIntFieldUpdateOperationsInput | number | null
+    disk_bays_max?: NullableIntFieldUpdateOperationsInput | number | null
+    disk_types_supported?: NullableJsonNullValueInput | InputJsonValue
+    m2_slot?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    disk_host_swappable?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lan_rj45_1G?: NullableIntFieldUpdateOperationsInput | number | null
+    lan_rj45_2_5G?: NullableIntFieldUpdateOperationsInput | number | null
+    lan_rj45_10G?: NullableIntFieldUpdateOperationsInput | number | null
+    management_prot?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    max_lax_ports?: NullableIntFieldUpdateOperationsInput | number | null
+    usb_3_2_prots?: NullableIntFieldUpdateOperationsInput | number | null
+    expansion_ports?: NullableIntFieldUpdateOperationsInput | number | null
+    expansion_port_types?: NullableStringFieldUpdateOperationsInput | string | null
+    pcie_expansion?: NullableStringFieldUpdateOperationsInput | string | null
+    chassis_type?: NullableStringFieldUpdateOperationsInput | string | null
+    dimensions?: NullableStringFieldUpdateOperationsInput | string | null
+    rack_mount_kit?: NullableStringFieldUpdateOperationsInput | string | null
+    fan_size?: NullableStringFieldUpdateOperationsInput | string | null
+    fan_replaceable?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    led_brightness_adj?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    auto_power_recovery?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    noise_lenel?: NullableStringFieldUpdateOperationsInput | string | null
+    scheduled_power?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    wake_on_lan?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dual_power_supply?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ac_input_voltage?: NullableStringFieldUpdateOperationsInput | string | null
+    frequency?: NullableStringFieldUpdateOperationsInput | string | null
+    power_consumption?: NullableStringFieldUpdateOperationsInput | string | null
+    working_temperature?: NullableStringFieldUpdateOperationsInput | string | null
+    storage_temperature?: NullableStringFieldUpdateOperationsInput | string | null
+    relative_humidity?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableJsonNullValueInput | InputJsonValue
+    warranty?: NullableStringFieldUpdateOperationsInput | string | null
+    environmental_compliance?: NullableStringFieldUpdateOperationsInput | string | null
+    package_contents?: NullableJsonNullValueInput | InputJsonValue
+    optional_accessories?: NullableJsonNullValueInput | InputJsonValue
+    cpu_threads?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type products_hardwareUncheckedUpdateManyWithoutProductsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    controller_count?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_model?: NullableStringFieldUpdateOperationsInput | string | null
+    cpu_count?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_cores?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_architecture?: NullableStringFieldUpdateOperationsInput | string | null
+    cpu_base_clock?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    cpu_turbo_clock?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    hardware_encryption?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_total?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_installed?: NullableStringFieldUpdateOperationsInput | string | null
+    memory_slots?: NullableIntFieldUpdateOperationsInput | number | null
+    memory_max?: NullableJsonNullValueInput | InputJsonValue
+    disk_bays?: NullableIntFieldUpdateOperationsInput | number | null
+    disk_bays_max?: NullableIntFieldUpdateOperationsInput | number | null
+    disk_types_supported?: NullableJsonNullValueInput | InputJsonValue
+    m2_slot?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    disk_host_swappable?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lan_rj45_1G?: NullableIntFieldUpdateOperationsInput | number | null
+    lan_rj45_2_5G?: NullableIntFieldUpdateOperationsInput | number | null
+    lan_rj45_10G?: NullableIntFieldUpdateOperationsInput | number | null
+    management_prot?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    max_lax_ports?: NullableIntFieldUpdateOperationsInput | number | null
+    usb_3_2_prots?: NullableIntFieldUpdateOperationsInput | number | null
+    expansion_ports?: NullableIntFieldUpdateOperationsInput | number | null
+    expansion_port_types?: NullableStringFieldUpdateOperationsInput | string | null
+    pcie_expansion?: NullableStringFieldUpdateOperationsInput | string | null
+    chassis_type?: NullableStringFieldUpdateOperationsInput | string | null
+    dimensions?: NullableStringFieldUpdateOperationsInput | string | null
+    rack_mount_kit?: NullableStringFieldUpdateOperationsInput | string | null
+    fan_size?: NullableStringFieldUpdateOperationsInput | string | null
+    fan_replaceable?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    led_brightness_adj?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    auto_power_recovery?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    noise_lenel?: NullableStringFieldUpdateOperationsInput | string | null
+    scheduled_power?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    wake_on_lan?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dual_power_supply?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ac_input_voltage?: NullableStringFieldUpdateOperationsInput | string | null
+    frequency?: NullableStringFieldUpdateOperationsInput | string | null
+    power_consumption?: NullableStringFieldUpdateOperationsInput | string | null
+    working_temperature?: NullableStringFieldUpdateOperationsInput | string | null
+    storage_temperature?: NullableStringFieldUpdateOperationsInput | string | null
+    relative_humidity?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableJsonNullValueInput | InputJsonValue
+    warranty?: NullableStringFieldUpdateOperationsInput | string | null
+    environmental_compliance?: NullableStringFieldUpdateOperationsInput | string | null
+    package_contents?: NullableJsonNullValueInput | InputJsonValue
+    optional_accessories?: NullableJsonNullValueInput | InputJsonValue
+    cpu_threads?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type tagsCreateManyTag_categoriesInput = {
+    id?: string
+    product_spec?: string | null
+    product_size?: string | null
+    sort_type?: number | null
+    sort_order?: number | null
+    spec_size?: string | null
+  }
+
+  export type tagsUpdateWithoutTag_categoriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    product_spec?: NullableStringFieldUpdateOperationsInput | string | null
+    product_size?: NullableStringFieldUpdateOperationsInput | string | null
+    sort_type?: NullableIntFieldUpdateOperationsInput | number | null
+    sort_order?: NullableIntFieldUpdateOperationsInput | number | null
+    spec_size?: NullableStringFieldUpdateOperationsInput | string | null
+    product_tags?: product_tagsUpdateManyWithoutTagsNestedInput
+  }
+
+  export type tagsUncheckedUpdateWithoutTag_categoriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    product_spec?: NullableStringFieldUpdateOperationsInput | string | null
+    product_size?: NullableStringFieldUpdateOperationsInput | string | null
+    sort_type?: NullableIntFieldUpdateOperationsInput | number | null
+    sort_order?: NullableIntFieldUpdateOperationsInput | number | null
+    spec_size?: NullableStringFieldUpdateOperationsInput | string | null
+    product_tags?: product_tagsUncheckedUpdateManyWithoutTagsNestedInput
+  }
+
+  export type tagsUncheckedUpdateManyWithoutTag_categoriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    product_spec?: NullableStringFieldUpdateOperationsInput | string | null
+    product_size?: NullableStringFieldUpdateOperationsInput | string | null
+    sort_type?: NullableIntFieldUpdateOperationsInput | number | null
+    sort_order?: NullableIntFieldUpdateOperationsInput | number | null
+    spec_size?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type product_tagsCreateManyTagsInput = {
+    product_id?: string
+    product_name?: string | null
+    tag_spec?: string | null
+    tag_size?: string | null
+  }
+
+  export type product_tagsUpdateWithoutTagsInput = {
+    product_name?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_spec?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_size?: NullableStringFieldUpdateOperationsInput | string | null
+    products?: ProductUpdateOneRequiredWithoutProduct_tagsNestedInput
+  }
+
+  export type product_tagsUncheckedUpdateWithoutTagsInput = {
+    product_id?: StringFieldUpdateOperationsInput | string
+    product_name?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_spec?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_size?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type product_tagsUncheckedUpdateManyWithoutTagsInput = {
+    product_id?: StringFieldUpdateOperationsInput | string
+    product_name?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_spec?: NullableStringFieldUpdateOperationsInput | string | null
+    tag_size?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type FooterLinkCreateManyFooterInput = {
     id?: string
     title: string
-    description: string
+    url: string
+    category: string
+    icon?: string | null
+    sortOrder?: number
+    isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type CaseStudyUncheckedCreateWithoutSolutionInput = {
-    id?: string
-    title: string
-    description: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type CaseStudyCreateOrConnectWithoutSolutionInput = {
-    where: CaseStudyWhereUniqueInput
-    create: XOR<CaseStudyCreateWithoutSolutionInput, CaseStudyUncheckedCreateWithoutSolutionInput>
-  }
-
-  export type CaseStudyCreateManySolutionInputEnvelope = {
-    data: CaseStudyCreateManySolutionInput | CaseStudyCreateManySolutionInput[]
-  }
-
-  export type ProductUpsertWithWhereUniqueWithoutSolutionsInput = {
-    where: ProductWhereUniqueInput
-    update: XOR<ProductUpdateWithoutSolutionsInput, ProductUncheckedUpdateWithoutSolutionsInput>
-    create: XOR<ProductCreateWithoutSolutionsInput, ProductUncheckedCreateWithoutSolutionsInput>
-  }
-
-  export type ProductUpdateWithWhereUniqueWithoutSolutionsInput = {
-    where: ProductWhereUniqueInput
-    data: XOR<ProductUpdateWithoutSolutionsInput, ProductUncheckedUpdateWithoutSolutionsInput>
-  }
-
-  export type ProductUpdateManyWithWhereWithoutSolutionsInput = {
-    where: ProductScalarWhereInput
-    data: XOR<ProductUpdateManyMutationInput, ProductUncheckedUpdateManyWithoutSolutionsInput>
-  }
-
-  export type CaseStudyUpsertWithWhereUniqueWithoutSolutionInput = {
-    where: CaseStudyWhereUniqueInput
-    update: XOR<CaseStudyUpdateWithoutSolutionInput, CaseStudyUncheckedUpdateWithoutSolutionInput>
-    create: XOR<CaseStudyCreateWithoutSolutionInput, CaseStudyUncheckedCreateWithoutSolutionInput>
-  }
-
-  export type CaseStudyUpdateWithWhereUniqueWithoutSolutionInput = {
-    where: CaseStudyWhereUniqueInput
-    data: XOR<CaseStudyUpdateWithoutSolutionInput, CaseStudyUncheckedUpdateWithoutSolutionInput>
-  }
-
-  export type CaseStudyUpdateManyWithWhereWithoutSolutionInput = {
-    where: CaseStudyScalarWhereInput
-    data: XOR<CaseStudyUpdateManyMutationInput, CaseStudyUncheckedUpdateManyWithoutSolutionInput>
-  }
-
-  export type CaseStudyScalarWhereInput = {
-    AND?: CaseStudyScalarWhereInput | CaseStudyScalarWhereInput[]
-    OR?: CaseStudyScalarWhereInput[]
-    NOT?: CaseStudyScalarWhereInput | CaseStudyScalarWhereInput[]
-    id?: StringFilter<"CaseStudy"> | string
-    title?: StringFilter<"CaseStudy"> | string
-    description?: StringFilter<"CaseStudy"> | string
-    solutionId?: StringFilter<"CaseStudy"> | string
-    createdAt?: DateTimeFilter<"CaseStudy"> | Date | string
-    updatedAt?: DateTimeFilter<"CaseStudy"> | Date | string
-  }
-
-  export type SolutionCreateWithoutCaseStudiesInput = {
-    id?: string
-    title: string
-    slug: string
-    description: string
-    fullDescription?: string | null
-    imageUrl: string
-    industry: string
-    benefits: string
-    features: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    products?: ProductCreateNestedManyWithoutSolutionsInput
-  }
-
-  export type SolutionUncheckedCreateWithoutCaseStudiesInput = {
-    id?: string
-    title: string
-    slug: string
-    description: string
-    fullDescription?: string | null
-    imageUrl: string
-    industry: string
-    benefits: string
-    features: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    products?: ProductUncheckedCreateNestedManyWithoutSolutionsInput
-  }
-
-  export type SolutionCreateOrConnectWithoutCaseStudiesInput = {
-    where: SolutionWhereUniqueInput
-    create: XOR<SolutionCreateWithoutCaseStudiesInput, SolutionUncheckedCreateWithoutCaseStudiesInput>
-  }
-
-  export type SolutionUpsertWithoutCaseStudiesInput = {
-    update: XOR<SolutionUpdateWithoutCaseStudiesInput, SolutionUncheckedUpdateWithoutCaseStudiesInput>
-    create: XOR<SolutionCreateWithoutCaseStudiesInput, SolutionUncheckedCreateWithoutCaseStudiesInput>
-    where?: SolutionWhereInput
-  }
-
-  export type SolutionUpdateToOneWithWhereWithoutCaseStudiesInput = {
-    where?: SolutionWhereInput
-    data: XOR<SolutionUpdateWithoutCaseStudiesInput, SolutionUncheckedUpdateWithoutCaseStudiesInput>
-  }
-
-  export type SolutionUpdateWithoutCaseStudiesInput = {
+  export type FooterLinkUpdateWithoutFooterInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    industry?: StringFieldUpdateOperationsInput | string
-    benefits?: StringFieldUpdateOperationsInput | string
-    features?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    products?: ProductUpdateManyWithoutSolutionsNestedInput
   }
 
-  export type SolutionUncheckedUpdateWithoutCaseStudiesInput = {
+  export type FooterLinkUncheckedUpdateWithoutFooterInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    industry?: StringFieldUpdateOperationsInput | string
-    benefits?: StringFieldUpdateOperationsInput | string
-    features?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    products?: ProductUncheckedUpdateManyWithoutSolutionsNestedInput
-  }
-
-  export type CategoryCreateManyParentInput = {
-    id?: string
-    name: string
-    slug: string
-    description?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ProductCreateManyCategoryInput = {
-    id?: string
-    title: string
-    slug: string
-    description: string
-    fullDescription?: string | null
-    imageUrl: string
-    features: string
-    specifications?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type CategoryUpdateWithoutParentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    subcategories?: CategoryUpdateManyWithoutParentNestedInput
-    products?: ProductUpdateManyWithoutCategoryNestedInput
-  }
-
-  export type CategoryUncheckedUpdateWithoutParentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    subcategories?: CategoryUncheckedUpdateManyWithoutParentNestedInput
-    products?: ProductUncheckedUpdateManyWithoutCategoryNestedInput
-  }
-
-  export type CategoryUncheckedUpdateManyWithoutParentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ProductUpdateWithoutCategoryInput = {
+  export type FooterLinkUncheckedUpdateManyWithoutFooterInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    features?: StringFieldUpdateOperationsInput | string
-    specifications?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    solutions?: SolutionUpdateManyWithoutProductsNestedInput
-  }
-
-  export type ProductUncheckedUpdateWithoutCategoryInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    features?: StringFieldUpdateOperationsInput | string
-    specifications?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    solutions?: SolutionUncheckedUpdateManyWithoutProductsNestedInput
-  }
-
-  export type ProductUncheckedUpdateManyWithoutCategoryInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    features?: StringFieldUpdateOperationsInput | string
-    specifications?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type SolutionUpdateWithoutProductsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    industry?: StringFieldUpdateOperationsInput | string
-    benefits?: StringFieldUpdateOperationsInput | string
-    features?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    caseStudies?: CaseStudyUpdateManyWithoutSolutionNestedInput
-  }
-
-  export type SolutionUncheckedUpdateWithoutProductsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    industry?: StringFieldUpdateOperationsInput | string
-    benefits?: StringFieldUpdateOperationsInput | string
-    features?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    caseStudies?: CaseStudyUncheckedUpdateManyWithoutSolutionNestedInput
-  }
-
-  export type SolutionUncheckedUpdateManyWithoutProductsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    industry?: StringFieldUpdateOperationsInput | string
-    benefits?: StringFieldUpdateOperationsInput | string
-    features?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CaseStudyCreateManySolutionInput = {
-    id?: string
-    title: string
-    description: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ProductUpdateWithoutSolutionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    features?: StringFieldUpdateOperationsInput | string
-    specifications?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
-  }
-
-  export type ProductUncheckedUpdateWithoutSolutionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    categoryId?: StringFieldUpdateOperationsInput | string
-    features?: StringFieldUpdateOperationsInput | string
-    specifications?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ProductUncheckedUpdateManyWithoutSolutionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    categoryId?: StringFieldUpdateOperationsInput | string
-    features?: StringFieldUpdateOperationsInput | string
-    specifications?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CaseStudyUpdateWithoutSolutionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CaseStudyUncheckedUpdateWithoutSolutionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CaseStudyUncheckedUpdateManyWithoutSolutionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

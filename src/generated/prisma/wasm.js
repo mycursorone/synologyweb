@@ -114,80 +114,157 @@ Prisma.NullTypes = {
  */
 
 exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
+  ReadUncommitted: 'ReadUncommitted',
+  ReadCommitted: 'ReadCommitted',
+  RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UserScalarFieldEnum = {
+exports.Prisma.ProductScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  description: 'description',
+  cover_image: 'cover_image',
+  spec_pdf_url: 'spec_pdf_url',
+  is_active: 'is_active',
+  description_i18n: 'description_i18n',
+  software_space: 'software_space',
+  hardware_space: 'hardware_space',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Product_tagsScalarFieldEnum = {
+  product_id: 'product_id',
+  tag_id: 'tag_id',
+  product_name: 'product_name',
+  tag_spec: 'tag_spec',
+  tag_size: 'tag_size'
+};
+
+exports.Prisma.Products_hardwareScalarFieldEnum = {
+  id: 'id',
+  products_id: 'products_id',
+  controller_count: 'controller_count',
+  cpu_model: 'cpu_model',
+  cpu_count: 'cpu_count',
+  cpu_cores: 'cpu_cores',
+  cpu_architecture: 'cpu_architecture',
+  cpu_base_clock: 'cpu_base_clock',
+  cpu_turbo_clock: 'cpu_turbo_clock',
+  hardware_encryption: 'hardware_encryption',
+  memory_total: 'memory_total',
+  memory_installed: 'memory_installed',
+  memory_slots: 'memory_slots',
+  memory_max: 'memory_max',
+  disk_bays: 'disk_bays',
+  disk_bays_max: 'disk_bays_max',
+  disk_types_supported: 'disk_types_supported',
+  m2_slot: 'm2_slot',
+  disk_host_swappable: 'disk_host_swappable',
+  lan_rj45_1G: 'lan_rj45_1G',
+  lan_rj45_2_5G: 'lan_rj45_2_5G',
+  lan_rj45_10G: 'lan_rj45_10G',
+  management_prot: 'management_prot',
+  max_lax_ports: 'max_lax_ports',
+  usb_3_2_prots: 'usb_3_2_prots',
+  expansion_ports: 'expansion_ports',
+  expansion_port_types: 'expansion_port_types',
+  pcie_expansion: 'pcie_expansion',
+  chassis_type: 'chassis_type',
+  dimensions: 'dimensions',
+  rack_mount_kit: 'rack_mount_kit',
+  fan_size: 'fan_size',
+  fan_replaceable: 'fan_replaceable',
+  led_brightness_adj: 'led_brightness_adj',
+  auto_power_recovery: 'auto_power_recovery',
+  noise_lenel: 'noise_lenel',
+  scheduled_power: 'scheduled_power',
+  wake_on_lan: 'wake_on_lan',
+  dual_power_supply: 'dual_power_supply',
+  ac_input_voltage: 'ac_input_voltage',
+  frequency: 'frequency',
+  power_consumption: 'power_consumption',
+  working_temperature: 'working_temperature',
+  storage_temperature: 'storage_temperature',
+  relative_humidity: 'relative_humidity',
+  certifications: 'certifications',
+  warranty: 'warranty',
+  environmental_compliance: 'environmental_compliance',
+  package_contents: 'package_contents',
+  optional_accessories: 'optional_accessories',
+  cpu_threads: 'cpu_threads'
+};
+
+exports.Prisma.Tag_categoriesScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  sort: 'sort',
+  categories_type: 'categories_type'
+};
+
+exports.Prisma.TagsScalarFieldEnum = {
+  id: 'id',
+  created_id: 'created_id',
+  product_spec: 'product_spec',
+  product_size: 'product_size',
+  sort_type: 'sort_type',
+  sort_order: 'sort_order',
+  spec_size: 'spec_size'
+};
+
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
   email: 'email',
   password: 'password',
+  name: 'name',
   role: 'role',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.CategoryScalarFieldEnum = {
+exports.Prisma.FooterScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  slug: 'slug',
-  description: 'description',
-  parentId: 'parentId',
+  icpNumber: 'icpNumber',
+  icpLink: 'icpLink',
+  copyright: 'copyright',
+  isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.ProductScalarFieldEnum = {
+exports.Prisma.FooterLinkScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  slug: 'slug',
-  description: 'description',
-  fullDescription: 'fullDescription',
-  imageUrl: 'imageUrl',
-  categoryId: 'categoryId',
-  features: 'features',
-  specifications: 'specifications',
+  url: 'url',
+  category: 'category',
+  icon: 'icon',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  footerId: 'footerId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
-};
-
-exports.Prisma.SolutionScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  slug: 'slug',
-  description: 'description',
-  fullDescription: 'fullDescription',
-  imageUrl: 'imageUrl',
-  industry: 'industry',
-  benefits: 'benefits',
-  features: 'features',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.CaseStudyScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  description: 'description',
-  solutionId: 'solutionId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.MediaScalarFieldEnum = {
-  id: 'id',
-  fileName: 'fileName',
-  filePath: 'filePath',
-  fileType: 'fileType',
-  fileSize: 'fileSize',
-  entityType: 'entityType',
-  entityId: 'entityId',
-  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 
 exports.Prisma.NullsOrder = {
@@ -197,12 +274,14 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User',
-  Category: 'Category',
   Product: 'Product',
-  Solution: 'Solution',
-  CaseStudy: 'CaseStudy',
-  Media: 'Media'
+  product_tags: 'product_tags',
+  products_hardware: 'products_hardware',
+  tag_categories: 'tag_categories',
+  tags: 'tags',
+  User: 'User',
+  Footer: 'Footer',
+  FooterLink: 'FooterLink'
 };
 
 /**

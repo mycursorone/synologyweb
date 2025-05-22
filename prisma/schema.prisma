@@ -128,3 +128,32 @@ model User {
 
   @@map("users")
 }
+
+model Footer {
+  id         String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  icpNumber  String?       @map("icp_number")
+  icpLink    String?       @map("icp_link")
+  copyright  String?
+  isActive   Boolean       @default(true) @map("is_active")
+  createdAt  DateTime      @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt  DateTime      @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  links      FooterLink[]
+
+  @@map("footers")
+}
+
+model FooterLink {
+  id         String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title      String
+  url        String
+  category   String
+  icon       String?
+  sortOrder  Int       @default(0) @map("sort_order")
+  isActive   Boolean   @default(true) @map("is_active")
+  footerId   String    @map("footer_id") @db.Uuid
+  createdAt  DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt  DateTime  @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  footer     Footer    @relation(fields: [footerId], references: [id], onDelete: Cascade)
+
+  @@map("footer_links")
+}
