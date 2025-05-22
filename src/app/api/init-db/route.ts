@@ -1,15 +1,17 @@
 import { NextResponse } from 'next/server';
 import { hash } from 'bcryptjs';
-import prisma from '@/lib/prisma';
+import pool from '@/lib/db';
+import { v4 as uuidv4 } from 'uuid';
 
 export async function GET() {
   try {
     // 检查是否已有管理员用户
-    const adminExists = await prisma.user.findFirst({
-      where: {
-        role: 'admin',
-      },
-    });
+    const adminResult = await pool.query(
+      'SELECT * FROM users WHERE role = $1 LIMIT 1',
+      ['admin']
+    );
+
+    const adminExists = adminResult.rows[0];
 
     if (adminExists) {
       return NextResponse.json({
@@ -26,14 +28,16 @@ export async function GET() {
 
     // 创建管理员用户
     const hashedPassword = await hash('admin123', 10);
-    const admin = await prisma.user.create({
-      data: {
-        name: '管理员',
-        email: 'admin@meibu.com',
-        password: hashedPassword,
-        role: 'admin',
-      },
-    });
+    const adminId = uuidv4();
+
+    const adminResult2 = await pool.query(
+      `INSERT INTO users (id, name, email, password, role)
+       VALUES ($1, $2, $3, $4, $5)
+       RETURNING id, name, email, role`,
+      [adminId, '管理员', 'admin@example.com', hashedPassword, 'admin']
+    );
+
+    const admin = adminResult2.rows[0];
 
     return NextResponse.json({
       success: true,

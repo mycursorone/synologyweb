@@ -1,106 +1,130 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
-// 用户模型
-model User {
-  id            String    @id @default(cuid())
-  name          String
-  email         String    @unique
-  password      String
-  role          String    @default("admin")
-  createdAt     DateTime  @default(now()) @map("created_at")
-  updatedAt     DateTime  @updatedAt @map("updated_at")
-
-  @@map("users")
-}
-
-// 产品分类模型
-model Category {
-  id            String    @id @default(cuid())
-  name          String
-  slug          String    @unique
-  description   String?
-  parentId      String?   @map("parent_id")
-  parent        Category? @relation("CategoryToSubcategory", fields: [parentId], references: [id], onDelete: SetNull)
-  subcategories Category[] @relation("CategoryToSubcategory")
-  products      Product[]
-  createdAt     DateTime  @default(now()) @map("created_at")
-  updatedAt     DateTime  @updatedAt @map("updated_at")
-
-  @@map("categories")
-}
-
-// 产品模型
 model Product {
-  id              String    @id @default(cuid())
-  title           String
-  slug            String    @unique
-  description     String
-  fullDescription String?   @map("full_description")
-  imageUrl        String    @map("image_url")
-  categoryId      String    @map("category_id")
-  category        Category  @relation(fields: [categoryId], references: [id])
-  features        String    // 存储为 JSON 字符串
-  specifications  String?   // 存储为 JSON 字符串
-  solutions       Solution[] @relation("ProductToSolution")
-  createdAt       DateTime  @default(now()) @map("created_at")
-  updatedAt       DateTime  @updatedAt @map("updated_at")
+  id                String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name              String              @default("")
+  description       String?
+  cover_image       String?
+  spec_pdf_url      String?
+  is_active         Boolean             @default(true)
+  description_i18n  Json?
+  software_space    Json?
+  hardware_space    Json?
+  createdAt         DateTime?           @default(now()) @map("created_at") @db.Time(6)
+  updatedAt         DateTime?           @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+  product_tags      product_tags[]
+  products_hardware products_hardware[]
 
   @@map("products")
 }
 
-// 解决方案模型
-model Solution {
-  id              String    @id @default(cuid())
-  title           String
-  slug            String    @unique
-  description     String
-  fullDescription String?   @map("full_description")
-  imageUrl        String    @map("image_url")
-  industry        String
-  benefits        String    // 存储为 JSON 字符串
-  features        String    // 存储为 JSON 字符串
-  products        Product[] @relation("ProductToSolution")
-  caseStudies     CaseStudy[]
-  createdAt       DateTime  @default(now()) @map("created_at")
-  updatedAt       DateTime  @updatedAt @map("updated_at")
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model product_tags {
+  product_id   String  @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tag_id       String  @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  product_name String? @default("null")
+  tag_spec     String? @default("null")
+  tag_size     String? @default("null")
+  products     Product @relation(fields: [product_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  tags         tags    @relation(fields: [tag_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
-  @@map("solutions")
+  @@id([product_id, tag_id])
 }
 
-// 案例研究模型
-model CaseStudy {
-  id          String    @id @default(cuid())
-  title       String
-  description String
-  solutionId  String    @map("solution_id")
-  solution    Solution  @relation(fields: [solutionId], references: [id], onDelete: Cascade)
-  createdAt   DateTime  @default(now()) @map("created_at")
-  updatedAt   DateTime  @updatedAt @map("updated_at")
-
-  @@map("case_studies")
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model products_hardware {
+  id                       String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  products_id              String   @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  controller_count         Int?     @db.SmallInt
+  cpu_model                String?  @db.VarChar
+  cpu_count                Int?     @db.SmallInt
+  cpu_cores                Int?     @db.SmallInt
+  cpu_architecture         String?  @db.VarChar
+  cpu_base_clock           Decimal? @db.Decimal
+  cpu_turbo_clock          Decimal? @db.Decimal
+  hardware_encryption      String?  @db.VarChar
+  memory_total             String?  @db.VarChar
+  memory_installed         String?  @db.VarChar
+  memory_slots             Int?     @db.SmallInt
+  memory_max               Json?
+  disk_bays                Int?     @db.SmallInt
+  disk_bays_max            Int?     @db.SmallInt
+  disk_types_supported     Json?
+  m2_slot                  Boolean?
+  disk_host_swappable      Boolean?
+  lan_rj45_1G              Int?     @db.SmallInt
+  lan_rj45_2_5G            Int?     @map("lan_rj45-2.5G") @db.SmallInt
+  lan_rj45_10G             Int?     @db.SmallInt
+  management_prot          Boolean?
+  max_lax_ports            Int?     @db.SmallInt
+  usb_3_2_prots            Int?     @map("usb_3.2_prots") @db.SmallInt
+  expansion_ports          Int?     @db.SmallInt
+  expansion_port_types     String?  @db.VarChar
+  pcie_expansion           String?  @db.VarChar
+  chassis_type             String?  @db.VarChar
+  dimensions               String?  @db.VarChar
+  rack_mount_kit           String?  @db.VarChar
+  fan_size                 String?  @db.VarChar
+  fan_replaceable          Boolean?
+  led_brightness_adj       Boolean?
+  auto_power_recovery      Boolean?
+  noise_lenel              String?  @db.VarChar
+  scheduled_power          Boolean?
+  wake_on_lan              Boolean?
+  dual_power_supply        Boolean?
+  ac_input_voltage         String?  @db.VarChar
+  frequency                String?  @db.VarChar
+  power_consumption        String?  @db.VarChar
+  working_temperature      String?  @db.VarChar
+  storage_temperature      String?  @db.VarChar
+  relative_humidity        String?  @db.VarChar
+  certifications           Json?
+  warranty                 String?  @db.VarChar
+  environmental_compliance String?  @db.VarChar
+  package_contents         Json?
+  optional_accessories     Json?
+  cpu_threads              Int?     @db.SmallInt
+  products                 Product  @relation(fields: [products_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
-// 媒体资源模型
-model Media {
-  id        String    @id @default(cuid())
-  fileName  String    @map("file_name")
-  filePath  String    @map("file_path")
-  fileType  String    @map("file_type")
-  fileSize  Int       @map("file_size")
-  entityType String?  @map("entity_type")
-  entityId  String?   @map("entity_id")
-  createdAt DateTime  @default(now()) @map("created_at")
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model tag_categories {
+  id              String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name            String
+  sort            Int?    @db.SmallInt
+  categories_type String?
+  tags            tags[]
+}
 
-  @@map("media")
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model tags {
+  id             String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  created_id     String         @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  product_spec   String?
+  product_size   String?
+  sort_type      Int?           @db.SmallInt
+  sort_order     Int?           @db.SmallInt
+  spec_size      String?
+  product_tags   product_tags[]
+  tag_categories tag_categories @relation(fields: [created_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model User {
+  id        String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email     String    @unique
+  password  String
+  name      String
+  role      String    @default("user")
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@map("users")
 }

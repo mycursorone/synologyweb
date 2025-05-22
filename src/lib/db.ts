@@ -11,12 +11,33 @@ const pool = new Pool({
 
 // 测试数据库连接
 pool.on('connect', () => {
-  console.log('Connected to the database');
+  console.log('Connected to the database:', process.env.DB_NAME || 'synologywebdb');
 });
 
 pool.on('error', (err) => {
   console.error('Unexpected error on idle client', err);
-  process.exit(-1);
+  // 不要在生产环境中退出进程
+  if (process.env.NODE_ENV !== 'production') {
+    process.exit(-1);
+  }
 });
+
+// 测试连接
+const testConnection = async () => {
+  try {
+    const client = await pool.connect();
+    console.log('Database connection test successful');
+    client.release();
+    return true;
+  } catch (err) {
+    console.error('Database connection test failed:', err);
+    return false;
+  }
+};
+
+// 在非生产环境中立即测试连接
+if (process.env.NODE_ENV !== 'production') {
+  testConnection();
+}
 
 export default pool;
