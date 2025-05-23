@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "./normalize.css";
 @import "./responsive.css";
+@import "../styles/admin.css";
+@import "../styles/product-tags.css";
 
 :root {
   --background: #ffffff;

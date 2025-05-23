@@ -478,33 +478,33 @@ export default function TagsPage() {
                                 // 行内编辑模式
                                 <>
                                   <TableCell className="py-1">
-                                    <div className="space-y-1">
+                                    <div className="flex space-x-1 items-center">
                                       <Input
-                                        placeholder="规格"
+                                        placeholder="产品标签"
                                         value={inlineEditData.product_spec}
                                         onChange={(e) => setInlineEditData({
                                           ...inlineEditData,
                                           product_spec: e.target.value
                                         })}
-                                        className="h-7 text-xs"
+                                        className="h-7 text-xs flex-1"
                                       />
                                       <Input
-                                        placeholder="尺寸"
-                                        value={inlineEditData.product_size}
-                                        onChange={(e) => setInlineEditData({
-                                          ...inlineEditData,
-                                          product_size: e.target.value
-                                        })}
-                                        className="h-7 text-xs"
-                                      />
-                                      <Input
-                                        placeholder="规格尺寸"
+                                        placeholder="/"
                                         value={inlineEditData.spec_size}
                                         onChange={(e) => setInlineEditData({
                                           ...inlineEditData,
                                           spec_size: e.target.value
                                         })}
-                                        className="h-7 text-xs"
+                                        className="h-7 text-xs w-12 text-center"
+                                      />
+                                      <Input
+                                        placeholder="规则"
+                                        value={inlineEditData.product_size}
+                                        onChange={(e) => setInlineEditData({
+                                          ...inlineEditData,
+                                          product_size: e.target.value
+                                        })}
+                                        className="h-7 text-xs flex-1"
                                       />
                                     </div>
                                   </TableCell>
@@ -590,7 +590,7 @@ export default function TagsPage() {
                                 <>
                                   <TableCell className="py-1.5 font-medium">
                                     {tag.product_spec && <span>{tag.product_spec}</span>}
-                                    {tag.spec_size && <span className="text-gray-500">{tag.spec_size}</span>}
+                                    {tag.spec_size && <span className="text-gray-500 mx-1">{tag.spec_size}</span>}
                                     {tag.product_size && <span>{tag.product_size}</span>}
                                   </TableCell>
                                   <TableCell className="py-1.5">
@@ -679,36 +679,37 @@ export default function TagsPage() {
                     </Select>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="productSpec">规格</Label>
+                  <div className="flex items-end space-x-2">
+                    <div className="space-y-2 flex-1">
+                      <Label htmlFor="productSpec">产品标签</Label>
                       <Input
                         id="productSpec"
                         value={productSpec}
                         onChange={(e) => setProductSpec(e.target.value)}
-                        placeholder="产品规格"
+                        placeholder="产品标签"
                       />
                     </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="productSize">尺寸</Label>
+                    <div className="space-y-2 w-16">
+                      <Label htmlFor="specSize">分隔符</Label>
+                      <Input
+                        id="specSize"
+                        value={specSize}
+                        onChange={(e) => setSpecSize(e.target.value)}
+                        placeholder="/"
+                        className="text-center"
+                      />
+                    </div>
+
+                    <div className="space-y-2 flex-1">
+                      <Label htmlFor="productSize">规则</Label>
                       <Input
                         id="productSize"
                         value={productSize}
                         onChange={(e) => setProductSize(e.target.value)}
-                        placeholder="产品尺寸"
+                        placeholder="规则"
                       />
                     </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="specSize">规格尺寸</Label>
-                    <Input
-                      id="specSize"
-                      value={specSize}
-                      onChange={(e) => setSpecSize(e.target.value)}
-                      placeholder="规格尺寸"
-                    />
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">

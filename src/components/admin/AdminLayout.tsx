@@ -122,18 +122,18 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                 // 有子菜单的项目，点击时只展开/折叠子菜单，不导航
                 <div
                   onClick={(e) => handleMenuClick(item, e)}
-                  className={`flex items-center p-2 rounded-md transition-all duration-200 cursor-pointer
-                    ${pathname === item.path || (item.subItems && pathname.startsWith(item.path))
-                      ? 'bg-blue-100 text-blue-700 font-medium'
-                      : 'text-gray-700 hover:bg-gray-100 hover:text-blue-600'
+                  className={`flex items-center p-2 rounded-md transition-all duration-200 cursor-pointer admin-menu-item
+                    ${pathname === item.path || (item.subItems && item.subItems.some(sub => pathname === sub.path))
+                      ? 'active'
+                      : ''
                     }`}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className={`h-5 w-5 mr-3 transition-colors duration-200 ${
-                      pathname === item.path || (item.subItems && pathname.startsWith(item.path))
-                        ? 'text-blue-600'
-                        : 'text-gray-500 group-hover:text-blue-500'
+                    className={`h-5 w-5 mr-3 transition-colors duration-200 admin-icon-button ${
+                      pathname === item.path || (item.subItems && item.subItems.some(sub => pathname === sub.path))
+                        ? 'text-accent'
+                        : ''
                     }`}
                     fill="none"
                     viewBox="0 0 24 24"
@@ -150,7 +150,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className={`h-4 w-4 ml-auto transition-transform duration-200 ${
-                      expandedMenus.includes(item.path) ? 'rotate-180 text-blue-500' : 'text-gray-400'
+                      expandedMenus.includes(item.path) ? 'rotate-180 text-accent' : 'text-gray-400'
                     }`}
                     fill="none"
                     viewBox="0 0 24 24"
@@ -168,18 +168,18 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                 // 没有子菜单的项目，点击时正常导航
                 <Link
                   href={item.path}
-                  className={`flex items-center p-2 rounded-md transition-all duration-200 group
+                  className={`flex items-center p-2 rounded-md transition-all duration-200 admin-menu-item
                     ${pathname === item.path
-                      ? 'bg-blue-100 text-blue-700 font-medium'
-                      : 'text-gray-700 hover:bg-gray-100 hover:text-blue-600'
+                      ? 'active'
+                      : ''
                     }`}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className={`h-5 w-5 mr-3 transition-colors duration-200 ${
+                    className={`h-5 w-5 mr-3 transition-colors duration-200 admin-icon-button ${
                       pathname === item.path
-                        ? 'text-blue-600'
-                        : 'text-gray-500 group-hover:text-blue-500'
+                        ? 'text-accent'
+                        : ''
                     }`}
                     fill="none"
                     viewBox="0 0 24 24"
@@ -203,10 +203,10 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                     <Link
                       key={subItem.path}
                       href={subItem.path}
-                      className={`flex items-center p-2 rounded-md transition-all duration-200 ${
+                      className={`flex items-center p-2 rounded-md transition-all duration-200 admin-submenu-item ${
                         pathname === subItem.path
-                          ? 'bg-blue-50 text-blue-700 font-medium'
-                          : 'text-gray-700 hover:bg-gray-100 hover:text-blue-600'
+                          ? 'active'
+                          : ''
                       }`}
                     >
                       {subItem.name}
@@ -222,10 +222,10 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       {/* 主内容区 */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* 顶部导航栏 */}
-        <header className="bg-white shadow-sm h-16 flex items-center justify-between px-6">
+        <header className="bg-white shadow-sm h-16 flex items-center justify-between px-6 admin-card">
           <button
             onClick={toggleSidebar}
-            className="md:hidden text-gray-500 focus:outline-none"
+            className="md:hidden text-gray-500 focus:outline-none admin-icon-button"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -245,7 +245,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
           <div className="flex items-center">
             <div className="relative">
-              <button className="flex items-center text-gray-700 focus:outline-none">
+              <button className="flex items-center text-gray-700 focus:outline-none admin-clickable">
                 <span className="mr-2">{session?.user?.name}</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -266,13 +266,13 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden">
                 <Link
                   href="/admin/profile"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 admin-submenu-item"
                 >
                   个人资料
                 </Link>
                 <button
                   onClick={handleSignOut}
-                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 admin-submenu-item"
                 >
                   退出登录
                 </button>
@@ -281,7 +281,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
             <button
               onClick={handleSignOut}
-              className="ml-4 text-gray-700 hover:text-gray-900 focus:outline-none"
+              className="ml-4 text-gray-700 focus:outline-none admin-icon-button"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
