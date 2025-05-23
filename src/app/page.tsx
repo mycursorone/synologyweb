@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
-import HomePage from './(routes)/web/page';
 
 export default function Home() {
-  return <HomePage />;
+  // 直接重定向到 /web/home，使用绝对路径
+  redirect('/web/home');
 }
