@@ -83,7 +83,7 @@ export async function GET(request: NextRequest) {
     // 标签筛选
     if (tagId) {
       whereClause += ` AND id IN (
-        SELECT product_id FROM product_tags WHERE tag_id = $${paramIndex - 2}
+        SELECT product_id FROM product_tags WHERE tag_id = $${paramIndex}
       )`;
       queryParams.push(tagId);
       countQueryParams.push(tagId);

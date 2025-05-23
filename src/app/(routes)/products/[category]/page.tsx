@@ -127,7 +127,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
   };
 
   // 获取所有可用的类别
-  const allCategories = [...new Set(products.map(product => product.category))];
+  const allCategories = products && products.length > 0 ? [...new Set(products.map(product => product.category))] : [];
 
 
 
