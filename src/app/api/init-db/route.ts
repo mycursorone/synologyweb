@@ -34,7 +34,7 @@ export async function GET() {
       `INSERT INTO users (id, name, email, password, role)
        VALUES ($1, $2, $3, $4, $5)
        RETURNING id, name, email, role`,
-      [adminId, '管理员', 'admin@example.com', hashedPassword, 'admin']
+      [adminId, '管理员', 'myshiner@gmail.com', hashedPassword, 'admin']
     );
 
     const admin = adminResult2.rows[0];
